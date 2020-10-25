@@ -15,13 +15,10 @@ export default function Login() {
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
-        />        
+        />
       </Head>
       <div>
-        <ButtonLink
-          label="LOGIN"
-          link="/welcome"
-        />       
+        <ButtonLink label="LOGIN" link="/welcome" />
       </div>
     </>
   )

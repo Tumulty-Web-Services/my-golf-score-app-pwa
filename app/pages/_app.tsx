@@ -9,18 +9,16 @@ function MyApp({ Component, pageProps }: AppProps) {
         <header>
           <Link href="/welcome">
             <a>
-              <h1>
-                GOLF JOURNAL
-              </h1>
+              <h1>GOLF JOURNAL</h1>
             </a>
           </Link>
         </header>
         <main>
           <Component {...pageProps} />
-        </main>        
+        </main>
         <footer>
           <p> Golf Journal 2020 </p>
-        </footer>      
+        </footer>
       </div>
     </>
   )

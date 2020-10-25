@@ -5,10 +5,5 @@ type Props = {
 }
 
 export default function Card({ children }: Props): JSX.Element {
-  return (
-    <div>
-      {children}
-      
-    </div>
-  )
+  return <div>{children}</div>
 }

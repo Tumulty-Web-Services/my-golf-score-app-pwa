@@ -6,13 +6,10 @@ export default function Welcome(): JSX.Element {
   return (
     <>
       <Card>
-        <p>
-        User info will go here..
-        </p>
+        <p>User info will go here..</p>
       </Card>
       <ButtonLink label="NEW COURSE" link="/course-information" />
-      <ButtonLink label="REPLAY COURSE" link="/replay-course" />      
-
+      <ButtonLink label="REPLAY COURSE" link="/replay-course" />
     </>
   )
 }
