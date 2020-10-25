@@ -16,13 +16,15 @@ The goal of this application is to replace the traditional pencil and paper base
 
 **App built with**
  * [Auth0](https://auth0.com/)
- * [CSS Transitions](https://reactjs.org/docs/animation.html)
+ 
  * [Jest](https://jestjs.io/)
  * [Next.js](https://nextjs.org/)
  * [MongoDB](https://www.mongodb.com/)
  * [Mongoose](https://mongoosejs.com/)
  * [Storybook](https://storybook.js.org/)
  * [React Testing Library](https://testing-library.com/)
+ * [React Transition Group](https://reactcommunity.org/react-transition-group/)
+ * [React Spinners](https://testing-library.com/)
  * [Typescript](https://www.typescriptlang.org/)
 
  **Marketing landing page built with**
@@ -35,6 +37,8 @@ The goal of this application is to replace the traditional pencil and paper base
  ## Install
 
  **App**
+ 
+ Note: ```pages: course-information welcome replay-course hole replay-hole login``` 
 
  **Marking Landing Page**
 

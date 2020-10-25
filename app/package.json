@@ -1,21 +1,41 @@
 {
-  "name": "with-typescript",
+  "name": "with-typescript-eslint-jest",
+  "author": "@erikdstock",
+  "license": "MIT",
   "version": "1.0.0",
   "scripts": {
-    "dev": "next",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "type-check": "tsc",
+    "type-check": "tsc --pretty --noEmit",
+    "format": "prettier --write .",
+    "lint": "eslint . --ext ts --ext tsx --ext js",
+    "test": "jest",
+    "test-all": "yarn lint && yarn type-check && yarn test",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn run type-check"
+    }
+  },
+  "lint-staged": {
+    "*.@(ts|tsx)": [
+      "yarn lint",
+      "yarn format"
+    ]
+  },
   "dependencies": {
     "@auth0/nextjs-auth0": "^0.16.0",
+    "jest-dom": "^4.0.0",
     "mongoose": "^5.10.10",
     "mongoose-typescript": "^1.0.7",
     "next": "latest",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-spinners": "^0.9.0",
     "react-transition-group": "^4.4.1"
   },
   "devDependencies": {
@@ -24,12 +44,24 @@
     "@storybook/addon-essentials": "^6.0.27",
     "@storybook/addon-links": "^6.0.27",
     "@storybook/react": "^6.0.27",
-    "@types/node": "^12.12.21",
-    "@types/react": "^16.9.16",
-    "@types/react-dom": "^16.9.4",
+    "@testing-library/react": "^10.0.1",
+    "@types/jest": "^26.0.15",
+    "@types/mocha": "^8.0.3",
+    "@types/node": "^13.9.5",
+    "@types/react": "^16.9.27",
+    "@typescript-eslint/eslint-plugin": "^2.25.0",
+    "@typescript-eslint/parser": "^2.25.0",
+    "babel-jest": "^25.2.3",
     "babel-loader": "^8.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-react": "^7.19.0",
+    "husky": "^4.2.3",
+    "jest": "^25.2.3",
+    "jest-watch-typeahead": "^0.5.0",
+    "lint-staged": "^10.0.10",
+    "prettier": "^2.0.2",
     "react-is": "^17.0.1",
-    "typescript": "4.0"
-  },
-  "license": "MIT"
+    "typescript": "^3.8.3"
+  }
 }
