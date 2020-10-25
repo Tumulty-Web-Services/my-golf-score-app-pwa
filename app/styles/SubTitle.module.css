@@ -1,0 +1,9 @@
+.subTitle {
+  color: #fff;
+  font-family: 'Roboto';
+  text-transform: uppercase;
+  text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.44);
+  text-align: center;
+  letter-spacing: 1px;
+  font-weight: 900;
+}

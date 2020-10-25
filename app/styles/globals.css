@@ -25,3 +25,8 @@ html {
     )
     no-repeat center center fixed;
 }
+
+/** Utility classes **/
+.flex-table {
+  display: flex;
+}

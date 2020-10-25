@@ -1,9 +1,19 @@
 @font-face {
-  font-family: 'Roboto Regular';
-  src: url('./fonts/Roboto-Regular.ttf') format('truetype');
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Roboto'), url(/fonts/Roboto-Regular.tff) format('truetype');
 }
 
 @font-face {
-  font-family: 'Roboto Bold';
-  src: url('./fonts/Roboto-Bold.ttf') format('truetype');
+  font-family: 'Roboto';
+  font-style: bold;
+  font-weight: 900;
+  font-display: swap;
+  src: local('Roboto'), url(/fonts/Roboto-Bold.tff) format('truetype');
 }
+
+
+
+

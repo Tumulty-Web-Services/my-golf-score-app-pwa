@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import styles from '../styles/Button.module.css'
 
 type Props = {
   link: string
@@ -9,7 +10,7 @@ type Props = {
 export default function ButtonLink({ link, label }: Props) {
   return (
     <Link href={link}>
-      <a>{label}</a>
+      <a className={`${styles.button} stories-btn`}>{label}</a>
     </Link>
   )
 }

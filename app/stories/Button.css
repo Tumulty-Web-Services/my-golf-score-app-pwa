@@ -1,4 +1,4 @@
-.button {
+.stories-btn {
   color: #fff;
   background: #bf793b;
   text-decoration: none;
@@ -17,7 +17,7 @@
   transform: matrix(1, 0, 0, 1, 0, 0);
 }
 
-.button:active {
+.stories-btn:active {
   transform: matrix(0.95, 0, 0, 0.95, 0, 0);
   background-color: #cc813f;
 }

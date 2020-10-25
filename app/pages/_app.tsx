@@ -1,5 +1,5 @@
 import type { AppProps } from 'next/app'
-import Link from 'next/link'
+import Header from '../components/Header'
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -7,11 +7,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <div id="golf-journal">
         <header>
-          <Link href="/welcome">
-            <a>
-              <h1>GOLF JOURNAL</h1>
-            </a>
-          </Link>
+          <Header />
         </header>
         <main>
           <Component {...pageProps} />
@@ -19,6 +15,69 @@ function MyApp({ Component, pageProps }: AppProps) {
         <footer>
           <p> Golf Journal 2020 </p>
         </footer>
+        <style jsx>{`
+          #golf-journal {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+            margin: 0;
+          }
+
+          header,
+          main,
+          footer {
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+          }
+
+          header {
+            height: 10vh;
+            text-align: center;
+          }
+
+          main {
+            height: 85vh;
+          }
+
+          footer {
+            height: 5vh;
+          }
+
+          @media (min-width: 576px) {
+            header,
+            main,
+            footer {
+              max-width: 540px;
+            }
+          }
+
+          @media (min-width: 768px) {
+            header,
+            main,
+            footer {
+              max-width: 720px;
+            }
+          }
+
+          @media ((min-width: 992px)) {
+            header,
+            main,
+            footer {
+              max-width: 960px;
+            }
+          }
+
+          @media (min-width: 1200px) {
+            header,
+            main,
+            footer {
+              max-width: 1140px;
+            }
+          }
+        `}</style>
       </div>
     </>
   )

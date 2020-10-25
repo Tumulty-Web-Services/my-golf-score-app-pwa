@@ -46,7 +46,6 @@ The goal of this application is to replace the traditional pencil and paper base
  Note: ```pages: course-information welcome replay-course hole replay-hole login``` 
 
  Follow this tutorial for page transitions https://reacttricks.com/animating-next-page-transitions-with-framer-motion/
- Follow this tutoiral for app page layout https://www.quackit.com/html/html_editors/scratchpad/?example=/css/flexbox/examples/flexbox_website_layout_3
 
  **Marking Landing Page**
 
