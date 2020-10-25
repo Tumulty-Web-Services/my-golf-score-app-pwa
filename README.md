@@ -21,8 +21,7 @@ The goal of this application is to replace the traditional pencil and paper base
 ## Technology
 
 **App built with**
- * [Auth0](https://auth0.com/)
- 
+ * [Auth0](https://auth0.com/) 
  * [Jest](https://jestjs.io/)
  * [Next.js](https://nextjs.org/)
  * [MongoDB](https://www.mongodb.com/)
