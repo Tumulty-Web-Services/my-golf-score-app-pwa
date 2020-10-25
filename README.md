@@ -4,6 +4,15 @@
 
 The goal of this application is to replace the traditional pencil and paper based golf score card. This application allows the user to easily write down and keep track of their golf score as they play. 
 
+ #### TODO:
+
+ 1. Create  ```pages: course-information welcome replay-course hole replay-hole login``` 
+ 2. Add page transitions: Follow this tutorial for page transitions https://reacttricks.com/animating-next-page-transitions-with-framer-motion/
+ 3. Finish components: FlexTable, RadioToggle, DropDownSelection
+ 4. Add Authentication
+ 5. Integrate MongoDB/Mongoose & Local Storage (to build the game data as you are playing, then the finish button will send it to MongoDB)
+ 6. Optimizate for offline use
+
 ## Build status
 
 ![Lint passing](https://camo.githubusercontent.com/df0f65b2d0e7a0448dd50abbc3b4364dc971533f/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f776f726b666c6f772f7374617475732f70726574746965722f70726574746965722f4c696e743f6c6162656c3d4c696e74267374796c653d666c61742d737175617265)
@@ -41,18 +50,7 @@ The goal of this application is to replace the traditional pencil and paper base
 
  ## Install
 
- **App**
- 
- #### TODO:
-
- 1. Create  ```pages: course-information welcome replay-course hole replay-hole login``` 
- 2. Add page transitions: Follow this tutorial for page transitions https://reacttricks.com/animating-next-page-transitions-with-framer-motion/
- 3. Finish components: FlexTable, RadioToggle, DropDownSelection
- 4. Add Authentication
- 5. Integrate MongoDB/Mongoose & Local Storage (to build the game data as you are playing, then the finish button will send it to MongoDB)
- 6. Optimizate for offline use
-
- 
+ **App** 
 
  **Marking Landing Page**
 
