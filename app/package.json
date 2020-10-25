@@ -1,0 +1,35 @@
+{
+  "name": "with-typescript",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "type-check": "tsc",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "dependencies": {
+    "@auth0/nextjs-auth0": "^0.16.0",
+    "mongoose": "^5.10.10",
+    "mongoose-typescript": "^1.0.7",
+    "next": "latest",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-transition-group": "^4.4.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@storybook/addon-actions": "^6.0.27",
+    "@storybook/addon-essentials": "^6.0.27",
+    "@storybook/addon-links": "^6.0.27",
+    "@storybook/react": "^6.0.27",
+    "@types/node": "^12.12.21",
+    "@types/react": "^16.9.16",
+    "@types/react-dom": "^16.9.4",
+    "babel-loader": "^8.1.0",
+    "react-is": "^17.0.1",
+    "typescript": "4.0"
+  },
+  "license": "MIT"
+}
