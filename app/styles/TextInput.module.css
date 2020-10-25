@@ -1,0 +1,26 @@
+.textInput {
+  background-color: #fff;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.44);
+  border: 0;
+  border-radius: 8px;
+  padding-left: 5px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  min-width: 250px;
+  display: inline-block;
+  perspective: 1000px;
+  text-align: left;
+  font-weight: 400;
+  font-size: 15px;
+  font-family: 'Roboto';
+  color: #9b9494;
+}
+
+.textInput:focus {
+  border: 0 !important;
+  box-shadow: 3px 3px 10px #bf793b;
+}
+
+.textInput:active {
+  border: 0 !important;
+}

@@ -2,7 +2,7 @@
 
 ## Motivation 
 
-The goal of this application is to replace the traditional pencil and paper based golf score card. This application allows the user to easily write down and keep track of their golf score as the play. 
+The goal of this application is to replace the traditional pencil and paper based golf score card. This application allows the user to easily write down and keep track of their golf score as they play. 
 
 ## Build status
 
