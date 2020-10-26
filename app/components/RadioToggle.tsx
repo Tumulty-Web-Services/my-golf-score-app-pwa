@@ -14,7 +14,7 @@ export default function RadioToggle({toggleValues}: Props): JSX.Element {
   }
   
   return (
-    <div className="stories-radioToolbar">
+    <div className={`${styles.radioToolbar} stories-radioToolbar`}>
       {toggleValues.map((radioItem) => (
         <span key={radioItem.label}>
           <input            
