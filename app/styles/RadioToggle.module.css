@@ -27,12 +27,12 @@
   cursor: pointer !important;
 } 
 .radioToolbar input[type="radio"]:hover + label{  
-  background-color: #a9a9a9;
+  background-color: #bf793b;
   color: #e9e9e9;
 }
 
 .radioToolbar input[type="radio"]:checked + label {
-  background-color:  #a9a9a9;
+  background-color: #bf793b;
   color: #e9e9e9;
 }
 

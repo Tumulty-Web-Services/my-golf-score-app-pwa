@@ -5,14 +5,34 @@ import SubTitle from '../../components/SubTitle'
 
 export default function Welcome(): JSX.Element {
   return (
-    <>
-      <Card>
-        <>
-          <SubTitle title="Course History" />
-        </>
-      </Card>
-      <ButtonLink label="NEW COURSE" link="/course-information" />
-      <ButtonLink label="REPLAY COURSE" link="/replay-course" />
-    </>
+    <div>
+      <div className="card-container">
+        <Card>
+          <>
+            <SubTitle title="Course History" />
+          </>
+        </Card>
+      </div>
+      <div className="button-container">
+        <ButtonLink label="New Course" link="/course-information" />
+      </div>
+      <div className="button-container">
+        <ButtonLink label="Replay Course" link="/replay-course" />
+      </div>      
+      <style jsx>{`
+         .card-container {
+           margin-top: 6em;
+           margin-bottom: 3em;
+         }
+         
+         .button-container {
+          margin-left: auto;
+          margin-right: auto;
+          margin-bottom: 20px;
+          max-width: 400px;
+         }
+      
+      `}</style>
+    </div>
   )
 }
