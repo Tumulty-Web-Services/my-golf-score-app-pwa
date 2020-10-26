@@ -61,6 +61,12 @@ The goal of this application is to replace the traditional pencil and paper base
 
  **Site (Marketing landing page)**
 
+  ``` 
+  git clone https://github.com/ptums/golf-journal.git
+  cd golf-journal/site
+  yarn install
+ ```
+
  ## Tests
  
  **App**
