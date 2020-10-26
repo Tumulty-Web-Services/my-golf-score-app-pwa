@@ -12,7 +12,7 @@ The goal of this application is to replace the traditional pencil and paper base
  4. Write test for drop down selection component
  5. Add Authentication
  6. Integrate MongoDB/Mongoose & Local Storage (to build the game data as you are playing, then the finish button will send it to MongoDB)
- 7. Optimizate for offline use
+ 7. Optimizate for offline use & make a progressive web application
 
 ## Build status
 
