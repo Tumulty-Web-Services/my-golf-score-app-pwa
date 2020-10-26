@@ -43,8 +43,7 @@ The goal of this application is to replace the traditional pencil and paper base
  * [SWR](https://github.com/vercel/swr)
  * [Typescript](https://www.typescriptlang.org/)
 
- **Marketing landing page built with**
- * [Auth0](https://auth0.com/)
+ **Site (Marketing landing page) built with**
  * [Eleventy](https://www.11ty.dev)
  * [Kwes Form Build](https://kwes.io/)
  * [Stripe](https://auth0.com/)
@@ -61,7 +60,7 @@ The goal of this application is to replace the traditional pencil and paper base
 
  ```
 
- **Marking Landing Page**
+ **Site (Marketing landing page)**
 
  ## Tests
  
@@ -73,7 +72,7 @@ The goal of this application is to replace the traditional pencil and paper base
 
  Run the install process, open this project in you favorite code editor, create a new branch, and run ```yarn dev```.
 
- **Marking Landing Page**
+ **Site (Marketing landing page)**
 
  ## Test
 
@@ -85,16 +84,16 @@ The goal of this application is to replace the traditional pencil and paper base
 
  **App**
 
- **Marking Landing Page**
+ **Site (Marketing landing page)**
 
  ## Screenshots
 
  **App**
 
- **Marking Landing Page**
+ **Site (Marketing landing page)**
 
  ## Contribute
 
  **App**
 
- **Marking Landing Page**
+ **Site (Marketing landing page)**
