@@ -66,8 +66,6 @@ The goal of this application is to replace the traditional pencil and paper base
   cd golf-journal/site
   yarn install
  ```
-
- ## Tests
  
  **App**
 
@@ -76,6 +74,14 @@ The goal of this application is to replace the traditional pencil and paper base
  **App**
 
  Run the [install process](#install) under the section **App**, open this project in you favorite code editor, create a new branch, and run ```yarn dev```.
+
+ To develop a new feature for this application the developer must follow the contribution guidelines. These guidelines include create a story for the component as well as a test.
+
+ To create a test navigate to ```app/tests``` and there you'll find three directories ```components, layouts, and pages```. If your feature is a component then your test file should go under components directory etc.
+
+ To add a story navigate to the ```app/stories``` and add name your story after your component for example. If you component is ```Example.tsx``` then your story is ```Example.stories.tsx```. Also required for your stories is a css file, which should also be named after your component. All class names in your stories css file should be your class name plus ```stories-``` to differentiate which class will be used for production and which should be used to develop the component in storybook.
+
+ Once you've written your test and story run ```yarn lint``` and ```yarn format``` to lint and format your code. Then you can push it to your branch for review.
 
  **Site (Marketing landing page)**
 
