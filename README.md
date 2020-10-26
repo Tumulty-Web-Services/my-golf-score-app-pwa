@@ -85,15 +85,20 @@ The goal of this application is to replace the traditional pencil and paper base
 
  **Site (Marketing landing page)**
 
- ## Test
-
- **App**
-
- Run the install process, open this project in you favorite code editor, create a new branch, and run ```yarn dev```.
-
  ## Production
 
  **App**
+
+ To create a production copy of this application run ```yarn build```, then ```yarn run```, and open ```http://localhost:3000``` in the browser.
+
+
+ **Site (Marketing landing page)**
+
+  ## Deployment
+
+ **App**
+
+ The branch ```production``` is hooked to vercel hosting and will run build deployment tests and then copy the repository to cloud hosting. So commit any changes you want to deploy to production to the ```production``` branch.
 
  **Site (Marketing landing page)**
 
