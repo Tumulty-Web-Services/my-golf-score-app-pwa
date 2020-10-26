@@ -1,10 +1,7 @@
 import React from 'react'
-import Card from '../layouts/Card'
-import SubTitle from '../components/SubTitle'
-import FlexTable from '../components/FlexTable'
-import './Card.css'
+import { render, screen, within } from '@testing-library/react'
 
-export default { title: 'Card' }
+import FlexTable from '../../components/FlexTable'
 
 const twoItems = [
   {
@@ -62,23 +59,21 @@ const threeItems = [
   }
 ]
 
-export const cardWithTwoItems = () => (
-  <Card>
-    <>
-      <SubTitle title="Course History" />      
-      <FlexTable tableItems={twoItems} />     
-    </>
-  </Card>
-)
+describe('FlexTable component', () => {
+  it('renders FlexTable component', () => {
+    render(<FlexTable tableItems={twoItems} />)
 
-export const cardWithThreeItems = () => (
-  <Card>
-    <>
-      <SubTitle title="Course Finished" />
-      <SubTitle title="Your Score: 8" />
-      <p className="final-score-title"><strong>Par | Score</strong></p>
-      <FlexTable tableItems={threeItems} />     
-    </>
-  </Card>
-)
+    screen.debug()
+  })
+  
+  it('test each item has the data-testid set to flex-table', () => {
+    const { container } = render(<FlexTable tableItems={twoItems} />)
+    expect(container.querySelector(`[data-testid="flex-table"]`)).toBeDefined()
+  })
 
+  it('test each item is rendered in the table', async () => {
+    const { container } = render(<FlexTable tableItems={threeItems} />)
+    const listItems = container.querySelectorAll(`[data-testid="flex-table"]`)
+    expect(listItems).toHaveLength(2) 
+  })
+})

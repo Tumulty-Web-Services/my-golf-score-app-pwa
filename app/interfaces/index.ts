@@ -23,3 +23,14 @@ export type User = {
   courses: Course[]
   scores: Score[]
 }
+
+export type TableItem = {
+  itemOne:string;
+  itemTwo: string;
+  itemThree: string;
+}
+
+export type DropDownItem = {
+  id: string;
+  label: string;
+}

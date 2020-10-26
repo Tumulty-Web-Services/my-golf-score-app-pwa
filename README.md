@@ -6,12 +6,13 @@ The goal of this application is to replace the traditional pencil and paper base
 
  #### TODO:
 
- 1. Create  ```pages: course-information welcome replay-course hole replay-hole login``` 
+ 1. Create ```pages: course-information welcome replay-course hole replay-hole login``` 
  2. Add page transitions: Follow this tutorial for page transitions https://reacttricks.com/animating-next-page-transitions-with-framer-motion/
- 3. Finish components: FlexTable, RadioToggle, DropDownSelection
- 4. Add Authentication
- 5. Integrate MongoDB/Mongoose & Local Storage (to build the game data as you are playing, then the finish button will send it to MongoDB)
- 6. Optimizate for offline use
+ 3 And other animations for dropdowns and button toggle: https://www.youtube.com/watch?v=2V1WK-3HQNk&list=PL4cUxeGkcC9iHDnQfTHEVVceOEBsOf07i
+ 4. Write test for drop down selection component
+ 5. Add Authentication
+ 6. Integrate MongoDB/Mongoose & Local Storage (to build the game data as you are playing, then the finish button will send it to MongoDB)
+ 7. Optimizate for offline use
 
 ## Build status
 
@@ -36,9 +37,10 @@ The goal of this application is to replace the traditional pencil and paper base
  * [Next.js](https://nextjs.org/)
  * [MongoDB](https://www.mongodb.com/)
  * [Mongoose](https://mongoosejs.com/)
- * [Storybook](https://storybook.js.org/)
+ * [React Font Awesome](https://github.com/FortAwesome/react-fontawesome)
  * [React Testing Library](https://testing-library.com/)
- * [React Spinners](https://testing-library.com/)
+ * [Storybook](https://storybook.js.org/)
+ * [SWR](https://github.com/vercel/swr)
  * [Typescript](https://www.typescriptlang.org/)
 
  **Marketing landing page built with**

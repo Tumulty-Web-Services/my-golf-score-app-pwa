@@ -11,27 +11,18 @@
   background: linear-gradient(
     0deg,
     rgba(128, 128, 128, 1) 0%,
-    rgba(255, 255, 255, 1) 87%
+    rgba(251,247,245) 87%
   );
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
-.flex-table {
+.final-score-title {
   display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  text-align: center;
-}
-
-@media (min-width: 1200px) {
-  .flex-table {
-    flex-direction: row;
-    text-align: left;
-    max-width: 325px;
-    margin-left: 15%;
-    margin-right: 15%;
-    margin-bottom: 20px;
-  }
+  justify-content: flex-end;
+  max-width: 325px;
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-bottom: 20px;
 }

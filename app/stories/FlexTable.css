@@ -1,0 +1,19 @@
+.stories-flexTable {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  text-align: center;
+  font-family: 'Roboto';
+  font-weight: 900;
+}
+
+@media (min-width: 1200px) {
+  .stories-flexTable {
+    flex-direction: row;
+    text-align: left;
+    max-width: 325px;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-bottom: 20px;
+  }
+}

@@ -30,3 +30,12 @@ html {
 .flex-table {
   display: flex;
 }
+
+.final-score-title {
+  display: flex;
+  justify-content: flex-end;
+  max-width: 325px;
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-bottom: 20px;
+}

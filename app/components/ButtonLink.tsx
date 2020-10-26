@@ -7,7 +7,7 @@ type Props = {
   label: string
 }
 
-export default function ButtonLink({ link, label }: Props) {
+export default function ButtonLink({ link, label }: Props): JSX.Element {
   return (
     <Link href={link}>
       <a className={`${styles.button} stories-btn`}>{label}</a>
