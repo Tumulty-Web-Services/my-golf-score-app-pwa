@@ -70,7 +70,7 @@ The goal of this application is to replace the traditional pencil and paper base
 
  **App**
 
- Run the install process, open this project in you favorite code editor, create a new branch, and run ```yarn dev```.
+ Run the [install process](#install), open this project in you favorite code editor, create a new branch, and run ```yarn dev```.
 
  **Site (Marketing landing page)**
 
