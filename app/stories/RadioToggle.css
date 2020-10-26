@@ -1,3 +1,38 @@
-.stories-radio {
-  font-family: 'Roboto';
+.stories-radioToolbar input[type="radio"] {
+  opacity: 0;
+  position: absolute;
+  width: 45px;
+  height: 40px;
 }
+
+.stories-radioToolbar label {
+  display: inline-block;
+  padding: 10px 20px;
+  font-family: 'Roboto';
+  font-weight: bold;
+  color: #444;
+  background-color: #e9e9e9;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 1.4rem;
+  border-radius: 100px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.stories-radioToolbar input[type="radio"] + label{  
+  transition: 0.3s;
+}
+
+.stories-radioToolbar input[type="radio"]:hover {  
+  cursor: pointer !important;
+} 
+.stories-radioToolbar input[type="radio"]:hover + label{  
+  background-color: #a9a9a9;
+  color: #e9e9e9;
+}
+
+.stories-radioToolbar input[type="radio"]:checked + label {
+  background-color:  #a9a9a9;
+  color: #e9e9e9;
+}
+
