@@ -57,7 +57,6 @@ The goal of this application is to replace the traditional pencil and paper base
   git clone https://github.com/ptums/golf-journal.git
   cd golf-journal/app
   yarn install
-
  ```
 
  **Site (Marketing landing page)**
@@ -70,7 +69,7 @@ The goal of this application is to replace the traditional pencil and paper base
 
  **App**
 
- Run the [install process](#install), open this project in you favorite code editor, create a new branch, and run ```yarn dev```.
+ Run the [install process](#install) under the section **App**, open this project in you favorite code editor, create a new branch, and run ```yarn dev```.
 
  **Site (Marketing landing page)**
 
