@@ -27,11 +27,15 @@ export default function DropDownSelection({ dropDownItems, title }: Props ): JSX
       <div
         className={`${styles.dropDownHeader} stories-dropDownHeader`}
         onClick={toggleDropdown}
+        
       >
         {selectedItem ? items.find(item => item.id == selectedItem).label : title }
         <FontAwesomeIcon icon={faChevronRight} className={`icon ${isOpen && 'open'}`} />
       </div>
-      <div className={`${styles.dropDownBody} stories-dropDownBody ${isOpen && 'open'}`}>
+      <div
+        className={`${styles.dropDownBody} stories-dropDownBody ${isOpen && 'open'}`}
+        data-testid="dropdown-body"
+      >
         {items.map(item => (
           <div
             key={item.id}
