@@ -17,8 +17,9 @@ export default function DropDownSelection({ dropDownItems, title }: Props ): JSX
   const toggleDropdown = () => setOpen(!isOpen);
   
   const handleItemClick = (e) => {
-    const id = e.getAttribute('data-id');
-    selectedItem == id ? setSelectedItem(null) : setSelectedItem(id);
+    const id = e.getAttribute('data-id')
+    console.log('id', id)
+    selectedItem == id ? setSelectedItem(null) : setSelectedItem(id)
     setOpen(!isOpen)
   }
 

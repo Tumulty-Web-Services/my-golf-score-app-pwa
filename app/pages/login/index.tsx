@@ -6,11 +6,7 @@ export default function Login() {
   return (
     <>
       <Head>
-        <title>Golf Journal</title>
-        <meta
-          name="description"
-          content="This is awesome, simple mobile web application designed to replace the golf score card. "
-        />
+        <title>Golf Journal - Login</title>
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta
           name="viewport"

@@ -2,30 +2,34 @@ import React from 'react'
 import Card from '../../layouts/Card'
 import ButtonLink from '../../components/ButtonLink'
 import SubTitle from '../../components/SubTitle'
-import TextInput from '../../components/TextInput'
 import RadioToggle from '../../components/RadioToggle'
-import { courseTypeToggles } from '../../utils/toggleData'
+import DropDownSelection from '../../components/DropDownSelection'
+import { parToggles } from '../../utils/toggleData'
+import { yourScore } from '../../utils/dropDownData'
 
 
-export default function CourseInformation() {
+export default function Holes() {
   return (
     <div>
     <div className="card-container">
       <Card>
         <>
-          <SubTitle title="Course Information" />
+          <SubTitle title="Hole One" />         
+          <SubTitle title="Par" />
           <div className="input-container">
-            <TextInput placeHolder="Enter course name" />
+            <RadioToggle toggleValues={parToggles} />
           </div>
-          <SubTitle title="Course Type" />
           <div className="input-container">
-            <RadioToggle toggleValues={courseTypeToggles} />
+            <DropDownSelection dropDownItems={yourScore} title="Your score" />
           </div>
         </>
       </Card>
     </div>
     <div className="button-container">
-      <ButtonLink label="Start Course" link="/holes/one" />
+      <ButtonLink label="Next Hole" link="/holes/two" />
+    </div>
+    <div className="button-container">
+      <ButtonLink label="Previous Hole" link="/holes/one" />
     </div>
       
     <style jsx>{`
