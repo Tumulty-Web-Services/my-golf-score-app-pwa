@@ -1,37 +1,50 @@
 import React from 'react'
 import { GetServerSideProps } from 'next'
-import auth0 from '../../utils/auth0'
-import Card from '../../layouts/Card'
-import ButtonLink from '../../components/ButtonLink'
-import SubTitle from '../../components/SubTitle'
-import RadioToggle from '../../components/RadioToggle'
-import { parToggles } from '../../utils/toggleData'
+import auth0 from '../../../utils/auth0'
+import Card from '../../../layouts/Card'
+import SubTitle from '../../../components/SubTitle'
+import ButtonLink from '../../../components/ButtonLink'
+import RadioTable from '../../../components/RadioTable'
+import { yourScoreData } from '../../../utils/toggleData'
+import { holeProgression } from '../../../utils/helpers'
 
 type Props = {
   hole: string
+  par: string
 }
+export default function YourScore({ hole, par }: Props): JSX.Element {
+  const nextHole = holeProgression(parseInt(hole), 'next')
+  const prevHole = holeProgression(parseInt(hole), 'previous')
 
-export default function ReplayHoles({ hole }: Props): JSX.Element {
   return (
     <div>
       <div className="card-container">
         <Card>
           <>
-            <SubTitle title={`Hole ${hole}`} />
-            <SubTitle title="Par" />
-            <div className="input-container">
-              <RadioToggle toggleValues={parToggles} />
+            <SubTitle title={`Hole ${hole}  Par ${par}`} />
+            <SubTitle title="Your Score" />
+            <div className="flex-container">
+              <RadioTable toggleValues={yourScoreData} />
             </div>
           </>
         </Card>
       </div>
       <div className="button-container">
-        <ButtonLink label="Your Score" link="/your-score/two" />
+        <ButtonLink label="Next Hole" link={`/holes/${nextHole}`} />
+      </div>
+      <div className="button-container">
+        <ButtonLink label="Previous Hole" link={`/holes/${prevHole}`} />
       </div>
       <style jsx>{`
         .card-container {
           margin-top: 6em;
           margin-bottom: 3em;
+        }
+
+        .flex-container {
+          margin-left: auto;
+          margin-right: auto;
+          min-width: 100%;
         }
 
         .button-container {
@@ -40,12 +53,6 @@ export default function ReplayHoles({ hole }: Props): JSX.Element {
           margin-bottom: 20px;
           max-width: 400px;
         }
-
-        .input-container {
-          text-align: center;
-          width: 100%;
-          margin-bottom: 2em;
-        }
       `}</style>
     </div>
   )
@@ -53,6 +60,7 @@ export default function ReplayHoles({ hole }: Props): JSX.Element {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { req, res, params } = context
+  const { hole, par } = params
 
   if (typeof window === 'undefined') {
     const session = await auth0.getSession(req)
@@ -66,7 +74,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         props: {
           user: '',
           authed: false,
-          hole: params.hole,
+          hole,
+          par,
         },
       }
     }
@@ -74,7 +83,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       props: {
         user: session.user,
         authed: true,
-        hole: params.hole,
+        hole,
+        par,
       },
     }
   }
@@ -83,7 +93,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     props: {
       user: '',
       authed: false,
-      hole: params.hole,
+      hole,
+      par,
     },
   }
 }

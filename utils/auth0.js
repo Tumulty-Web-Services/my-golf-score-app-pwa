@@ -1,5 +1,8 @@
-import { initAuth0 } from '@auth0/nextjs-auth0';
-const formattedRedirectUri = process.env.AUTH0_REDIRECT_URI.toString().replace(/\\\//g, '')
+import { initAuth0 } from '@auth0/nextjs-auth0'
+const formattedRedirectUri = process.env.AUTH0_REDIRECT_URI.toString().replace(
+  /\\\//g,
+  ''
+)
 
 export default initAuth0({
   domain: process.env.AUTH0_DOMAIN,
@@ -30,4 +33,4 @@ export default initAuth0({
     // (Optional) Configure the clock tolerance in milliseconds, if the time on your server is running behind.
     clockTolerance: 10000,
   },
-});
+})

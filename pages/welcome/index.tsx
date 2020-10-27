@@ -1,15 +1,25 @@
 import React from 'react'
+import { GetServerSideProps } from 'next'
+import auth0 from '../../utils/auth0'
 import Card from '../../layouts/Card'
 import ButtonLink from '../../components/ButtonLink'
 import SubTitle from '../../components/SubTitle'
 import FlexTable from '../../components/FlexTable'
 import { yourCoursesData } from '../../utils/toggleData'
 
-export default function Welcome(): JSX.Element {
+type Props = {
+  user: string
+}
+
+export default function Welcome({ user }: Props): JSX.Element {
+  if (user) {
+    console.warn('well grab your data based on user id')
+  }
   const formatTableItems = yourCoursesData.map((items) => {
     return {
       itemOne: items.course,
       itemTwo: items.score,
+      itemThree: null,
     }
   })
 
@@ -44,4 +54,38 @@ export default function Welcome(): JSX.Element {
       `}</style>
     </div>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { req, res } = context
+
+  if (typeof window === 'undefined') {
+    const session = await auth0.getSession(req)
+    if (!session || !session.user) {
+      res.writeHead(302, {
+        Location: '/api/login',
+      })
+      res.end()
+
+      return {
+        props: {
+          user: '',
+          authed: false,
+        },
+      }
+    }
+    return {
+      props: {
+        user: session.user,
+        authed: true,
+      },
+    }
+  }
+
+  return {
+    props: {
+      user: '',
+      authed: false,
+    },
+  }
 }

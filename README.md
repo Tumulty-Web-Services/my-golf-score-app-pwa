@@ -1,13 +1,24 @@
 # Golf Journal
 
-## Motivation 
+## Motivation
 
-The goal of this application is to replace the traditional pencil and paper based golf score card. This application allows the user to easily write down and keep track of their golf score as they play. 
+The goal of this application is to replace the traditional pencil and paper based golf score card. This application allows the user to easily write down and keep track of their golf score as they play.
 
- #### TODO:
- 
- 2. Integrate MongoDB/Mongoose & Local Storage (to build the game data as you are playing, then the finish button will send it to MongoDB)
- 3. Optimizate for offline use & make a progressive web application
+#### TODO:
+
+1.  Integrate MongoDB/Mongoose & Local Storage (to build the game data as you are playing, then the finish button will send it to MongoDB)
+
+- Use redux to handle toggle data
+- Use local storage to store data through out the game
+- Launch to Mongo when click finish game or when app is logged in check if there is data in local storage and push it to Mongo
+
+2.  Optimization
+
+- Site
+  \*\* Use Offline
+- PWA
+  ** Use Offline
+  **Goal:\*\* Play game offline and have data stored locally on machine. If game isn't pushed to mongodb and closed. Keep in storage and automatically launched to mongodb before contents are loaded.
 
 ## Build status
 
@@ -22,53 +33,55 @@ The goal of this application is to replace the traditional pencil and paper base
 ## Technology
 
 **App built with**
- * [Auth0](https://auth0.com/) 
- * [Jest](https://jestjs.io/)
- * [Next.js](https://nextjs.org/)
- * [MongoDB](https://www.mongodb.com/)
- * [Mongoose](https://mongoosejs.com/)
- * [React Font Awesome](https://github.com/FortAwesome/react-fontawesome)
- * [React Testing Library](https://testing-library.com/)
- * [Storybook](https://storybook.js.org/)
- * [SWR](https://github.com/vercel/swr)
- * [Typescript](https://www.typescriptlang.org/)
 
- **Site (Marketing landing page) built with**
- * [Eleventy](https://www.11ty.dev)
- * [Kwes Form Build](https://kwes.io/)
- * [Stripe](https://auth0.com/)
- * [Tailwind CSS](https://tailwindcss.com/)
+- [Auth0](https://auth0.com/)
+- [Jest](https://jestjs.io/)
+- [Next.js](https://nextjs.org/)
+- [MongoDB](https://www.mongodb.com/)
+- [Mongoose](https://mongoosejs.com/)
+- [React Font Awesome](https://github.com/FortAwesome/react-fontawesome)
+- [React Testing Library](https://testing-library.com/)
+- [Storybook](https://storybook.js.org/)
+- [SWR](https://github.com/vercel/swr)
+- [Typescript](https://www.typescriptlang.org/)
 
- ## Install
+**Site (Marketing landing page) built with**
 
- ``` 
-  git clone https://github.com/ptums/golf-journal.git
-  cd golf-journal/app
-  yarn install
- ```
- 
- ## Development
+- [Eleventy](https://www.11ty.dev)
+- [Kwes Form Build](https://kwes.io/)
+- [Stripe](https://auth0.com/)
+- [Tailwind CSS](https://tailwindcss.com/)
 
- Run the [install process](#install) under the section **App**, open this project in you favorite code editor, create a new branch, and run ```yarn dev```.
+## Install
 
- To develop a new feature for this application the developer must follow the contribution guidelines. These guidelines include create a story for the component as well as a test.
+```
+ git clone https://github.com/ptums/golf-journal.git
+ cd golf-journal/app
+ yarn install
+```
 
- To create a test navigate to ```app/tests``` and there you'll find three directories ```components, layouts, and pages```. If your feature is a component then your test file should go under components directory etc.
+## Development
 
- To add a story navigate to the ```app/stories``` and add name your story after your component for example. If you component is ```Example.tsx``` then your story is ```Example.stories.tsx```. Also required for your stories is a css file, which should also be named after your component. All class names in your stories css file should be your class name plus ```stories-``` to differentiate which class will be used for production and which should be used to develop the component in storybook.
+Run the [install process](#install) under the section **App**, open this project in you favorite code editor, create a new branch, and run `yarn dev`.
 
- Once you've written your test and story run ```yarn lint``` and ```yarn format``` to lint and format your code. Then you can push it to your branch for review.
+To develop a new feature for this application the developer must follow the contribution guidelines. These guidelines include create a story for the component as well as a test.
 
- ## Production
+To create a test navigate to `app/tests` and there you'll find three directories `components, layouts, and pages`. If your feature is a component then your test file should go under components directory etc.
 
- To create a production copy of this application run ```yarn build```, then ```yarn run```, and open ```http://localhost:3000``` in the browser.
+To add a story navigate to the `app/stories` and add name your story after your component for example. If you component is `Example.tsx` then your story is `Example.stories.tsx`. Also required for your stories is a css file, which should also be named after your component. All class names in your stories css file should be your class name plus `stories-` to differentiate which class will be used for production and which should be used to develop the component in storybook.
 
-  ## Deployment
+Once you've written your test and story run `yarn lint` and `yarn format` to lint and format your code. Then you can push it to your branch for review.
 
- The branch ```production``` is hooked to vercel hosting and will run build deployment tests and then copy the repository to cloud hosting. So commit any changes you want to deploy to production to the ```production``` branch.
+## Production
 
- ## Screenshots
+To create a production copy of this application run `yarn build`, then `yarn run`, and open `http://localhost:3000` in the browser.
 
- ## Contribute
+## Deployment
+
+The branch `production` is hooked to vercel hosting and will run build deployment tests and then copy the repository to cloud hosting. So commit any changes you want to deploy to production to the `production` branch.
+
+## Screenshots
+
+## Contribute
 
 Add a Contribution Guidlines document link

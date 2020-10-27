@@ -15,7 +15,7 @@ export default function Login() {
       </Head>
       <div>
         <div className="button-container">
-          <ButtonLink label="LOGIN" link="/welcome" />
+          <ButtonLink label="LOGIN" link="/api/login" />
         </div>
         <style jsx>{`
           div {

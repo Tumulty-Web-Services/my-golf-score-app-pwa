@@ -1,4 +1,6 @@
 import React from 'react'
+import { GetServerSideProps } from 'next'
+import auth0 from '../../utils/auth0'
 import ButtonLink from '../../components/ButtonLink'
 import PartyPopperSVG from './partypopper-icon-300x300.svg'
 
@@ -6,7 +8,7 @@ type Props = {
   score: string
 }
 
-export default function Congratulations({ score = 'Par' }: Props): JSX.Element {
+export default function Congratulations({ score }: Props): JSX.Element {
   return (
     <div>
       <div className="congratulations-container">
@@ -55,4 +57,40 @@ export default function Congratulations({ score = 'Par' }: Props): JSX.Element {
       `}</style>
     </div>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { req, res } = context
+
+  if (typeof window === 'undefined') {
+    const session = await auth0.getSession(req)
+    if (!session || !session.user) {
+      res.writeHead(302, {
+        Location: '/api/login',
+      })
+      res.end()
+
+      return {
+        props: {
+          user: '',
+          authed: false,
+        },
+      }
+    }
+    return {
+      props: {
+        user: session.user,
+        authed: true,
+        score: '',
+      },
+    }
+  }
+
+  return {
+    props: {
+      user: '',
+      authed: false,
+      score: '',
+    },
+  }
 }
