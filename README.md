@@ -6,12 +6,12 @@ The goal of this application is to replace the traditional pencil and paper base
 
  #### TODO:
 
- 1. Create ```pages:replay-course hole replay-hole congratulations finish-game``` 
+ 1. Create ```pages:congratulations finish-game``` 
  2. Add Authentication
- 3. Integrate MongoDB/Mongoose & Local Storage (to build the game data as you are playing, then the finish button will send it to MongoDB)
- 4. Add page transitions: Follow this tutorial for page transitions https://reacttricks.com/animating-next-page-transitions-with-framer-motion/
- 5. And other animations for dropdowns and button toggle: https://www.youtube.com/watch?v=2V1WK-3HQNk&list=PL4cUxeGkcC9iHDnQfTHEVVceOEBsOf07i
- 6. Optimizate for offline use & make a progressive web application
+ 1. Integrate MongoDB/Mongoose & Local Storage (to build the game data as you are playing, then the finish button will send it to MongoDB)
+ 2. Add page transitions: Follow this tutorial for page transitions https://reacttricks.com/animating-next-page-transitions-with-framer-motion/
+ 3. And other animations for dropdowns and button toggle: https://www.youtube.com/watch?v=2V1WK-3HQNk&list=PL4cUxeGkcC9iHDnQfTHEVVceOEBsOf07i
+ 4. Optimizate for offline use & make a progressive web application
 
 ## Build status
 

@@ -6,32 +6,32 @@ export type RadioValue = {
 }
 
 export type Score = {
-  par: string;
-  score: string;
-  hole: string;
-  courseId: string;
+  par: string
+  score: string
+  hole: string
+  courseId: string
 }
 
 export type Course = {
-  _id: string;
-  name: string;
-  holes: string;
+  _id: string
+  name: string
+  holes: string
 }
 
 export type User = {
-  _id: string;
-  email: string;
+  _id: string
+  email: string
   courses: Course[]
   scores: Score[]
 }
 
 export type TableItem = {
-  itemOne:string;
-  itemTwo: string;
-  itemThree: string;
+  itemOne: string
+  itemTwo: string
+  itemThree: string
 }
 
 export type DropDownItem = {
-  id: string;
-  label: string;
+  id: string
+  label: string
 }

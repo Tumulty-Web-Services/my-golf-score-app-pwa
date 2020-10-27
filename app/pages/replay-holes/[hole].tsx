@@ -7,7 +7,7 @@ import DropDownSelection from '../../components/DropDownSelection'
 import { parToggles } from '../../utils/toggleData'
 import { yourScore } from '../../utils/dropDownData'
 
-export default function Holes() {
+export default function ReplayHoles() {
   return (
     <div>
       <div className="card-container">

@@ -1,9 +1,10 @@
 .dropDown {
   width: 300px;
   border-radius: 10px;
-  box-shadow: 0 10px 25px rgba(0,0,0,.1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   background-color: white;
-  font-family: 'Roboto'
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .dropDownHeader {
@@ -16,16 +17,13 @@
 
 .dropDownBody {
   padding: 5px;
-  border-top: 1px solid #E5E8EC;
+  border-top: 1px solid #e5e8ec;
   display: none;
-}
-
-.dropDownBody.open {
-  display: block;
 }
 
 .dropDownItem {
   padding: 10px;
+  text-align: left;
 }
 
 .dropDownItem:hover {
@@ -34,8 +32,8 @@
 
 .dropDownItemDot {
   opacity: 0;
-  color: #91A5BE;
-  transition: all .2s ease-in-out;
+  color: #91a5be;
+  transition: all 0.2s ease-in-out;
 }
 
 .dropDownItemDot.selected {
@@ -44,11 +42,7 @@
 
 .icon {
   font-size: 13px;
-  color: #91A5BE;
+  color: #91a5be;
   transform: rotate(0deg);
-  transition: all .2s ease-in-out;
-}
-
-.icon.open {
-  transform: rotate(90deg);
+  transition: all 0.2s ease-in-out;
 }

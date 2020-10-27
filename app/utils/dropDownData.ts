@@ -1,5 +1,38 @@
 import { RadioValue } from '../interfaces'
 
+export const yourCourseList: RadioValue[] = [
+  {
+    id: '1',
+    text: 'RutgersGolfCourse',
+    label: 'Rutgers Golf Course',
+    name: 'yourCourseList',
+  },
+  {
+    id: '2',
+    text: 'Bunker Hill',
+    label: 'Bunker Hill',
+    name: 'yourCourseList',
+  },
+  {
+    id: '3',
+    text: 'HominyHill',
+    label: 'Hominy Hill',
+    name: 'yourCourseList',
+  },
+  {
+    id: '4',
+    text: 'HillsboroughCountryClub',
+    label: 'Hillsborough Country Club',
+    name: 'yourCourseList',
+  },
+  {
+    id: '5',
+    text: 'Forge Pond',
+    label: 'Forge Pond',
+    name: 'yourCourseList',
+  },
+]
+
 export const yourScore: RadioValue[] = [
   {
     id: '1',

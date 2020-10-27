@@ -5,6 +5,8 @@ import { courseTypeToggles, parToggles } from '../utils/toggleData'
 
 export default { title: 'RadioToggle' }
 
-export const courseTypeRadioToggle = () => <RadioToggle toggleValues={courseTypeToggles} />
+export const courseTypeRadioToggle = () => (
+  <RadioToggle toggleValues={courseTypeToggles} />
+)
 
 export const parRadioToggle = () => <RadioToggle toggleValues={parToggles} />
