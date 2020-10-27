@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useRouter } from 'next/router'
 import { GetServerSideProps } from 'next'
 import auth0 from '../../../utils/auth0'
 import Card from '../../../layouts/Card'
@@ -6,16 +7,41 @@ import SubTitle from '../../../components/SubTitle'
 import ButtonLink from '../../../components/ButtonLink'
 import RadioTable from '../../../components/RadioTable'
 import { yourScoreData } from '../../../utils/toggleData'
-import { holeProgression } from '../../../utils/helpers'
+import { holeProgression, checkForGoodScore, urlify } from '../../../utils/helpers'
 
 type Props = {
   hole: string
   par: string
 }
+
 export default function YourScore({ hole, par }: Props): JSX.Element {
+  const [ score, setScore ] = useState('')
+  const router = useRouter()
   const nextHole = holeProgression(parseInt(hole), 'next')
   const prevHole = holeProgression(parseInt(hole), 'previous')
+  
+  function handleInput(input: string) {
+    const numPar = parseInt(par)
+    const numInput = parseInt(input)
 
+    if(numInput <= numPar) {
+      const congratulations = checkForGoodScore(numPar, numInput)
+
+      if(congratulations) {
+        return router.push({
+          pathname: '/congratulations/[term]/[par]/[hole]',
+          query: {
+            term: urlify(congratulations),
+            par: par,
+            hole: hole
+          },
+        })
+      }
+    }
+    setScore(input)
+  }
+  
+  
   return (
     <div>
       <div className="card-container">
@@ -24,7 +50,7 @@ export default function YourScore({ hole, par }: Props): JSX.Element {
             <SubTitle title={`Hole ${hole}  Par ${par}`} />
             <SubTitle title="Your Score" />
             <div className="flex-container">
-              <RadioTable toggleValues={yourScoreData} />
+              <RadioTable handleInput={handleInput} toggleValues={yourScoreData} />
             </div>
           </>
         </Card>

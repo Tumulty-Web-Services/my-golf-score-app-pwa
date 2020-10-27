@@ -8,8 +8,7 @@ The goal of this application is to replace the traditional pencil and paper base
 
 1.  Integrate MongoDB/Mongoose & Local Storage (to build the game data as you are playing, then the finish button will send it to MongoDB)
 
-- Use redux to handle toggle data
-- Use local storage to store data through out the game
+- Use local storage to store data through out the game ref: https://web.dev/storage-for-the-web/
 - Launch to Mongo when click finish game or when app is logged in check if there is data in local storage and push it to Mongo
 
 2.  Optimization

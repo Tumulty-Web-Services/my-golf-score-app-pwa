@@ -4,14 +4,11 @@ import { RadioValue } from '../interfaces'
 
 type Props = {
   toggleValues: RadioValue[]
+  handleInput: (e) => {}
 }
 
-export default function RadioToggle({ toggleValues }: Props): JSX.Element {
+export default function RadioToggle({ handleInput, toggleValues }: Props): JSX.Element {
   const [value, setValue] = useState(toggleValues[0].label)
-
-  function saveValue(item) {
-    setValue(item)
-  }
 
   function onChange() {
     return
@@ -26,7 +23,10 @@ export default function RadioToggle({ toggleValues }: Props): JSX.Element {
             id="radioToggle"
             name={radioItem.name}
             value={radioItem.label}
-            onClick={() => saveValue(radioItem.label)}
+            onClick={() => {
+              setValue(radioItem.label)
+              handleInput(radioItem.label)
+            }}
             onChange={() => onChange}
             checked={value === radioItem.label}
           />

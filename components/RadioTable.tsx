@@ -3,15 +3,12 @@ import styles from '../styles/FlexTable.module.css'
 import { RadioValue } from '../interfaces'
 
 type Props = {
-  toggleValues: RadioValue[]
+  toggleValues: RadioValue[],
+  handleInput: (e) => {}
 }
 
-export default function RadioTable({ toggleValues }: Props) {
+export default function RadioTable({ handleInput, toggleValues }: Props) {
   const [value, setValue] = useState(toggleValues[0].label)
-
-  function saveValue(item) {
-    setValue(item)
-  }
 
   function onChange() {
     return
@@ -32,7 +29,10 @@ export default function RadioTable({ toggleValues }: Props) {
             className={`${styles.flexRadioToggle} stories-flexRadioToggle`}
             name={radioItem.name}
             value={radioItem.label}
-            onClick={() => saveValue(radioItem.label)}
+            onClick={() => {
+              setValue(radioItem.label)
+              handleInput(radioItem.label)
+            }}
             onChange={() => onChange}
             checked={value === radioItem.label}
           />

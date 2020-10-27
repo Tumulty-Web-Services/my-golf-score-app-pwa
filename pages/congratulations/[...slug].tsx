@@ -1,8 +1,8 @@
 import React from 'react'
 import { GetServerSideProps } from 'next'
-import auth0 from '../../utils/auth0'
-import ButtonLink from '../../components/ButtonLink'
-import PartyPopperSVG from './partypopper-icon-300x300.svg'
+import auth0 from '../../../utils/auth0'
+import ButtonLink from '../../../components/ButtonLink'
+import PartyPopperSVG from '../partypopper-icon-300x300.svg'
 
 type Props = {
   score: string

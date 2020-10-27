@@ -5,4 +5,9 @@ import { holeToggles } from '../utils/toggleData'
 
 export default { title: 'Radio Table' }
 
-export const SiteRadioTable = () => <RadioTable toggleValues={holeToggles} />
+function handleInputStory(e: string) {
+  alert(e)
+  return e
+}
+
+export const SiteRadioTable = () => <RadioTable handleInput={handleInputStory} toggleValues={holeToggles} />
