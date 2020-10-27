@@ -5,8 +5,7 @@
 The goal of this application is to replace the traditional pencil and paper based golf score card. This application allows the user to easily write down and keep track of their golf score as they play. 
 
  #### TODO:
-
- 1. Add Auth0 Authentication 
+ 
  2. Integrate MongoDB/Mongoose & Local Storage (to build the game data as you are playing, then the finish button will send it to MongoDB)
  3. Optimizate for offline use & make a progressive web application
 
@@ -18,11 +17,7 @@ The goal of this application is to replace the traditional pencil and paper base
 
 ## Code style
 
-**App**
-
 ![Code Style Prettier](https://camo.githubusercontent.com/687a8ae8d15f9409617d2cc5a30292a884f6813a/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f636f64655f7374796c652d70726574746965722d6666363962342e7376673f7374796c653d666c61742d737175617265)
-
-**Marketing landing page**
 
 ## Technology
 
@@ -46,27 +41,13 @@ The goal of this application is to replace the traditional pencil and paper base
 
  ## Install
 
- **App** 
-
  ``` 
   git clone https://github.com/ptums/golf-journal.git
   cd golf-journal/app
   yarn install
  ```
-
- **Site (Marketing landing page)**
-
-  ``` 
-  git clone https://github.com/ptums/golf-journal.git
-  cd golf-journal/site
-  yarn install
- ```
  
- **App**
-
  ## Development
-
- **App**
 
  Run the [install process](#install) under the section **App**, open this project in you favorite code editor, create a new branch, and run ```yarn dev```.
 
@@ -78,30 +59,15 @@ The goal of this application is to replace the traditional pencil and paper base
 
  Once you've written your test and story run ```yarn lint``` and ```yarn format``` to lint and format your code. Then you can push it to your branch for review.
 
- **Site (Marketing landing page)**
-
  ## Production
-
- **App**
 
  To create a production copy of this application run ```yarn build```, then ```yarn run```, and open ```http://localhost:3000``` in the browser.
 
-
- **Site (Marketing landing page)**
-
   ## Deployment
-
- **App**
 
  The branch ```production``` is hooked to vercel hosting and will run build deployment tests and then copy the repository to cloud hosting. So commit any changes you want to deploy to production to the ```production``` branch.
 
- **Site (Marketing landing page)**
-
  ## Screenshots
-
- **App**
-
- **Site (Marketing landing page)**
 
  ## Contribute
 
