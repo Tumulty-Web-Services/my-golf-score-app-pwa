@@ -34,7 +34,6 @@
     "@fortawesome/react-fontawesome": "^0.1.11",
     "@testing-library/jest-dom": "^5.11.5",
     "babel-plugin-inline-react-svg": "^1.1.1",
-    "framer-motion": "^2.9.4",
     "imagemin-optipng": "^8.0.0",
     "mongoose": "^5.10.10",
     "mongoose-typescript": "^1.0.7",

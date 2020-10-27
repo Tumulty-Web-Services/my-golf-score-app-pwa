@@ -30,7 +30,6 @@ The goal of this application is to replace the traditional pencil and paper base
 
 **App built with**
  * [Auth0](https://auth0.com/) 
- * [Framer Motion](https://www.framer.com/motion/) 
  * [Jest](https://jestjs.io/)
  * [Next.js](https://nextjs.org/)
  * [MongoDB](https://www.mongodb.com/)
