@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { GetServerSideProps } from 'next'
 import auth0 from '../../utils/auth0'
 import Card from '../../layouts/Card'
@@ -12,6 +12,11 @@ type Props = {
 }
 
 export default function Holes({ hole }: Props): JSX.Element {
+  const [ par, setPar ] = useState('3')
+  function handleInput(inputPar) {
+    // set it up where localStorage stars building a game object
+    setPar(inputPar)
+  }
   return (
     <div>
       <div className="card-container">
@@ -20,13 +25,13 @@ export default function Holes({ hole }: Props): JSX.Element {
             <SubTitle title={`Hole ${hole}`} />
             <SubTitle title="Par" />
             <div className="input-container">
-              <RadioToggle toggleValues={parToggles} />
+              <RadioToggle handleInput={handleInput} toggleValues={parToggles} />
             </div>
           </>
         </Card>
       </div>
       <div className="button-container">
-        <ButtonLink label="Your Score" link={`/your-score/${hole}`} />
+        <ButtonLink label="Your Score" link={`/your-score/${par}/${hole}`} />
       </div>
 
       <style jsx>{`
@@ -67,7 +72,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         props: {
           user: '',
           authed: false,
-          hole: params.hole,
+          hole: params.hole
         },
       }
     }
@@ -75,7 +80,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       props: {
         user: session.user,
         authed: true,
-        hole: params.hole,
+        hole: params.hole
       },
     }
   }

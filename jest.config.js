@@ -3,8 +3,10 @@ module.exports = {
   moduleFileExtensions: ['js', 'ts', 'tsx', 'json'],
   testPathIgnorePatterns: ['<rootDir>[/\\\\](node_modules|.next)[/\\\\]'],
   transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(ts|tsx)$'],
+  setupFiles: ["<rootDir>/.jest/setEnvVars.js"],
   transform: {
     '^.+\\.(ts|tsx)$': 'babel-jest',
+    "^.+\\.jsx?$": "babel-jest"
   },
   watchPlugins: [
     'jest-watch-typeahead/filename',

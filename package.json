@@ -17,12 +17,12 @@
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "^0.16.0",
+    "@babel/preset-env": "^7.12.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
     "@fortawesome/react-fontawesome": "^0.1.11",
     "@testing-library/jest-dom": "^5.11.5",
     "babel-plugin-inline-react-svg": "^1.1.1",
-    "imagemin-optipng": "^8.0.0",
     "mongoose": "^5.10.10",
     "mongoose-typescript": "^1.0.7",
     "next": "latest",

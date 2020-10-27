@@ -2,14 +2,16 @@ import React, { useState } from 'react'
 import styles from '../styles/TextInput.module.css'
 
 type Props = {
-  placeHolder: string
+  placeHolder: string,
+  handleInput: any
 }
-export default function TextInput({ placeHolder }: Props): JSX.Element {
+export default function TextInput({ handleInput, placeHolder }: Props): JSX.Element {
   const [value, setValue] = useState('')
 
   function onInputChange(e) {
     e.preventDefault()
     setValue(e.currentTarget.value)
+    handleInput(e.currentTarget.value)
   }
 
   return (

@@ -16,7 +16,7 @@ export function holeProgression(hole: number, state: string) {
   return results
 }
 
-export function checkForGoodScore(numPar: number numScore:number) {
+export function checkForGoodScore(numPar: number, numScore:number) {
   let results
   
   // deteremine ace shot 

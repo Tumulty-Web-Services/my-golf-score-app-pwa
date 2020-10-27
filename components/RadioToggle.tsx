@@ -4,7 +4,7 @@ import { RadioValue } from '../interfaces'
 
 type Props = {
   toggleValues: RadioValue[]
-  handleInput: (e) => {}
+  handleInput: any
 }
 
 export default function RadioToggle({ handleInput, toggleValues }: Props): JSX.Element {

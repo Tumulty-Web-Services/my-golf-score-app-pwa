@@ -4,7 +4,7 @@ import { RadioValue } from '../interfaces'
 
 type Props = {
   toggleValues: RadioValue[],
-  handleInput: (e) => {}
+  handleInput: any
 }
 
 export default function RadioTable({ handleInput, toggleValues }: Props) {
