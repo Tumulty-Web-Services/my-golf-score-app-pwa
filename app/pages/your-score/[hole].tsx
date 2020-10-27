@@ -1,33 +1,27 @@
 import React from 'react'
 import Card from '../../layouts/Card'
-import ButtonLink from '../../components/ButtonLink'
 import SubTitle from '../../components/SubTitle'
-import FlexTable from '../../components/FlexTable'
-import { yourCoursesData } from '../../utils/toggleData'
+import ButtonLink from '../../components/ButtonLink'
+import RadioTable from '../../components/RadioTable'
+import { yourScoreData } from '../../utils/toggleData'
 
-export default function Welcome(): JSX.Element {
-  const formatTableItems = yourCoursesData.map((items) => {
-    return {
-      itemOne: items.course,
-      itemTwo: items.score,
-    }
-  })
-
+export default function YourScore(): JSX.Element {
   return (
     <div>
       <div className="card-container">
         <Card>
           <>
-            <SubTitle title="Course History" />
-            <FlexTable tableItems={formatTableItems} />
+            <SubTitle title="Hole Two: Par 5" />
+            <SubTitle title="Your Score" />
+            <RadioTable toggleValues={yourScoreData} />
           </>
         </Card>
       </div>
       <div className="button-container">
-        <ButtonLink label="New Course" link="/course-information" />
+        <ButtonLink label="Next Hole" link="/holes/3" />
       </div>
       <div className="button-container">
-        <ButtonLink label="Replay Course" link="/replay-course" />
+        <ButtonLink label="Previous Hole" link="/holes/1" />
       </div>
       <style jsx>{`
         .card-container {

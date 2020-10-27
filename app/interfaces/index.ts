@@ -35,3 +35,17 @@ export type DropDownItem = {
   id: string
   label: string
 }
+
+export type FinishedCourse = {
+  id: string
+  score: string
+  hole: string
+  par: string
+  course: string
+}
+
+export type YourCoures = {
+  id: string
+  score: string
+  course: string
+}

@@ -5,6 +5,40 @@
   text-align: center;
 }
 
+.radioTable {
+  padding-top: 7px;
+  padding-bottom: 9px;
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.44);
+  font-size: 1.4rem;
+  text-transform: capitalize;
+  flex-direction: row;
+  transition: 0.3s;
+}
+
+.radioTable:last-child {
+  border-bottom: 0px;
+}
+
+.radioTable > label {
+  display: none;
+  visibility: hidden;
+}
+
+.flexRadioToggle {
+  min-height: 20px;
+  min-width: 20px;
+}
+
+.flexRadioToggle:checked {
+  transform: scale(1.35);
+}
+
+.radioTable:hover,
+.flexRadioToggle:hover {
+  cursor: pointer;
+  color: #bf793b;
+}
+
 @media (min-width: 1200px) {
   .flexTable {
     flex-direction: row;

@@ -6,7 +6,7 @@ The goal of this application is to replace the traditional pencil and paper base
 
  #### TODO:
 
- 1. Add Auth0 Authentication & finish congratulations and finish-game pages
+ 1. Add Auth0 Authentication 
  2. Integrate MongoDB/Mongoose & Local Storage (to build the game data as you are playing, then the finish button will send it to MongoDB)
  3. Add page transitions: Follow this tutorial for page transitions https://reacttricks.com/animating-next-page-transitions-with-framer-motion/
  4. And other animations for dropdowns and button toggle: https://www.youtube.com/watch?v=2V1WK-3HQNk&list=PL4cUxeGkcC9iHDnQfTHEVVceOEBsOf07i

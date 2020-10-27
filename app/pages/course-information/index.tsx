@@ -6,7 +6,7 @@ import TextInput from '../../components/TextInput'
 import RadioToggle from '../../components/RadioToggle'
 import { courseTypeToggles } from '../../utils/toggleData'
 
-export default function CourseInformation() {
+export default function CourseInformation(): JSX.Element {
   return (
     <div>
       <div className="card-container">

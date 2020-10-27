@@ -2,20 +2,29 @@ import React from 'react'
 import Card from '../../layouts/Card'
 import ButtonLink from '../../components/ButtonLink'
 import SubTitle from '../../components/SubTitle'
-import DropDownSelection from '../../components/DropDownSelection'
-import { yourCourseList } from '../../utils/dropDownData'
+import TextInput from '../../components/TextInput'
+import RadioTable from '../../components/RadioTable'
+import { yourCoursesData } from '../../utils/toggleData'
 
 export default function ReplayCourse(): JSX.Element {
+  const formatTableData = yourCoursesData.map((item) => {
+    return {
+      id: item.id,
+      text: item.course,
+      label: item.course,
+      name: 'course',
+    }
+  })
   return (
     <div>
       <div className="card-container">
         <Card>
-          <SubTitle title="Course Information" />
+          <SubTitle title="Select Course" />
+          <div className="input-container mt-20px">
+            <TextInput placeHolder="Search for other course" />
+          </div>
           <div className="input-container">
-            <DropDownSelection
-              dropDownItems={yourCourseList}
-              title="Select Course"
-            />
+            <RadioTable toggleValues={formatTableData} />
           </div>
         </Card>
       </div>
@@ -36,6 +45,11 @@ export default function ReplayCourse(): JSX.Element {
         }
         .input-container {
           margin-bottom: 2em;
+          text-align: center;
+        }
+
+        .mt-20px {
+          margin-top: 20px;
         }
       `}</style>
     </div>

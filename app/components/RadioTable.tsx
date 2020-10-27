@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import styles from '../styles/RadioToggle.module.css'
+import styles from '../styles/FlexTable.module.css'
 import { RadioValue } from '../interfaces'
 
 type Props = {
   toggleValues: RadioValue[]
 }
 
-export default function RadioToggle({ toggleValues }: Props): JSX.Element {
+export default function RadioTable({ toggleValues }: Props) {
   const [value, setValue] = useState(toggleValues[0].label)
 
   function saveValue(item) {
@@ -18,12 +18,18 @@ export default function RadioToggle({ toggleValues }: Props): JSX.Element {
   }
 
   return (
-    <div className={`${styles.radioToolbar} stories-radioToolbar`}>
+    <>
       {toggleValues.map((radioItem) => (
-        <span key={radioItem.label}>
+        <div
+          data-testid="flex-table"
+          key={radioItem.label}
+          className={`${styles.flexTable} ${styles.radioTable} stories-flexTable stories-radioTable`}
+        >
+          <div>{radioItem.text}</div>
           <input
             type="radio"
             id="radioToggle"
+            className={`${styles.flexRadioToggle} stories-flexRadioToggle`}
             name={radioItem.name}
             value={radioItem.label}
             onClick={() => saveValue(radioItem.label)}
@@ -31,8 +37,8 @@ export default function RadioToggle({ toggleValues }: Props): JSX.Element {
             checked={value === radioItem.label}
           />
           <label htmlFor="radioToggle">{radioItem.text}</label>
-        </span>
+        </div>
       ))}
-    </div>
+    </>
   )
 }

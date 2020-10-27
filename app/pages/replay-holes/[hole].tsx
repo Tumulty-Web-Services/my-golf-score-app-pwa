@@ -3,9 +3,7 @@ import Card from '../../layouts/Card'
 import ButtonLink from '../../components/ButtonLink'
 import SubTitle from '../../components/SubTitle'
 import RadioToggle from '../../components/RadioToggle'
-import DropDownSelection from '../../components/DropDownSelection'
 import { parToggles } from '../../utils/toggleData'
-import { yourScore } from '../../utils/dropDownData'
 
 export default function ReplayHoles() {
   return (
@@ -18,19 +16,12 @@ export default function ReplayHoles() {
             <div className="input-container">
               <RadioToggle toggleValues={parToggles} />
             </div>
-            <div className="input-container">
-              <DropDownSelection dropDownItems={yourScore} title="Your score" />
-            </div>
           </>
         </Card>
       </div>
       <div className="button-container">
-        <ButtonLink label="Next Hole" link="/holes/two" />
+        <ButtonLink label="Your Score" link="/your-score/two" />
       </div>
-      <div className="button-container">
-        <ButtonLink label="Previous Hole" link="/holes/one" />
-      </div>
-
       <style jsx>{`
         .card-container {
           margin-top: 6em;
