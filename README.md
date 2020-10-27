@@ -8,9 +8,7 @@ The goal of this application is to replace the traditional pencil and paper base
 
  1. Add Auth0 Authentication 
  2. Integrate MongoDB/Mongoose & Local Storage (to build the game data as you are playing, then the finish button will send it to MongoDB)
- 3. Add page transitions: Follow this tutorial for page transitions https://reacttricks.com/animating-next-page-transitions-with-framer-motion/
- 4. And other animations for dropdowns and button toggle: https://www.youtube.com/watch?v=2V1WK-3HQNk&list=PL4cUxeGkcC9iHDnQfTHEVVceOEBsOf07i
- 5. Optimizate for offline use & make a progressive web application
+ 3. Optimizate for offline use & make a progressive web application
 
 ## Build status
 
