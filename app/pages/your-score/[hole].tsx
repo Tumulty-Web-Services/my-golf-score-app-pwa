@@ -13,7 +13,9 @@ export default function YourScore(): JSX.Element {
           <>
             <SubTitle title="Hole Two: Par 5" />
             <SubTitle title="Your Score" />
-            <RadioTable toggleValues={yourScoreData} />
+            <div className="flex-container">
+              <RadioTable toggleValues={yourScoreData} />
+            </div>
           </>
         </Card>
       </div>
@@ -27,6 +29,12 @@ export default function YourScore(): JSX.Element {
         .card-container {
           margin-top: 6em;
           margin-bottom: 3em;
+        }
+
+        .flex-container {
+          margin-left: auto;
+          margin-right: auto;
+          min-width: 100%;
         }
 
         .button-container {

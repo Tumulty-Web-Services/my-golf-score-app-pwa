@@ -12,9 +12,6 @@ function MyApp({ Component, pageProps }: AppProps) {
         <main>
           <Component {...pageProps} />
         </main>
-        <footer>
-          <p> Golf Journal 2020 </p>
-        </footer>
         <style jsx>{`
           #golf-journal {
             display: flex;
@@ -24,8 +21,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           }
 
           header,
-          main,
-          footer {
+          main {
             width: 100%;
             padding-right: 15px;
             padding-left: 15px;
@@ -42,38 +38,30 @@ function MyApp({ Component, pageProps }: AppProps) {
             height: 85vh;
           }
 
-          footer {
-            height: 5vh;
-          }
-
           @media (min-width: 576px) {
             header,
-            main,
-            footer {
+            main {
               max-width: 540px;
             }
           }
 
           @media (min-width: 768px) {
             header,
-            main,
-            footer {
+            main {
               max-width: 720px;
             }
           }
 
           @media ((min-width: 992px)) {
             header,
-            main,
-            footer {
+            main {
               max-width: 960px;
             }
           }
 
           @media (min-width: 1200px) {
             header,
-            main,
-            footer {
+            main {
               max-width: 1140px;
             }
           }

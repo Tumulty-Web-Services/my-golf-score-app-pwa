@@ -21,6 +21,11 @@ export default function FinishGame(): JSX.Element {
           <>
             <SubTitle title="Course Finished" />
             <SubTitle title="Your Score: 116" />
+            <div className="table-title">
+              <p>
+                <strong>Score | Par</strong>
+              </p>
+            </div>
             <FlexTable tableItems={formatTableItems} />
           </>
         </Card>
@@ -38,6 +43,16 @@ export default function FinishGame(): JSX.Element {
           margin-left: auto;
           margin-right: auto;
           margin-bottom: 20px;
+        }
+
+        .table-title {
+          display: flex;
+          width: 100%;
+          justify-content: flex-end;
+        }
+
+        .button-container,
+        .table-title {
           max-width: 400px;
         }
       `}</style>
