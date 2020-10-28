@@ -1,5 +1,3 @@
-import { check } from "prettier";
-
 export function setRoundObject(par: string, hole: string) {
   const holeList = []
   const courses = localStorage.getItem('course')
@@ -8,37 +6,32 @@ export function setRoundObject(par: string, hole: string) {
   const roundObj = {
     hole,
     par,
-    courses
-  };
+    courses,
+  }
 
   // parse and filter current list of holes
-  if(currentHoles !== null) {
-    const parsedCurrentHoles = JSON.parse(currentHoles) 
-    const checkIfHoleExists = parsedCurrentHoles.filter(round => round.hole !== hole)
+  if (currentHoles !== null) {
+    const parsedCurrentHoles = JSON.parse(currentHoles)
+    const checkIfHoleExists = parsedCurrentHoles.filter(
+      (round) => round.hole !== hole
+    )
 
-    if(checkIfHoleExists.length > 0) {
-      const filterOutCurrentHole = parsedCurrentHoles.filter(round => round.hole === hole)
+    if (checkIfHoleExists.length > 0) {
+      const filterOutCurrentHole = parsedCurrentHoles.filter(
+        (round) => round.hole === hole
+      )
 
-      const newRoundObj = [
-        filterOutCurrentHole,
-        roundObj
-      ]
+      const newRoundObj = [filterOutCurrentHole, roundObj]
 
-
-  
       localStorage.setItem('holes', JSON.stringify(newRoundObj))
     }
-  
-    if(checkIfHoleExists.length < 0) {
 
-      const newRoundObj = [
-        ...parsedCurrentHoles,
-        roundObj
-      ]
-  
+    if (checkIfHoleExists.length < 0) {
+      const newRoundObj = [...parsedCurrentHoles, roundObj]
+
       localStorage.setItem('holes', JSON.stringify(newRoundObj))
     }
-  }else {
+  } else {
     holeList.push(roundObj)
     localStorage.setItem('holes', JSON.stringify(holeList))
   }

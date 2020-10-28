@@ -4,7 +4,7 @@ import Congratulations from '../../pages/congratulations/[...slug]'
 
 describe('Congratulations page', () => {
   const query = {
-    score: '3'
+    score: '3',
   }
   it('renders Congratulations component', () => {
     render(<Congratulations {...query} />)

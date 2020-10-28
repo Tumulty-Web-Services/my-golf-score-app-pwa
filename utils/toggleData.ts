@@ -332,10 +332,4 @@ export const yourScoreData: RadioValue[] = [
     label: '10',
     name: 'score',
   },
-  {
-    id: '11',
-    text: '10+',
-    label: '10+',
-    name: 'score',
-  },
 ]

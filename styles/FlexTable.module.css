@@ -3,6 +3,7 @@
   justify-content: space-between;
   flex-direction: column;
   text-align: center;
+  padding-bottom: 20px;
 }
 
 .radioTable {
@@ -46,6 +47,6 @@
     max-width: 325px;
     margin-left: 15%;
     margin-right: 15%;
-    margin-bottom: 20px;
+    padding-bottom: 10px;
   }
 }

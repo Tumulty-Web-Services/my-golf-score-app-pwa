@@ -12,8 +12,8 @@ type Props = {
 }
 
 export default function Holes({ hole }: Props): JSX.Element {
-  const [ par, setPar ] = useState('3')
-  function handleInput(inputPar) {  
+  const [par, setPar] = useState('3')
+  function handleInput(inputPar) {
     setPar(inputPar)
   }
   return (
@@ -24,7 +24,10 @@ export default function Holes({ hole }: Props): JSX.Element {
             <SubTitle title={`Hole ${hole}`} />
             <SubTitle title="Par" />
             <div className="input-container">
-              <RadioToggle handleInput={handleInput} toggleValues={parToggles} />
+              <RadioToggle
+                handleInput={handleInput}
+                toggleValues={parToggles}
+              />
             </div>
           </>
         </Card>
@@ -35,7 +38,6 @@ export default function Holes({ hole }: Props): JSX.Element {
 
       <style jsx>{`
         .card-container {
-          margin-top: 6em;
           margin-bottom: 3em;
         }
 
@@ -71,7 +73,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         props: {
           user: '',
           authed: false,
-          hole: params.hole
+          hole: params.hole,
         },
       }
     }
@@ -79,7 +81,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       props: {
         user: session.user,
         authed: true,
-        hole: params.hole
+        hole: params.hole,
       },
     }
   }

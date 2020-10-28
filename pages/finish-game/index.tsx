@@ -28,7 +28,9 @@ export default function FinishGame(): JSX.Element {
                 <strong>Score | Par</strong>
               </p>
             </div>
-            <FlexTable tableItems={formatTableItems} />
+            <div className="flex-container">
+              <FlexTable tableItems={formatTableItems} />
+            </div>
           </>
         </Card>
       </div>
@@ -37,8 +39,11 @@ export default function FinishGame(): JSX.Element {
       </div>
       <style jsx>{`
         .card-container {
-          margin-top: 6em;
           margin-bottom: 3em;
+        }
+
+        .flex-container {
+          padding-bottom: 12px;
         }
 
         .button-container {

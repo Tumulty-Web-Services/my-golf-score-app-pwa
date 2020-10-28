@@ -17,16 +17,30 @@ export default function ReplayCourse(): JSX.Element {
       name: 'course',
     }
   })
+
+  function handleRadioInput(e) {
+    return e
+  }
+
+  function handleTextInput(e) {
+    return e
+  }
   return (
     <div>
       <div className="card-container">
         <Card>
           <SubTitle title="Select Course" />
           <div className="input-container mt-20px">
-            <TextInput placeHolder="Search for other course" />
+            <TextInput
+              handleInput={handleTextInput}
+              placeHolder="Search for other course"
+            />
           </div>
           <div className="input-container">
-            <RadioTable toggleValues={formatTableData} />
+            <RadioTable
+              handleInput={handleRadioInput}
+              toggleValues={formatTableData}
+            />
           </div>
         </Card>
       </div>
@@ -35,7 +49,6 @@ export default function ReplayCourse(): JSX.Element {
       </div>
       <style jsx>{`
         .card-container {
-          margin-top: 6em;
           margin-bottom: 3em;
         }
 

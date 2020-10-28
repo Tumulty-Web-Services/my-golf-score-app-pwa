@@ -7,7 +7,11 @@ import SubTitle from '../../../components/SubTitle'
 import ButtonLink from '../../../components/ButtonLink'
 import RadioTable from '../../../components/RadioTable'
 import { yourScoreData } from '../../../utils/toggleData'
-import { holeProgression, checkForGoodScore, urlify } from '../../../utils/helpers'
+import {
+  holeProgression,
+  checkForGoodScore,
+  urlify,
+} from '../../../utils/helpers'
 import { setRoundObject } from '../../../utils/game'
 
 type Props = {
@@ -16,53 +20,51 @@ type Props = {
 }
 
 export default function YourScore({ hole, par }: Props): JSX.Element {
-  const [ score, setScore ] = useState('')
+  const [score, setScore] = useState('')
   const router = useRouter()
   const nextHole = holeProgression(parseInt(hole), 'next')
   const prevHole = holeProgression(parseInt(hole), 'previous')
-  
+
   function handleInput(input: string) {
     const numPar = parseInt(par)
     const numInput = parseInt(input)
 
     // redirect to congratulations page
-    if(numInput <= numPar) {
+    if (numInput <= numPar) {
       const congratulations = checkForGoodScore(numPar, numInput)
 
-      if(congratulations) {
+      if (congratulations) {
         return router.push({
           pathname: '/congratulations/[term]/[par]/[hole]',
           query: {
             term: urlify(congratulations),
             par: par,
-            hole: hole
+            hole: hole,
           },
         })
       }
-    }  
+    }
 
     // redirect to finish game page if currentHole === hole
     const getCurrentHole = localStorage.getItem('currentHole')
     const getCourseType = localStorage.getItem('courseType')
-    
-    if(getCurrentHole === getCourseType) {
+
+    if (getCurrentHole === getCourseType) {
       return router.push('/finished-game')
     }
     setScore(input)
   }
 
-
   useEffect(() => {
     const setLocalStorageGameData = async () => {
-      console.log('trigger on load!')
+      console.warn(score)
       await setRoundObject(par, hole)
-      await localStorage.setItem('currentHole', hole)   
+      await localStorage.setItem('currentHole', hole)
     }
 
-    setLocalStorageGameData()    
+    setLocalStorageGameData()
   }, [])
-  
-  
+
   return (
     <div>
       <div className="card-container">
@@ -71,7 +73,10 @@ export default function YourScore({ hole, par }: Props): JSX.Element {
             <SubTitle title={`Hole ${hole}  Par ${par}`} />
             <SubTitle title="Your Score" />
             <div className="flex-container">
-              <RadioTable handleInput={handleInput} toggleValues={yourScoreData} />
+              <RadioTable
+                handleInput={handleInput}
+                toggleValues={yourScoreData}
+              />
             </div>
           </>
         </Card>
@@ -84,7 +89,6 @@ export default function YourScore({ hole, par }: Props): JSX.Element {
       </div>
       <style jsx>{`
         .card-container {
-          margin-top: 6em;
           margin-bottom: 3em;
         }
 
@@ -92,6 +96,7 @@ export default function YourScore({ hole, par }: Props): JSX.Element {
           margin-left: auto;
           margin-right: auto;
           min-width: 100%;
+          padding-bottom: 12px;
         }
 
         .button-container {

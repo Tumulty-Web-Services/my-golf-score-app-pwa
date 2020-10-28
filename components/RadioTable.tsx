@@ -3,7 +3,7 @@ import styles from '../styles/FlexTable.module.css'
 import { RadioValue } from '../interfaces'
 
 type Props = {
-  toggleValues: RadioValue[],
+  toggleValues: RadioValue[]
   handleInput: any
 }
 

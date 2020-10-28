@@ -41,7 +41,6 @@ export default function Welcome({ user }: Props): JSX.Element {
       </div>
       <style jsx>{`
         .card-container {
-          margin-top: 6em;
           margin-bottom: 3em;
         }
 

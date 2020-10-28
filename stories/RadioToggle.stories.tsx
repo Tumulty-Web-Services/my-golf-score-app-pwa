@@ -10,6 +10,13 @@ function handleInputStory(e: string) {
   return e
 }
 
-export const courseTypeRadioToggle = () => <RadioToggle handleInput={handleInputStory} toggleValues={courseTypeToggles} />
+export const courseTypeRadioToggle = () => (
+  <RadioToggle
+    handleInput={handleInputStory}
+    toggleValues={courseTypeToggles}
+  />
+)
 
-export const parRadioToggle = () => <RadioToggle handleInput={handleInputStory} toggleValues={parToggles} />
+export const parRadioToggle = () => (
+  <RadioToggle handleInput={handleInputStory} toggleValues={parToggles} />
+)

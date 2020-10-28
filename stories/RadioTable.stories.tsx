@@ -10,4 +10,6 @@ function handleInputStory(e: string) {
   return e
 }
 
-export const SiteRadioTable = () => <RadioTable handleInput={handleInputStory} toggleValues={holeToggles} />
+export const SiteRadioTable = () => (
+  <RadioTable handleInput={handleInputStory} toggleValues={holeToggles} />
+)

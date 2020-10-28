@@ -8,16 +8,13 @@ import TextInput from '../../components/TextInput'
 import RadioToggle from '../../components/RadioToggle'
 import { courseTypeToggles } from '../../utils/toggleData'
 
-
 export default function CourseInformation(): JSX.Element {
-
   function handleRadioInput(holes: string) {
     localStorage.setItem('userId', '')
     localStorage.setItem('courseType', holes)
   }
 
   function handleTextInput(course: string) {
-
     localStorage.setItem('course', course)
   }
 
@@ -28,11 +25,17 @@ export default function CourseInformation(): JSX.Element {
           <>
             <SubTitle title="Course Information" />
             <div className="input-container">
-              <TextInput handleInput={handleTextInput} placeHolder="Enter course name" />
+              <TextInput
+                handleInput={handleTextInput}
+                placeHolder="Enter course name"
+              />
             </div>
             <SubTitle title="Course Type" />
             <div className="input-container">
-              <RadioToggle handleInput={handleRadioInput} toggleValues={courseTypeToggles} />
+              <RadioToggle
+                handleInput={handleRadioInput}
+                toggleValues={courseTypeToggles}
+              />
             </div>
           </>
         </Card>
@@ -43,7 +46,6 @@ export default function CourseInformation(): JSX.Element {
 
       <style jsx>{`
         .card-container {
-          margin-top: 6em;
           margin-bottom: 3em;
         }
 

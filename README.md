@@ -11,17 +11,16 @@ The goal of this application is to replace the traditional pencil and paper base
 - Use local storage to store data through out the game ref: https://web.dev/storage-for-the-web/
 - Launch to Mongo when click finish game or when app is logged in check if there is data in local storage and push it to Mongo
 - Models:
-  * UserProfile (id, name, email, courses: [{
+  - UserProfile (id, name, email, courses: [{
     id
     name
     courseType
-  }], scores: [{
+    }], scores: [{
     hole
     score
     par
     course
-  }])
-
+    }])
 
 2.  Optimization
 
@@ -30,6 +29,8 @@ The goal of this application is to replace the traditional pencil and paper base
 - PWA
   ** Use Offline
   **Goal:\*\* Play game offline and have data stored locally on machine. If game isn't pushed to mongodb and closed. Keep in storage and automatically launched to mongodb before contents are loaded.
+
+3. Fix up mobile changes
 
 ## Build status
 

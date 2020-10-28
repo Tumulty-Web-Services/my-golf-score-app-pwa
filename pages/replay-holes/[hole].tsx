@@ -12,6 +12,9 @@ type Props = {
 }
 
 export default function ReplayHoles({ hole }: Props): JSX.Element {
+  function handleInput(e) {
+    return e
+  }
   return (
     <div>
       <div className="card-container">
@@ -20,7 +23,10 @@ export default function ReplayHoles({ hole }: Props): JSX.Element {
             <SubTitle title={`Hole ${hole}`} />
             <SubTitle title="Par" />
             <div className="input-container">
-              <RadioToggle toggleValues={parToggles} />
+              <RadioToggle
+                handleInput={handleInput}
+                toggleValues={parToggles}
+              />
             </div>
           </>
         </Card>
@@ -30,7 +36,6 @@ export default function ReplayHoles({ hole }: Props): JSX.Element {
       </div>
       <style jsx>{`
         .card-container {
-          margin-top: 6em;
           margin-bottom: 3em;
         }
 

@@ -9,7 +9,9 @@ describe('RadioTable component', () => {
   }
 
   it('renders RadioTable component', () => {
-    render(<RadioTable handleInput={testHandleInput} toggleValues={yourScoreData} />)
+    render(
+      <RadioTable handleInput={testHandleInput} toggleValues={yourScoreData} />
+    )
 
     screen.debug()
   })
@@ -27,6 +29,6 @@ describe('RadioTable component', () => {
   it('handleInput callback function returns string', () => {
     const testFunc = testHandleInput('radio toggle')
 
-    expect(typeof testFunc ).toBe('string')
+    expect(typeof testFunc).toBe('string')
   })
 })

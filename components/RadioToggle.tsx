@@ -7,7 +7,10 @@ type Props = {
   handleInput: any
 }
 
-export default function RadioToggle({ handleInput, toggleValues }: Props): JSX.Element {
+export default function RadioToggle({
+  handleInput,
+  toggleValues,
+}: Props): JSX.Element {
   const [value, setValue] = useState(toggleValues[0].label)
 
   function onChange() {

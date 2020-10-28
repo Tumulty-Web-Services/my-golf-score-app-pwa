@@ -9,14 +9,19 @@ describe('RadioToggle component', () => {
   }
 
   it('renders RadioToggle component', () => {
-    render(<RadioToggle handleInput={testHandleInput} toggleValues={parToggles} />)
+    render(
+      <RadioToggle handleInput={testHandleInput} toggleValues={parToggles} />
+    )
 
     screen.debug()
   })
 
   it('renders radio button values', () => {
     const { getByLabelText } = render(
-      <RadioToggle handleInput={testHandleInput} toggleValues={courseTypeToggles} />
+      <RadioToggle
+        handleInput={testHandleInput}
+        toggleValues={courseTypeToggles}
+      />
     )
     const radio = getByLabelText('9')
 
@@ -27,6 +32,6 @@ describe('RadioToggle component', () => {
   it('handleInput callback function returns string', () => {
     const testFunc = testHandleInput('radio toggle')
 
-    expect(typeof testFunc ).toBe('string')
+    expect(typeof testFunc).toBe('string')
   })
 })
