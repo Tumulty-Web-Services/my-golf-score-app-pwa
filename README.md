@@ -7,16 +7,17 @@ The goal of this application is to replace the traditional pencil and paper base
 #### TODO:
 
 1. Write test for game page & modify tests for updates components
-2. Write new stories for updated components
-3. Build out the game object in local storage (note. the score input will do the localStorage saving based on useState game object)
-4. Set up MongoDB
+2. Add date played to the welcome page 
+3. Write new stories for updated components
+4. Build out the game object in local storage (note. the score input will do the localStorage saving based on useState game object)
+5. Set up MongoDB
     * User Profile Model: (id, name, email, games: Games Model)
-    * Game Model: (id, userId, course name, course type, holes: [hole, par, score])
-5. Refactor Finish Game Page to use user generated data
-6. Refactor Replay Game Page to use user generated data & use elastic search
-7. Test mobile and offline capabilities
-8. Launch to vercel
-9. Add domain https://app.golfjournal.io to hosting
+    * Game Model: (id, userId, course name, course type, date, holes: [hole, par, score])
+6. Refactor Finish Game Page to use user generated data
+7. Refactor Replay Game Page to use user generated data & use elastic search
+8. Test mobile and offline capabilities
+9. Launch to vercel
+10. Add domain https://app.golfjournal.io to hosting
 
 ## Build status
 

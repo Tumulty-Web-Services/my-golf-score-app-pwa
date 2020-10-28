@@ -1,7 +1,6 @@
 import React from 'react'
 import { GetServerSideProps } from 'next'
 import auth0 from '../../utils/auth0'
-import Card from '../../layouts/Card'
 import ButtonLink from '../../components/ButtonLink'
 import SubTitle from '../../components/SubTitle'
 import FlexTable from '../../components/FlexTable'
@@ -19,7 +18,7 @@ export default function Welcome({ user }: Props): JSX.Element {
     return {
       itemOne: items.course,
       itemTwo: items.score,
-      itemThree: null,
+      itemThree: items.date
     }
   })
 

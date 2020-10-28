@@ -48,4 +48,5 @@ export type YourCoures = {
   id: string
   score: string
   course: string
+  date: string
 }

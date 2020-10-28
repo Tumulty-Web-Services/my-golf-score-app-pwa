@@ -233,41 +233,49 @@ export const yourCoursesData: YourCoures[] = [
     id: '1',
     score: '98',
     course: 'Rutgers University Course',
+    date: '10/28/2020'
   },
   {
     id: '2',
     score: '110',
     course: 'Bunker Hill',
+    date: '9/15/2020'
   },
   {
     id: '3',
     score: '116',
     course: 'Tamarack',
+    date: '9/02/2020'
   },
   {
     id: '4',
     score: '116',
     course: 'Mattawang Golf Club',
+    date: '7/12/2020'
   },
   {
     id: '5',
     score: '100',
     course: 'Hillsborough Country Club',
+    date: '7/3/2020'
   },
   {
     id: '6',
     score: '113',
     course: 'Hominy Hill',
+    date: '6/27/2020'
   },
   {
     id: '7',
     score: '99',
     course: 'Forge Pond',
+    date: '6/03/2020'
   },
   {
     id: '8',
     score: '103',
     course: 'Shark River Golf Course',
+    date: '5/22/2020'
   },
 ]
 
