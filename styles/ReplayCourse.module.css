@@ -1,0 +1,33 @@
+.container {
+  margin-bottom: 3em;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  text-align: center;
+}
+
+.inputContainer {
+  margin-top: 3em;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 500px;
+}
+
+.textContainer {
+  max-width: 350px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 1em;
+}
+
+.textContainer > input {
+  min-width: 100% !important;
+}
+
+.buttonContainer {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;  
+  max-width: 500px
+}

@@ -1,4 +1,4 @@
-.textInput {
+.UserInput {
   background-color: #fff;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.44);
   border: 0;
@@ -17,11 +17,13 @@
   min-width: 325px;
 }
 
-.textInput:focus {
+.UserInput:focus {
   border: 0 !important;
   box-shadow: 3px 3px 10px #bf793b;
 }
 
-.textInput:active {
+.UserInput:active {
   border: 0 !important;
 }
+
+

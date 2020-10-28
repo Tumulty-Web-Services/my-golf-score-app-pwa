@@ -5,8 +5,6 @@ type Props = {
   title: string
 }
 
-const Header = ({ title }: Props): JSX.Element => (
-  <h2 className={`${styles.subTitle} stories-subtitle`}>{title}</h2>
-)
-
-export default Header
+export default function SubTitle({ title }: Props): JSX.Element {
+  return <h2 className={`${styles.subTitle} stories-subtitle`}>{title}</h2>
+}

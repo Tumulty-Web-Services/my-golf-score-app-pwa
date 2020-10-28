@@ -1,14 +1,13 @@
 import React, { useState } from 'react'
-import styles from '../styles/TextInput.module.css'
+import styles from '../styles/UserInput.module.css'
 
 type Props = {
   placeHolder: string
   handleInput: any
+  type: string
 }
-export default function TextInput({
-  handleInput,
-  placeHolder,
-}: Props): JSX.Element {
+
+export default function UserInput({ handleInput, placeHolder, type }: Props): JSX.Element {
   const [value, setValue] = useState('')
 
   function onInputChange(e) {
@@ -20,10 +19,10 @@ export default function TextInput({
   return (
     <>
       <input
-        type="text"
+        type={type}
         value={value}
-        className={`${styles.textInput} stories-textInput`}
-        aria-label="text-input"
+        className={`${styles.UserInput} stories-userInput`}
+        aria-label="user-input"
         onChange={onInputChange}
         placeholder={placeHolder}
       />

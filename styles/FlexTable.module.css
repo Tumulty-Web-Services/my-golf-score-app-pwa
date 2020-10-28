@@ -9,7 +9,6 @@
 .radioTable {
   padding-top: 7px;
   padding-bottom: 9px;
-  border-bottom: 0.5px solid rgba(0, 0, 0, 0.44);
   font-size: 1.4rem;
   text-transform: capitalize;
   flex-direction: row;
@@ -47,6 +46,7 @@
     max-width: 325px;
     margin-left: 15%;
     margin-right: 15%;
-    padding-bottom: 10px;
+    padding-bottom: 1em;
+    font-size: 1rem;
   }
 }

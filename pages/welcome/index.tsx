@@ -26,12 +26,8 @@ export default function Welcome({ user }: Props): JSX.Element {
   return (
     <div>
       <div className="card-container">
-        <Card>
-          <>
-            <SubTitle title="Course History" />
-            <FlexTable tableItems={formatTableItems} />
-          </>
-        </Card>
+        <SubTitle title="Course History" />
+        <FlexTable tableItems={formatTableItems} />
       </div>
       <div className="button-container">
         <ButtonLink label="New Course" link="/course-information" />
@@ -42,6 +38,10 @@ export default function Welcome({ user }: Props): JSX.Element {
       <style jsx>{`
         .card-container {
           margin-bottom: 3em;
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          max-width: 500px;
         }
 
         .button-container {

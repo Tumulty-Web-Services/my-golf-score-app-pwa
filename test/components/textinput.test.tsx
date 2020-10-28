@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, fireEvent, screen } from '@testing-library/react'
-import TextInput from '../../components/TextInput'
+import TextInput from '../../components/UserInput'
 
 const setup = () => {
   const utils = render(<TextInput placeHolder="Enter course name" />)

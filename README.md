@@ -6,31 +6,17 @@ The goal of this application is to replace the traditional pencil and paper base
 
 #### TODO:
 
-1.  Integrate MongoDB/Mongoose & Local Storage (to build the game data as you are playing, then the finish button will send it to MongoDB)
-
-- Use local storage to store data through out the game ref: https://web.dev/storage-for-the-web/
-- Launch to Mongo when click finish game or when app is logged in check if there is data in local storage and push it to Mongo
-- Models:
-  - UserProfile (id, name, email, courses: [{
-    id
-    name
-    courseType
-    }], scores: [{
-    hole
-    score
-    par
-    course
-    }])
-
-2.  Optimization
-
-- Site
-  \*\* Use Offline
-- PWA
-  ** Use Offline
-  **Goal:\*\* Play game offline and have data stored locally on machine. If game isn't pushed to mongodb and closed. Keep in storage and automatically launched to mongodb before contents are loaded.
-
-3. Fix up mobile changes
+1. Write test for game page & modify tests for updates components
+2. Write new stories for updated components
+3. Build out the game object in local storage (note. the score input will do the localStorage saving based on useState game object)
+4. Set up MongoDB
+  * User Profile Model: (id, name, email, games: Games Model)
+  * Game Model: (id, userId, course name, course type, holes: [hole, par, score])
+5. Refactor Finish Game Page to use user generated data
+6. Refactor Replay Game Page to use user generated data & use elastic search
+7. Test mobile and offline capabilities
+8. Launch to vercel
+9. Add app.goljournal.io to hosting
 
 ## Build status
 
