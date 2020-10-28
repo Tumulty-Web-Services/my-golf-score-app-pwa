@@ -16,7 +16,7 @@ The goal of this application is to replace the traditional pencil and paper base
 6. Refactor Replay Game Page to use user generated data & use elastic search
 7. Test mobile and offline capabilities
 8. Launch to vercel
-9. Add app.goljournal.io to hosting
+9. Add domain https://app.golfjournal.io to hosting
 
 ## Build status
 
@@ -47,7 +47,7 @@ The goal of this application is to replace the traditional pencil and paper base
 
 ```
  git clone https://github.com/ptums/golf-journal.git
- cd golf-journal/app
+ cd golf-journal
  yarn install
 ```
 
