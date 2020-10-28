@@ -13,8 +13,7 @@ type Props = {
 
 export default function Holes({ hole }: Props): JSX.Element {
   const [ par, setPar ] = useState('3')
-  function handleInput(inputPar) {
-    // set it up where localStorage stars building a game object
+  function handleInput(inputPar) {  
     setPar(inputPar)
   }
   return (

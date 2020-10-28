@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { GetServerSideProps } from 'next'
 import auth0 from '../../../utils/auth0'
@@ -8,6 +8,7 @@ import ButtonLink from '../../../components/ButtonLink'
 import RadioTable from '../../../components/RadioTable'
 import { yourScoreData } from '../../../utils/toggleData'
 import { holeProgression, checkForGoodScore, urlify } from '../../../utils/helpers'
+import { setRoundObject } from '../../../utils/game'
 
 type Props = {
   hole: string
@@ -24,6 +25,7 @@ export default function YourScore({ hole, par }: Props): JSX.Element {
     const numPar = parseInt(par)
     const numInput = parseInt(input)
 
+    // redirect to congratulations page
     if(numInput <= numPar) {
       const congratulations = checkForGoodScore(numPar, numInput)
 
@@ -37,9 +39,28 @@ export default function YourScore({ hole, par }: Props): JSX.Element {
           },
         })
       }
+    }  
+
+    // redirect to finish game page if currentHole === hole
+    const getCurrentHole = localStorage.getItem('currentHole')
+    const getCourseType = localStorage.getItem('courseType')
+    
+    if(getCurrentHole === getCourseType) {
+      return router.push('/finished-game')
     }
     setScore(input)
   }
+
+
+  useEffect(() => {
+    const setLocalStorageGameData = async () => {
+      console.log('trigger on load!')
+      await setRoundObject(par, hole)
+      await localStorage.setItem('currentHole', hole)   
+    }
+
+    setLocalStorageGameData()    
+  }, [])
   
   
   return (
@@ -88,6 +109,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const { req, res, params } = context
   const { hole, par } = params
 
+  // update localStorage with latest hole data
   if (typeof window === 'undefined') {
     const session = await auth0.getSession(req)
     if (!session || !session.user) {

@@ -10,6 +10,18 @@ The goal of this application is to replace the traditional pencil and paper base
 
 - Use local storage to store data through out the game ref: https://web.dev/storage-for-the-web/
 - Launch to Mongo when click finish game or when app is logged in check if there is data in local storage and push it to Mongo
+- Models:
+  * UserProfile (id, name, email, courses: [{
+    id
+    name
+    courseType
+  }], scores: [{
+    hole
+    score
+    par
+    course
+  }])
+
 
 2.  Optimization
 
@@ -43,13 +55,6 @@ The goal of this application is to replace the traditional pencil and paper base
 - [Storybook](https://storybook.js.org/)
 - [SWR](https://github.com/vercel/swr)
 - [Typescript](https://www.typescriptlang.org/)
-
-**Site (Marketing landing page) built with**
-
-- [Eleventy](https://www.11ty.dev)
-- [Kwes Form Build](https://kwes.io/)
-- [Stripe](https://auth0.com/)
-- [Tailwind CSS](https://tailwindcss.com/)
 
 ## Install
 
