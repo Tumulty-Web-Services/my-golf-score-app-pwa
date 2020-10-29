@@ -18,48 +18,28 @@ export default function Course({ course, courseType } : Props): JSX.Element {
   const [ currentScore, setCurrentScore ] = useState('')
   const [ gameObj, setGameObj ] = useState([])
 
+  function handleParInput(game) {
+    const { hole, input } = game
+    setCurrentHole(hole)
+    setCurrentPar(input)
+  }
 
-  // build the game object
-  function handleInput(game) {
-    // extract each key/value pair
-    const { source, hole, input} = game
-    setCurrentHole(hole)   
+  function handleScoreInput(game) {
+    const { input } = game
+    setCurrentScore(input)
+  }
 
-    if(source === "Par") {
-      console.log('par is getting hit!')
-      setCurrentPar(input)
-    }
-
-    if(source === "Score") {
-
-      // set a local storage save
-      setCurrentScore(input)
-    }
-
-    const holeData = {
+  function storeGameData() {
+    const newHole = {
       hole: currentHole,
       par: currentPar,
       score: currentScore
     }
 
-    console.table(currentHole, currentPar, currentScore)
-
-    if(gameObj.length < 1) {
-      console.log('%c holeData', 'color: orange; font-size:32px;')
-      console.log(holeData)
-      setGameObj([holeData])
-    }
-
-    if(gameObj.length < 1) {
-      console.log('%c holeData', 'color: orange; font-size:32px;')
-      console.log(holeData)
-      setGameObj(gameObj => [...gameObj, holeData])
-    }
-    
-    console.table(gameObj)
-    
-    return game
+    setGameObj(gameOb => [...gameObj, newHole])  
+   
   }
+ 
 
 
   // set up game
@@ -76,22 +56,22 @@ export default function Course({ course, courseType } : Props): JSX.Element {
       }
 
       setHoles(Array.from(Array(length)).map((_, i) => i + 1))      
+    }   
+    
+    if(currentScore) {
+      storeGameData()
     }
 
-
-    const getGameData = () => {
-      console.log('%c Game state', 'color: green; font-size: 22px')
-    }
-
+    // todo: figure out how to store latest game object into local storage
     setGameLength()
-    getGameData()
-  }, [courseType])
+  }, [courseType, currentScore, gameObj])
   
 
   return (
     <div className={styles.container}>
       <SubTitle title={`Course: ${course}`} />
       <SubTitle title={`Holes: ${courseType}`} />
+      {currentHole}
       <div className={styles.game}>
         {holes.map((hole) => (
           <div key={hole} className={styles.gameItem}>
@@ -100,14 +80,14 @@ export default function Course({ course, courseType } : Props): JSX.Element {
               <GameInput
                 type="number"
                 placeHolder="Par"
-                handleInput={handleInput}
+                handleInput={handleParInput}
                 hole={hole}
                 source="Par"
               />
               <GameInput
                 type="number"
                 placeHolder="Score"
-                handleInput={handleInput}
+                handleInput={handleScoreInput}
                 hole={hole}
                 source="Score"
               />
