@@ -3,10 +3,9 @@ import { GetServerSideProps } from 'next'
 import auth0 from '../../../utils/auth0'
 import SubTitle from '../../../components/SubTitle'
 import ButtonLink from '../../../components/ButtonLink'
-import UserInput from '../../../components/UserInput'
+import GameInput from '../../../components/GameInput'
 import styles from '../../../styles/Game.module.css'
 import { makeTitle } from '../../../utils/helpers'
-import { courseTypeToggles } from '../../../utils/toggleData'
 
 type Props = {
   course: string,
@@ -14,18 +13,56 @@ type Props = {
 }
 export default function Course({ course, courseType } : Props): JSX.Element {
   const [ holes, setHoles ] = useState([])
-  const [ par, setPar ] = useState([])
-  const [ score, setScore ] = useState([])
+  const [ currentHole, setCurrentHole ] = useState('')
+  const [ currentPar, setCurrentPar ] = useState('')
+  const [ currentScore, setCurrentScore ] = useState('')
   const [ gameObj, setGameObj ] = useState([])
 
-  function handleParInput(e) {
-    return e
+
+  // build the game object
+  function handleInput(game) {
+    // extract each key/value pair
+    const { source, hole, input} = game
+    setCurrentHole(hole)   
+
+    if(source === "Par") {
+      console.log('par is getting hit!')
+      setCurrentPar(input)
+    }
+
+    if(source === "Score") {
+
+      // set a local storage save
+      setCurrentScore(input)
+    }
+
+    const holeData = {
+      hole: currentHole,
+      par: currentPar,
+      score: currentScore
+    }
+
+    console.table(currentHole, currentPar, currentScore)
+
+    if(gameObj.length < 1) {
+      console.log('%c holeData', 'color: orange; font-size:32px;')
+      console.log(holeData)
+      setGameObj([holeData])
+    }
+
+    if(gameObj.length < 1) {
+      console.log('%c holeData', 'color: orange; font-size:32px;')
+      console.log(holeData)
+      setGameObj(gameObj => [...gameObj, holeData])
+    }
+    
+    console.table(gameObj)
+    
+    return game
   }
 
-  function handleScoreInput(e) {
-    return e
-  }
 
+  // set up game
   useEffect(() => {
     const setGameLength = () => {
       let length
@@ -37,11 +74,17 @@ export default function Course({ course, courseType } : Props): JSX.Element {
       if(courseType === "nine") {
         length = 9
       }
-      console.log()
+
       setHoles(Array.from(Array(length)).map((_, i) => i + 1))      
     }
 
+
+    const getGameData = () => {
+      console.log('%c Game state', 'color: green; font-size: 22px')
+    }
+
     setGameLength()
+    getGameData()
   }, [courseType])
   
 
@@ -54,15 +97,19 @@ export default function Course({ course, courseType } : Props): JSX.Element {
           <div key={hole} className={styles.gameItem}>
             <p><strong>Hole: </strong> {hole}</p>
             <div className={styles.gameItemInputs}>
-              <UserInput
+              <GameInput
                 type="number"
                 placeHolder="Par"
-                handleInput={handleParInput}
+                handleInput={handleInput}
+                hole={hole}
+                source="Par"
               />
-              <UserInput
+              <GameInput
                 type="number"
                 placeHolder="Score"
-                handleInput={handleScoreInput}
+                handleInput={handleInput}
+                hole={hole}
+                source="Score"
               />
             </div>
           </div>

@@ -4,7 +4,7 @@ import Welcome from '../../pages/welcome'
 
 describe('Welcome page', () => {
   it('renders Welcome component', () => {
-    render(<Welcome />)
+    render(<Welcome user="" />)
 
     screen.debug()
   })
