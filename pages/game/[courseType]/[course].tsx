@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { GetServerSideProps } from 'next'
 import auth0 from '../../../utils/auth0'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons/faPlusCircle';
 import SubTitle from '../../../components/SubTitle'
 import ButtonLink from '../../../components/ButtonLink'
 import GameInput from '../../../components/GameInput'
@@ -11,6 +13,7 @@ type Props = {
   course: string,
   courseType: string
 }
+
 export default function Course({ course, courseType } : Props): JSX.Element {
   const [ holes, setHoles ] = useState([])
   const [ currentHole, setCurrentHole ] = useState('')
@@ -26,20 +29,32 @@ export default function Course({ course, courseType } : Props): JSX.Element {
 
   function handleScoreInput(game) {
     const { input } = game
+
     setCurrentScore(input)
   }
 
   function storeGameData() {
+
     const newHole = {
       hole: currentHole,
       par: currentPar,
       score: currentScore
     }
 
-    setGameObj(gameOb => [...gameObj, newHole])  
-   
+
+    // replace value if already exists
+    const removeOldHole = gameObj.filter((obj) => {
+      if(obj.hole !== currentHole) {
+        return obj
+      }
+    })
+    
+    setGameObj([...removeOldHole, newHole])
   }
- 
+
+  function saveGameState() {
+    localStorage.setItem("holes", JSON.stringify(gameObj))
+  }
 
 
   // set up game
@@ -62,16 +77,18 @@ export default function Course({ course, courseType } : Props): JSX.Element {
       storeGameData()
     }
 
-    // todo: figure out how to store latest game object into local storage
-    setGameLength()
-  }, [courseType, currentScore, gameObj])
-  
 
+    // save course name
+    localStorage.setItem("course", course)
+    localStorage.setItem("courseType", courseType)
+    setGameLength()
+  }, [courseType, currentScore, course])
+  
   return (
     <div className={styles.container}>
       <SubTitle title={`Course: ${course}`} />
       <SubTitle title={`Holes: ${courseType}`} />
-      {currentHole}
+      <p><small>Click the plus button to save data for each hole.</small></p>
       <div className={styles.game}>
         {holes.map((hole) => (
           <div key={hole} className={styles.gameItem}>
@@ -91,6 +108,8 @@ export default function Course({ course, courseType } : Props): JSX.Element {
                 hole={hole}
                 source="Score"
               />
+   
+              <FontAwesomeIcon type="button" className={styles.saveGameButton}icon={faPlusCircle} onClick={saveGameState}/>
             </div>
           </div>
         ))}

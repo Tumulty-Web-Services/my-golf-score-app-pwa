@@ -39,19 +39,24 @@ function MyApp({ Component, pageProps }: AppProps) {
           @media (min-width: 768px) {
             #golf-journal {
               max-width: 720px;
+              margin-left: auto;
+              margin-right: auto;
             }
           }
 
           @media ((min-width: 992px)) {
             #golf-journal {
               max-width: 960px;
+              margin-left: auto;
+              margin-right: auto;
             }
           }
 
           @media (min-width: 1200px) {
             #golf-journal {
               max-width: 700px;
-              margin-top: 4%;
+              margin-left: auto;
+              margin-right: auto;
             }
           }
         `}</style>

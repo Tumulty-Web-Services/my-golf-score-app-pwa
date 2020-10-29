@@ -29,8 +29,10 @@
 }
 
 .gameItemInputs > input {
-  min-width: 75px;
-  max-width: 75px;  
+  -webkit-appearance: none;
+  max-width: 64px;
+  min-width: 64px;
+  width: 64px;
   margin-bottom: 1em;
   text-align: center;
   font-weight: bold;
@@ -50,6 +52,22 @@
 .gameItemInputs {
   display: inline-flex;
   flex-direction: row;
+}
+
+.saveGameButton {
+  font-size: 1.432rem;
+  margin:12px;
+  margin-right:0px;
+  color:#444;
+  transform: matrix(1, 0, 0, 1, 0, 0);
+  transition: .40s;
+  -webkit-transition: .40s;
+}
+
+.saveGameButton:hover {
+  cursor: pointer;
+  transform: matrix(1.2, 0, 0, 1.2, 0, 0);
+  color:#F0C756;
 }
 
 @media (min-width: 1200px) {
@@ -75,11 +93,14 @@
     margin-bottom: 8px;
   }
   .gameItemInputs > input {
-    min-width: 60px;
-    max-width: 60px;
+    -webkit-appearance: none;
+    max-width: 64px;
+    min-width: 64px;
+    width: 64px;
     text-align:center;
     display: inline-block
   }
+  
 
   .gameItemInputs > input:first-child {
     margin-right: 1em;

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { GetServerSideProps } from 'next'
 import auth0 from '../../utils/auth0'
 import ButtonLink from '../../components/ButtonLink'
@@ -21,6 +21,13 @@ export default function Welcome({ user }: Props): JSX.Element {
       itemThree: items.date
     }
   })
+
+    // set up game
+    useEffect(() => {
+      // store user id in storage
+      localStorage.setItem("user", JSON.stringify(user.nickname))
+
+    }, [user])
 
   return (
     <div>
@@ -67,7 +74,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
       return {
         props: {
-          user: '',
+          user: session.user,
           authed: false,
         },
       }
@@ -82,7 +89,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   return {
     props: {
-      user: '',
+      user: session.user,
       authed: false,
     },
   }

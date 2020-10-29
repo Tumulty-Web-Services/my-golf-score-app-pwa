@@ -1,20 +1,50 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { GetServerSideProps } from 'next'
 import auth0 from '../../utils/auth0'
-import ButtonLink from '../../components/ButtonLink'
 import SubTitle from '../../components/SubTitle'
 import FlexTable from '../../components/FlexTable'
 import styles from '../../styles/FinishGame.module.css'
-import { finishedCourse } from '../../utils/toggleData'
+import btnStyles from '../../styles/Button.module.css'
 
 export default function FinishGame(): JSX.Element {
-  const formatTableItems = finishedCourse.map((items) => {
+  const [finalGame, setFinalGame ] = useState([])
+  const [gameStats, setGameStats] = useState([])
+
+  const formatTableItems = gameStats.map((items) => {
     return {
       itemOne: items.hole,
       itemTwo: items.par,
       itemThree: items.score,
     }
   })
+
+
+  function storeGameInCloud() {
+    console.log(finalGame)
+  }
+
+  // set up game
+  useEffect(() => {
+    // store user id in storage
+    const getUser = localStorage.getItem("user");
+    const getCourse = localStorage.getItem("course")
+    const getCourseType = localStorage.getItem("courseType")
+    const getHoles = localStorage.getItem("holes")
+
+    const finalGameData: any = {
+      nickname: getUser,
+      game: {
+        course: getCourse,
+        courseType: getCourseType,
+        date: new Date(),
+        holes: JSON.parse(getHoles)
+      }      
+    }
+
+    setFinalGame(finalGameData)
+    setGameStats([...JSON.parse(getHoles)])
+
+  }, [])
 
   return (
     <div className={styles.container}>
@@ -26,7 +56,12 @@ export default function FinishGame(): JSX.Element {
          <FlexTable tableItems={formatTableItems} />
        </div>             
       <div className={styles.buttonContainer}>
-        <ButtonLink label="Finish Course" link="/welcome" />
+        <button
+          type="butotn"
+          onClick={storeGameInCloud}
+          className={`${btnStyles.button} stories-btn`}>
+            Finish Course          
+        </button>
       </div>
     </div>
   )
