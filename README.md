@@ -6,14 +6,16 @@ The goal of this application is to replace the traditional pencil and paper base
 
 #### TODO:
 
-1. Refactor Replay Game Page to use user generated data & use elastic search
-2. Clean up UI & UX for the game play
-3. Under replay course game render the par for all the users (maybe make a second game page)
-4. Test mobile and offline capabilities
-5. Launch to vercel
-6. Add domain https://app.golfjournal.io to hosting
-7. Add section for contributions to docs
-8. Research & Publish PWA
+1. Impelment the queued save to cloud feature
+2. Refactor Replay Game Page to use user generated data & use elastic search
+3. Clean up UI & UX for the game play
+4. Under replay course game render the par for all the users (maybe make a second game page)
+5. Test mobile and offline capabilities
+6. Launch to vercel
+7. Add domain https://app.golfjournal.io to hosting
+8. Add section for contributions to docs
+9. Research & Publish PWA
+
 
 ## Build status
 
