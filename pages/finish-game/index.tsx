@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 import { GetServerSideProps } from 'next'
 import auth0 from '../../utils/auth0'
 import SubTitle from '../../components/SubTitle'
 import FlexTable from '../../components/FlexTable'
 import styles from '../../styles/FinishGame.module.css'
 import btnStyles from '../../styles/Button.module.css'
+import { postFetcher } from '../../utils/helpers'
 
 export default function FinishGame(): JSX.Element {
+  const router = useRouter()
   const [finalGame, setFinalGame] = useState([])
   const [gameStats, setGameStats] = useState([])
+  const [finalGameScore, setFinalGameScore] = useState(0)
+  const [course, setCourse] = useState('')
 
   const formatTableItems = gameStats.map((items) => {
     return {
@@ -18,8 +23,34 @@ export default function FinishGame(): JSX.Element {
     }
   })
 
-  function storeGameInCloud() {
-    console.warn('%c todo: integrate mongodb', 'color: orange; font-size:22px;')
+  function calculateFinalScore(scores) {
+    let results = 0
+    const extractedScores = scores.map((hole) => hole.score)
+
+    extractedScores.forEach((score) => {
+      const sc = parseInt(score)
+      results += sc
+    })
+
+    setFinalGameScore(results)
+    return results
+  }
+
+  async function storeGameInCloud() {
+    const saveFinishedGame = await postFetcher(
+      '/api/save-game',
+      JSON.stringify({ finalGame })
+    )
+
+    if (saveFinishedGame.status === 201) {
+      router.push('/welcome')
+    } else {
+      console.error(saveFinishedGame)
+      const message = `
+        There was an issue please email support@golfjournal.io
+      `
+      alert(message)
+    }
   }
 
   // set up game
@@ -29,6 +60,7 @@ export default function FinishGame(): JSX.Element {
     const getCourse = localStorage.getItem('course')
     const getCourseType = localStorage.getItem('courseType')
     const getHoles = localStorage.getItem('holes')
+    const finalScore = calculateFinalScore(JSON.parse(getHoles))
 
     const finalGameData: any = {
       nickname: getUser,
@@ -36,17 +68,21 @@ export default function FinishGame(): JSX.Element {
         course: getCourse,
         courseType: getCourseType,
         date: new Date(),
+        finalScore: finalScore,
         holes: JSON.parse(getHoles),
       },
     }
 
+    setCourse(getCourse)
+    calculateFinalScore(JSON.parse(getHoles))
     setFinalGame(finalGameData)
     setGameStats([...JSON.parse(getHoles)])
   }, [])
 
   return (
     <div className={styles.container}>
-      <SubTitle title="Your Score: 116" />
+      <SubTitle title={course} />
+      <SubTitle title={`Score: ${finalGameScore.toString()}`} />
       <div className={styles.tableTitle}>
         <p>
           <strong>Score | Par</strong>

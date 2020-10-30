@@ -4,19 +4,24 @@ import auth0 from '../../utils/auth0'
 import ButtonLink from '../../components/ButtonLink'
 import SubTitle from '../../components/SubTitle'
 import FlexTable from '../../components/FlexTable'
-import { yourCoursesData } from '../../utils/toggleData'
+import { postFetcher } from '../../utils/helpers'
 
-type Props = {
-  user: {
-    nickname: string
-  }
+type CourseInfo = {
+  score: string
+  date: string
+  course: string
 }
 
-export default function Welcome({ user }: Props): JSX.Element {
-  if (user) {
-    console.warn('well grab your data based on user id')
-  }
-  const formatTableItems = yourCoursesData.map((items) => {
+type Props = {
+  user: string
+  courseInformation: CourseInfo[]
+}
+
+export default function Welcome({
+  user,
+  courseInformation,
+}: Props): JSX.Element {
+  const formatTableItems = courseInformation.map((items) => {
     return {
       itemOne: items.course,
       itemTwo: items.score,
@@ -27,7 +32,7 @@ export default function Welcome({ user }: Props): JSX.Element {
   // set up game
   useEffect(() => {
     // store user id in storage
-    localStorage.setItem('user', JSON.stringify(user.nickname))
+    localStorage.setItem('user', JSON.stringify(user))
   }, [user])
 
   return (
@@ -75,15 +80,24 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
       return {
         props: {
-          user: session.user,
+          user: session.user.nickname,
           authed: false,
+          courseInformation: [],
         },
       }
     }
+
+    // get the course Information
+    const getCourseInformation = await postFetcher(
+      `${process.env.BASE_URL}/api/get-user-course-history`,
+      JSON.stringify({ nickname: session.user.nickname })
+    )
+
     return {
       props: {
-        user: session.user,
+        user: session.user.nickname,
         authed: true,
+        courseInformation: getCourseInformation.response,
       },
     }
   }
@@ -92,6 +106,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     props: {
       user: null,
       authed: false,
+      courseInformation: [],
     },
   }
 }

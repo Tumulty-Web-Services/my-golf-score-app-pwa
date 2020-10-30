@@ -9,10 +9,10 @@ type Props = {
 export default function FlexTable({ tableItems }: Props): JSX.Element {
   return (
     <>
-      {tableItems.map((item) => (
+      {tableItems.map((item, index) => (
         <div
           data-testid="flex-table"
-          key={item.itemOne}
+          key={`${item.itemOne}-${item.itemTwo}-${index}`}
           className={`${styles.flexTable} stories-flexTable`}
         >
           <div>{item.itemOne}</div>

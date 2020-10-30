@@ -50,3 +50,16 @@ export type YourCoures = {
   course: string
   date: string
 }
+
+export type GameStats = {
+  course: string
+  courseType: string
+  date: string
+  holes: string
+}
+
+export type FinishedGame = {
+  nickname: string
+  email: string
+  game: GameStats[]
+}
