@@ -15,7 +15,7 @@ export default function FlexTable({ tableItems }: Props): JSX.Element {
           key={`${item.itemOne}-${item.itemTwo}-${index}`}
           className={`${styles.flexTable} stories-flexTable`}
         >
-          <div>{item.itemOne}</div>
+          <div className={`${styles.capitalize} stories-capitalize`}>{item.itemOne}</div>
           {item.itemThree ? (
             <div>
               {item.itemTwo} | {item.itemThree}

@@ -4,7 +4,8 @@ import auth0 from '../../utils/auth0'
 import ButtonLink from '../../components/ButtonLink'
 import SubTitle from '../../components/SubTitle'
 import FlexTable from '../../components/FlexTable'
-import { postFetcher } from '../../utils/helpers'
+import styles from '../../styles/FinishGame.module.css'
+import { postFetcher, formatDate } from '../../utils/helpers'
 
 type CourseInfo = {
   score: string
@@ -25,21 +26,35 @@ export default function Welcome({
     return {
       itemOne: items.course,
       itemTwo: items.score,
-      itemThree: items.date,
+      itemThree: formatDate(items.gameDate),
     }
   })
 
   // set up game
   useEffect(() => {
-    // store user id in storage
-    localStorage.setItem('user', JSON.stringify(user))
+    // todo: push anything into local storage into database
+    // todo: clear local storage data except user id.
+
+    const currentUser = localStorage.getItem('user')
+
+    if(!currentUser) {
+      localStorage.setItem('user', JSON.stringify(user))
+    }
   }, [user])
 
   return (
     <div>
       <div className="card-container">
         <SubTitle title="Course History" />
-        <FlexTable tableItems={formatTableItems} />
+        <div className={styles.tableTitle}>
+        <p>
+          <strong>Score | Date</strong>
+        </p>
+      </div>
+      <div className={styles.flexContainer}>
+        {(formatTableItems.length > 0 ) && <FlexTable tableItems={formatTableItems} />}
+        {(formatTableItems.length <= 0) && <h3>Select <u>New Course</u> to start your first game</h3>}
+      </div>        
       </div>
       <div className="button-container">
         <ButtonLink label="New Course" link="/course-information" />
@@ -54,6 +69,11 @@ export default function Welcome({
           margin-left: auto;
           margin-right: auto;
           max-width: 500px;
+        }
+
+        .card-container > h3 {
+          text-align: center;
+          margin-top: 2em;
         }
 
         .button-container {

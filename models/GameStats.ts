@@ -6,6 +6,7 @@ const GameStatsSchema: Schema = new Schema({
   courseType: { type: String, required: true },
   userId: { type: Schema.Types.ObjectId, ref: 'users' },
   finalScore: { type: String, required: true },
+  gameDate: { type: Date, required: true, default: Date.now },
   holes: [
     {
       score: { type: String, required: true },
@@ -20,6 +21,7 @@ export interface GameStatsInterface extends Document {
   courseType: string
   userId: UsersInterface['_id']
   finalScore: string
+  gameDate: Date
   holes: [
     {
       score: string

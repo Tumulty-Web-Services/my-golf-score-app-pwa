@@ -39,14 +39,19 @@
   color: #bf793b;
 }
 
+.capitalize, .stories-capitalize {
+  text-transform: capitalize
+}
+
 @media (min-width: 1200px) {
   .flexTable {
     flex-direction: row;
     text-align: left;
-    max-width: 325px;
-    margin-left: 15%;
-    margin-right: 15%;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
     padding-bottom: 1em;
     font-size: 1rem;
+    justify-content: space-between;
   }
 }

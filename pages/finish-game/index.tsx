@@ -67,7 +67,7 @@ export default function FinishGame(): JSX.Element {
       game: {
         course: getCourse,
         courseType: getCourseType,
-        date: new Date(),
+        gameDate: new Date(),
         finalScore: finalScore,
         holes: JSON.parse(getHoles),
       },

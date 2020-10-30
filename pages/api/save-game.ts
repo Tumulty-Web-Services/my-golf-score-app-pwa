@@ -8,7 +8,7 @@ export default async function login(req: NextApiRequest, res: NextApiResponse) {
     await dbConnect()
     try {
       const results = JSON.parse(req.body)
-
+      console.log(results.finalGame)
       // update user profile with the id for the game
       const findUser: UsersInterface = await Users.findOne({
         nickname: results.finalGame.nickname.replace(/"/g, ''),
@@ -19,13 +19,16 @@ export default async function login(req: NextApiRequest, res: NextApiResponse) {
           ...results.finalGame.game,
           userId: findUser._id,
         }
+        
 
         const saveGame: GameStatsInterface = await new GameStats(
           newGameData
         ).save()
 
         // update the user object with the new game id
-        await findUser.games.push(saveGame._id)
+        await findUser.games.push({gameId: saveGame._id})
+        await findUser.save()
+
         res
           .status(201)
           .json({

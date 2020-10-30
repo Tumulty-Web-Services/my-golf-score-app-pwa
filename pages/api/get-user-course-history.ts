@@ -23,7 +23,7 @@ export default async function login(req: NextApiRequest, res: NextApiResponse) {
         const response = findGameStats.map((game) => {
           return {
             course: game.course,
-            date: '10/10/20202',
+            gameDate: game.gameDate,
             score: game.finalScore,
           }
         })
