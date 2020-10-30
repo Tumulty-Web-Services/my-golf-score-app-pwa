@@ -13,6 +13,7 @@ The goal of this application is to replace the traditional pencil and paper base
 5. Launch to vercel
 6. Add domain https://app.golfjournal.io to hosting
 7. Add section for contributions to docs
+8. Research & Publish PWA
 
 ## Build status
 
