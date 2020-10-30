@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             padding-right: 15px;
             padding-left: 15px;
             padding-bottom: 20px;
-            margin:20px;
+            margin: 20px;
             border-radius: 20px;
             box-shadow: 0 8px 20px 0 rgb(0 0 0 / 8%);
             background-color: rgba(255, 255, 255, 0.33);

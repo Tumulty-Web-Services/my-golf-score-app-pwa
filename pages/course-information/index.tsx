@@ -10,8 +10,8 @@ import { urlify } from '../../utils/helpers'
 import styles from '../../styles/CourseInfo.module.css'
 
 export default function CourseInformation(): JSX.Element {
-  const [ course, setCourse ] = useState('')
-  const [ courseType, setCourseType ] = useState('nine')
+  const [course, setCourse] = useState('')
+  const [courseType, setCourseType] = useState('nine')
 
   function handleInput(e) {
     setCourse(urlify(e))
@@ -20,16 +20,26 @@ export default function CourseInformation(): JSX.Element {
   return (
     <div className={styles.container}>
       <SubTitle title="Course Information" />
-      <TextInput type="text" placeHolder="Enter course name" handleInput={handleInput} />
+      <TextInput
+        type="text"
+        placeHolder="Enter course name"
+        handleInput={handleInput}
+      />
       <div className={styles.radioInput}>
         <SubTitle title="Course Type" />
-        <RadioToggle toggleValues={courseTypeToggles} handleInput={setCourseType} />
+        <RadioToggle
+          toggleValues={courseTypeToggles}
+          handleInput={setCourseType}
+        />
       </div>
       <div className={styles.buttonContainer}>
-        <ButtonLink label="Start Course" link={`/game/${courseType}/${course}`} />
+        <ButtonLink
+          label="Start Course"
+          link={`/game/${courseType}/${course}`}
+        />
       </div>
     </div>
-  )  
+  )
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {

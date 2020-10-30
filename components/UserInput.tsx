@@ -7,7 +7,11 @@ type Props = {
   type: string
 }
 
-export default function UserInput({ handleInput, placeHolder, type }: Props): JSX.Element {
+export default function UserInput({
+  handleInput,
+  placeHolder,
+  type,
+}: Props): JSX.Element {
   const [value, setValue] = useState('')
 
   function onInputChange(e) {

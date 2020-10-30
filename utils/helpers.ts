@@ -55,4 +55,5 @@ export function checkForGoodScore(numPar: number, numScore: number) {
 
 export const urlify = (link: string) => link.toLowerCase().replace(/\s/g, '-')
 
-export const makeTitle = string => string.replace(/-|\s/g, ' ').replace(/\+/g, ' ')
+export const makeTitle = (string) =>
+  string.replace(/-|\s/g, ' ').replace(/\+/g, ' ')

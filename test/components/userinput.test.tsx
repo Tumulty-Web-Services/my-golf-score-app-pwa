@@ -6,7 +6,13 @@ function handleTestInput(e) {
   return e
 }
 const setup = () => {
-  const utils = render(<UserInput type="text" handleInput={handleTestInput} placeHolder="Enter course name" />)
+  const utils = render(
+    <UserInput
+      type="text"
+      handleInput={handleTestInput}
+      placeHolder="Enter course name"
+    />
+  )
   const input = utils.getByLabelText('user-input')
   return {
     input,
@@ -16,7 +22,13 @@ const setup = () => {
 
 describe('UserInput component', () => {
   it('renders UserInput component', () => {
-    render(<UserInput type="text" handleInput={handleTestInput} placeHolder="Enter course name" />)
+    render(
+      <UserInput
+        type="text"
+        handleInput={handleTestInput}
+        placeHolder="Enter course name"
+      />
+    )
 
     screen.debug()
   })

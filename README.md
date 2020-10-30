@@ -6,10 +6,9 @@ The goal of this application is to replace the traditional pencil and paper base
 
 #### TODO:
 
-1. Build out the game object in local storage (note. the score input will do the localStorage saving based on useState game object) 🚧
 2. Set up MongoDB
-    * User Profile Model: (id, name, email, games: Games Model)
-    * Game Model: (id, userId, course name, course type, date, holes: [hole, par, score])
+   - User Profile Model: (id, name, email, games: Games Model)
+   - Game Model: (id, userId, course name, course type, date, holes: [hole, par, score])
 3. Refactor Finish Game Page to use user generated data
 4. Refactor Replay Game Page to use user generated data & use elastic search
 5. Test mobile and offline capabilities

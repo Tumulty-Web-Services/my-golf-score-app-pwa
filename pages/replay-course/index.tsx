@@ -10,7 +10,7 @@ import { urlify } from '../../utils/helpers'
 import styles from '../../styles/ReplayCourse.module.css'
 
 export default function ReplayCourse(): JSX.Element {
-  const [ course, setCourse ] = useState(urlify('Rutgers University Course'))
+  const [course, setCourse] = useState(urlify('Rutgers University Course'))
 
   function handleTextInput(e) {
     setCourse(urlify(e))
@@ -32,24 +32,24 @@ export default function ReplayCourse(): JSX.Element {
   return (
     <div>
       <div className={styles.container}>
-          <SubTitle title="Select Course" />
-          <div className={styles.textContainer}>
-            <TextInput
-              type="text"
-              handleInput={handleTextInput}
-              placeHolder="Search for other course"
-            />
-          </div>
-          <div className={styles.inputContainer}>
-            <RadioTable
-              handleInput={handleRadioInput}
-              toggleValues={formatTableData}
-            />
-          </div>
+        <SubTitle title="Select Course" />
+        <div className={styles.textContainer}>
+          <TextInput
+            type="text"
+            handleInput={handleTextInput}
+            placeHolder="Search for other course"
+          />
+        </div>
+        <div className={styles.inputContainer}>
+          <RadioTable
+            handleInput={handleRadioInput}
+            toggleValues={formatTableData}
+          />
+        </div>
       </div>
       <div className={styles.buttonContainer}>
         <ButtonLink label="Start Course" link={`/game/eighteen/${course}`} />
-      </div>      
+      </div>
     </div>
   )
 }

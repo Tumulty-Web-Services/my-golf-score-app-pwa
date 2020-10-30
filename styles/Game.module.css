@@ -1,4 +1,4 @@
-.container { 
+.container {
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -6,7 +6,6 @@
   text-align: center;
   padding-left: 7%;
   padding-right: 7%;
-
 }
 
 .buttonContainer {
@@ -17,7 +16,6 @@
   margin-right: auto;
   display: block;
 }
-
 
 .game {
   display: flex;
@@ -56,18 +54,18 @@
 
 .saveGameButton {
   font-size: 1.432rem;
-  margin:12px;
-  margin-right:0px;
-  color:#444;
+  margin: 12px;
+  margin-right: 0px;
+  color: #444;
   transform: matrix(1, 0, 0, 1, 0, 0);
-  transition: .40s;
-  -webkit-transition: .40s;
+  transition: 0.4s;
+  -webkit-transition: 0.4s;
 }
 
 .saveGameButton:hover {
   cursor: pointer;
   transform: matrix(1.2, 0, 0, 1.2, 0, 0);
-  color:#F0C756;
+  color: #f0c756;
 }
 
 @media (min-width: 1200px) {
@@ -86,7 +84,7 @@
     justify-content: space-between;
     margin-bottom: 20px;
     padding: 10px;
-    border-bottom: .3px solid #444;
+    border-bottom: 0.3px solid #444;
   }
   .gameItemInputs {
     margin-top: 8px;
@@ -97,14 +95,11 @@
     max-width: 64px;
     min-width: 64px;
     width: 64px;
-    text-align:center;
-    display: inline-block
+    text-align: center;
+    display: inline-block;
   }
-  
 
   .gameItemInputs > input:first-child {
     margin-right: 1em;
   }
-
-  
 }

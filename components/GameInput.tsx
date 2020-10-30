@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styles from '../styles/UserInput.module.css'
 
 type Props = {
@@ -9,14 +9,20 @@ type Props = {
   source: string
 }
 
-export default function GameInput({ handleInput, placeHolder, type, hole, source }: Props): JSX.Element {
+export default function GameInput({
+  handleInput,
+  placeHolder,
+  type,
+  hole,
+  source,
+}: Props): JSX.Element {
   function onInputChange(e) {
     e.preventDefault()
-   
+
     handleInput({
-      source:e.currentTarget.getAttribute("data-source"),
-      hole: e.currentTarget.getAttribute("data-hole"),
-      input: e.currentTarget.value
+      source: e.currentTarget.getAttribute('data-source'),
+      hole: e.currentTarget.getAttribute('data-hole'),
+      input: e.currentTarget.value,
     })
   }
 
@@ -29,7 +35,7 @@ export default function GameInput({ handleInput, placeHolder, type, hole, source
         onChange={onInputChange}
         data-hole={hole}
         data-source={source}
-        placeholder={placeHolder}        
+        placeholder={placeHolder}
       />
     </>
   )

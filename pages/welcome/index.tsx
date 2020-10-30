@@ -7,7 +7,9 @@ import FlexTable from '../../components/FlexTable'
 import { yourCoursesData } from '../../utils/toggleData'
 
 type Props = {
-  user: string
+  user: {
+    nickname: string
+  }
 }
 
 export default function Welcome({ user }: Props): JSX.Element {
@@ -18,16 +20,15 @@ export default function Welcome({ user }: Props): JSX.Element {
     return {
       itemOne: items.course,
       itemTwo: items.score,
-      itemThree: items.date
+      itemThree: items.date,
     }
   })
 
-    // set up game
-    useEffect(() => {
-      // store user id in storage
-      localStorage.setItem("user", JSON.stringify(user.nickname))
-
-    }, [user])
+  // set up game
+  useEffect(() => {
+    // store user id in storage
+    localStorage.setItem('user', JSON.stringify(user.nickname))
+  }, [user])
 
   return (
     <div>
@@ -89,7 +90,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   return {
     props: {
-      user: session.user,
+      user: null,
       authed: false,
     },
   }
