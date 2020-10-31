@@ -128,6 +128,7 @@ export default function Course({ course, courseType }: Props): JSX.Element {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { req, res, params } = context
+  const course = params.course
 
   if (typeof window === 'undefined') {
     const session = await auth0.getSession(req)
@@ -141,7 +142,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         props: {
           user: '',
           authed: false,
-          course: makeTitle(params.course),
+          course: makeTitle(course),
           courseType: params.courseType,
         },
       }
@@ -151,7 +152,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         user: session.user,
         authed: true,
         score: '',
-        course: makeTitle(params.course),
+        course: makeTitle(course),
         courseType: params.courseType,
       },
     }

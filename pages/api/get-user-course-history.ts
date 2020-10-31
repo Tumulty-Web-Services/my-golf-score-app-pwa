@@ -25,6 +25,7 @@ export default async function login(req: NextApiRequest, res: NextApiResponse) {
             course: game.course,
             gameDate: game.gameDate,
             score: game.finalScore,
+            holes: game.holes.length
           }
         })
 

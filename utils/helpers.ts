@@ -1,5 +1,5 @@
 export const urlify = (link: string) => link.toLowerCase().replace(/\s/g, '-')
-export const makeTitle = (link: string) =>
+export const makeTitle = (link: any) =>
   link.replace(/-|\s/g, ' ').replace(/\+/g, ' ')
 
 export const postFetcher = async (url: string, data: any) => {

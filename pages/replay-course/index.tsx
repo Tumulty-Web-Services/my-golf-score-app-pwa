@@ -5,11 +5,21 @@ import ButtonLink from '../../components/ButtonLink'
 import SubTitle from '../../components/SubTitle'
 import TextInput from '../../components/UserInput'
 import RadioTable from '../../components/RadioTable'
-import { yourCoursesData } from '../../utils/toggleData'
-import { urlify } from '../../utils/helpers'
+import { urlify, postFetcher } from '../../utils/helpers'
 import styles from '../../styles/ReplayCourse.module.css'
 
-export default function ReplayCourse(): JSX.Element {
+type CourseInfo = {
+  score: string
+  date: string
+  course: string
+}
+
+type Props = {
+  courseInformation: CourseInfo[],
+  courseType: string
+}
+
+export default function ReplayCourse({ courseInformation, courseType }: Props): JSX.Element {
   const [course, setCourse] = useState(urlify('Rutgers University Course'))
 
   function handleTextInput(e) {
@@ -20,9 +30,9 @@ export default function ReplayCourse(): JSX.Element {
     setCourse(urlify(e))
   }
 
-  const formatTableData = yourCoursesData.map((item) => {
+  const formatTableData = courseInformation.map((item, index) => {
     return {
-      id: item.id,
+      id: `${item.coures}-${item.gameDate}-${index}`,
       text: item.course,
       label: item.course,
       name: 'course',
@@ -48,7 +58,7 @@ export default function ReplayCourse(): JSX.Element {
         </div>
       </div>
       <div className={styles.buttonContainer}>
-        <ButtonLink label="Start Course" link={`/game/eighteen/${course}`} />
+        <ButtonLink label="Start Course" link={`/replay-game/${courseType}/${course}`} />
       </div>
     </div>
   )
@@ -69,13 +79,33 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         props: {
           user: '',
           authed: false,
+          courseInformation: [],
+          courseType: 'eighteen'
         },
       }
     }
+        // get the course Information
+    const getCourseInformation = await postFetcher(
+      `${process.env.BASE_URL}/api/get-user-course-history`,
+      JSON.stringify({ nickname: session.user.nickname })
+    )
+
+    const courseType = getCourseInformation.response.map((game) => {
+      if(game.holes <= 10) {
+        return 'nine'
+      }
+
+      if(game.holes >= 11 && game.holes <= 19) {
+        return 'eighteen'
+      }
+    })
+
     return {
       props: {
         user: session.user,
         authed: true,
+        courseInformation: getCourseInformation.response,
+        courseType: courseType
       },
     }
   }
@@ -84,6 +114,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     props: {
       user: '',
       authed: false,
+      courseInformation: [],
+      courseType: 'eighteen'
     },
   }
 }
