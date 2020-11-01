@@ -1,10 +1,15 @@
 import type { AppProps } from 'next/app'
+import Head from 'next/head'
 import Header from '../components/Header'
 import '../styles/globals.css'
+import '../public/fonts.css'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
+      <Head>
+        {/* <link rel="stylesheet" href="./fonts.css" /> */}
+      </Head>
       <div id="golf-journal">
         <header>
           <Header />

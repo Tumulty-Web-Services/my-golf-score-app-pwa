@@ -15,11 +15,10 @@ type CourseInfo = {
 }
 
 type Props = {
-  courseInformation: CourseInfo[],
-  courseType: string
+  courseInformation: CourseInfo[]
 }
 
-export default function ReplayCourse({ courseInformation, courseType }: Props): JSX.Element {
+export default function ReplayCourse({ courseInformation }: Props): JSX.Element {
   const [course, setCourse] = useState(urlify('Rutgers University Course'))
 
   function handleTextInput(e) {
@@ -58,7 +57,7 @@ export default function ReplayCourse({ courseInformation, courseType }: Props): 
         </div>
       </div>
       <div className={styles.buttonContainer}>
-        <ButtonLink label="Start Course" link={`/replay-game/${courseType}/${course}`} />
+        <ButtonLink label="Start Course" link={`/replay-game/${course}`} />
       </div>
     </div>
   )
@@ -79,8 +78,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         props: {
           user: '',
           authed: false,
-          courseInformation: [],
-          courseType: 'eighteen'
+          courseInformation: []
         },
       }
     }
@@ -90,22 +88,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       JSON.stringify({ nickname: session.user.nickname })
     )
 
-    const courseType = getCourseInformation.response.map((game) => {
-      if(game.holes <= 10) {
-        return 'nine'
-      }
-
-      if(game.holes >= 11 && game.holes <= 19) {
-        return 'eighteen'
-      }
-    })
-
     return {
       props: {
         user: session.user,
         authed: true,
-        courseInformation: getCourseInformation.response,
-        courseType: courseType
+        courseInformation: getCourseInformation.response
       },
     }
   }
@@ -114,8 +101,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     props: {
       user: '',
       authed: false,
-      courseInformation: [],
-      courseType: 'eighteen'
+      courseInformation: []
     },
   }
 }

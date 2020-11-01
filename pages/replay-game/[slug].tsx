@@ -1,31 +1,26 @@
 import React, { useState, useEffect } from 'react'
 import { GetServerSideProps } from 'next'
-import auth0 from '../../../utils/auth0'
+import auth0 from '../../utils/auth0'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons/faPlusCircle'
-import SubTitle from '../../../components/SubTitle'
-import ButtonLink from '../../../components/ButtonLink'
-import GameInput from '../../../components/GameInput'
+import SubTitle from '../../components/SubTitle'
+import ButtonLink from '../../components/ButtonLink'
+import GameInput from '../../components/GameInput'
 import styles from '../../styles/Game.module.css'
-import { makeTitle } from '../../../utils/helpers'
+import { makeTitle, postFetcher } from '../../utils/helpers'
 
 type Props = {
   course: string
   courseType: string
+  courseData: {
+    hole: string
+    par: string
+  }
 }
 
-export default function ReplayCourse({ course, courseType }: Props): JSX.Element {
-  const [holes, setHoles] = useState([])
-  const [currentHole, setCurrentHole] = useState('')
-  const [currentPar, setCurrentPar] = useState('')
+export default function ReplayCourse({ course, courseType, courseData }: Props): JSX.Element {
   const [currentScore, setCurrentScore] = useState('')
   const [gameObj, setGameObj] = useState([])
-
-  function handleParInput(game) {
-    const { hole, input } = game
-    setCurrentHole(hole)
-    setCurrentPar(input)
-  }
 
   function handleScoreInput(game) {
     const { input } = game
@@ -87,24 +82,18 @@ export default function ReplayCourse({ course, courseType }: Props): JSX.Element
         <small>Click the plus button to save data for each hole.</small>
       </p>
       <div className={styles.game}>
-        {holes.map((hole) => (
-          <div key={hole} className={styles.gameItem}>
+        {courseData.map((data) => (
+          <div key={data.hole} className={styles.gameItem}>
             <p>
-              <strong>Hole: </strong> {hole}
+              <strong>Hole: </strong> {data.hole}
             </p>
             <div className={styles.gameItemInputs}>
-              <GameInput
-                type="number"
-                placeHolder="Par"
-                handleInput={handleParInput}
-                hole={hole}
-                source="Par"
-              />
+              <p className={styles.parStyle}><strong>Par: {data.par}</strong></p>
               <GameInput
                 type="number"
                 placeHolder="Score"
                 handleInput={handleScoreInput}
-                hole={hole}
+                hole={data.hole}
                 source="Score"
               />
 
@@ -127,6 +116,12 @@ export default function ReplayCourse({ course, courseType }: Props): JSX.Element
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { req, res, params } = context
+  const course = params.slug
+
+  const getTheCourseHoles = await postFetcher(`
+    ${process.env.BASE_URL}/api/get-course-holes`,
+    JSON.stringify({course: course})
+  )
 
   if (typeof window === 'undefined') {
     const session = await auth0.getSession(req)
@@ -140,16 +135,18 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         props: {
           user: '',
           authed: false,
-          course: makeTitle(params.course),
+          courseData: [],
+          course: makeTitle(course),
         },
       }
     }
+
     return {
       props: {
         user: session.user,
         authed: true,
-        score: '',
-        course: makeTitle(params.course)
+        courseData: getTheCourseHoles.courseData,
+        course: makeTitle(course)
       },
     }
   }
@@ -158,8 +155,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     props: {
       user: '',
       authed: false,
-      score: '',
-      course: ''
+      courseData: [],
+      course: makeTitle(course)
     },
   }
 }

@@ -1,0 +1,33 @@
+import { NextApiRequest, NextApiResponse } from 'next'
+import dbConnect from '../../utils/dbConnect'
+import GameStats, { GameStatsInterface } from '../../models/GameStats'
+
+export default async function login(req: NextApiRequest, res: NextApiResponse) {
+  if (req.method === 'POST') {
+    await dbConnect()
+    try {
+        const results = JSON.parse(req.body)
+        const course = results.course.replace(/"/g, '')
+        const findGameStats: GameStatsInterface = await GameStats.findOne({
+            course: course
+        })
+
+        const courseData = findGameStats.holes.map((data) => {
+            return {
+                hole: data.hole,
+                par: data.par
+            }
+        })
+
+      res
+          .status(200)
+          .json({
+            status: 200,
+            courseData
+          })
+    } catch (error) {
+      console.error(error)
+      res.status(error.status || 500).end(error.message)
+    }
+  }
+}

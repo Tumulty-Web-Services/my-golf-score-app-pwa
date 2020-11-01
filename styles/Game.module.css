@@ -68,6 +68,9 @@
   color: #f0c756;
 }
 
+.parStyle {
+  margin-right: 1em;
+}
 @media (min-width: 1200px) {
   .game {
     text-align: left;
