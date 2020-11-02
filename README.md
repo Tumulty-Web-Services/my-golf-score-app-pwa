@@ -52,7 +52,7 @@ The goal of this application is to replace the traditional pencil and paper base
 
 ## Development
 
-Run the [install process](#install) under the section **App**, open this project in you favorite code editor, create a new branch, and run `yarn dev`.
+Run the [install process](#install), open this project in you favorite code editor, create a new branch, and run `yarn dev`. Oh, and create a ```.env``` file and add mongodb and auth0 credentials.
 
 To develop a new feature for this application the developer must follow the contribution guidelines. These guidelines include create a story for the component as well as a test.
 
