@@ -1,29 +1,40 @@
 .button {
   color: #fff;
-  background: #bf793b;
+  background: #000;
   text-decoration: none;
   font-family: 'Roboto';
   text-transform: uppercase;
   font-size: 1.4rem;
   letter-spacing: 1px;
-  font-weight: 600;
-  border: 1px solid #a66933;
-  border-radius: 100px;
-  padding: 20px 50px;
+  font-weight: 600;  
+  padding: 15px;
   transition-duration: 0.2s;
   display: inline-block;
   perspective: 1000px;
   transform-origin: center bottom 0px;
   transform: matrix(1, 0, 0, 1, 0, 0);
-  min-width: 100%;
+  min-width: 80%;
   text-align: center;
+  box-shadow: 0 8px 20px 0 rgb(0 0 0 / 8%);
 }
 
-.button:active {
+.button:active, .button:hover {
   transform: matrix(0.95, 0, 0, 0.95, 0, 0);
-  background-color: #cc813f;
+  background-color: rgba(0,0,0,87%);
+  border: 2px solid #000;
 }
 
 .button:hover {
   cursor: pointer;
+}
+
+.button:after {
+  content:'';
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border: 2px solid #fff;
 }

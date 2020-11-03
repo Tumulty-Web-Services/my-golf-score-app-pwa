@@ -54,21 +54,26 @@ export default function Welcome({
       <div className={styles.flexContainer}>
         {(formatTableItems.length > 0 ) && <FlexTable tableItems={formatTableItems} />}
         {(formatTableItems.length <= 0) && <h3>Select <u>New Course</u> to start your first game</h3>}
-      </div>        
       </div>
       <div className="button-container">
         <ButtonLink label="New Course" link="/course-information" />
       </div>
       <div className="button-container">
         <ButtonLink label="Replay Course" link="/replay-course" />
+      </div>        
       </div>
+
       <style jsx>{`
         .card-container {
-          margin-bottom: 3em;
-          display: block;
-          margin-left: auto;
-          margin-right: auto;
-          max-width: 500px;
+            margin-top: 10%;
+            margin-bottom: 10%;   
+            margin-left: auto;
+            margin-right: auto;
+            padding: 1em;        
+            box-shadow: 0 8px 20px 0 rgb(0 0 0 / 8%);
+            border: 3.5px solid #4A5915;
+            border-radius: 2.5px;
+            text-align: center;
         }
 
         .card-container > h3 {

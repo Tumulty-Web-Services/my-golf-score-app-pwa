@@ -15,21 +15,50 @@ export default function Login() {
       </Head>
       <div>
         <div className="button-container">
+          <p><strong> Welcome to golf journal!</strong></p>
+          <p>Please login to retrieve your golf records and start a new game.</p>
           <ButtonLink label="LOGIN" link="/api/login" />
         </div>
         <style jsx>{`
-          div {
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            min-height: 80vh;
-            display: flex;
-            align-items: center;
-          }
 
           .button-container {
-            min-width: 320px;
+            margin-top: 30%;
+            margin-bottom: 30%;   
+            margin-left: auto;
+            margin-right: auto;
+            padding: 1em;        
+            box-shadow: 0 8px 20px 0 rgb(0 0 0 / 8%);
+            border: 3.5px solid #4A5915;
+            border-radius: 2.5px;
+            text-align: center;
           }
+
+          .button-container p strong {
+            font-size: 1.3rem;  
+            padding-top: 1em;
+          }
+
+          
+          .button-container p:nth-child(2) {
+              font-size: 1.2rem;
+              margin-bottom: 1.5em;
+              margin-left: auto;
+              margin-right: auto;
+              width: 80%;
+            }
+
+          @media (min-width: 756px) {
+            .button-container {
+              max-width:500px;
+            }
+
+            .button-container p strong {
+              font-size: 1.8rem; 
+            }
+
+          }
+
+
         `}</style>
       </div>
     </>
