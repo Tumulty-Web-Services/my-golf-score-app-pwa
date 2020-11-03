@@ -7,9 +7,7 @@ import '../styles/fonts.css'
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-      <Head>
-        {/* <link rel="stylesheet" href="./fonts.css" /> */}
-      </Head>      
+      
         <Header />
         <div id="golf-journal">
         <main>
@@ -19,11 +17,8 @@ function MyApp({ Component, pageProps }: AppProps) {
           #golf-journal {
             display: flex;
             flex-direction: column;
-            margin: 0;
-            padding-right: 15px;
-            padding-left: 15px;
+            margin: 10px;
             padding-bottom: 20px;
-            margin: 20px;
             border-radius: 20px;            
           }
 
@@ -54,6 +49,8 @@ function MyApp({ Component, pageProps }: AppProps) {
               max-width: 700px;
               margin-left: auto;
               margin-right: auto;
+              padding-right: 15px;
+              padding-left: 15px;
             }
           }
         `}</style>
