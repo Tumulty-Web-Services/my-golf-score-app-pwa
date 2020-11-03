@@ -6,13 +6,13 @@ The goal of this application is to replace the traditional pencil and paper base
 
 #### TODO:
 
-1. Completely overall the design -- use white, forest green, and orange theme.
-2. Debug and wonky functionality
+1. Completely overall the design and build out footer
+2. Debug any janky functionality
+3. Launch to vercel
 4. Test mobile and offline capabilities -- Impelment the queued push to the cloud feature
-5. Launch to vercel
-6. Add domain https://app.golfjournal.io to hosting
-7. Add section for contributions to docs
-8. Research how-to & publish PWA
+5. Add domain https://app.golfjournal.io to hosting
+6. Add section for contributions to docs
+7. Research how-to & publish PWA
 
 
 ## Build status
