@@ -1,9 +1,14 @@
 .container {
-  max-width: 900px;
-  margin-right: auto;
+  margin-top: 20%;
+  margin-bottom: 30%;   
   margin-left: auto;
-  display: block;
+  margin-right: auto;
+  padding: 1em;        
+  box-shadow: 0 8px 20px 0 rgb(0 0 0 / 8%);
+  border: 3.5px solid #4A5915;
+  border-radius: 2.5px;
   text-align: center;
+  background: #fff;
 }
 
 .radioInput {

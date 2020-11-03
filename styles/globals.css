@@ -19,7 +19,8 @@ html {
   padding: 0;
   box-sizing: border-box;
   overflow-x: hidden;
-  font-family: 'Roboto Regular';  
+  font-family: 'Roboto Regular';
+  background: rgb(162,166,50);
 }
 
 /** Utility classes **/

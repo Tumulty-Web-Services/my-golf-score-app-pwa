@@ -74,6 +74,7 @@ export default function Welcome({
             border: 3.5px solid #4A5915;
             border-radius: 2.5px;
             text-align: center;
+            background: #fff;
         }
 
         .card-container > h3 {
