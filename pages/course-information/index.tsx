@@ -33,10 +33,15 @@ export default function CourseInformation(): JSX.Element {
         />
       </div>
       <div className={styles.buttonContainer}>
-        <ButtonLink
-          label="Start Course"
-          link={`/game/${courseType}/${course}`}
-        />
+        
+        {((courseType) && (course)) && (
+          <div className={styles.buttonFadeIn}>
+            <ButtonLink
+              label="Start Course"
+              link={`/game/${courseType}/${course}`}
+            />
+          </div>
+        )}
       </div>
     </div>
   )
