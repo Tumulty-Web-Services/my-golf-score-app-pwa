@@ -3,7 +3,7 @@ import { GetServerSideProps } from 'next'
 import auth0 from '../../utils/auth0'
 import ButtonLink from '../../components/ButtonLink'
 import SubTitle from '../../components/SubTitle'
-import TextInput from '../../components/UserInput'
+import AutoCompleteInput from '../../components/AutoCompleteInput'
 import RadioTable from '../../components/RadioTable'
 import { urlify, postFetcher } from '../../utils/helpers'
 import styles from '../../styles/ReplayCourse.module.css'
@@ -20,38 +20,45 @@ type Props = {
 
 export default function ReplayCourse({ courseInformation }: Props): JSX.Element {
   const [course, setCourse] = useState(urlify(courseInformation[0].course))
-
-  function handleTextInput(e) {
-    setCourse(urlify(e))
-  }
-
-  function handleRadioInput(e) {
-    setCourse(urlify(e))
-  }
+  const [searchTerm, setSearchTerm ] = useState('')
 
   const formatTableData = courseInformation.map((item, index) => {
     return {
-      id: `${item.coures}-${item.gameDate}-${index}`,
+      id: `${item.course}-${item.gameDate}-${index}`,
       text: item.course,
       label: item.course,
       name: 'course',
     }
   })
 
+  const formatSearchData = courseInformation.map((item) => {
+    return {
+      label: item.course
+    }
+  })
+
+  console.log('searchTerm');
+  console.log(searchTerm)
+
   return (
     <div>
       <div className={styles.container}>
         <SubTitle title="Select Course" />
         <div className={styles.textContainer}>
-          <TextInput
-            type="text"
-            handleInput={handleTextInput}
-            placeHolder="Search for other course"
+          <AutoCompleteInput
+            items={formatSearchData}
+            value={searchTerm}
+            handleInput={(term) => {
+              setCourse(urlify(term))
+              setSearchTerm(term)
+            }}
           />
         </div>
         <div className={styles.inputContainer}>
           <RadioTable
-            handleInput={handleRadioInput}
+            handleInput={(term) => {
+              setCourse(urlify(term))
+            }}
             toggleValues={formatTableData}
           />
         </div>

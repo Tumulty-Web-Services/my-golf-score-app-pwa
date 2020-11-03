@@ -6,9 +6,8 @@ The goal of this application is to replace the traditional pencil and paper base
 
 #### TODO:
 
-1. Implement auto complete for replay-course page
-2. Completely overall the design -- use white, forest green, and orange theme.
-3. Build out an add yards page
+1. Completely overall the design -- use white, forest green, and orange theme.
+2. Debug and wonky functionality
 4. Test mobile and offline capabilities -- Impelment the queued push to the cloud feature
 5. Launch to vercel
 6. Add domain https://app.golfjournal.io to hosting
