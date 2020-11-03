@@ -19,7 +19,7 @@ type Props = {
 }
 
 export default function ReplayCourse({ courseInformation }: Props): JSX.Element {
-  const [course, setCourse] = useState(urlify('Rutgers University Course'))
+  const [course, setCourse] = useState(urlify(courseInformation[0].course))
 
   function handleTextInput(e) {
     setCourse(urlify(e))

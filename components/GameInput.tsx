@@ -29,6 +29,7 @@ export default function GameInput({
   return (
     <>
       <input
+        id={`hole-${hole}`}
         type={type}
         className={`${styles.UserInput} stories-userInput`}
         aria-label="user-input"

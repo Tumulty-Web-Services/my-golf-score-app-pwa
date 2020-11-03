@@ -51,6 +51,7 @@ export default function Course({ course, courseType }: Props): JSX.Element {
   }
 
   function saveGameState() {
+    console.log('we hittin dis?')
     localStorage.setItem('holes', JSON.stringify(gameObj))
   }
 

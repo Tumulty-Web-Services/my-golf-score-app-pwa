@@ -6,8 +6,7 @@ The goal of this application is to replace the traditional pencil and paper base
 
 #### TODO:
 
-1. Finish building out replay-game page 
-2. Implement ElasticSearch for replay-course page
+1. Implement auto complete for replay-course page
 2. Completely overall the design -- use white, forest green, and orange theme.
 3. Build out an add yards page
 4. Test mobile and offline capabilities -- Impelment the queued push to the cloud feature

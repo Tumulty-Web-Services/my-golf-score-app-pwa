@@ -61,6 +61,7 @@ export default function FinishGame(): JSX.Element {
     const getCourseType = localStorage.getItem('courseType')
     const getHoles = localStorage.getItem('holes')
     const finalScore = calculateFinalScore(JSON.parse(getHoles))
+    let currentCourse
 
     const finalGameData: any = {
       nickname: getUser,
@@ -73,7 +74,13 @@ export default function FinishGame(): JSX.Element {
       },
     }
 
-    setCourse(getCourse)
+    if(getCourse.indexOf('"') > -1) {
+      currentCourse = getCourse.replace(/"/g, "")
+    } else {
+      currentCourse = getCourse;
+    }
+
+    setCourse(currentCourse)
     calculateFinalScore(JSON.parse(getHoles))
     setFinalGame(finalGameData)
     setGameStats([...JSON.parse(getHoles)])

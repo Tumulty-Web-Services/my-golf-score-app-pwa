@@ -19,12 +19,20 @@ type Props = {
 }
 
 export default function ReplayCourse({ course, courseType, courseData }: Props): JSX.Element {
+  const [currentHole, setCurrentHole] = useState('')
+  const [currentPar, setCurrentPar] = useState('')
   const [currentScore, setCurrentScore] = useState('')
   const [gameObj, setGameObj] = useState([])
 
   function handleScoreInput(game) {
-    const { input } = game
+    const { input, hole } = game
 
+    // access the parent element to retrieve the current par
+    const currentInputElm = document.getElementById(`hole-${hole}`)
+    const currentElmPar =  currentInputElm.parentElement.getAttribute('data-par')
+
+    setCurrentPar(currentElmPar)
+    setCurrentHole(hole)
     setCurrentScore(input)
   }
 
@@ -51,28 +59,13 @@ export default function ReplayCourse({ course, courseType, courseData }: Props):
 
   // set up game
   useEffect(() => {
-    const setGameLength = () => {
-      let length
-
-      if (courseType === 'eighteen') {
-        length = 18
-      }
-
-      if (courseType === 'nine') {
-        length = 9
-      }
-
-      setHoles(Array.from(Array(length)).map((_, i) => i + 1))
-    }
-
+    
     if (currentScore) {
       storeGameData()
     }
 
-    // save course name
-    localStorage.setItem('course', course)
-    localStorage.setItem('courseType', courseType)
-    setGameLength()
+    localStorage.setItem('courseType', JSON.stringify(courseType))
+    localStorage.setItem('course', JSON.stringify(course))
   }, [courseType, currentScore, course])
 
   return (
@@ -87,7 +80,7 @@ export default function ReplayCourse({ course, courseType, courseData }: Props):
             <p>
               <strong>Hole: </strong> {data.hole}
             </p>
-            <div className={styles.gameItemInputs}>
+            <div className={styles.gameItemInputs} data-par={data.par}>
               <p className={styles.parStyle}><strong>Par: {data.par}</strong></p>
               <GameInput
                 type="number"
@@ -145,7 +138,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       props: {
         user: session.user,
         authed: true,
-        courseData: getTheCourseHoles.courseData,
+        courseData: getTheCourseHoles.course,
+        courseType: getTheCourseHoles.courseType,
         course: makeTitle(course)
       },
     }

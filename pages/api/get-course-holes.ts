@@ -7,7 +7,7 @@ export default async function login(req: NextApiRequest, res: NextApiResponse) {
     await dbConnect()
     try {
         const results = JSON.parse(req.body)
-        const course = results.course.replace(/"/g, '')
+        const course = results.course.replace(/"/g, '').replace(/-/g, ' ')
         const findGameStats: GameStatsInterface = await GameStats.findOne({
             course: course
         })
@@ -19,11 +19,14 @@ export default async function login(req: NextApiRequest, res: NextApiResponse) {
             }
         })
 
+        console.log(findGameStats)
+
       res
           .status(200)
           .json({
             status: 200,
-            courseData
+            course:courseData,
+            courseType: findGameStats.courseType
           })
     } catch (error) {
       console.error(error)
