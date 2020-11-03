@@ -33,7 +33,6 @@ export default function CourseInformation(): JSX.Element {
         />
       </div>
       <div className={styles.buttonContainer}>
-        
         {((courseType) && (course)) && (
           <div className={styles.buttonFadeIn}>
             <ButtonLink
@@ -41,7 +40,7 @@ export default function CourseInformation(): JSX.Element {
               link={`/game/${courseType}/${course}`}
             />
           </div>
-        )}
+        )}       
       </div>
     </div>
   )
