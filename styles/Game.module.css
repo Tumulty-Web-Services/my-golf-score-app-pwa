@@ -1,4 +1,17 @@
+.container {
+  padding :1em;
+  background-color: rgba(0, 0, 0, .1);
+  border-radius: 10px;
+}
 .gameItemInputs, .title, .buttonContainer {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.gameCardContainer, .gameItemInputs, .title  {
+  max-width: 500px;
+}
+.gameCardContainer {
   margin-left: auto;
   margin-right: auto;
 }
@@ -11,7 +24,6 @@
   border-radius: 2.5px;
   text-align: center;
   background: #fff;
-  max-width: 500px;
   
 }
 

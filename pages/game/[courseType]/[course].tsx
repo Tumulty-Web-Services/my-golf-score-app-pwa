@@ -150,18 +150,21 @@ export default function Course({ course, courseType }: Props): JSX.Element {
         <SubTitle title={`Course: ${course}`} />
         <SubTitle title={`Holes: ${courseType}`} />
       </div>
-      {(holes.length > 0) && (
-        <List
-          className={gameCardStyles.List}
-          height={600}
-          itemCount={holes.length}
-          itemSize={320}
-          width={500}
-          itemData={gameData}
-        >
-        {GameCard}
-      </List>
+      <div className={styles.gameCardContainer}>
+        {(holes.length > 0) && (
+          <List
+            className={gameCardStyles.List}
+            height={760}
+            itemCount={holes.length}
+            itemSize={200}
+            width={'100%'}
+            itemData={gameData}
+          >
+          {GameCard}
+        </List>
       )}
+      </div>
+
       <div className={styles.buttonContainer}>
         <ButtonLink label="Finish Game" link="/finish-game" />
       </div>

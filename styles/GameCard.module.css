@@ -5,9 +5,40 @@
   margin-bottom: 10%;
 }
 
+.List::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: #F5F5F5;
+  position: relative;
+  left: 10px;
+  display: none;
+}
+
+.List::-webkit-scrollbar
+{
+	width: 9px;
+  background-color: rgba(245, 245, 245, .37);
+  border-radius: 10px;
+  position: relative;
+  left: 100px;
+}
+
+.List::-webkit-scrollbar-thumb
+{
+  border-radius: 20px;
+  background-color: #F90;	
+	background-image: -webkit-linear-gradient(45deg,rgba(255, 255, 255, .2) 25%,
+  transparent 25%,
+  transparent 50%,
+  rgba(255, 255, 255, .2) 50%,
+  rgba(255, 255, 255, .2) 75%,
+  transparent 75%, transparent)  
+}
+
 .ListCardContainer {
   margin-bottom: 10%;
 }
+
 .ListCard {
   padding: 1em;        
   box-shadow: 0 8px 20px 0 rgb(0 0 0 / 8%);
@@ -15,8 +46,8 @@
   border-radius: 2.5px;
   text-align: center;
   background: #fff;
+  margin-right: 12px;
 }
-
 
 .ListCardHeader {
   display: flex;
@@ -33,7 +64,6 @@
 .buttonContainer {
   max-width: 250px;
 }
-
 
 @media (min-width: 1200px) {
   .ListCardHeader {
