@@ -44,29 +44,59 @@
   box-shadow: 0 8px 20px 0 rgb(0 0 0 / 8%);
   border: 3.5px solid #4A5915;
   border-radius: 2.5px;
-  text-align: center;
   background: #fff;
   margin-right: 12px;
+  display: flex;
+  flex-direction: column;
 }
 
 .ListCardHeader {
-  display: flex;
-  flex-direction: column;
+  width: 100%;
+  display:block;
   justify-content: center;
   margin-left: auto;
   margin-right: auto;
+  font-size:1.34rem;
+  margin-top:-20px;
 }
 
 .ListItemEven {
   background-color: #f8f8f0;
 }
 
+.InputContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-bottom: 5%;
+}
+
+.InputContainer > div {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
 .buttonContainer {
-  max-width: 250px;
+  min-width: 300px;
+  margin-left: 16%;
+  margin-right: 16%;
+  margin-bottom: 3%;
 }
 
 @media (min-width: 1200px) {
   .ListCardHeader {
     flex-direction: row;
+  }
+
+  .InputContainer {
+    margin-left: 25%;
+    margin-right: 25%;
+  }
+
+  .buttonContainer {
+    margin-left: 25%;
+    margin-right: 25%;
   }
 }

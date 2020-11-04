@@ -28,24 +28,26 @@ const GameCard = memo(({ data, index, style }) => {
         <div className={gameCardStyles.ListCardHeader}>
           <p><strong>Hole:</strong> {hole}</p>
         </div>
-        <GameInput
-          handleInput={handleParInput}
-          placeHolder="Par"
-          type="Par"
-          hole={hole}
-          source={hole}
-          max="5"
-          min="3"
-        />
-        <GameInput
-          handleInput={handleScoreInput}
-          placeHolder="Score"
-          type="Score"
-          hole={hole}
-          source={hole}
-          max={hole.length}
-          min="1"
-        />
+        <div className={gameCardStyles.InputContainer}>
+          <GameInput
+            handleInput={handleParInput}
+            placeHolder="Par"
+            type="Par"
+            hole={hole}
+            source={hole}
+            max="5"
+            min="3"
+          />
+          <GameInput
+            handleInput={handleScoreInput}
+            placeHolder="Score"
+            type="Score"
+            hole={hole}
+            source={hole}
+            max={hole.length}
+            min="1"
+          />
+        </div>
         <div className={gameCardStyles.buttonContainer}>
           <button
             type="button"
@@ -100,6 +102,8 @@ export default function Course({ course, courseType }: Props): JSX.Element {
       score: currentScore,
     }
 
+    console.log(`%c newHole: ${JSON.stringify(newHole)}`, 'color: green; font-size:16px;');
+
     // replace value if already exists
     const removeOldHole = gameObj.filter((obj) => {
       if (obj.hole !== currentHole) {
@@ -111,7 +115,7 @@ export default function Course({ course, courseType }: Props): JSX.Element {
   }
 
   function saveGameState() {
-    console.log('we hittin dis?')
+    console.log(`%c gameObj: ${JSON.stringify(gameObj)}`, 'color: blue; font-size:16px;');
     localStorage.setItem('holes', JSON.stringify(gameObj))
   }
 
@@ -156,7 +160,7 @@ export default function Course({ course, courseType }: Props): JSX.Element {
             className={gameCardStyles.List}
             height={760}
             itemCount={holes.length}
-            itemSize={200}
+            itemSize={300}
             width={'100%'}
             itemData={gameData}
           >
