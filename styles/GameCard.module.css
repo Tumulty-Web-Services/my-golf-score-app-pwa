@@ -1,0 +1,42 @@
+
+.List {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10%;
+}
+
+.ListCardContainer {
+  margin-bottom: 10%;
+}
+.ListCard {
+  padding: 1em;        
+  box-shadow: 0 8px 20px 0 rgb(0 0 0 / 8%);
+  border: 3.5px solid #4A5915;
+  border-radius: 2.5px;
+  text-align: center;
+  background: #fff;
+}
+
+
+.ListCardHeader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ListItemEven {
+  background-color: #f8f8f0;
+}
+
+.buttonContainer {
+  max-width: 250px;
+}
+
+
+@media (min-width: 1200px) {
+  .ListCardHeader {
+    flex-direction: row;
+  }
+}

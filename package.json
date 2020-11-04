@@ -23,6 +23,7 @@
     "@fortawesome/react-fontawesome": "^0.1.11",
     "@testing-library/jest-dom": "^5.11.5",
     "babel-plugin-inline-react-svg": "^1.1.1",
+    "memoize-one": "^5.1.1",
     "mongoose": "^5.10.10",
     "mongoose-typescript": "^1.0.7",
     "next": "latest",
@@ -30,7 +31,8 @@
     "next-optimized-images": "^2.6.2",
     "react": "^16.13.1",
     "react-autocomplete": "^1.8.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-window": "^1.8.6"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",

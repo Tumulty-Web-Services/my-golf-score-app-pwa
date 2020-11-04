@@ -1,111 +1,25 @@
-.container {
-  margin-top: 10%;
-  margin-bottom: 30%;   
+.gameItemInputs, .title, .buttonContainer {
   margin-left: auto;
   margin-right: auto;
+}
+
+.gameItemInputs, .title {
+  margin-bottom: 5%;
   padding: 1em;        
   box-shadow: 0 8px 20px 0 rgb(0 0 0 / 8%);
   border: 3.5px solid #4A5915;
   border-radius: 2.5px;
   text-align: center;
   background: #fff;
+  max-width: 500px;
+  
 }
 
-.buttonContainer {
-  max-width: 350px;
-  margin-top: 2em;
-  margin-bottom: 2em;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
+.title h2 {
+  margin-bottom: 0;
+  margin-top:0;
 }
 
-.game {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  text-align: center;
-  padding-bottom: 20px;
-  font-size: 1rem;
-}
-
-.gameItemInputs > input {
-  -webkit-appearance: none;
-  max-width: 64px;
-  min-width: 64px;
-  width: 64px;
-  margin-bottom: 1em;
-  text-align: center;
-  font-weight: bold;
-}
-
-.gameItemInputs > input:first-child {
-  margin-right: 10px;
-}
-
-.gameItem {
-  display: flex;
-  width: 100%;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.gameItemInputs {
-  display: inline-flex;
-  flex-direction: row;
-}
-
-.saveGameButton {
-  font-size: 1.432rem;
-  margin: 12px;
-  margin-right: 0px;
-  color: #444;
-  transform: matrix(1, 0, 0, 1, 0, 0);
-  transition: 0.4s;
-  -webkit-transition: 0.4s;
-}
-
-.saveGameButton:hover {
-  cursor: pointer;
-  transform: matrix(1.2, 0, 0, 1.2, 0, 0);
-  color: #f0c756;
-}
-
-.parStyle {
-  margin-right: 1em;
-}
-@media (min-width: 1200px) {
-  .game {
-    text-align: left;
-    max-width: 500px;
-    margin-left: 15%;
-    margin-right: 15%;
-    padding-bottom: 1em;
-    font-size: 1.3rem;
-  }
-
-  .gameItem {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    padding: 10px;
-    border-bottom: 0.3px solid #444;
-  }
-  .gameItemInputs {
-    margin-top: 8px;
-    margin-bottom: 8px;
-  }
-  .gameItemInputs > input {
-    -webkit-appearance: none;
-    max-width: 64px;
-    min-width: 64px;
-    width: 64px;
-    text-align: center;
-    display: inline-block;
-  }
-
-  .gameItemInputs > input:first-child {
-    margin-right: 1em;
-  }
+.title h2:first-child {
+  margin-top: 10px;
 }

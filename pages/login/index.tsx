@@ -31,6 +31,7 @@ export default function Login() {
             border: 3.5px solid #4A5915;
             border-radius: 2.5px;
             text-align: center;
+            background-color: #fff;
           }
 
           .button-container p strong {

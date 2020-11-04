@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from '../styles/UserInput.module.css'
+import styles from '../styles/GameInput.module.css'
 
 type Props = {
   placeHolder: string
@@ -7,6 +7,8 @@ type Props = {
   type: string
   hole: string
   source: string
+  max: string
+  min: string
 }
 
 export default function GameInput({
@@ -15,6 +17,8 @@ export default function GameInput({
   type,
   hole,
   source,
+  max,
+  min
 }: Props): JSX.Element {
   function onInputChange(e) {
     e.preventDefault()
@@ -27,17 +31,19 @@ export default function GameInput({
   }
 
   return (
-    <>
+    <div className={styles.GameUserInputContainer}>
       <input
         id={`hole-${hole}`}
         type={type}
-        className={`${styles.UserInput} stories-userInput`}
+        className={`${styles.GameUserInput} stories-userInput`}
         aria-label="user-input"
         onChange={onInputChange}
         data-hole={hole}
         data-source={source}
         placeholder={placeHolder}
+        max={max}
+        min={min}
       />
-    </>
+    </div>
   )
 }
