@@ -13,7 +13,7 @@ The goal of this application is to replace the traditional pencil and paper base
 5. Overhaul functionality with storing data locally and remove any janky behavior
 6. Write stories and test for changes for all these changes
 7. Launch to vercel
-8. Test mobile and offline capabilities -- Impelment the queued push to the cloud feature
+8. Test mobile and offline capabilities (add next pwa and next offline) -- Impelment the queued push to the cloud feature
 9. Add domain https://app.golfjournal.io to hosting
 10. Add section for contributions to docs
 11. Research how-to & publish PWA
