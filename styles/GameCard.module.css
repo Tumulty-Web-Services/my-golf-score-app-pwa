@@ -8,16 +8,15 @@
   display: none;
 }
 
-/* Hide scrollbar for IE, Edge and Firefox */
 .List {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .ListCard {     
   box-shadow: 0 8px 20px 0 rgb(0 0 0 / 8%);
   border: 5px solid #4A5915;
-  border-radius: 15px;
+  border-radius: 6px;
   margin-right: 15px;
   background-color: #fff;
   display: flex;

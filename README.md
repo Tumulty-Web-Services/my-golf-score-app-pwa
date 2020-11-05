@@ -6,14 +6,17 @@ The goal of this application is to replace the traditional pencil and paper base
 
 #### TODO:
 
-1. Completely overall the design and build out footer
-2. Debug any janky functionality
-3. Write stories and test for changes
-4. Launch to vercel
-5. Test mobile and offline capabilities -- Impelment the queued push to the cloud feature
-6. Add domain https://app.golfjournal.io to hosting
-7. Add section for contributions to docs
-8. Research how-to & publish PWA
+1. Desktop/Laptop -- title and coures are in side bar with icons
+2. Mobile -- title and course are half with the width and icons
+3. Change the style of the hole title but keep it small
+4. Footer -- change social media list into icons
+5. Overhaul functionality with storing data locally and remove any janky behavior
+6. Write stories and test for changes for all these changes
+7. Launch to vercel
+8. Test mobile and offline capabilities -- Impelment the queued push to the cloud feature
+9. Add domain https://app.golfjournal.io to hosting
+10. Add section for contributions to docs
+11. Research how-to & publish PWA
 
 
 ## Build status
