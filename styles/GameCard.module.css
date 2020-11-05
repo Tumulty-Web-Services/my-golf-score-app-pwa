@@ -1,102 +1,50 @@
-
 .List {
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 10%;
+  overflow-x: hidden !important;
 }
 
-.List::-webkit-scrollbar-track
-{
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-  background-color: #F5F5F5;
-  position: relative;
-  left: 10px;
-  display: none;
-}
-
-.List::-webkit-scrollbar
-{
-	width: 9px;
-  background-color: rgba(245, 245, 245, .37);
-  border-radius: 10px;
-  position: relative;
-  left: 100px;
-}
-
-.List::-webkit-scrollbar-thumb
-{
-  border-radius: 20px;
-  background-color: #F90;	
-	background-image: -webkit-linear-gradient(45deg,rgba(255, 255, 255, .2) 25%,
-  transparent 25%,
-  transparent 50%,
-  rgba(255, 255, 255, .2) 50%,
-  rgba(255, 255, 255, .2) 75%,
-  transparent 75%, transparent)  
-}
-
-.ListCardContainer {
-  margin-bottom: 10%;
-}
-
-.ListCard {
-  padding: 1em;        
+.ListCard {     
   box-shadow: 0 8px 20px 0 rgb(0 0 0 / 8%);
-  border: 3.5px solid #4A5915;
-  border-radius: 2.5px;
-  background: #fff;
-  margin-right: 12px;
+  border: 5px solid #4A5915;
+  border-radius: 6px;
+  background: rbga(255,255,255, .9);
+  margin-right: 15px;
+  background-color: #fff;
   display: flex;
   flex-direction: column;
 }
 
 .ListCardHeader {
-  width: 100%;
-  display:block;
-  justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
-  font-size:1.34rem;
-  margin-top:-20px;
+
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  font-size:1.8rem;
+  height: 55px;
+  color: #000;
 }
 
-.ListItemEven {
-  background-color: #f8f8f0;
+.ListCardHeader p {
+  margin: 0;
+  padding: 0;
+  margin-left: 17px;
+  margin-top: 5px;
+}
+
+.InputContainer, .buttonContainer {
+  margin-left: 1em;
 }
 
 .InputContainer {
   width: 100%;
   display: flex;
   flex-direction: row;
-  margin-left: 15%;
-  margin-right: 15%;
-  margin-bottom: 5%;
+  margin-bottom: 15px;
 }
 
 .InputContainer > div {
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-right: 25px;
 }
+
 
 .buttonContainer {
-  min-width: 300px;
-  margin-left: 16%;
-  margin-right: 16%;
-  margin-bottom: 3%;
-}
-
-@media (min-width: 1200px) {
-  .ListCardHeader {
-    flex-direction: row;
-  }
-
-  .InputContainer {
-    margin-left: 25%;
-    margin-right: 25%;
-  }
-
-  .buttonContainer {
-    margin-left: 25%;
-    margin-right: 25%;
-  }
+  margin-bottom: 15px;
 }

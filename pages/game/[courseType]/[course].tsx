@@ -10,9 +10,8 @@ import styles from '../../../styles/Game.module.css'
 import gameCardStyles from '../../../styles/GameCard.module.css'
 import buttonStyles from '../../../styles/Button.module.css'
 import { makeTitle } from '../../../utils/helpers'
-import { info } from 'console';
 
-const GameCard = memo(({ data, index, style }) => {
+const GameCard = memo(({ data, index, style } : any) => {
  
   // Data passed to List as "itemData" is available as props.data
   const { saveGameState, handleParInput, handleScoreInput } = data;
@@ -27,9 +26,21 @@ const GameCard = memo(({ data, index, style }) => {
       <div className={gameCardStyles.ListCard}>
         <div className={gameCardStyles.ListCardHeader}>
           <p><strong>Hole:</strong> {hole}</p>
+          <p>
+            
+          </p>
         </div>
         <div className={gameCardStyles.InputContainer}>
           <GameInput
+            handleInput={handleScoreInput}
+            placeHolder="Yards"
+            type="Yards"
+            hole={hole}
+            source={hole}
+            max={hole.length}
+            min="1"
+          />
+                    <GameInput
             handleInput={handleParInput}
             placeHolder="Par"
             type="Par"
@@ -53,7 +64,6 @@ const GameCard = memo(({ data, index, style }) => {
             type="button"
             onClick={saveGameState}
             className={buttonStyles.button}
-            width="300"
           >
             Save
           </button>
@@ -160,7 +170,7 @@ export default function Course({ course, courseType }: Props): JSX.Element {
             className={gameCardStyles.List}
             height={760}
             itemCount={holes.length}
-            itemSize={300}
+            itemSize={240}
             width={'100%'}
             itemData={gameData}
           >

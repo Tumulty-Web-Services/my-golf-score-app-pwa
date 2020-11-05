@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&display=swap');
+
 *,
 ::after,
 ::before {
@@ -19,7 +21,8 @@ html {
   padding: 0;
   box-sizing: border-box;
   overflow-x: hidden;
-  font-family: 'Roboto Regular';
+  font-family: 'Patrick Hand SC', cursive;
+
   background: rgb(87,89,18);
   background: linear-gradient(90deg, rgba(162,166,50,1) 32%, rgba(217,195,89,1) 68%);
 
