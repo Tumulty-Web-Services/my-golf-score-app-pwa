@@ -1,25 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Ceviche+One&family=Josefin+Sans:wght@500&family=Raleway&display=swap');
+
 .List {
   overflow-x: hidden !important;
+}
+
+.List::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.List {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
 .ListCard {     
   box-shadow: 0 8px 20px 0 rgb(0 0 0 / 8%);
   border: 5px solid #4A5915;
-  border-radius: 6px;
-  background: rbga(255,255,255, .9);
+  border-radius: 15px;
   margin-right: 15px;
   background-color: #fff;
   display: flex;
   flex-direction: column;
+  font-family: 'Raleway', sans-serif;
+
 }
 
 .ListCardHeader {
-
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
-  font-size:1.8rem;
-  height: 55px;
-  color: #000;
+  font-size: 1.3rem;
+  height: 40px;
+  padding-top: 6px;
 }
 
 .ListCardHeader p {
@@ -27,7 +39,16 @@
   padding: 0;
   margin-left: 17px;
   margin-top: 5px;
+  width: 30px;
+  text-align: center;
+  background-color: #a9a9a9;
+  color: #fff;
 }
+
+.ListCardHeader p strong {
+  display: block;
+  margin: 1px;
+ }
 
 .InputContainer, .buttonContainer {
   margin-left: 1em;
@@ -37,13 +58,14 @@
   width: 100%;
   display: flex;
   flex-direction: row;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
+  margin-top:15px;
+  justify-content: flex-start;
 }
 
-.InputContainer > div {
-  margin-right: 25px;
+.InputContainer div {
+  margin-right: 2em;
 }
-
 
 .buttonContainer {
   margin-bottom: 15px;

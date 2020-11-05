@@ -1,5 +1,4 @@
 import mongoose, { Schema, Document } from 'mongoose'
-import { GameStatsInterface } from './GameStats'
 
 const UsersSchema: Schema = new Schema({
   email: { type: String, required: true },
@@ -16,7 +15,7 @@ export interface UsersInterface extends Document {
   nickname: string
   games: [
     {
-      gameId: GameStatsInterface['_id']
+      gameId: mongoose.Types.ObjectId
     }
   ]
 }

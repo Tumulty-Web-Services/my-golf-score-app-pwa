@@ -1,10 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Ceviche+One&family=Josefin+Sans:wght@500&family=Raleway&display=swap');
+
 
 .subTitle {
-  font-family: 'Patrick Hand SC', cursive;
-
+  font-family: 'Raleway', sans-serif;
   text-align: center;
   letter-spacing: 1px;
-  font-weight: 900;
   text-transform: capitalize;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
 }

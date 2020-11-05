@@ -25,7 +25,7 @@ const GameCard = memo(({ data, index, style } : any) => {
     >
       <div className={gameCardStyles.ListCard}>
         <div className={gameCardStyles.ListCardHeader}>
-          <p><strong>Hole:</strong> {hole}</p>
+          <p><strong>{hole}</strong></p>
           <p>
             
           </p>
@@ -161,8 +161,8 @@ export default function Course({ course, courseType }: Props): JSX.Element {
   return (
     <div className={styles.container}>
       <div className={styles.title}>
-        <SubTitle title={`Course: ${course}`} />
-        <SubTitle title={`Holes: ${courseType}`} />
+        <SubTitle title={`${course}`} />
+        <SubTitle title={`${courseType} holes`} />
       </div>
       <div className={styles.gameCardContainer}>
         {(holes.length > 0) && (

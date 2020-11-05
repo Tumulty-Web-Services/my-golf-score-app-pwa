@@ -1,5 +1,4 @@
 import mongoose, { Schema, Document } from 'mongoose'
-import { UsersInterface } from './GameStats'
 
 const GameStatsSchema: Schema = new Schema({
   course: { type: String, required: true },
@@ -19,7 +18,7 @@ const GameStatsSchema: Schema = new Schema({
 export interface GameStatsInterface extends Document {
   course: string
   courseType: string
-  userId: UsersInterface['_id']
+  userId: mongoose.Types.ObjectId
   finalScore: string
   gameDate: Date
   holes: [
