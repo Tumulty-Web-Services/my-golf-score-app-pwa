@@ -29,7 +29,7 @@
 }
 
 .gameBadge {
-  max-height: 28px
+  max-height: 28px;
 }
 
 .gameAlert {
@@ -50,5 +50,5 @@
   }
   .replayGameInputWidth {
     width: 25%;
-  }  
+  }
 }

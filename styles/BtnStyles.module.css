@@ -8,14 +8,13 @@
   color: #fff;
 }
 
-
 .darkGreen,
 .darkGreen:hover,
 .darkGreen:focus,
 .darkGreen:active,
 .darkGreen:visited {
-  background-color: #38A169 !important;
-  border-color: #2F855A !important;
+  background-color: #38a169 !important;
+  border-color: #2f855a !important;
   color: #fff;
 }
 
@@ -44,8 +43,8 @@
 .blue:focus,
 .blue:active,
 .blue:visited {
-  background-color: #3182CE !important;
-  border-color: #2A69AC !important;
+  background-color: #3182ce !important;
+  border-color: #2a69ac !important;
   color: #fff;
 }
 

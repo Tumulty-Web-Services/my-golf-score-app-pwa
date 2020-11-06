@@ -13,8 +13,8 @@
 }
 
 .buttonContainer {
-  padding-bottom: 1rem!important;
-  padding-top: 1rem!important;
+  padding-bottom: 1rem !important;
+  padding-top: 1rem !important;
 }
 
 .buttonGroup {
@@ -42,13 +42,11 @@
 
 @media (min-width: 1200px) {
   .buttonContainer {
-    padding-bottom: 1.5rem!important;
-    padding-top: 1.5rem!important;
+    padding-bottom: 1.5rem !important;
+    padding-top: 1.5rem !important;
   }
-  
+
   .buttonGroup {
     justify-content: flex-end;
   }
 }
-
-

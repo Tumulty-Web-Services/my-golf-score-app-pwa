@@ -11,12 +11,12 @@
 .mx12 {
   margin-left: auto;
   margin-right: auto;
-  min-width:100%;
+  min-width: 100%;
 }
 
 @media (min-width: 1200px) {
   .mx12 {
     margin-left: 12%;
     margin-right: 12%;
-  }  
+  }
 }
