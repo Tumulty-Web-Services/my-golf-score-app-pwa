@@ -29,6 +29,7 @@ const GameStats = ({ index }: Props): JSX.Element => {
   ]
   const nineHoles = [1, 2, 3, 4, 5, 6, 7, 8, 9]
   let mapholes
+
   if (index === '18') {
     mapholes = eighteenHoles
   }
