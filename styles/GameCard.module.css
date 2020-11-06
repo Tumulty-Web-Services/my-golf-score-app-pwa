@@ -4,11 +4,6 @@
   margin-right: auto;
 }
 
-.btn {
-  width: 19%;
-  text-align: left;
-}
-
 .inputWidth {
   width: 100%;
   padding-left: 20px;
@@ -19,6 +14,28 @@
   margin-bottom: 1em;
 }
 
+.replayGameInputWidth {
+  width: 41%;
+  padding-left: 20px;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  font-size: 1.2rem;
+  margin-top: 1em;
+}
+
+.btn {
+  width: 100%;
+  text-align: center;
+}
+
+.gameBadge {
+  max-height: 28px
+}
+
+.gameAlert {
+  font-size: 16px;
+}
+
 @media (min-width: 1200px) {
   .mw100 {
     min-width: 75%;
@@ -26,4 +43,12 @@
   .inputWidth {
     width: 28%;
   }
+
+  .btn {
+    width: 19%;
+    text-align: left;
+  }
+  .replayGameInputWidth {
+    width: 25%;
+  }  
 }

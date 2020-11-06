@@ -3,16 +3,19 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 import Table from 'react-bootstrap/Table'
-import styles from '../../styles/SuccessBtn.module.css'
+import btnStyles from '../../styles/BtnStyles.module.css'
+import verticalAlignStyle from '../../styles/VerticalAlign.module.css'
 
 export default function ReplayCourse(): JSX.Element {
   return (
     <Container className="vh-100">
       <Row>
         <Col md={12}>
-          <div className="d-flex align-items-center login-container">
-            <div className="login-box">
-              <div className="login-box-wrapper">
+          <div
+            className={`d-flex align-items-center ${verticalAlignStyle.containerWrapper}`}
+          >
+            <div className={verticalAlignStyle.containerBox}>
+              <div className={verticalAlignStyle.containerBoxWrapper}>
                 <h1 className="display-4">Replay Course</h1>
                 <input
                   type="text"
@@ -49,7 +52,7 @@ export default function ReplayCourse(): JSX.Element {
                 <Button
                   href="/replay-game"
                   size="lg"
-                  className={`${styles.green} my-4 w-100`}
+                  className={`${btnStyles.green} my-4 w-100`}
                 >
                   Start Course
                 </Button>

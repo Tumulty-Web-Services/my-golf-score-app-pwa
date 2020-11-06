@@ -37,10 +37,20 @@ const GameStats = ({ index }: Props): JSX.Element => {
   }
   return (
     <div className={styles.courseHistoryContainer}>
-      <h2>
-        <small className="d-block">Final Stats</small>
-        <small className="d-block">Score: {6 * 18}</small>
-      </h2>
+      <div className="d-block w-100">
+        <h2>
+          <small className="d-block">Bunker Hill</small>
+        </h2>
+      </div>
+      <div className="d-flex justify-content-between">
+        <h2>
+          <small className="d-block">Final Stats</small>
+          <small className="d-block">Score: {6 * 18}</small>
+        </h2>
+        <Button variant="outline-dark" sz="sm" className="mb-3" href="/welcome">
+          Home
+        </Button>
+      </div>
       <Table striped bordered hover>
         <thead>
           <tr>

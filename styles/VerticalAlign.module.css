@@ -1,0 +1,17 @@
+.containerWrapper {
+  height: 75vh;
+}
+
+.containerBox {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.containerBoxWrapper {
+  max-width: 350px;
+}
+
+.containerBox h1 {
+  font-family: 'Open Sans Extra Bold';
+}

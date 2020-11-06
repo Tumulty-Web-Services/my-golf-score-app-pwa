@@ -1,38 +1,54 @@
-.green {
-  background-color: #38a169;
-  border-color: #2f855a;
-  color: #fff;
+.avatar {
+  display: flex;
+  flex-direction: row;
 }
 
-.green:hover {
-  background-color: #38a169;
-  border-color: #2f855a;
+.avatarCard {
+  margin-left: 1em;
 }
 
-.blue {
-  color: #fff;
-  background-color: #3182ce;
-  border-color: #2a69ac;
+.avatarCard h1 {
+  font-family: 'Open Sans Bold';
+  font-size: 1.9rem;
 }
 
-.teal {
-  background-color: #38b2ac;
-  border-color: #319795;
-  color: #fff;
+.buttonContainer {
+  padding-bottom: 1rem!important;
+  padding-top: 1rem!important;
 }
 
-.teal:hover {
-  background-color: #319795;
-  border-color: #2c7a7b;
+.buttonGroup {
+  justify-content: flex-start;
 }
 
-.orange {
-  background-color: #ed8936;
-  border-color: #dd6b20;
-  color: #fff;
+.avatar img {
+  display: none;
 }
 
-.orange:hover {
-  background-color: #dd6b20;
-  border-color: #c05621;
+@media (min-width: 300px) and (max-width: 400px) {
+  .avatar img {
+    display: initial;
+    width: 60px;
+    height: 60px;
+  }
 }
+@media (min-width: 400px) {
+  .avatar img {
+    display: initial;
+    width: 90px;
+    height: 90px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .buttonContainer {
+    padding-bottom: 1.5rem!important;
+    padding-top: 1.5rem!important;
+  }
+  
+  .buttonGroup {
+    justify-content: flex-end;
+  }
+}
+
+

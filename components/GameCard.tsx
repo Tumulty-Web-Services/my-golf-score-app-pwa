@@ -1,35 +1,67 @@
+import { useRouter } from 'next/router'
 import Toast from 'react-bootstrap/Toast'
 import Badge from 'react-bootstrap/Badge'
 import Button from 'react-bootstrap/Button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons/faPlusCircle'
 import styles from '../styles/GameCard.module.css'
-import btnStyles from '../styles/SuccessBtn.module.css'
+import btnStyles from '../styles/BtnStyles.module.css'
 
 type Props = {
   index: string
 }
 
 const GameCard = ({ index }: Props) => {
+  const router = useRouter()
+  const par = true
+
   return (
     <Toast className={`${styles.mw100} mw-75 mb-4 p-3 d-flex flex-column`}>
-      <h4>
-        <Badge variant="secondary">{index}</Badge>
+      <h4 className="d-flex h-25">
+        <Badge variant="secondary" className={styles.gameBadge}>
+          {index}
+        </Badge>
+        {par && (
+          <small className={`${styles.gameAlert} "ml-2 d-block my-1 px-2`}>
+            Congratulations on the par! 👍
+          </small>
+        )}
       </h4>
       <div className="input-container mt-2 mb-3">
-        <input
-          type="number"
-          placeholder="Yards"
-          className={`${styles.inputWidth} mr-4 rounded`}
-        />
-        <input
-          type="number"
-          placeholder="Par"
-          className={`${styles.inputWidth} mr-4 rounded`}
-        />
+        {router.asPath === '/game' && (
+          <>
+            <input
+              type="number"
+              placeholder="Yards"
+              min="1"
+              max="1000"
+              className={`${styles.inputWidth} mr-4 rounded`}
+            />
+            <input
+              type="number"
+              placeholder="Par"
+              min="3"
+              max="5"
+              className={`${styles.inputWidth} mr-4 rounded`}
+            />
+          </>
+        )}
+
+        {router.asPath === '/replay-game' && (
+          <>
+            <p className="mb-0 pb-0">
+              <strong>Yards: </strong> 480
+            </p>
+            <p className="mb-0 pb-0">
+              <strong>Par: </strong> 5
+            </p>
+          </>
+        )}
         <input
           type="number"
           placeholder="Score"
+          min="1"
+          max="10"
           className={`${styles.inputWidth} mr-4 rounded`}
         />
       </div>

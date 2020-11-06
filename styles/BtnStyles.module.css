@@ -8,6 +8,17 @@
   color: #fff;
 }
 
+
+.darkGreen,
+.darkGreen:hover,
+.darkGreen:focus,
+.darkGreen:active,
+.darkGreen:visited {
+  background-color: #38A169 !important;
+  border-color: #2F855A !important;
+  color: #fff;
+}
+
 .cyan,
 .cyan:hover,
 .cyan:focus,
@@ -25,6 +36,16 @@
 .teal:visited {
   background-color: #38b2ac !important;
   border-color: #319795 !important;
+  color: #fff;
+}
+
+.blue,
+.blue:hover,
+.blue:focus,
+.blue:active,
+.blue:visited {
+  background-color: #3182CE !important;
+  border-color: #2A69AC !important;
   color: #fff;
 }
 

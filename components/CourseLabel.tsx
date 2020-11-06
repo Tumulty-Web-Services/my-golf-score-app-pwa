@@ -1,6 +1,6 @@
 import Button from 'react-bootstrap/Button'
 import styles from '../styles/CourseHistory.module.css'
-import btnStyles from '../styles/SuccessBtn.module.css'
+import btnStyles from '../styles/BtnStyles.module.css'
 
 const CourseLabel = () => {
   return (
@@ -11,12 +11,19 @@ const CourseLabel = () => {
       <hr />
       <div className={styles.courseLabel}>
         <p className={`${styles.strong} mb-0`}>Bunker Hill</p>
+        <p className="py-0 my-0">
+          <small>
+            Holes: <strong>18</strong>
+          </small>
+        </p>
         <p className="mb-3 mt-0 pt-0">
-          <small>18 Holes</small>
+          <small>
+            Score: <strong>110</strong>
+          </small>
         </p>
         <Button
           size="lg"
-          className={`w-100 mt-4 ${btnStyles.teal}`}
+          className={`w-100 my-4 ${btnStyles.teal}`}
           href="/finish"
         >
           Finish game
