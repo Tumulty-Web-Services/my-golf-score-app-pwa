@@ -36,7 +36,9 @@ const GameStats = ({ index }: Props): JSX.Element => {
     mapholes = nineHoles
   }
   return (
-    <div className={styles.courseHistoryContainer}>
+    <div
+      className={`${styles.courseHistoryContainer} stories-courseHistoryContainer`}
+    >
       <div className="d-block w-100">
         <h2>
           <small className="d-block">Bunker Hill</small>

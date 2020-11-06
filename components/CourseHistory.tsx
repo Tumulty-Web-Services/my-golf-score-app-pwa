@@ -7,7 +7,9 @@ type Props = {
 
 const CourseHistory = ({ month }: Props): JSX.Element => {
   return (
-    <div className={styles.courseHistoryContainer}>
+    <div
+      className={`${styles.courseHistoryContainer} stories-courseHistoryContainer`}
+    >
       <h2>
         <small>{month} 2020</small>
       </h2>

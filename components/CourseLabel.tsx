@@ -4,13 +4,15 @@ import btnStyles from '../styles/BtnStyles.module.css'
 
 const CourseLabel = () => {
   return (
-    <div className={`${styles.courseHistoryContainer} ${styles.sticky}`}>
+    <div
+      className={`${styles.courseHistoryContainer} ${styles.sticky} stories-courseHistoryContainer stories-sticky`}
+    >
       <h2>
         <small>Course</small>
       </h2>
       <hr />
-      <div className={styles.courseLabel}>
-        <p className={`${styles.strong} mb-0`}>Bunker Hill</p>
+      <div className={`${styles.courseLabel} stories-courseLabel`}>
+        <p className={`${styles.strong} stories-strong mb-0`}>Bunker Hill</p>
         <p className="py-0 my-0">
           <small>
             Holes: <strong>18</strong>
@@ -23,7 +25,7 @@ const CourseLabel = () => {
         </p>
         <Button
           size="lg"
-          className={`w-100 my-4 ${btnStyles.teal}`}
+          className={`w-100 my-4 ${btnStyles.teal} stories-teal`}
           href="/finish"
         >
           Finish game

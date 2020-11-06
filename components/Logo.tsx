@@ -6,7 +6,7 @@ import styles from '../styles/Logo.module.css'
 
 const Logo = (): JSX.Element => (
   <Link href="/">
-    <a className={styles.logo}>
+    <a className={`${styles.logo} stories-logo`}>
       <FontAwesomeIcon icon={faGolfBall} />
       <h1>Golf Journal</h1>
     </a>

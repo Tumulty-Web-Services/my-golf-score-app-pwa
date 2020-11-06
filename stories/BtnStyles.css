@@ -1,0 +1,64 @@
+.stories-green,
+.stories-green:hover,
+.stories-green:focus,
+.stories-green:active,
+.stories-green:visited {
+  background-color: #68d391 !important;
+  border-color: #48bb78 !important;
+  color: #fff;
+}
+
+.stories-darkGreen,
+.stories-darkGreen:hover,
+.stories-darkGreen:focus,
+.stories-darkGreen:active,
+.stories-darkGreen:visited {
+  background-color: #38a169 !important;
+  border-color: #2f855a !important;
+  color: #fff;
+}
+
+.stories-cyan,
+.stories-cyan:hover,
+.stories-cyan:focus,
+.stories-cyan:active,
+.stories-cyan:visited {
+  background-color: #086f83 !important;
+  border-color: #065666 !important;
+  color: #fff;
+}
+
+.stories-teal,
+.stories-teal:hover,
+.stories-teal:focus,
+.stories-teal:active,
+.stories-teal:visited {
+  background-color: #38b2ac !important;
+  border-color: #319795 !important;
+  color: #fff;
+}
+
+.stories-blue,
+.stories-blue:hover,
+.stories-blue:focus,
+.stories-blue:active,
+.stories-blue:visited {
+  background-color: #3182ce !important;
+  border-color: #2a69ac !important;
+  color: #fff;
+}
+
+.stories-orange,
+.stories-orange:hover {
+  background-color: #f6ad55;
+  border-color: #ed8936;
+  color: #fff;
+}
+
+.stories-orange:focus,
+.stories-orange:active,
+.stories-orage:visited {
+  background-color: #ed8936 !important;
+  border-color: #dd6b20 !important;
+  color: #fff;
+}

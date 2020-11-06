@@ -8,34 +8,42 @@ import Button from 'react-bootstrap/Button'
 import styles from '../styles/UserProfile.module.css'
 import btnStyles from '../styles/BtnStyles.module.css'
 
-const UserProfile = () => {
+type Props = {
+  path: string
+}
+const UserProfile = ({ path }: Props) => {
   const router = useRouter()
+  let currentPath = path
+
+  if (router !== null) {
+    currentPath = router.asPath
+  }
 
   return (
     <Container>
       <Row>
         <Col sm={12} md={8}>
-          <div className={`${styles.avatar} py-3`}>
+          <div className={`${styles.avatar} stories-avatar py-3`}>
             <Image
               src="https://www.coolgenerator.com/Pic/Face//male/male1085215807342.jpg"
-              className={styles.avatarProfile}
+              className={`${styles.avatarProfile} stories-avatarProfile`}
               roundedCircle
               fluid
               thumbnail
             />
-            <div className={styles.avatarCard}>
+            <div className={`${styles.avatarCard} stories-avatarCard`}>
               <h1>Peter F. Tumulty</h1>
-              <Badge className={`${btnStyles.darkGreen} mr-3 p-2`}>
-                {router.asPath === '/game' ||
-                router.asPath === '/replay-game' ? (
+              <Badge
+                className={`${btnStyles.darkGreen} stories-darkGreen mr-3 p-2`}
+              >
+                {currentPath === '/game' || currentPath === '/replay-game' ? (
                   <>Hole: 1</>
                 ) : (
                   <>Best Score: 92</>
                 )}
               </Badge>
-              <Badge className={`${btnStyles.blue} mx-2 p-2`}>
-                {router.asPath === '/game' ||
-                router.asPath === '/replay-game' ? (
+              <Badge className={`${btnStyles.blue} stories-blue mx-2 p-2`}>
+                {currentPath === '/game' || currentPath === '/replay-game' ? (
                   <>Score: 4</>
                 ) : (
                   <>Game Count: 36</>
@@ -44,13 +52,23 @@ const UserProfile = () => {
             </div>
           </div>
         </Col>
-        {router.asPath === '/welcome' && (
-          <Col sm={12} md={4} className={styles.buttonContainer}>
-            <div className={`d-flex ${styles.buttonGroup}`}>
-              <Button className={`${btnStyles.teal} mr-2`} href="/new-course">
+        {currentPath === '/welcome' && (
+          <Col
+            sm={12}
+            md={4}
+            className={`${styles.buttonContainer} stories-buttonContainer`}
+          >
+            <div className={`d-flex ${styles.buttonGroup} stories-buttonGroup`}>
+              <Button
+                className={`${btnStyles.teal} stories-teal mr-2`}
+                href="/new-course"
+              >
                 New Course
               </Button>
-              <Button className={`${btnStyles.orange}`} href="/replay-course">
+              <Button
+                className={`${btnStyles.orange} stories-orange`}
+                href="/replay-course"
+              >
                 Replay Course
               </Button>
             </div>

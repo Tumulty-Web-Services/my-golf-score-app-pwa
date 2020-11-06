@@ -6,7 +6,9 @@ import { faInstagramSquare } from '@fortawesome/free-brands-svg-icons/faInstagra
 import styles from '../styles/SocialMediaIcons.module.css'
 
 const SocialMediaIcons = (): JSX.Element => (
-  <div className={`d-flex justify-content-center ${styles.icons} mt-0 pt-0`}>
+  <div
+    className={`d-flex justify-content-center ${styles.icons} stories-icons mt-0 pt-0`}
+  >
     <Link href="https://facebook.com">
       <a className="mx-2">
         <FontAwesomeIcon icon={faFacebookSquare} />

@@ -7,7 +7,7 @@ import styles from '../styles/Footer.module.css'
 const Footer = (): JSX.Element => {
   const year = new Date().getFullYear()
   return (
-    <footer className={styles.footer}>
+    <footer className={`${styles.footer} stories-footer`}>
       <Container>
         <Row className="justify-content-center">
           <p className="mb-0 pb-0">

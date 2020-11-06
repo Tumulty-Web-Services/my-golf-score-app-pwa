@@ -1,0 +1,13 @@
+.stories-icons {
+  font-size: 2rem;
+}
+
+.stories-icons a {
+  color: #fff;
+  transition-duration: 0.2s;
+}
+
+.stories-icons a:hover {
+  cursor: pointer;
+  color: #fff;
+}

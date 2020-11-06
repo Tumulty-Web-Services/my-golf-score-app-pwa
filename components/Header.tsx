@@ -7,7 +7,7 @@ import styles from '../styles/Header.module.css'
 export default function Header() {
   const loggedIn = true
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} stories-header`}>
       <Container>
         <Navbar expand="lg">
           <Logo />
