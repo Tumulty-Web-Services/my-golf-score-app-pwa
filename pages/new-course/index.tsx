@@ -1,3 +1,5 @@
+import { GetServerSideProps } from 'next'
+import auth0 from '../../utils/auth0'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -44,4 +46,38 @@ export default function NewCourse(): JSX.Element {
       </Row>
     </Container>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { req, res } = context
+
+  if (typeof window === 'undefined') {
+    const session = await auth0.getSession(req)
+    if (!session || !session.user) {
+      res.writeHead(302, {
+        Location: '/api/auth/login',
+      })
+      res.end()
+
+      return {
+        props: {
+          session: {},
+          authed: false,
+        },
+      }
+    }
+    return {
+      props: {
+        session: session,
+        authed: true,
+      },
+    }
+  }
+
+  return {
+    props: {
+      session: {},
+      authed: false,
+    },
+  }
 }

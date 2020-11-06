@@ -1,3 +1,5 @@
+import { GetServerSideProps } from 'next'
+import auth0 from '../../utils/auth0'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -7,13 +9,13 @@ import CourseLabel from '../../components/CourseLabel'
 import GameCard from '../../components/GameCard'
 import styles from '../../styles/Game.module.css'
 
-export default function Game(): JSX.Element {
+export default function Game({ session }): JSX.Element {
   const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
 
   return (
     <div className={styles.container}>
       <div className={styles.userContainer}>
-        <UserProfile path="/" />
+        <UserProfile path="/" profile={session} />
       </div>
       <Container>
         <Row>
@@ -47,4 +49,38 @@ export default function Game(): JSX.Element {
       </Container>
     </div>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { req, res } = context
+
+  if (typeof window === 'undefined') {
+    const session = await auth0.getSession(req)
+    if (!session || !session.user) {
+      res.writeHead(302, {
+        Location: '/api/auth/login',
+      })
+      res.end()
+
+      return {
+        props: {
+          session: {},
+          authed: false,
+        },
+      }
+    }
+    return {
+      props: {
+        session: session,
+        authed: true,
+      },
+    }
+  }
+
+  return {
+    props: {
+      session: {},
+      authed: false,
+    },
+  }
 }

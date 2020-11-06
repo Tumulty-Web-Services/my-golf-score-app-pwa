@@ -7,7 +7,7 @@ import '../styles/fonts.css'
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-      <Header />
+      <Header authed={pageProps.authed} />
       <main>
         <Component {...pageProps} />
       </main>

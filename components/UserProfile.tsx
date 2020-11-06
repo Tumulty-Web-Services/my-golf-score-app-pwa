@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -10,8 +11,19 @@ import btnStyles from '../styles/BtnStyles.module.css'
 
 type Props = {
   path: string
+  profile: {
+    user: {
+      name: string
+      nickname: string
+      picture: string
+      sub: string
+      updated_at: string
+    }
+    created: number
+  }
 }
-const UserProfile = ({ path }: Props) => {
+const UserProfile = ({ path, profile }: Props) => {
+  const { nickname, name, picture } = profile.user
   const router = useRouter()
   let currentPath = path
 
@@ -24,15 +36,31 @@ const UserProfile = ({ path }: Props) => {
       <Row>
         <Col sm={12} md={8}>
           <div className={`${styles.avatar} stories-avatar py-3`}>
-            <Image
-              src="https://www.coolgenerator.com/Pic/Face//male/male1085215807342.jpg"
-              className={`${styles.avatarProfile} stories-avatarProfile`}
-              roundedCircle
-              fluid
-              thumbnail
-            />
+            <div>
+              <Image
+                src={picture}
+                alt={nickname}
+                className={`${styles.avatarProfile} stories-avatarProfile d-block`}
+                roundedCircle
+                fluid
+                thumbnail
+              />
+              {currentPath === '/edit-profile' ? (
+                <Link href="/profile">
+                  <a className="my-0 py-0 text-center d-block mx-auto">
+                    <small>Back to profile</small>
+                  </a>
+                </Link>
+              ) : (
+                <Link href="/edit-profile">
+                  <a className="my-0 py-0 text-center d-block mx-auto">
+                    <small>Edit</small>
+                  </a>
+                </Link>
+              )}
+            </div>
             <div className={`${styles.avatarCard} stories-avatarCard`}>
-              <h1>Peter F. Tumulty</h1>
+              <h1>{name}</h1>
               <Badge
                 className={`${btnStyles.darkGreen} stories-darkGreen mr-3 p-2`}
               >
@@ -52,7 +80,7 @@ const UserProfile = ({ path }: Props) => {
             </div>
           </div>
         </Col>
-        {currentPath === '/welcome' && (
+        {currentPath === '/profile' && (
           <Col
             sm={12}
             md={4}

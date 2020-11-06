@@ -1,0 +1,15 @@
+.mw75 {
+  max-width: 100%;
+}
+
+.fieldTitle {
+  font-family: 'Open Sans Extra Bold';
+  font-size: 18px;
+  margin-bottom: 0;
+}
+
+@media (min-width: 1200px) {
+  .mw75 {
+    max-width: 75%;
+  }
+}
