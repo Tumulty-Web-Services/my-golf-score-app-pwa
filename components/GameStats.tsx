@@ -47,7 +47,7 @@ const GameStats = ({ index }: Props): JSX.Element => {
           <small className="d-block">Final Stats</small>
           <small className="d-block">Score: {6 * 18}</small>
         </h2>
-        <Button variant="outline-dark" sz="sm" className="mb-3" href="/welcome">
+        <Button variant="outline-dark" className="mb-3" href="/welcome">
           Home
         </Button>
       </div>

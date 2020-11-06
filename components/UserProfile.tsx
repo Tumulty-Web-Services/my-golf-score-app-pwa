@@ -47,18 +47,10 @@ const UserProfile = () => {
         {router.asPath === '/welcome' && (
           <Col sm={12} md={4} className={styles.buttonContainer}>
             <div className={`d-flex ${styles.buttonGroup}`}>
-              <Button
-                size="md"
-                className={`${btnStyles.teal} mr-2`}
-                href="/new-course"
-              >
+              <Button className={`${btnStyles.teal} mr-2`} href="/new-course">
                 New Course
               </Button>
-              <Button
-                size="md"
-                className={`${btnStyles.orange}`}
-                href="/replay-course"
-              >
+              <Button className={`${btnStyles.orange}`} href="/replay-course">
                 Replay Course
               </Button>
             </div>
