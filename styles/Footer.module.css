@@ -1,0 +1,21 @@
+.footer {
+  border-top: 2px solid #2f855a;
+  background-color: #68d391;
+  color: #fff;
+  font-family: 'Patrick Hand SC';
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+
+.footer p {
+  font-size: 1.1rem;
+}
+
+.footer p a {
+  color: #fff;
+}
+
+.footer p a:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}

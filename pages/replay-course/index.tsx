@@ -1,114 +1,86 @@
-import React, { useState } from 'react'
-import { GetServerSideProps } from 'next'
-import auth0 from '../../utils/auth0'
-import ButtonLink from '../../components/ButtonLink'
-import SubTitle from '../../components/SubTitle'
-import AutoCompleteInput from '../../components/AutoCompleteInput'
-import RadioTable from '../../components/RadioTable'
-import { urlify, postFetcher } from '../../utils/helpers'
-import styles from '../../styles/ReplayCourse.module.css'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import Button from 'react-bootstrap/Button'
+import Table from 'react-bootstrap/Table'
+import styles from '../../styles/SuccessBtn.module.css'
 
-type CourseInfo = {
-  score: string
-  date: string
-  course: string
-}
-
-type Props = {
-  courseInformation: CourseInfo[]
-}
-
-export default function ReplayCourse({ courseInformation }: Props): JSX.Element {
-  const [course, setCourse] = useState(urlify(courseInformation[0].course))
-  const [searchTerm, setSearchTerm ] = useState('')
-
-  const formatTableData = courseInformation.map((item, index) => {
-    return {
-      id: `${item.course}-${item.gameDate}-${index}`,
-      text: item.course,
-      label: item.course,
-      name: 'course',
-    }
-  })
-
-  const formatSearchData = courseInformation.map((item) => {
-    return {
-      label: item.course
-    }
-  })
-
-  console.log('searchTerm');
-  console.log(searchTerm)
-
+export default function ReplayCourse(): JSX.Element {
   return (
-    <div>
-      <div className={styles.container}>
-        <SubTitle title="Select Course" />
-        <div className={styles.textContainer}>
-          <AutoCompleteInput
-            items={formatSearchData}
-            value={searchTerm}
-            handleInput={(term) => {
-              setCourse(urlify(term))
-              setSearchTerm(term)
-            }}
-          />
-        </div>
-        <div className={styles.inputContainer}>
-          <RadioTable
-            handleInput={(term) => {
-              setCourse(urlify(term))
-            }}
-            toggleValues={formatTableData}
-          />
-        </div>
-      </div>
-      <div className={styles.buttonContainer}>
-        <ButtonLink label="Start Course" link={`/replay-game/${course}`} />
-      </div>
-    </div>
+    <Container className="vh-100">
+      <Row>
+        <Col md={12}>
+          <div className="d-flex align-items-center login-container">
+            <div className="login-box">
+              <div className="login-box-wrapper">
+                <h1 className="display-4">Replay Course</h1>
+                <input
+                  type="text"
+                  className="p-3 mt-4 mb-2 w-100 border rounded"
+                  placeholder="Search for course"
+                />
+                <div className="text-left d-block radio-list-title mb-2 mt-2">
+                  <small>Previous five courses</small>
+                </div>
+                <Table striped bordered hover>
+                  <thead>
+                    <tr>
+                      <th colSpan={2} className="text-left">
+                        Select Course
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[1, 2, 3, 4.5].map((hole) => (
+                      <tr key={hole}>
+                        <td width="20">
+                          <input
+                            type="checkbox"
+                            id={`course-${hole}`}
+                            name="replay-course"
+                            value="Bunker Hill"
+                          />
+                        </td>
+                        <td className="text-left">Bunker Hill </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </Table>
+                <Button
+                  href="/replay-game"
+                  size="lg"
+                  className={`${styles.green} my-4 w-100`}
+                >
+                  Start Course
+                </Button>
+              </div>
+            </div>
+          </div>
+        </Col>
+      </Row>
+      <style jsx>{`
+        .login-container {
+          height: 75vh;
+        }
+        .login-box {
+          text-align: center;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .login-box-wrapper {
+          max-width: 350px;
+        }
+
+        .login-box-wrapper .display-4 {
+          font-size: 2.8rem;
+        }
+
+        .login-box-wrapper h1,
+        .radio-list-title small {
+          font-family: 'Open Sans Extra Bold';
+        }
+      `}</style>
+    </Container>
   )
-}
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { req, res } = context
-
-  if (typeof window === 'undefined') {
-    const session = await auth0.getSession(req)
-    if (!session || !session.user) {
-      res.writeHead(302, {
-        Location: '/api/login',
-      })
-      res.end()
-
-      return {
-        props: {
-          user: '',
-          authed: false,
-          courseInformation: []
-        },
-      }
-    }
-        // get the course Information
-    const getCourseInformation = await postFetcher(
-      `${process.env.BASE_URL}/api/get-user-course-history`,
-      JSON.stringify({ nickname: session.user.nickname })
-    )
-
-    return {
-      props: {
-        user: session.user,
-        authed: true,
-        courseInformation: getCourseInformation.response
-      },
-    }
-  }
-
-  return {
-    props: {
-      user: '',
-      authed: false,
-      courseInformation: []
-    },
-  }
 }

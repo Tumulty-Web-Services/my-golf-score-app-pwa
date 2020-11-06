@@ -1,0 +1,44 @@
+.green,
+.green:hover,
+.green:focus,
+.green:active,
+.green:visited {
+  background-color: #68d391 !important;
+  border-color: #48bb78 !important;
+  color: #fff;
+}
+
+.cyan,
+.cyan:hover,
+.cyan:focus,
+.cyan:active,
+.cyan:visited {
+  background-color: #086f83 !important;
+  border-color: #065666 !important;
+  color: #fff;
+}
+
+.teal,
+.teal:hover,
+.teal:focus,
+.teal:active,
+.teal:visited {
+  background-color: #38b2ac !important;
+  border-color: #319795 !important;
+  color: #fff;
+}
+
+.orange,
+.orange:hover {
+  background-color: #f6ad55;
+  border-color: #ed8936;
+  color: #fff;
+}
+
+.orange:focus,
+.orange:active,
+.orage:visited {
+  background-color: #ed8936 !important;
+  border-color: #dd6b20 !important;
+  color: #fff;
+}

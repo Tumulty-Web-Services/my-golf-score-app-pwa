@@ -6,14 +6,21 @@ The goal of this application is to replace the traditional pencil and paper base
 
 #### TODO:
 
-1. Completely overall the design -- use white, forest green, and orange theme.
-2. Debug and wonky functionality
-4. Test mobile and offline capabilities -- Impelment the queued push to the cloud feature
-5. Launch to vercel
-6. Add domain https://app.golfjournal.io to hosting
-7. Add section for contributions to docs
-8. Research how-to & publish PWA
-
+1. Refine mobile experience (fix vh for login, new course, replay coure pages)
+2. Refactor some of the CSS modules into more concise files
+3. Write tests & stories for each component & page
+4. Hook in Auth0
+5. Hook in MongoDB
+6. Refactor app to use dynamic data & local storage
+7. Create an auto complete component for replay-course page
+8. Refactor app to work offline and become a PWA
+9. Refine to get high lighthouse scores
+10. Add Head tag content
+11. Integrate Kwes Forms
+12. Push to production
+13. Test on the golf course
+14. Point domain to app
+15. Integrate with marketing landing page
 
 ## Build status
 
@@ -27,13 +34,13 @@ The goal of this application is to replace the traditional pencil and paper base
 
 ## Technology
 
-**App built with**
-
 - [Auth0](https://auth0.com/)
+- [Chakra](https://chakra-ui.com/theme)
 - [Jest](https://jestjs.io/)
 - [Next.js](https://nextjs.org/)
 - [MongoDB](https://www.mongodb.com/)
 - [Mongoose](https://mongoosejs.com/)
+- [React Bootstrap](https://react-bootstrap.netlify.app)
 - [React Font Awesome](https://github.com/FortAwesome/react-fontawesome)
 - [React Testing Library](https://testing-library.com/)
 - [Storybook](https://storybook.js.org/)
@@ -50,7 +57,7 @@ The goal of this application is to replace the traditional pencil and paper base
 
 ## Development
 
-Run the [install process](#install), open this project in you favorite code editor, create a new branch, and run `yarn dev`. Oh, and create a ```.env``` file and add mongodb and auth0 credentials.
+Run the [install process](#install), open this project in you favorite code editor, create a new branch, and run `yarn dev`. Oh, and create a `.env` file and add mongodb and auth0 credentials.
 
 To develop a new feature for this application the developer must follow the contribution guidelines. These guidelines include create a story for the component as well as a test.
 

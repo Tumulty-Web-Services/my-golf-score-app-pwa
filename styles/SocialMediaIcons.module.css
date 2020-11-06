@@ -1,0 +1,13 @@
+.icons {
+  font-size: 2rem;
+}
+
+.icons a {
+  color: #fff;
+  transition-duration: 0.2s;
+}
+
+.icons a:hover {
+  cursor: pointer;
+  color: #fff;
+}

@@ -1,0 +1,23 @@
+.courseHistoryContainer h2 {
+  font-family: 'Open Sans Extra Bold';
+}
+
+.courseHistoryContainer h2 small {
+  font-size: 15px;
+}
+
+.courseLabel {
+  font-family: 'Open Sans Regular';
+}
+
+.courseLabel > .strong {
+  font-family: 'Open Sans Bold';
+}
+
+@media (min-width: 1200px) {
+  .sticky {
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+  }
+}

@@ -1,19 +1,23 @@
 @font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: local('Roboto'), url(/fonts/Roboto-Regular.tff) format('truetype');
+  font-family: 'Open Sans Regular';
+  src: url('../fonts/OpenSans-Regular.ttf') format('truetype');
+  font-display: block;
 }
 
 @font-face {
-  font-family: 'Roboto';
-  font-style: bold;
-  font-weight: 900;
-  font-display: swap;
-  src: local('Roboto'), url(/fonts/Roboto-Bold.tff) format('truetype');
+  font-family: 'Open Sans Extra Bold';
+  src: url('../fonts/OpenSans-ExtraBold.ttf') format('truetype');
+  font-display: block;
 }
 
+@font-face {
+  font-family: 'Open Sans Bold';
+  src: url('../fonts/OpenSans-Bold.ttf') format('truetype');
+  font-display: block;
+}
 
-
-
+@font-face {
+  font-family: 'Patrick Hand SC';
+  src: url('../fonts/PatrickHandSC-Regular.ttf') format('truetype');
+  font-display: block;
+}

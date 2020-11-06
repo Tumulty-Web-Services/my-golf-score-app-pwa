@@ -1,132 +1,35 @@
-import React, { useEffect } from 'react'
-import { GetServerSideProps } from 'next'
-import auth0 from '../../utils/auth0'
-import ButtonLink from '../../components/ButtonLink'
-import SubTitle from '../../components/SubTitle'
-import FlexTable from '../../components/FlexTable'
-import styles from '../../styles/FinishGame.module.css'
-import { postFetcher, formatDate } from '../../utils/helpers'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import Button from 'react-bootstrap/Button'
+import UserProfile from '../../components/UserProfile'
+import CourseHistory from '../../components/CourseHistory'
+import styles from '../../styles/Welcome.module.css'
 
-type CourseInfo = {
-  score: string
-  date: string
-  course: string
-}
-
-type Props = {
-  user: string
-  courseInformation: CourseInfo[]
-}
-
-export default function Welcome({
-  user,
-  courseInformation,
-}: Props): JSX.Element {
-  const formatTableItems = courseInformation.map((items) => {
-    return {
-      itemOne: items.course,
-      itemTwo: items.score,
-      itemThree: formatDate(items.gameDate),
-    }
-  })
-
-  // set up game
-  useEffect(() => {
-    // todo: push anything into local storage into database
-    // todo: clear local storage data except user id.
-
-    const currentUser = localStorage.getItem('user')
-
-    if(!currentUser) {
-      localStorage.setItem('user', JSON.stringify(user))
-    }
-  }, [user])
-
+export default function Welcome(): JSX.Element {
   return (
-    <div>
-      <div className="card-container">
-        <SubTitle title="Course History" />
-        <div className={styles.tableTitle}>
-        <p>
-          <strong>Score | Date</strong>
-        </p>
+    <div className={styles.container}>
+      <div className={styles.userContainer}>
+        <UserProfile />
       </div>
-      <div className={styles.flexContainer}>
-        {(formatTableItems.length > 0 ) && <FlexTable tableItems={formatTableItems} />}
-        {(formatTableItems.length <= 0) && <h3>Select <u>New Course</u> to start your first game</h3>}
-      </div>        
-      </div>
-      <div className="button-container">
-        <ButtonLink label="New Course" link="/course-information" />
-      </div>
-      <div className="button-container">
-        <ButtonLink label="Replay Course" link="/replay-course" />
-      </div>
-      <style jsx>{`
-        .card-container {
-          margin-bottom: 3em;
-          display: block;
-          margin-left: auto;
-          margin-right: auto;
-          max-width: 500px;
-        }
-
-        .card-container > h3 {
-          text-align: center;
-          margin-top: 2em;
-        }
-
-        .button-container {
-          margin-left: auto;
-          margin-right: auto;
-          margin-bottom: 20px;
-          max-width: 400px;
-        }
-      `}</style>
+      <Container>
+        <Row>
+          <Col md={12} className="mt-3">
+            <CourseHistory month="November" />
+          </Col>
+          <Col md={12} className="mt-3">
+            <CourseHistory month="October" />
+          </Col>
+          <Col md={12} className="mt-3">
+            <CourseHistory month="September" />
+          </Col>
+          <Col md={12} className="mt-1 mb-5">
+            <Button variant="outline-dark" className="w-100">
+              Load More
+            </Button>
+          </Col>
+        </Row>
+      </Container>
     </div>
   )
-}
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { req, res } = context
-
-  if (typeof window === 'undefined') {
-    const session = await auth0.getSession(req)
-    if (!session || !session.user) {
-      res.writeHead(302, {
-        Location: '/api/login',
-      })
-      res.end()
-
-      return {
-        props: {
-          user: session.user.nickname,
-          authed: false,
-          courseInformation: [],
-        },
-      }
-    }
-
-    // get the course Information
-    const getCourseInformation = await postFetcher(
-      `${process.env.BASE_URL}/api/get-user-course-history`,
-      JSON.stringify({ nickname: session.user.nickname })
-    )
-
-    return {
-      props: {
-        user: session.user.nickname,
-        authed: true,
-        courseInformation: getCourseInformation.response,
-      },
-    }
-  }
-
-  return {
-    props: {
-      user: null,
-      authed: false,
-      courseInformation: [],
-    },
-  }
 }

@@ -1,0 +1,38 @@
+.green {
+  background-color: #38a169;
+  border-color: #2f855a;
+  color: #fff;
+}
+
+.green:hover {
+  background-color: #38a169;
+  border-color: #2f855a;
+}
+
+.blue {
+  color: #fff;
+  background-color: #3182ce;
+  border-color: #2a69ac;
+}
+
+.teal {
+  background-color: #38b2ac;
+  border-color: #319795;
+  color: #fff;
+}
+
+.teal:hover {
+  background-color: #319795;
+  border-color: #2c7a7b;
+}
+
+.orange {
+  background-color: #ed8936;
+  border-color: #dd6b20;
+  color: #fff;
+}
+
+.orange:hover {
+  background-color: #dd6b20;
+  border-color: #c05621;
+}
