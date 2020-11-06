@@ -17,7 +17,7 @@ export default function Home(): JSX.Element {
             <div className={verticalAlignStyle.containerBox}>
               <h1 className="display-3">Log in</h1>
               <Button
-                href="/welcome"
+                href="/api/auth/login"
                 size="lg"
                 className={`${btnStyles.green} my-4 w-100`}
               >
