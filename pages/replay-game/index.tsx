@@ -13,7 +13,7 @@ export default function ReplayGame(): JSX.Element {
   return (
     <div className={styles.container}>
       <div className={styles.userContainer}>
-        <UserProfile />
+        <UserProfile path="/" />
       </div>
       <Container>
         <Row>
@@ -32,7 +32,11 @@ export default function ReplayGame(): JSX.Element {
             </div>
             <div>
               {items.map((item) => (
-                <GameCard key={`game-${item}`} index={item.toString()} />
+                <GameCard
+                  path="/"
+                  key={`game-${item}`}
+                  index={item.toString()}
+                />
               ))}
             </div>
           </Col>

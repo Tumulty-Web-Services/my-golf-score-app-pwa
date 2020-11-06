@@ -9,7 +9,7 @@ export default function Finish(): JSX.Element {
   return (
     <div className={styles.container}>
       <div className={styles.userContainer}>
-        <UserProfile />
+        <UserProfile path="/" />
       </div>
       <Container>
         <Row>

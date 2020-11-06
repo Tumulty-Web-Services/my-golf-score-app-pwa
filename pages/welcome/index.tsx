@@ -10,7 +10,7 @@ export default function Welcome(): JSX.Element {
   return (
     <div className={styles.container}>
       <div className={styles.userContainer}>
-        <UserProfile />
+        <UserProfile path="/" />
       </div>
       <Container>
         <Row>

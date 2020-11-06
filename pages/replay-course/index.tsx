@@ -61,29 +61,6 @@ export default function ReplayCourse(): JSX.Element {
           </div>
         </Col>
       </Row>
-      <style jsx>{`
-        .login-container {
-          height: 75vh;
-        }
-        .login-box {
-          text-align: center;
-          margin-left: auto;
-          margin-right: auto;
-        }
-
-        .login-box-wrapper {
-          max-width: 350px;
-        }
-
-        .login-box-wrapper .display-4 {
-          font-size: 2.8rem;
-        }
-
-        .login-box-wrapper h1,
-        .radio-list-title small {
-          font-family: 'Open Sans Extra Bold';
-        }
-      `}</style>
     </Container>
   )
 }
