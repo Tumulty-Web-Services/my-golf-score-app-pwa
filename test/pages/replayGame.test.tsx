@@ -15,7 +15,9 @@ describe('ReplayGame page', () => {
   }
 
   it('renders ReplayGame component', () => {
-    render(<ReplayGame session={profile} />)
+    render(
+      <ReplayGame session={profile} course="Bunker Hill" length="eighteen" />
+    )
 
     expect(screen).toBeDefined()
   })

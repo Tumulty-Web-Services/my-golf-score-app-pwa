@@ -4,9 +4,11 @@ import btnStyles from '../styles/BtnStyles.module.css'
 
 type Props = {
   course: string
+  length: string
+  totalScore: number
 }
 
-const CourseLabel = ({ course }: Props) => {
+const CourseLabel = ({ course, length, totalScore }: Props) => {
   return (
     <div
       className={`${styles.courseHistoryContainer} ${styles.sticky} stories-courseHistoryContainer stories-sticky`}
@@ -19,12 +21,12 @@ const CourseLabel = ({ course }: Props) => {
         <p className={`${styles.strong} stories-strong mb-0`}>{course}</p>
         <p className="py-0 my-0">
           <small>
-            Holes: <strong>18</strong>
+            Holes: <strong className="text-capitalize">{length}</strong>
           </small>
         </p>
         <p className="mb-3 mt-0 pt-0">
           <small>
-            Score: <strong>110</strong>
+            Score: <strong>{totalScore.toString()}</strong>
           </small>
         </p>
         <Button

@@ -1,3 +1,4 @@
+import React, { useState } from 'react'
 import { useRouter } from 'next/router'
 import Toast from 'react-bootstrap/Toast'
 import Badge from 'react-bootstrap/Badge'
@@ -10,17 +11,33 @@ import btnStyles from '../styles/BtnStyles.module.css'
 type Props = {
   index: string
   path: string
+  holeNum: string
+  handlePar: any
+  handleScore: any
+  handleYards: any
+  handHoleStorage: any
 }
 
-const GameCard = ({ index, path }: Props) => {
+const GameCard = ({
+  index,
+  path,
+  holeNum,
+  handlePar,
+  handleScore,
+  handleYards,
+  handHoleStorage,
+}: Props) => {
+  const [yards, setYards] = useState('')
+  const [par, setPar] = useState('')
+  const [score, setScore] = useState('')
   const router = useRouter()
   let currentPath = path
 
   if (router !== null) {
-    currentPath = router.asPath
+    currentPath = router.pathname
   }
 
-  const par = true
+  const goodScore = false
 
   return (
     <Toast
@@ -33,7 +50,7 @@ const GameCard = ({ index, path }: Props) => {
         >
           {index}
         </Badge>
-        {par && (
+        {goodScore && (
           <small
             className={`${styles.gameAlert} stories-gameAlert ml-2 d-block my-1 px-2`}
           >
@@ -50,6 +67,11 @@ const GameCard = ({ index, path }: Props) => {
               min="1"
               max="1000"
               className={`${styles.inputWidth} stories-inputWidth mr-4 rounded`}
+              value={yards}
+              onChange={(e) => {
+                setYards(e.target.value)
+                handleYards(e.target.value)
+              }}
             />
             <input
               type="number"
@@ -57,6 +79,11 @@ const GameCard = ({ index, path }: Props) => {
               min="3"
               max="5"
               className={`${styles.inputWidth} stories-inputWidth mr-4 rounded`}
+              value={par}
+              onChange={(e) => {
+                setPar(e.target.value)
+                handlePar(e.target.value)
+              }}
             />
           </>
         )}
@@ -77,10 +104,16 @@ const GameCard = ({ index, path }: Props) => {
           min="1"
           max="10"
           className={`${styles.inputWidth} stories-inputWidth mr-4 rounded`}
+          value={score}
+          onChange={(e) => {
+            setScore(e.target.value)
+            handleScore(e.target.value)
+          }}
         />
       </div>
       <Button
         className={`${btnStyles.orange} stories-orange ${styles.btn} stories-btn mb-2`}
+        onClick={() => handHoleStorage(holeNum)}
       >
         <FontAwesomeIcon icon={faPlusCircle} className="mr-2" />
         Save

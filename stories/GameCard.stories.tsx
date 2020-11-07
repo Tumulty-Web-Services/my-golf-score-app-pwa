@@ -6,8 +6,26 @@ import './CourseHistory.css'
 import './BtnStyles.css'
 export default { title: 'Game Card' }
 
+const props = {
+  index: '0',
+  path: '/game',
+  holeNum: '1',
+  handlePar: (e) => {
+    return e
+  },
+  handleScore: (e) => {
+    return e
+  },
+  handleYards: (e) => {
+    return e
+  },
+  handHoleStorage: (e) => {
+    return e
+  },
+}
+
 export const Card = () => (
   <div style={{ maxWidth: '1000px' }}>
-    <GameCard path="/game" index="0" />
+    <GameCard {...props} />
   </div>
 )

@@ -15,7 +15,39 @@ const eighteen = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
 
 export default function Game({ session, course, length }): JSX.Element {
   const [courseLength, setCourseLength] = useState([])
+  const [gameObj, setGameObj] = useState([])
+  const [currentScore, setCurrentScore] = useState({})
+  const [currentPar, setCurrentPar] = useState({})
+  const [currentYards, setCurrentYards] = useState({})
+  const [totalScore, setTotalScore] = useState(0)
 
+  function setNewCourseLength(newCourseLength) {
+    setCourseLength(newCourseLength)
+  }
+
+  function buildGameObj(currentHole) {
+    const newGameObj = {
+      score: currentScore,
+      par: currentPar,
+      yards: currentYards,
+      hole: currentHole,
+    }
+    setGameObj((gameObj) => [...gameObj, newGameObj])
+  }
+
+  /***
+   *  Game Steps
+   * =====================================
+   *
+   * 1.  Set the course length and name of hole when the page loads ✅
+   * 2.  User puts in yards, score, par in hole 1 card and clicks save ✅
+   * 3.  User clicks saves -- the card disappears, the score field updates, the card is added to the edit previous hole list, all game data is stored in localStorage 🚧
+   * 4. If the user gets a great score the alert message popups before it disappears
+   * 5.  This repeats until the game is completed
+   *
+   */
+
+  /** Set game length */
   useEffect(() => {
     function setGameLength() {
       if (length === 'eighteen') {
@@ -27,8 +59,27 @@ export default function Game({ session, course, length }): JSX.Element {
       }
     }
 
+    function filterGameLength() {
+      gameObj.forEach((round) => {
+        const filteredCourse = courseLength.filter(
+          (hole) => hole !== parseInt(round.hole)
+        )
+        setNewCourseLength(filteredCourse)
+      })
+    }
+
     setGameLength()
+
+    if (gameObj.length > 0) {
+      filterGameLength()
+    }
   })
+
+  console.warn(
+    '%c current game object',
+    'background-color: #FAF080; color:#D69E2E; font-size:12px; padding-top:2px; padding-bottom: 2px;'
+  )
+  console.warn(gameObj)
 
   return (
     <div className={styles.container}>
@@ -56,12 +107,24 @@ export default function Game({ session, course, length }): JSX.Element {
                   path="/"
                   key={`game-${item}`}
                   index={item.toString()}
+                  holeNum={item.toString()}
+                  handlePar={(e) => setCurrentPar(e)}
+                  handleScore={(e) => {
+                    setCurrentScore(e)
+                    setTotalScore((totalScore) => (totalScore += parseInt(e)))
+                  }}
+                  handleYards={(e) => setCurrentYards(e)}
+                  handHoleStorage={buildGameObj}
                 />
               ))}
             </div>
           </Col>
           <Col sm={12} md={3} className="mt-3">
-            <CourseLabel course={course} />
+            <CourseLabel
+              course={course}
+              length={length}
+              totalScore={totalScore}
+            />
           </Col>
         </Row>
       </Container>
