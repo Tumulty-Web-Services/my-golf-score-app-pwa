@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react'
 import { GetServerSideProps } from 'next'
 import auth0 from '../../utils/auth0'
 import Container from 'react-bootstrap/Container'
@@ -9,8 +10,25 @@ import CourseLabel from '../../components/CourseLabel'
 import GameCard from '../../components/GameCard'
 import styles from '../../styles/Game.module.css'
 
-export default function Game({ session }): JSX.Element {
-  const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
+const nine = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+const eighteen = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
+
+export default function Game({ session, course, length }): JSX.Element {
+  const [courseLength, setCourseLength] = useState([])
+
+  useEffect(() => {
+    function setGameLength() {
+      if (length === 'eighteen') {
+        setCourseLength(eighteen)
+      }
+
+      if (length === 'nine') {
+        setCourseLength(nine)
+      }
+    }
+
+    setGameLength()
+  })
 
   return (
     <div className={styles.container}>
@@ -33,7 +51,7 @@ export default function Game({ session }): JSX.Element {
               </Dropdown>
             </div>
             <div>
-              {items.map((item) => (
+              {courseLength.map((item) => (
                 <GameCard
                   path="/"
                   key={`game-${item}`}
@@ -43,7 +61,7 @@ export default function Game({ session }): JSX.Element {
             </div>
           </Col>
           <Col sm={12} md={3} className="mt-3">
-            <CourseLabel />
+            <CourseLabel course={course} />
           </Col>
         </Row>
       </Container>
@@ -52,7 +70,7 @@ export default function Game({ session }): JSX.Element {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { req, res } = context
+  const { req, res, query } = context
 
   if (typeof window === 'undefined') {
     const session = await auth0.getSession(req)
@@ -73,6 +91,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       props: {
         session: session,
         authed: true,
+        course: query.course,
+        length: query.length,
       },
     }
   }
