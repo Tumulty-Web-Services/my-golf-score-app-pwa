@@ -15,7 +15,7 @@ describe('Game page', () => {
   }
 
   it('renders Game component', () => {
-    render(<Game session={profile} />)
+    render(<Game session={profile} course="Bunker Hill" length="eighteen" />)
 
     expect(screen).toBeDefined()
   })
