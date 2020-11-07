@@ -3,16 +3,35 @@ import { render, screen } from '@testing-library/react'
 import UserProfile from '../../components/UserProfile'
 
 describe('UserProfile component', () => {
-  it('renders UserProfile component', () => {
-    render(<UserProfile path="/game" />)
+  const profile = {
+    user: {
+      name: 'Test User',
+      nickname: 'testuser',
+      picture: '123.jpg',
+      sub: 'abc',
+      updated_at: 'November 2020',
+    },
+    created: 123,
+  }
 
-    screen.debug()
+  it('renders UserProfile component', () => {
+    render(<UserProfile path="/game" profile={profile} />)
+
+    expect(screen).toBeDefined()
   })
 
-  it('renders Peter F. Tumulty h1', () => {
-    render(<UserProfile path="/game" />)
+  it('renders Test User h1', () => {
+    render(<UserProfile path="/game" profile={profile} />)
 
-    expect(screen.getByText(/Peter F. Tumulty/)).toBeDefined()
-    expect(screen.getByText(/Peter F. Tumulty/).closest('h1')).toBeDefined()
+    expect(screen.getByText(/Test User/)).toBeDefined()
+    expect(screen.getByText(/Test User/).closest('h1')).toBeDefined()
+  })
+
+  it('renders 123.jpg picture', () => {
+    const { getByTestId } = render(
+      <UserProfile path="/game" profile={profile} />
+    )
+
+    expect(getByTestId('avatar-image')).toBeDefined()
   })
 })

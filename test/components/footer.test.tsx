@@ -6,7 +6,7 @@ describe('Footer component', () => {
   it('renders Footer component', () => {
     render(<Footer />)
 
-    screen.debug()
+    expect(screen).toBeDefined()
   })
 
   it('renders Tumulty Web Services', () => {

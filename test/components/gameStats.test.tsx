@@ -6,7 +6,7 @@ describe('GameStats component', () => {
   it('renders GameStats component', () => {
     render(<GameStats index="9" />)
 
-    screen.debug()
+    expect(screen).toBeDefined()
   })
 
   it('renders Final Stats', () => {

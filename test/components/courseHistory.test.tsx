@@ -6,7 +6,7 @@ describe('CourseHistory component', () => {
   it('renders CourseHistory component', () => {
     render(<CourseHistory month="November" />)
 
-    screen.debug()
+    expect(screen).toBeDefined()
   })
 
   it('renders month props', () => {

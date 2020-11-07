@@ -4,15 +4,22 @@ import Header from '../../components/Header'
 
 describe('Header component', () => {
   it('renders Header component', () => {
-    render(<Header />)
+    render(<Header authed={false} />)
 
-    screen.debug()
+    expect(screen).toBeDefined()
   })
 
-  it('renders Contact link', () => {
-    render(<Header />)
+  it('does not render log out link', () => {
+    render(<Header authed={false} />)
+    expect(() => screen.getByText(/Logout/)).toThrow(
+      'Unable to find an element'
+    )
+  })
 
-    expect(screen.getByText(/Contact/)).toBeDefined()
-    expect(screen.getByText(/Contact/).closest('a')).toBeDefined()
+  it('does render log out link', () => {
+    render(<Header authed={true} />)
+
+    expect(screen.getByText(/Logout/)).toBeDefined()
+    expect(screen.getByText(/Logout/).closest('a')).toBeDefined()
   })
 })

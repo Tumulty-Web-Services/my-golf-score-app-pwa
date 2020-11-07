@@ -6,7 +6,7 @@ describe('GameCard component', () => {
   it('renders GameCard component', () => {
     render(<GameCard index="0" path="/game" />)
 
-    screen.debug()
+    expect(screen).toBeDefined()
   })
 
   it('renders Congratulations on the par! 👍', () => {

@@ -6,7 +6,7 @@ describe('Logo component', () => {
   it('renders Logo component', () => {
     render(<Logo />)
 
-    screen.debug()
+    expect(screen).toBeDefined()
   })
 
   it('renders Golf Journal h1', () => {

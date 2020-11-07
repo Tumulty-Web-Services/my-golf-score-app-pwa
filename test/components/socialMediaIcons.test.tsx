@@ -6,6 +6,6 @@ describe('SocialMediaIcons component', () => {
   it('renders SocialMediaIcons component', () => {
     render(<SocialMediaIcons />)
 
-    screen.debug()
+    expect(screen).toBeDefined()
   })
 })

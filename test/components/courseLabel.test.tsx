@@ -6,7 +6,7 @@ describe('CourseLabel component', () => {
   it('renders CourseLabel component', () => {
     render(<CourseLabel />)
 
-    screen.debug()
+    expect(screen).toBeDefined()
   })
 
   it('renders course title', () => {
