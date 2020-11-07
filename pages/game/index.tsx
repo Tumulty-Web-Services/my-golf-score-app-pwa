@@ -15,14 +15,22 @@ const eighteen = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
 
 export default function Game({ session, course, length }): JSX.Element {
   const [courseLength, setCourseLength] = useState([])
+  const [completedRound, setCompletedRound] = useState([])
+  const [preFilter, setPreFilter] = useState(true)
   const [gameObj, setGameObj] = useState([])
   const [currentScore, setCurrentScore] = useState({})
   const [currentPar, setCurrentPar] = useState({})
   const [currentYards, setCurrentYards] = useState({})
   const [totalScore, setTotalScore] = useState(0)
 
-  function setNewCourseLength(newCourseLength) {
-    setCourseLength(newCourseLength)
+  function setNewCourseLength(currentGameLength) {
+    currentGameLength.forEach((game) => {
+      const filteredGame = courseLength.filter(
+        (hole) => hole !== parseInt(game.hole)
+      )
+      setPreFilter(false)
+      setCourseLength(filteredGame)
+    })
   }
 
   function buildGameObj(currentHole) {
@@ -32,7 +40,10 @@ export default function Game({ session, course, length }): JSX.Element {
       yards: currentYards,
       hole: currentHole,
     }
+
     setGameObj((gameObj) => [...gameObj, newGameObj])
+    setNewCourseLength([...gameObj, newGameObj])
+    setCompletedRound([...gameObj, newGameObj])
   }
 
   /***
@@ -59,27 +70,10 @@ export default function Game({ session, course, length }): JSX.Element {
       }
     }
 
-    function filterGameLength() {
-      gameObj.forEach((round) => {
-        const filteredCourse = courseLength.filter(
-          (hole) => hole !== parseInt(round.hole)
-        )
-        setNewCourseLength(filteredCourse)
-      })
-    }
-
-    setGameLength()
-
-    if (gameObj.length > 0) {
-      filterGameLength()
+    if (preFilter) {
+      setGameLength()
     }
   })
-
-  console.warn(
-    '%c current game object',
-    'background-color: #FAF080; color:#D69E2E; font-size:12px; padding-top:2px; padding-bottom: 2px;'
-  )
-  console.warn(gameObj)
 
   return (
     <div className={styles.container}>
@@ -89,18 +83,30 @@ export default function Game({ session, course, length }): JSX.Element {
       <Container>
         <Row>
           <Col sm={12} md={9} className="mt-3 px-5">
-            <div className="d-block w-100 mb-3">
-              <Dropdown className={styles.mx12}>
-                <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-                  Edit Previous Hole
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Item>1</Dropdown.Item>
-                  <Dropdown.Item>2</Dropdown.Item>
-                  <Dropdown.Item>3</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-            </div>
+            {completedRound.length > 0 && (
+              <div className="d-block w-100 mb-3">
+                <Dropdown className={styles.mx12}>
+                  <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+                    Edit Previous Hole
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu>
+                    <Dropdown.Item>Previous Holes</Dropdown.Item>
+                    {completedRound.map((round) => (
+                      <Dropdown.Item
+                        onClick={() =>
+                          setCourseLength((courseLength) =>
+                            [...courseLength, round.hole].sort()
+                          )
+                        }
+                        key={round.hole}
+                      >
+                        {round.hole}
+                      </Dropdown.Item>
+                    ))}
+                  </Dropdown.Menu>
+                </Dropdown>
+              </div>
+            )}
             <div>
               {courseLength.map((item) => (
                 <GameCard
