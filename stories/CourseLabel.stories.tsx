@@ -8,6 +8,6 @@ export default { title: 'Course Label' }
 
 export const Card = () => (
   <div style={{ maxWidth: '300px' }}>
-    <CourseLabel />
+    <CourseLabel course="Bunker Hill" />
   </div>
 )
