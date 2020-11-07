@@ -1,3 +1,5 @@
+import React, { useState } from 'react'
+import { useRouter } from 'next/router'
 import { GetServerSideProps } from 'next'
 import auth0 from '../../utils/auth0'
 import Container from 'react-bootstrap/Container'
@@ -8,6 +10,20 @@ import btnStyles from '../../styles/BtnStyles.module.css'
 import verticalAlignStyle from '../../styles/VerticalAlign.module.css'
 
 export default function NewCourse(): JSX.Element {
+  const router = useRouter()
+  const [course, setCourse] = useState('')
+  const [length, setLength] = useState('')
+
+  function reDirecToGame() {
+    router.push({
+      pathname: '/game',
+      query: {
+        course: course,
+        length: length,
+      },
+    })
+  }
+
   return (
     <Container className="vh-100">
       <Row>
@@ -22,20 +38,27 @@ export default function NewCourse(): JSX.Element {
                   type="text"
                   className="p-3 mt-4 mb-2 w-100 border rounded"
                   placeholder="Enter name of course"
+                  value={course}
+                  onChange={(e) => setCourse(e.target.value)}
                 />
                 <Button
                   size="lg"
                   className={`${btnStyles.orange} mt-4 mb-2 w-100`}
+                  onClick={() => setLength('nine')}
                 >
                   Nine holes
                 </Button>
-                <Button size="lg" className={`${btnStyles.orange} my-2 w-100`}>
+                <Button
+                  size="lg"
+                  className={`${btnStyles.orange} my-2 w-100`}
+                  onClick={() => setLength('eighteen')}
+                >
                   Eighteen holes
                 </Button>
                 <Button
-                  href="/game"
                   size="lg"
                   className={`${btnStyles.green} my-4 w-100`}
+                  onClick={() => reDirecToGame()}
                 >
                   Start Course
                 </Button>
