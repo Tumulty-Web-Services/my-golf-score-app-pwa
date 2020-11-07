@@ -70,10 +70,7 @@ export default function EditProfile({ session }): JSX.Element {
                         with Golf Journal.
                       </small>
                     </Form.Label>
-                    <Form.Control
-                      type="email"
-                      placeholder="Enter new email"
-                    />
+                    <Form.Control type="email" placeholder="Enter new email" />
                   </Form.Group>
                   <Button variant="dark">Save</Button>
                 </Card.Body>

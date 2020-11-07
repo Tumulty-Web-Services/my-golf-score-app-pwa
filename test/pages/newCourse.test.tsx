@@ -6,6 +6,6 @@ describe('NewCourse page', () => {
   it('renders NewCourse component', () => {
     render(<NewCourse />)
 
-    screen.debug()
+    expect(screen).toBeDefined()
   })
 })

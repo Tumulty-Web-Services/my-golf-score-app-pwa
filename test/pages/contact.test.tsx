@@ -6,6 +6,6 @@ describe('Contact page', () => {
   it('renders Contact component', () => {
     render(<Contact />)
 
-    screen.debug()
+    expect(screen).toBeDefined()
   })
 })

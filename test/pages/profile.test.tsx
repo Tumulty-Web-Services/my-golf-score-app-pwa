@@ -3,9 +3,20 @@ import { render, screen } from '@testing-library/react'
 import Profile from '../../pages/profile'
 
 describe('Profile page', () => {
-  it('renders Profile component', () => {
-    render(<Profile />)
+  const profile = {
+    user: {
+      name: 'Test User',
+      nickname: 'testuser',
+      picture: '123.jpg',
+      sub: 'abc',
+      updated_at: 'November 2020',
+    },
+    created: 123,
+  }
 
-    screen.debug()
+  it('renders Profile component', () => {
+    render(<Profile session={profile} />)
+
+    expect(screen).toBeDefined()
   })
 })

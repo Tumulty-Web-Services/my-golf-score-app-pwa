@@ -6,6 +6,6 @@ describe('ReplayCourse page', () => {
   it('renders ReplayCourse component', () => {
     render(<ReplayCourse />)
 
-    screen.debug()
+    expect(screen).toBeDefined()
   })
 })

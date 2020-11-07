@@ -41,6 +41,7 @@ const UserProfile = ({ path, profile }: Props) => {
                 src={picture}
                 alt={nickname}
                 className={`${styles.avatarProfile} stories-avatarProfile d-block`}
+                data-testid="avatar-image"
                 roundedCircle
                 fluid
                 thumbnail

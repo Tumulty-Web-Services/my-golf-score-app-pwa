@@ -6,6 +6,6 @@ describe('Support page', () => {
   it('renders Support component', () => {
     render(<Support />)
 
-    screen.debug()
+    expect(screen).toBeDefined()
   })
 })

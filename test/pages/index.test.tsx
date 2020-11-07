@@ -6,6 +6,6 @@ describe('Home page', () => {
   it('renders Home component', () => {
     render(<Home />)
 
-    screen.debug()
+    expect(screen).toBeDefined()
   })
 })
