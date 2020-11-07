@@ -43,7 +43,7 @@ export default function ReplayGame({ session }): JSX.Element {
             </div>
           </Col>
           <Col sm={12} md={3} className="mt-3">
-            <CourseLabel title="Bunker Hill" />
+            <CourseLabel course="Bunker Hill" />
           </Col>
         </Row>
       </Container>
