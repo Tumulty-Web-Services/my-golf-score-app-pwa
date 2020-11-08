@@ -69,7 +69,7 @@ const GameCard = ({
           <>
             <input
               type="number"
-              placeholder={gamePlaceHolders.score}
+              placeholder={gamePlaceHolders.yards}
               min="1"
               max="1000"
               className={`${styles.inputWidth} stories-inputWidth mr-4 rounded`}
@@ -97,10 +97,12 @@ const GameCard = ({
         {currentPath === '/replay-game' && (
           <>
             <p className="mb-0 pb-0">
-              <strong>Yards: </strong> 480
+              <strong>Yards: </strong>
+              {gamePlaceHolders.yards}
             </p>
             <p className="mb-0 pb-0">
-              <strong>Par: </strong> 5
+              <strong>Par: </strong>
+              {gamePlaceHolders.par}
             </p>
           </>
         )}

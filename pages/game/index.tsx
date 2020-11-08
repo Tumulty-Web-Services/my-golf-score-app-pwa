@@ -61,6 +61,19 @@ export default function Game({ session, course, length }): JSX.Element {
       hole: currentHole,
     }
 
+    /** Remove the filtered object from gameObject */
+    // const removeHoleFromGameObj = gameObj.filter(a => {
+    //   if(a.hole !== completedHoleForRemoval.hole) {
+    //     return a
+    //   }
+    // })
+
+    // if(removeHoleFromGameObj.length > 0) {
+    //   console.log(removeHoleFromGameObj)
+    //   // setGameObj([...removeHoleFromGameObj, newGameObj])
+    // }else {
+    //
+    // }
     setGameObj((gameObj) => [...gameObj, newGameObj])
     setNewCourseLength([...gameObj, newGameObj])
     setCompletedRound([...gameObj, newGameObj])
@@ -101,11 +114,12 @@ export default function Game({ session, course, length }): JSX.Element {
                     <Dropdown.Item>Previous Holes</Dropdown.Item>
                     {completedRound.map((round) => (
                       <Dropdown.Item
-                        onClick={() =>
+                        onClick={() => {
+                          /** add round back to course list */
                           setCourseLength((courseLength) =>
                             [...courseLength, round.hole].sort()
                           )
-                        }
+                        }}
                         key={round.hole}
                       >
                         {round.hole}
@@ -116,7 +130,7 @@ export default function Game({ session, course, length }): JSX.Element {
               </div>
             )}
             <div>
-              {courseLength.map((item, index) => (
+              {courseLength.map((item) => (
                 <GameCard
                   path="/"
                   key={`game-${item}`}
@@ -124,11 +138,11 @@ export default function Game({ session, course, length }): JSX.Element {
                   holeNum={item.toString()}
                   handlePar={(e) => setCurrentPar(e)}
                   gamePlaceHolders={
-                    gameObj[index] !== undefined
+                    gameObj[item - 1] !== undefined
                       ? {
-                          score: gameObj[index].score,
-                          par: gameObj[index].par,
-                          yards: gameObj[index].yards,
+                          score: gameObj[item - 1].score,
+                          par: gameObj[item - 1].par,
+                          yards: gameObj[item - 1].yards,
                         }
                       : {
                           score: 'Score',
