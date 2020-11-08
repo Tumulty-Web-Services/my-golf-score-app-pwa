@@ -19,6 +19,11 @@ describe('GameCard component', () => {
     handHoleStorage: (e) => {
       return e
     },
+    gamePlaceHolders: {
+      score: 'Score',
+      par: 'Par',
+      yards: 'Yards',
+    },
   }
 
   it('renders GameCard component', () => {

@@ -16,6 +16,11 @@ type Props = {
   handleScore: any
   handleYards: any
   handHoleStorage: any
+  gamePlaceHolders: {
+    score: string
+    par: string
+    yards: string
+  }
 }
 
 const GameCard = ({
@@ -26,6 +31,7 @@ const GameCard = ({
   handleScore,
   handleYards,
   handHoleStorage,
+  gamePlaceHolders,
 }: Props) => {
   const [yards, setYards] = useState('')
   const [par, setPar] = useState('')
@@ -63,7 +69,7 @@ const GameCard = ({
           <>
             <input
               type="number"
-              placeholder="Yards"
+              placeholder={gamePlaceHolders.score}
               min="1"
               max="1000"
               className={`${styles.inputWidth} stories-inputWidth mr-4 rounded`}
@@ -75,7 +81,7 @@ const GameCard = ({
             />
             <input
               type="number"
-              placeholder="Par"
+              placeholder={gamePlaceHolders.par}
               min="3"
               max="5"
               className={`${styles.inputWidth} stories-inputWidth mr-4 rounded`}
@@ -100,7 +106,7 @@ const GameCard = ({
         )}
         <input
           type="number"
-          placeholder="Score"
+          placeholder={gamePlaceHolders.score}
           min="1"
           max="10"
           className={`${styles.inputWidth} stories-inputWidth mr-4 rounded`}

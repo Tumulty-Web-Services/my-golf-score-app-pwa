@@ -22,6 +22,11 @@ const props = {
   handHoleStorage: (e) => {
     return e
   },
+  gamePlaceHolders: {
+    score: 'Score',
+    par: 'Par',
+    yards: 'Yards',
+  },
 }
 
 export const Card = () => (

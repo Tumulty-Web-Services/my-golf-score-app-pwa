@@ -10,6 +10,24 @@ import CourseLabel from '../../components/CourseLabel'
 import GameCard from '../../components/GameCard'
 import styles from '../../styles/Game.module.css'
 
+/***
+ *  Game Steps
+ * =====================================
+ *
+ * 1.  Set the course length and name of hole when the page loads ✅
+ * 2.  User puts in yards, score, par in hole 1 card and clicks save ✅
+ * 3.  User clicks saves:
+ *     * the card disappears ✅
+ *     * the score field updates ✅
+ *     * the card is added to the edit previous hole list, ✅
+ *     * remove the card once added back to this it is removed from the completed round list 🚧
+ *     * integrate a local storage layer to save game state
+ *     * store values of saved game data in the placehold inputs
+ * 4. If the user gets a great score the alert message popups before it disappears
+ * 5.  This repeats until the game is completed
+ *
+ */
+
 const nine = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 const eighteen = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
 
@@ -23,6 +41,7 @@ export default function Game({ session, course, length }): JSX.Element {
   const [currentYards, setCurrentYards] = useState({})
   const [totalScore, setTotalScore] = useState(0)
 
+  // Set the new game length after filter
   function setNewCourseLength(currentGameLength) {
     currentGameLength.forEach((game) => {
       const filteredGame = courseLength.filter(
@@ -33,6 +52,7 @@ export default function Game({ session, course, length }): JSX.Element {
     })
   }
 
+  // build a new and add to the gameo bject
   function buildGameObj(currentHole) {
     const newGameObj = {
       score: currentScore,
@@ -45,18 +65,6 @@ export default function Game({ session, course, length }): JSX.Element {
     setNewCourseLength([...gameObj, newGameObj])
     setCompletedRound([...gameObj, newGameObj])
   }
-
-  /***
-   *  Game Steps
-   * =====================================
-   *
-   * 1.  Set the course length and name of hole when the page loads ✅
-   * 2.  User puts in yards, score, par in hole 1 card and clicks save ✅
-   * 3.  User clicks saves -- the card disappears, the score field updates, the card is added to the edit previous hole list, all game data is stored in localStorage 🚧
-   * 4. If the user gets a great score the alert message popups before it disappears
-   * 5.  This repeats until the game is completed
-   *
-   */
 
   /** Set game length */
   useEffect(() => {
@@ -108,13 +116,26 @@ export default function Game({ session, course, length }): JSX.Element {
               </div>
             )}
             <div>
-              {courseLength.map((item) => (
+              {courseLength.map((item, index) => (
                 <GameCard
                   path="/"
                   key={`game-${item}`}
                   index={item.toString()}
                   holeNum={item.toString()}
                   handlePar={(e) => setCurrentPar(e)}
+                  gamePlaceHolders={
+                    gameObj[index] !== undefined
+                      ? {
+                          score: gameObj[index].score,
+                          par: gameObj[index].par,
+                          yards: gameObj[index].yards,
+                        }
+                      : {
+                          score: 'Score',
+                          par: 'Par',
+                          yards: 'Yards',
+                        }
+                  }
                   handleScore={(e) => {
                     setCurrentScore(e)
                     setTotalScore((totalScore) => (totalScore += parseInt(e)))
