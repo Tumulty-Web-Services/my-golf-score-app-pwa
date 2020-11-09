@@ -65,7 +65,7 @@ const GameCard = ({
         )}
       </h4>
       <div className="input-container mt-2 mb-3">
-        {currentPath === '/game' && (
+        {currentPath === '/temp-game-page' && (
           <>
             <input
               type="number"
