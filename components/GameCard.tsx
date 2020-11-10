@@ -12,26 +12,16 @@ type Props = {
   index: string
   path: string
   holeNum: string
-  handlePar: any
-  handleScore: any
-  handleYards: any
-  handHoleStorage: any
-  gamePlaceHolders: {
-    score: string
-    par: string
-    yards: string
-  }
+  round: any
+  handleHoleStorage: any
 }
 
 const GameCard = ({
   index,
   path,
   holeNum,
-  handlePar,
-  handleScore,
-  handleYards,
-  handHoleStorage,
-  gamePlaceHolders,
+  round,
+  handleHoleStorage,
 }: Props) => {
   const [yards, setYards] = useState('')
   const [par, setPar] = useState('')
@@ -65,31 +55,21 @@ const GameCard = ({
         )}
       </h4>
       <div className="input-container mt-2 mb-3">
-        {currentPath === '/temp-game-page' && (
+        {currentPath === '/game' && (
           <>
             <input
               type="number"
-              placeholder={gamePlaceHolders.yards}
-              min="1"
-              max="1000"
+              placeholder={round.yards}
               className={`${styles.inputWidth} stories-inputWidth mr-4 rounded`}
-              value={yards}
-              onChange={(e) => {
-                setYards(e.target.value)
-                handleYards(e.target.value)
-              }}
+              value={yards || setYards(round.yards)}
+              onChange={(e) => setYards(e.target.value)}
             />
             <input
               type="number"
-              placeholder={gamePlaceHolders.par}
-              min="3"
-              max="5"
+              placeholder={round.par}
               className={`${styles.inputWidth} stories-inputWidth mr-4 rounded`}
-              value={par}
-              onChange={(e) => {
-                setPar(e.target.value)
-                handlePar(e.target.value)
-              }}
+              value={par || setPar(round.par)}
+              onChange={(e) => setPar(e.target.value)}
             />
           </>
         )}
@@ -98,30 +78,32 @@ const GameCard = ({
           <>
             <p className="mb-0 pb-0">
               <strong>Yards: </strong>
-              {gamePlaceHolders.yards}
+              {round.yards}
             </p>
             <p className="mb-0 pb-0">
               <strong>Par: </strong>
-              {gamePlaceHolders.par}
+              {round.par}
             </p>
           </>
         )}
         <input
           type="number"
-          placeholder={gamePlaceHolders.score}
-          min="1"
-          max="10"
+          placeholder={round.score}
           className={`${styles.inputWidth} stories-inputWidth mr-4 rounded`}
-          value={score}
-          onChange={(e) => {
-            setScore(e.target.value)
-            handleScore(e.target.value)
-          }}
+          value={score || setScore(round.score)}
+          onChange={(e) => setScore(e.target.value)}
         />
       </div>
       <Button
         className={`${btnStyles.orange} stories-orange ${styles.btn} stories-btn mb-2`}
-        onClick={() => handHoleStorage(holeNum)}
+        onClick={() =>
+          handleHoleStorage({
+            round: holeNum,
+            yards: yards,
+            par: par,
+            score: score,
+          })
+        }
       >
         <FontAwesomeIcon icon={faPlusCircle} className="mr-2" />
         Save

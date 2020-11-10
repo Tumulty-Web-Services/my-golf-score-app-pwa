@@ -9,72 +9,58 @@ import UserProfile from '../../components/UserProfile'
 import CourseLabel from '../../components/CourseLabel'
 import GameCard from '../../components/GameCard'
 import styles from '../../styles/Game.module.css'
+import {
+  defaultNineHoleCourse,
+  defaultEighteenHoleCourse,
+} from '../../utils/course-defaults'
 
-/***
- *  Game Steps
- * =====================================
- *
- * 1.  Set the course length and name of hole when the page loads ✅
- * 2.  User puts in yards, score, par in hole 1 card and clicks save ✅
- * 3.  User clicks saves:
- *     * the card disappears ✅
- *     * the score field updates ✅
- *     * the card is added to the edit previous hole list, ✅
- *     * remove the card once added back to this it is removed from the completed round list 🚧
- *     * integrate a local storage layer to save game state
- *     * store values of saved game data in the placehold inputs
- * 4. If the user gets a great score the alert message popups before it disappears
- * 5.  This repeats until the game is completed
- *
- */
+function sortByHole(a, b) {
+  if (a.round < b.round) return -1
+  if (a.round > b.round) return 1
+}
 
-const nine = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-const eighteen = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
-
-export default function ReplayGame({ session, course, length }): JSX.Element {
-  const [courseLength, setCourseLength] = useState([])
-  const [completedRound, setCompletedRound] = useState([])
+export default function Game({ session, course, length }): JSX.Element {
   const [preFilter, setPreFilter] = useState(true)
-  const [gameObj, setGameObj] = useState([])
-  const [currentScore, setCurrentScore] = useState({})
-  const [currentPar, setCurrentPar] = useState({})
-  const [currentYards, setCurrentYards] = useState({})
+  const [incompleteRounds, setIncompleteRounds] = useState([])
+  const [completedRounds, setCompletedRounds] = useState([])
   const [totalScore, setTotalScore] = useState(0)
 
-  // Set the new game length after filter
-  function setNewCourseLength(currentGameLength) {
-    currentGameLength.forEach((game) => {
-      const filteredGame = courseLength.filter(
-        (hole) => hole !== parseInt(game.hole)
-      )
-      setPreFilter(false)
-      setCourseLength(filteredGame)
-    })
-  }
+  function saveRoundData(r) {
+    const inInCompletedRound = incompleteRounds.filter(
+      (a) => a.round === r.round
+    )
+    const inCompletedRound = completedRounds.filter((a) => a.round === r.round)
 
-  // build a new and add to the gameo bject
-  function buildGameObj(currentHole) {
-    const newGameObj = {
-      score: currentScore,
-      par: currentPar,
-      yards: currentYards,
-      hole: currentHole,
+    if (inInCompletedRound.length > 0) {
+      const filterOutThisRoundFromIncomplete = incompleteRounds.filter(
+        (a) => a.round !== r.round
+      )
+
+      setIncompleteRounds(filterOutThisRoundFromIncomplete)
+      setCompletedRounds((completedRounds) => [...completedRounds, r])
     }
 
-    setGameObj((gameObj) => [...gameObj, newGameObj])
-    setNewCourseLength([...gameObj, newGameObj])
-    setCompletedRound([...gameObj, newGameObj])
+    if (inCompletedRound.length > 0) {
+      const filterOutThisRoundFromComplete = completedRounds.filter(
+        (a) => a.round !== r.round
+      )
+
+      setCompletedRounds(filterOutThisRoundFromComplete)
+      setIncompleteRounds((incompleteRounds) => [...incompleteRounds, r])
+    }
+
+    setTotalScore((totalScore) => (totalScore += parseInt(r.score)))
+    setPreFilter(false)
   }
 
-  /** Set game length */
   useEffect(() => {
     function setGameLength() {
       if (length === 'eighteen') {
-        setCourseLength(eighteen)
+        setIncompleteRounds(defaultEighteenHoleCourse)
       }
 
       if (length === 'nine') {
-        setCourseLength(nine)
+        setIncompleteRounds(defaultNineHoleCourse)
       }
     }
 
@@ -91,7 +77,7 @@ export default function ReplayGame({ session, course, length }): JSX.Element {
       <Container>
         <Row>
           <Col sm={12} md={9} className="mt-3 px-5">
-            {completedRound.length > 0 && (
+            {completedRounds.length > 0 && (
               <div className="d-block w-100 mb-3">
                 <Dropdown className={styles.mx12}>
                   <Dropdown.Toggle variant="secondary" id="dropdown-basic">
@@ -99,16 +85,12 @@ export default function ReplayGame({ session, course, length }): JSX.Element {
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
                     <Dropdown.Item>Previous Holes</Dropdown.Item>
-                    {completedRound.map((round) => (
+                    {completedRounds.sort(sortByHole).map((i, index) => (
                       <Dropdown.Item
-                        onClick={() =>
-                          setCourseLength((courseLength) =>
-                            [...courseLength, round.hole].sort()
-                          )
-                        }
-                        key={round.hole}
+                        key={`completed-${index}`}
+                        onClick={() => saveRoundData(i)}
                       >
-                        {round.hole}
+                        {i.round}
                       </Dropdown.Item>
                     ))}
                   </Dropdown.Menu>
@@ -116,34 +98,19 @@ export default function ReplayGame({ session, course, length }): JSX.Element {
               </div>
             )}
             <div>
-              {courseLength.map((item, index) => (
-                <GameCard
-                  path="/"
-                  key={`game-${item}`}
-                  index={item.toString()}
-                  holeNum={item.toString()}
-                  handlePar={(e) => setCurrentPar(e)}
-                  gamePlaceHolders={
-                    gameObj[index] !== undefined
-                      ? {
-                          score: gameObj[index].score,
-                          par: gameObj[index].par,
-                          yards: gameObj[index].yards,
-                        }
-                      : {
-                          score: 'Score',
-                          par: 'Par',
-                          yards: 'Yards',
-                        }
-                  }
-                  handleScore={(e) => {
-                    setCurrentScore(e)
-                    setTotalScore((totalScore) => (totalScore += parseInt(e)))
-                  }}
-                  handleYards={(e) => setCurrentYards(e)}
-                  handHoleStorage={buildGameObj}
-                />
-              ))}
+              {incompleteRounds.length > 0 &&
+                incompleteRounds
+                  .sort(sortByHole)
+                  .map((i) => (
+                    <GameCard
+                      path="/"
+                      key={`game-${i.round}`}
+                      index={i.round.toString()}
+                      holeNum={i.round}
+                      round={i}
+                      handleHoleStorage={saveRoundData}
+                    />
+                  ))}
             </div>
           </Col>
           <Col sm={12} md={3} className="mt-3">

@@ -20,9 +20,18 @@ const CourseLabel = ({ course, length, totalScore }: Props) => {
       <div className={`${styles.courseLabel} stories-courseLabel`}>
         <p className={`${styles.strong} stories-strong mb-0`}>{course}</p>
         <p className="py-0 my-0">
-          <small>
-            Holes: <strong className="text-capitalize">{length}</strong>
-          </small>
+          {length === 'nine' && (
+            <small>
+              {' '}
+              Holes: <strong>9</strong>
+            </small>
+          )}
+          {length === 'eighteen' && (
+            <small>
+              {' '}
+              Holes: <strong>18</strong>
+            </small>
+          )}
         </p>
         <p className="mb-3 mt-0 pt-0">
           <small>

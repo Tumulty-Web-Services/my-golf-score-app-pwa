@@ -5,24 +5,16 @@ import GameCard from '../../components/GameCard'
 describe('GameCard component', () => {
   const props = {
     index: '0',
-    path: '/game',
+    path: '/',
     holeNum: '1',
-    handlePar: (e) => {
-      return e
+    round: {
+      round: 1,
+      score: '2',
+      par: '3',
+      yards: '15',
     },
-    handleScore: (e) => {
-      return e
-    },
-    handleYards: (e) => {
-      return e
-    },
-    handHoleStorage: (e) => {
-      return e
-    },
-    gamePlaceHolders: {
-      score: 'Score',
-      par: 'Par',
-      yards: 'Yards',
+    handleHoleStorage: () => {
+      alert('working button')
     },
   }
 
