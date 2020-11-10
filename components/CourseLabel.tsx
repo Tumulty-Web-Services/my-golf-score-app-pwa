@@ -2,6 +2,7 @@ import { useRouter } from 'next/router'
 import Button from 'react-bootstrap/Button'
 import styles from '../styles/CourseHistory.module.css'
 import btnStyles from '../styles/BtnStyles.module.css'
+import { postFetcher } from '../utils/helpers'
 
 type Props = {
   course: string
@@ -13,7 +14,7 @@ type Props = {
 const CourseLabel = ({ course, length, totalScore, user }: Props) => {
   const router = useRouter()
 
-  function finishGame() {
+  async function finishGame() {
     localStorage.setItem('course', course)
     localStorage.setItem('totalScore', totalScore.toString())
 
@@ -27,10 +28,15 @@ const CourseLabel = ({ course, length, totalScore, user }: Props) => {
       rounds: rounds,
     }
 
-    router.push({
-      pathname: 'finish',
-      query: completedGame,
-    })
+    const saveGame = await postFetcher('/api/game/save', completedGame)
+
+    if (saveGame.status === 200) {
+      router.push('/finish')
+    } else {
+      alert(
+        'There was an error saving your game, please contact support@golfjournal.io'
+      )
+    }
   }
 
   return (
