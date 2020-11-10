@@ -7,7 +7,7 @@ export default async function save(req: NextApiRequest, res: NextApiResponse) {
     await dbConnect()
     try {
       const results = JSON.parse(req.body)
-      const newGame = new Games(results)
+      const newGame = await new Games(results).save()
 
       res.status(200).json({
         status: 200,
