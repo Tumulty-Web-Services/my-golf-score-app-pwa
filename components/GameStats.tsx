@@ -1,41 +1,24 @@
+import React, { useState, useEffect } from 'react'
 import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
 import styles from '../styles/CourseHistory.module.css'
 
-type Props = {
-  index: string
-}
+const GameStats = (): JSX.Element => {
+  const [mapHoles, setMapHoles] = useState([])
 
-const GameStats = ({ index }: Props): JSX.Element => {
-  const eighteenHoles = [
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
-    10,
-    11,
-    12,
-    13,
-    14,
-    15,
-    16,
-    17,
-    18,
-  ]
-  const nineHoles = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-  let mapholes
+  useEffect(() => {
+    function mapRoundFromStorage() {
+      const roundsInStorage = localStorage.getItem('rounds')
+      const parsedRound = JSON.parse(roundsInStorage)
 
-  if (index === '18') {
-    mapholes = eighteenHoles
-  }
-  if (index === '9') {
-    mapholes = nineHoles
-  }
+      if (mapHoles.length <= 0) {
+        setMapHoles(parsedRound)
+      }
+    }
+
+    mapRoundFromStorage()
+  })
+
   return (
     <div
       className={`${styles.courseHistoryContainer} stories-courseHistoryContainer`}
@@ -64,12 +47,12 @@ const GameStats = ({ index }: Props): JSX.Element => {
           </tr>
         </thead>
         <tbody>
-          {mapholes.map((hole) => (
-            <tr key={hole}>
-              <td>{hole}</td>
-              <td>300</td>
-              <td>4</td>
-              <td>6</td>
+          {mapHoles.map((game) => (
+            <tr key={game.round}>
+              <td>{game.round}</td>
+              <td>{game.yards}</td>
+              <td>{game.par}</td>
+              <td>{game.score}</td>
             </tr>
           ))}
         </tbody>

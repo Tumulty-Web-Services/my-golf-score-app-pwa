@@ -25,6 +25,16 @@ export default function Game({ session, course, length }): JSX.Element {
   const [completedRounds, setCompletedRounds] = useState([])
   const [totalScore, setTotalScore] = useState(0)
 
+  function createGameScore(completedRounds) {
+    let score = 0
+
+    completedRounds.forEach((r) => {
+      score = score += parseInt(r.score)
+    })
+
+    setTotalScore(score)
+  }
+
   function saveRoundData(r) {
     const inInCompletedRound = incompleteRounds.filter(
       (a) => a.round === r.round
@@ -38,6 +48,7 @@ export default function Game({ session, course, length }): JSX.Element {
 
       setIncompleteRounds(filterOutThisRoundFromIncomplete)
       setCompletedRounds((completedRounds) => [...completedRounds, r])
+      createGameScore([...completedRounds, r])
     }
 
     if (inCompletedRound.length > 0) {
@@ -46,10 +57,10 @@ export default function Game({ session, course, length }): JSX.Element {
       )
 
       setCompletedRounds(filterOutThisRoundFromComplete)
+      createGameScore(filterOutThisRoundFromComplete)
       setIncompleteRounds((incompleteRounds) => [...incompleteRounds, r])
     }
 
-    setTotalScore((totalScore) => (totalScore += parseInt(r.score)))
     setPreFilter(false)
   }
 

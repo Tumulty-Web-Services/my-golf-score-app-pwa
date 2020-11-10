@@ -16,7 +16,7 @@ export default function Finish({ session }): JSX.Element {
       <Container>
         <Row>
           <Col md={12} className="mt-4">
-            <GameStats index="18" />
+            <GameStats />
           </Col>
         </Row>
       </Container>

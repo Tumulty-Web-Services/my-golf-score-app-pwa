@@ -6,18 +6,17 @@ The goal of this application is to replace the traditional pencil and paper base
 
 #### TODO:
 
-2. Hook in MongoDB
-3. Refactor app to use dynamic data & local storage
-4. Create an auto complete component for replay-course page
-5. Incoporate custom login, sign up, and edit forms using Auth0 API
-6. Refactor app to work offline and become a PWA
-7. Refine to get high lighthouse scores
-8. Add Head tag content
-9. Integrate Kwes Forms
-10. Push to production
-11. Test on the golf course
-12. Point domain to app
-13. Integrate with marketing landing page
+1. Hook in MongoDB
+2. Create an auto complete component for replay-course page
+3. Incoporate custom login, sign up, and edit forms using Auth0 API
+4. Refactor app to work offline and become a PWA
+5. Refine to get high lighthouse scores
+6. Add Head tag content
+7. Integrate Kwes Forms
+8. Push to production
+9. Test on the golf course
+10. Point domain to app
+11. Integrate with marketing landing page
 
 ## Build status
 
