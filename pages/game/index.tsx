@@ -132,6 +132,7 @@ export default function Game({ session, course, length }): JSX.Element {
               course={course}
               length={length}
               totalScore={totalScore}
+              user={session.user.nickname}
             />
           </Col>
         </Row>

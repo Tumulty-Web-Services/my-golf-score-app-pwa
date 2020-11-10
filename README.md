@@ -6,7 +6,6 @@ The goal of this application is to replace the traditional pencil and paper base
 
 #### TODO:
 
-1. Hook in MongoDB
 2. Create an auto complete component for replay-course page
 3. Incoporate custom login, sign up, and edit forms using Auth0 API
 4. Refactor app to work offline and become a PWA

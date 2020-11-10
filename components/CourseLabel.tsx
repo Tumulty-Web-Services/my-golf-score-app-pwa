@@ -7,17 +7,32 @@ type Props = {
   course: string
   length: string
   totalScore: number
+  user: string
 }
 
-const CourseLabel = ({ course, length, totalScore }: Props) => {
+const CourseLabel = ({ course, length, totalScore, user }: Props) => {
   const router = useRouter()
 
   function finishGame() {
     localStorage.setItem('course', course)
     localStorage.setItem('totalScore', totalScore.toString())
 
-    router.push('/finish')
+    const rounds = JSON.parse(localStorage.getItem('rounds'))
+
+    // push data to database
+    const completedGame = {
+      user: user,
+      course: course,
+      totalScore: totalScore,
+      rounds: rounds,
+    }
+
+    router.push({
+      pathname: 'finish',
+      query: completedGame,
+    })
   }
+
   return (
     <div
       className={`${styles.courseHistoryContainer} ${styles.sticky} stories-courseHistoryContainer stories-sticky`}
