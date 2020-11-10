@@ -67,6 +67,9 @@ export default function Game({ session, course, length }): JSX.Element {
     if (preFilter) {
       setGameLength()
     }
+
+    // every time the state updates load it to completed rounds local storage
+    localStorage.setItem('rounds', JSON.stringify(completedRounds))
   })
 
   return (

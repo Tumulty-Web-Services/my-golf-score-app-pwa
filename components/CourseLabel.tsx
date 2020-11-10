@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import Button from 'react-bootstrap/Button'
 import styles from '../styles/CourseHistory.module.css'
 import btnStyles from '../styles/BtnStyles.module.css'
@@ -9,6 +10,14 @@ type Props = {
 }
 
 const CourseLabel = ({ course, length, totalScore }: Props) => {
+  const router = useRouter()
+
+  function finishGame() {
+    localStorage.setItem('course', course)
+    localStorage.setItem('totalScore', totalScore.toString())
+
+    router.push('/finish')
+  }
   return (
     <div
       className={`${styles.courseHistoryContainer} ${styles.sticky} stories-courseHistoryContainer stories-sticky`}
@@ -41,7 +50,7 @@ const CourseLabel = ({ course, length, totalScore }: Props) => {
         <Button
           size="lg"
           className={`w-100 my-4 ${btnStyles.teal} stories-teal`}
-          href="/finish"
+          onClick={() => finishGame()}
         >
           Finish game
         </Button>
