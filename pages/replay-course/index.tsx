@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import { GetServerSideProps } from 'next'
 import auth0 from '../../utils/auth0'
 import Container from 'react-bootstrap/Container'
@@ -11,6 +12,10 @@ import verticalAlignStyle from '../../styles/VerticalAlign.module.css'
 export default function ReplayCourse(): JSX.Element {
   return (
     <Container className="vh-100">
+      <Head>
+        <title>GolfJournal.io - Replay Course</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <Row>
         <Col md={12}>
           <div

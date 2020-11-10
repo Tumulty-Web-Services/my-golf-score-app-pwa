@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import React, { useState } from 'react'
 import { useRouter } from 'next/router'
 import { GetServerSideProps } from 'next'
@@ -26,6 +27,10 @@ export default function NewCourse(): JSX.Element {
 
   return (
     <Container className="vh-100">
+      <Head>
+        <title>GolfJournal.io - New Course</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <Row>
         <Col md={12}>
           <div

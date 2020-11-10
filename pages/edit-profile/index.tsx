@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import { GetServerSideProps } from 'next'
 import auth0 from '../../utils/auth0'
 import Container from 'react-bootstrap/Container'
@@ -26,6 +27,10 @@ type Props = {
 export default function EditProfile({ session }): JSX.Element {
   return (
     <div className={userStyles.container}>
+      <Head>
+        <title>GolfJournal.io - Edit Profile</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <div className={userStyles.userContainer}>
         <UserProfile path="/" profile={session} />
       </div>

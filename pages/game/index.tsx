@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import React, { useState, useEffect } from 'react'
 import { GetServerSideProps } from 'next'
 import auth0 from '../../utils/auth0'
@@ -85,6 +86,10 @@ export default function Game({ session, course, length }): JSX.Element {
 
   return (
     <div className={styles.container}>
+      <Head>
+        <title>GolfJournal.io - Play Game</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <div className={styles.userContainer}>
         <UserProfile path="/" profile={session} />
       </div>

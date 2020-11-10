@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import Link from 'next/link'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -9,6 +10,14 @@ import verticalAlignStyle from '../styles/VerticalAlign.module.css'
 export default function Home(): JSX.Element {
   return (
     <Container className="vh-100">
+      <Head>
+        <title>GolfJournal.io - Mobile-first progressive golf scorecard</title>
+        <meta
+          name="description"
+          content=" Golfers, are you looking for an easy to use mobile application to track your golf score? Then golf journal is the app you are looking for!"
+        ></meta>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <Row>
         <Col md={12}>
           <div
