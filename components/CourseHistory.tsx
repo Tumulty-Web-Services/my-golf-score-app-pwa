@@ -4,13 +4,12 @@ import styles from '../styles/CourseHistory.module.css'
 type Props = {
   month: string
   games: {
-    course: string,
-    score: string,
+    course: string
+    score: string
   }[]
 }
 
 const CourseHistory = ({ month, games }: Props): JSX.Element => {
-
   return (
     <div
       className={`${styles.courseHistoryContainer} stories-courseHistoryContainer`}
@@ -26,12 +25,13 @@ const CourseHistory = ({ month, games }: Props): JSX.Element => {
           </tr>
         </thead>
         <tbody>
-          {(games.length > 0) && games.map((game) => (
-             <tr key={game.course}>
-             <td>{game.course}</td>
-             <td>{game.score}</td>
-           </tr>
-          ))}
+          {games.length > 0 &&
+            games.map((game) => (
+              <tr key={game.course}>
+                <td>{game.course}</td>
+                <td>{game.score}</td>
+              </tr>
+            ))}
         </tbody>
       </Table>
     </div>

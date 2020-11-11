@@ -6,12 +6,12 @@ describe('CourseHistory component', () => {
   const games = [
     {
       course: 'Forge Pond',
-      score: '100'
+      score: '100',
     },
     {
       course: 'Bunker Hill',
-      score: '120'
-    }
+      score: '120',
+    },
   ]
   it('renders CourseHistory component', () => {
     render(<CourseHistory month="November 2020" games={games} />)
@@ -20,7 +20,7 @@ describe('CourseHistory component', () => {
   })
 
   it('renders month props', () => {
-    render(<CourseHistory month="November" games={games}/>)
+    render(<CourseHistory month="November" games={games} />)
 
     expect(screen.getByText(/November/)).toBeDefined()
     expect(screen.getByText(/November/).closest('small')).toBeDefined()

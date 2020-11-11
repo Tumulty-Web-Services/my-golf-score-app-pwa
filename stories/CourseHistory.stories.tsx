@@ -7,12 +7,12 @@ export default { title: 'Course History' }
 const games = [
   {
     course: 'Forge Pond',
-    score: '100'
+    score: '100',
   },
   {
     course: 'Bunker Hill',
-    score: '120'
-  }
+    score: '120',
+  },
 ]
 
 export const Table = () => <CourseHistory month="November" games={games} />

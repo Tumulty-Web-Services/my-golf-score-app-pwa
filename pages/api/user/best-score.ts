@@ -2,15 +2,20 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import dbConnect from '../../../utils/db-connect'
 import Games, { GamesInterface } from '../../../models/Games'
 
-export default async function bestScore(req: NextApiRequest, res: NextApiResponse) {
+export default async function bestScore(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   if (req.method === 'POST') {
     await dbConnect()
     try {
       const nickname = JSON.parse(req.body)
 
-      const gameWithBestScore: Array<GamesInterface> = await Games.find({user: nickname})
+      const gameWithBestScore: Array<GamesInterface> = await Games.find({
+        user: nickname,
+      })
         .sort([['totalScore', 'ascending']])
-        .limit(1);      
+        .limit(1)
 
       res.status(200).json({
         status: 200,
