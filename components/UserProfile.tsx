@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import useSWR from 'swr'
@@ -27,16 +27,24 @@ type Props = {
   }
 }
 
+function AlertMessage() {
+  return (
+    <Alert variant="danger" dismissible>
+      There is an error loading your profile data! Please contact
+      support@golfjournal.io
+    </Alert>
+  )
+}
+
 const UserProfile = ({ path, profile }: Props) => {
-  const [errMsg, setErrMsg] = useState(false)
   const { nickname, name, picture } = profile.user
 
   const { data: bestScore, error: bestScoreErr } = useSWR(
-    [`${process.env.BASE_URL}/api/user/best-score`, nickname],
+    [`/api/user/best-score`, nickname],
     postFetcher
   )
   const { data: gameCount, error: gameCountErr } = useSWR(
-    [`${process.env.BASE_URL}/api/user/game-count`, nickname],
+    [`/api/user/game-count`, nickname],
     postFetcher
   )
 
@@ -47,25 +55,12 @@ const UserProfile = ({ path, profile }: Props) => {
     currentPath = router.asPath
   }
 
-  if (bestScoreErr || gameCountErr) {
-    setErrMsg(true)
-  }
+  if (gameCountErr) return <AlertMessage />
+  if (bestScoreErr) return <AlertMessage />
 
   return (
     <Container>
       <Row>
-        <Col sm={12}>
-          {errMsg && (
-            <Alert
-              variant="danger"
-              onClose={() => setErrMsg(false)}
-              dismissible
-            >
-              There is an error loading your profile data! Please contact
-              support@golfjournal.io
-            </Alert>
-          )}
-        </Col>
         <Col sm={12} md={8}>
           <div className={`${styles.avatar} stories-avatar py-3`}>
             <div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Toast from 'react-bootstrap/Toast'
 import Badge from 'react-bootstrap/Badge'
@@ -26,6 +26,7 @@ const GameCard = ({
   const [yards, setYards] = useState('')
   const [par, setPar] = useState('')
   const [score, setScore] = useState('')
+  const [preUpdate, setPreUpdate] = useState(true)
   const router = useRouter()
   let currentPath = path
 
@@ -34,6 +35,28 @@ const GameCard = ({
   }
 
   const goodScore = false
+
+  useEffect(() => {
+    function setInputFieldsWithSavedData() {
+      if (yards === '') {
+        setYards(round.yards)
+      }
+
+      if (par === '') {
+        setPar(round.par)
+      }
+
+      if (score === '') {
+        setScore(round.score)
+      }
+
+      setPreUpdate(false)
+    }
+
+    if (preUpdate === true) {
+      setInputFieldsWithSavedData()
+    }
+  })
 
   return (
     <Toast
@@ -61,14 +84,14 @@ const GameCard = ({
               type="number"
               placeholder={round.yards}
               className={`${styles.inputWidth} stories-inputWidth mr-4 rounded`}
-              value={yards || setYards(round.yards)}
+              value={yards}
               onChange={(e) => setYards(e.target.value)}
             />
             <input
               type="number"
               placeholder={round.par}
               className={`${styles.inputWidth} stories-inputWidth mr-4 rounded`}
-              value={par || setPar(round.par)}
+              value={par}
               onChange={(e) => setPar(e.target.value)}
             />
           </>
@@ -90,7 +113,7 @@ const GameCard = ({
           type="number"
           placeholder={round.score}
           className={`${styles.inputWidth} stories-inputWidth mr-4 rounded`}
-          value={score || setScore(round.score)}
+          value={score}
           onChange={(e) => setScore(e.target.value)}
         />
       </div>

@@ -16,7 +16,7 @@ const GamesSchema: Schema = new Schema({
 
 export interface GamesInterface extends Document {
   user: string
-  date: string
+  gameDate: string
   course: string
   totalScore: string
   rounds: [

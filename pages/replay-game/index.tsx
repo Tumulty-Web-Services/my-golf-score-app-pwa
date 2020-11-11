@@ -26,6 +26,16 @@ export default function Game({ session, course, length }): JSX.Element {
   const [completedRounds, setCompletedRounds] = useState([])
   const [totalScore, setTotalScore] = useState(0)
 
+  function createGameScore(completedRounds) {
+    let score = 0
+
+    completedRounds.forEach((r) => {
+      score = score += parseInt(r.score)
+    })
+
+    setTotalScore(score)
+  }
+
   function saveRoundData(r) {
     const inInCompletedRound = incompleteRounds.filter(
       (a) => a.round === r.round
@@ -39,6 +49,7 @@ export default function Game({ session, course, length }): JSX.Element {
 
       setIncompleteRounds(filterOutThisRoundFromIncomplete)
       setCompletedRounds((completedRounds) => [...completedRounds, r])
+      createGameScore([...completedRounds, r])
     }
 
     if (inCompletedRound.length > 0) {
@@ -47,10 +58,10 @@ export default function Game({ session, course, length }): JSX.Element {
       )
 
       setCompletedRounds(filterOutThisRoundFromComplete)
+      createGameScore(filterOutThisRoundFromComplete)
       setIncompleteRounds((incompleteRounds) => [...incompleteRounds, r])
     }
 
-    setTotalScore((totalScore) => (totalScore += parseInt(r.score)))
     setPreFilter(false)
   }
 
@@ -68,12 +79,15 @@ export default function Game({ session, course, length }): JSX.Element {
     if (preFilter) {
       setGameLength()
     }
+
+    // every time the state updates load it to completed rounds local storage
+    localStorage.setItem('rounds', JSON.stringify(completedRounds))
   })
 
   return (
     <div className={styles.container}>
       <Head>
-        <title>GolfJournal.io - Replay Game</title>
+        <title>GolfJournal.io - Play Game</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <div className={styles.userContainer}>
@@ -123,6 +137,7 @@ export default function Game({ session, course, length }): JSX.Element {
               course={course}
               length={length}
               totalScore={totalScore}
+              user={session.user.nickname}
             />
           </Col>
         </Row>

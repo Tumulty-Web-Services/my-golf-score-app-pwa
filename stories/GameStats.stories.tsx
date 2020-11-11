@@ -5,4 +5,4 @@ import '../styles/fonts.css'
 import './CourseHistory.css'
 export default { title: 'Game Stats' }
 
-export const Table = () => <GameStats index="9" />
+export const Table = () => <GameStats />

@@ -6,16 +6,15 @@ The goal of this application is to replace the traditional pencil and paper base
 
 #### TODO:
 
-1. Build out the replay-course and game pages using Mongodb & local storage
-2. Incoporate custom login, sign up, and edit (no email field ask them to reach to support) forms using Auth0 API
-3. Review the game play experience
-4. Integrate offline capabilities (when offline stor everything in local storage, when online push everything to db)
-5. Refine to get high lighthouse scores
-6. Integrate Kwes Forms (support, feedback, contact)
-7. Push to production
-8. Test on the golf course
-9. Point domain to app
-10. Integrate with marketing landing page
+1. Incoporate custom login, sign up, and edit (no email field ask them to reach to support) forms using Auth0 API
+2. Review the game play experience
+3. Integrate offline capabilities (when offline stor everything in local storage, when online push everything to db)
+4. Refine to get high lighthouse scores
+5. Integrate Kwes Forms (support, feedback, contact)
+6. Push to production
+7. Test on the golf course
+8. Point domain to app
+9. Integrate with marketing landing page
 
 ## Build status
 
@@ -51,7 +50,7 @@ The goal of this application is to replace the traditional pencil and paper base
 
 ## Development
 
-Run the [install process](#install), open this project in you favorite code editor, create a new branch, and run `yarn dev`. Oh, and create a `.env` file and add mongodb and auth0 credentials.
+Run the [install process](#install), open this project in you favorite code editor, create a new branch, and run `yarn dev`. Oh, and create a `.env` file and add mongodb and auth0 credentials, you can get them from me.
 
 To develop a new feature for this application the developer must follow the contribution guidelines. These guidelines include create a story for the component as well as a test.
 
@@ -61,9 +60,11 @@ To add a story navigate to the `app/stories` and add name your story after your 
 
 Once you've written your test and story run `yarn lint` and `yarn format` to lint and format your code. Then you can push it to your branch for review.
 
+Also, the app runs on ```http://localhost:3400```
+
 ## Production
 
-To create a production copy of this application run `yarn build`, then `yarn run`, and open `http://localhost:3000` in the browser.
+To create a production copy of this application run `yarn build`, then `yarn run`, and open `http://localhost:3500` in the browser.
 
 ## Deployment
 
