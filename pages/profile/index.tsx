@@ -4,14 +4,12 @@ import auth0 from '../../utils/auth0'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import Button from 'react-bootstrap/Button'
 import UserProfile from '../../components/UserProfile'
 import CourseHistory from '../../components/CourseHistory'
 import styles from '../../styles/Profile.module.css'
 import { postFetcher } from '../../utils/fetch'
 
-export default function Profile({ session, bestScore, gameCount, gameHistory }): JSX.Element {
-  console.log(gameHistory)
+export default function Profile({ session, gameHistory }): JSX.Element {
   return (
     <div className={styles.container}>
       <Head>
@@ -19,15 +17,16 @@ export default function Profile({ session, bestScore, gameCount, gameHistory }):
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <div className={styles.userContainer}>
-        <UserProfile path="/" profile={session} bestScore={bestScore} gameCount={gameCount} />
+        <UserProfile path="/" profile={session} />
       </div>
       <Container>
         <Row>
-          {(gameHistory.length > 0) && gameHistory.map((game) => (
-            <Col md={12} className="mt-3" key={game.month}>
-              <CourseHistory month={game.month} games={game.games} />
-            </Col>
-          ))}
+          {gameHistory.length > 0 &&
+            gameHistory.map((game) => (
+              <Col md={12} className="mt-3" key={game.month}>
+                <CourseHistory month={game.month} games={game.games} />
+              </Col>
+            ))}
         </Row>
       </Container>
     </div>
@@ -55,19 +54,16 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
     // get game history based on user nickname
     const nickname = session.user.nickname
-    const userBestScore = await postFetcher(`${process.env.BASE_URL}/api/user/best-score`, nickname)
-    const userGameCount = await postFetcher(`${process.env.BASE_URL}/api/user/game-count`, nickname)
-    const userGameHistory = await postFetcher(`${process.env.BASE_URL}/api/user/game-history`, nickname)
-
-    console.log(userGameHistory)
+    const userGameHistory = await postFetcher(
+      `${process.env.BASE_URL}/api/user/game-history`,
+      nickname
+    )
 
     return {
       props: {
         session: session,
         authed: true,
-        bestScore: userBestScore.bestScore,
-        gameCount: userGameCount.gameCount,
-        gameHistory: userGameHistory.gameHistory
+        gameHistory: userGameHistory.gameHistory,
       },
     }
   }

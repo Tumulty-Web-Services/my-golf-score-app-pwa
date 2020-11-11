@@ -8,7 +8,7 @@ export default { title: 'User Profile' }
 const profile = {
   user: {
     name: 'Test User',
-    nickname: 'testuser',
+    nickname: 'tumultywebservices',
     picture: '123.jpg',
     sub: 'abc',
     updated_at: 'November 2020',

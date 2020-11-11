@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import UserProfile from '../../components/UserProfile'
-
+// https://medium.com/frontend-digest/using-testing-libary-with-useswr-f595919de2fd
 describe('UserProfile component', () => {
   const profile = {
     user: {

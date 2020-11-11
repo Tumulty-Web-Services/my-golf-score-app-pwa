@@ -15,7 +15,17 @@
     "storybook": "start-storybook -p 6006 --no-dll",
     "build-storybook": "build-storybook --no-dll"
   },
-  
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.@(ts|tsx)": [
+      "yarn lint --fix",
+      "yarn format"
+    ]
+  },
   "dependencies": {
     "@auth0/nextjs-auth0": "^0.16.0",
     "@babel/preset-env": "^7.12.1",
@@ -31,7 +41,8 @@
     "next-fonts": "^1.4.0",
     "react": "^16.13.1",
     "react-bootstrap": "^1.4.0",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "swr": "^0.3.8"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",

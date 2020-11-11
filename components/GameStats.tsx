@@ -11,7 +11,7 @@ const GameStats = (): JSX.Element => {
       const roundsInStorage = localStorage.getItem('rounds')
       const parsedRound = JSON.parse(roundsInStorage)
 
-      if (mapHoles.length <= 0) {
+      if (mapHoles !== null && mapHoles.length <= 0) {
         setMapHoles(parsedRound)
       }
     }
@@ -47,14 +47,16 @@ const GameStats = (): JSX.Element => {
           </tr>
         </thead>
         <tbody>
-          {mapHoles.map((game) => (
-            <tr key={game.round}>
-              <td>{game.round}</td>
-              <td>{game.yards}</td>
-              <td>{game.par}</td>
-              <td>{game.score}</td>
-            </tr>
-          ))}
+          {mapHoles !== null &&
+            mapHoles.length <= 0 &&
+            mapHoles.map((game) => (
+              <tr key={game.round}>
+                <td>{game.round}</td>
+                <td>{game.yards}</td>
+                <td>{game.par}</td>
+                <td>{game.score}</td>
+              </tr>
+            ))}
         </tbody>
       </Table>
       <Button variant="outline-dark" className="w-100 mb-3" href="/profile">

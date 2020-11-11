@@ -1,18 +1,20 @@
+import React, { useState } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+import useSWR from 'swr'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Image from 'react-bootstrap/Image'
 import Badge from 'react-bootstrap/Badge'
 import Button from 'react-bootstrap/Button'
+import Alert from 'react-bootstrap/Alert'
 import styles from '../styles/UserProfile.module.css'
 import btnStyles from '../styles/BtnStyles.module.css'
+import { postFetcher } from '../utils/fetch'
 
 type Props = {
   path: string
-  bestScore: string
-  gameCount: string
   profile: {
     user: {
       name: string
@@ -24,8 +26,20 @@ type Props = {
     created: number
   }
 }
-const UserProfile = ({ path, profile, bestScore, gameCount }: Props) => {
+
+const UserProfile = ({ path, profile }: Props) => {
+  const [errMsg, setErrMsg] = useState(false)
   const { nickname, name, picture } = profile.user
+
+  const { data: bestScore, error: bestScoreErr } = useSWR(
+    [`${process.env.BASE_URL}/api/user/best-score`, nickname],
+    postFetcher
+  )
+  const { data: gameCount, error: gameCountErr } = useSWR(
+    [`${process.env.BASE_URL}/api/user/game-count`, nickname],
+    postFetcher
+  )
+
   const router = useRouter()
   let currentPath = path
 
@@ -33,9 +47,25 @@ const UserProfile = ({ path, profile, bestScore, gameCount }: Props) => {
     currentPath = router.asPath
   }
 
+  if (bestScoreErr || gameCountErr) {
+    setErrMsg(true)
+  }
+
   return (
     <Container>
       <Row>
+        <Col sm={12}>
+          {errMsg && (
+            <Alert
+              variant="danger"
+              onClose={() => setErrMsg(false)}
+              dismissible
+            >
+              There is an error loading your profile data! Please contact
+              support@golfjournal.io
+            </Alert>
+          )}
+        </Col>
         <Col sm={12} md={8}>
           <div className={`${styles.avatar} stories-avatar py-3`}>
             <div>
@@ -70,14 +100,24 @@ const UserProfile = ({ path, profile, bestScore, gameCount }: Props) => {
                 {currentPath === '/game' || currentPath === '/replay-game' ? (
                   <>Hole: 1</>
                 ) : (
-                  <>Best Score: {bestScore}</>
+                  <>
+                    Best Score:{' '}
+                    {bestScore !== undefined && bestScore.status === 200 && (
+                      <>{bestScore.bestScore}</>
+                    )}
+                  </>
                 )}
               </Badge>
               <Badge className={`${btnStyles.blue} stories-blue mx-2 p-2`}>
                 {currentPath === '/game' || currentPath === '/replay-game' ? (
                   <>Score: 4</>
                 ) : (
-                  <>Game Count: {gameCount}</>
+                  <>
+                    Game Count:{' '}
+                    {gameCount !== undefined && gameCount.status === 200 && (
+                      <>{gameCount.gameCount}</>
+                    )}
+                  </>
                 )}
               </Badge>
             </div>
