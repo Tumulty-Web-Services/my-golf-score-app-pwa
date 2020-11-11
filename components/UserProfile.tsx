@@ -11,6 +11,8 @@ import btnStyles from '../styles/BtnStyles.module.css'
 
 type Props = {
   path: string
+  bestScore: string
+  gameCount: string
   profile: {
     user: {
       name: string
@@ -22,7 +24,7 @@ type Props = {
     created: number
   }
 }
-const UserProfile = ({ path, profile }: Props) => {
+const UserProfile = ({ path, profile, bestScore, gameCount }: Props) => {
   const { nickname, name, picture } = profile.user
   const router = useRouter()
   let currentPath = path
@@ -68,14 +70,14 @@ const UserProfile = ({ path, profile }: Props) => {
                 {currentPath === '/game' || currentPath === '/replay-game' ? (
                   <>Hole: 1</>
                 ) : (
-                  <>Best Score: 92</>
+                  <>Best Score: {bestScore}</>
                 )}
               </Badge>
               <Badge className={`${btnStyles.blue} stories-blue mx-2 p-2`}>
                 {currentPath === '/game' || currentPath === '/replay-game' ? (
                   <>Score: 4</>
                 ) : (
-                  <>Game Count: 36</>
+                  <>Game Count: {gameCount}</>
                 )}
               </Badge>
             </div>

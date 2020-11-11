@@ -1,0 +1,12 @@
+
+"husky": {
+  "hooks": {
+    "pre-commit": "lint-staged"
+  }
+},
+"lint-staged": {
+  "*.@(ts|tsx)": [
+    "yarn lint --fix",
+    "yarn format"
+  ]
+},

@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import Button from 'react-bootstrap/Button'
 import styles from '../styles/CourseHistory.module.css'
 import btnStyles from '../styles/BtnStyles.module.css'
-import { postFetcher } from '../utils/helpers'
+import { postFetcher } from '../utils/fetch'
 
 type Props = {
   course: string

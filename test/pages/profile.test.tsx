@@ -4,6 +4,23 @@ import Profile from '../../pages/profile'
 
 describe('Profile page', () => {
   const profile = {
+    bestScore: "28",
+    gameCount:"2",
+    gameHistory: [
+      {
+        month: "November 2020",
+        games: [
+          {
+            course: "Forge Pond",
+            score: "47"
+          },
+          {
+            course: "Bunker Hill",
+            score: "28"
+          }
+        ]
+      }
+    ]
     user: {
       name: 'Test User',
       nickname: 'testuser',

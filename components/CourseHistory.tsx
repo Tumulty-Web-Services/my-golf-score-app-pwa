@@ -3,15 +3,20 @@ import styles from '../styles/CourseHistory.module.css'
 
 type Props = {
   month: string
+  games: {
+    course: string,
+    score: string,
+  }[]
 }
 
-const CourseHistory = ({ month }: Props): JSX.Element => {
+const CourseHistory = ({ month, games }: Props): JSX.Element => {
+
   return (
     <div
       className={`${styles.courseHistoryContainer} stories-courseHistoryContainer`}
     >
       <h2>
-        <small>{month} 2020</small>
+        <small>{month}</small>
       </h2>
       <Table striped bordered hover>
         <thead>
@@ -21,18 +26,12 @@ const CourseHistory = ({ month }: Props): JSX.Element => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Bunker Hill</td>
-            <td>98</td>
-          </tr>
-          <tr>
-            <td>Forge Pond</td>
-            <td>112</td>
-          </tr>
-          <tr>
-            <td>Rutgers University Course</td>
-            <td>104</td>
-          </tr>
+          {(games.length > 0) && games.map((game) => (
+             <tr key={game.course}>
+             <td>{game.course}</td>
+             <td>{game.score}</td>
+           </tr>
+          ))}
         </tbody>
       </Table>
     </div>

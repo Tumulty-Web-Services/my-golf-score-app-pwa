@@ -6,18 +6,16 @@ The goal of this application is to replace the traditional pencil and paper base
 
 #### TODO:
 
-1. Fully Integrate MongoDB
-2. Refactor Profile page & User Profile component to use dynamic data
-3. Build out the replay-course and game pages using Mongodb & local storage
-3. Incoporate custom login, sign up, and edit (no email field ask them to reach to support) forms using Auth0 API
-4. Review the game play experience
-5. Integrate offline capabilities (when offline stor everything in local storage, when online push everything to db)
-6. Refine to get high lighthouse scores
-7. Integrate Kwes Forms (support, feedback, contact)
-8. Push to production
-9. Test on the golf course
-10. Point domain to app
-11. Integrate with marketing landing page
+1. Build out the replay-course and game pages using Mongodb & local storage
+2. Incoporate custom login, sign up, and edit (no email field ask them to reach to support) forms using Auth0 API
+3. Review the game play experience
+4. Integrate offline capabilities (when offline stor everything in local storage, when online push everything to db)
+5. Refine to get high lighthouse scores
+6. Integrate Kwes Forms (support, feedback, contact)
+7. Push to production
+8. Test on the golf course
+9. Point domain to app
+10. Integrate with marketing landing page
 
 ## Build status
 
