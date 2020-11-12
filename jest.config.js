@@ -7,7 +7,7 @@ module.exports = {
     '^.+\\.(ts|tsx)$': 'babel-jest',
     '^.+\\.jsx?$': 'babel-jest',
   },
-  setupFiles: ['<rootDir>/.jest/setEnvVars.js'],
+  setupFiles: ['<rootDir>/.jest/setEnvVars.js','jest-localstorage-mock'],
   watchPlugins: [
     'jest-watch-typeahead/filename',
     'jest-watch-typeahead/testname',

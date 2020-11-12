@@ -1,36 +1,42 @@
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import { render, screen } from '../testutils'
+import { cache } from 'swr'
 import UserProfile from '../../components/UserProfile'
-// https://medium.com/frontend-digest/using-testing-libary-with-useswr-f595919de2fd
+
 describe('UserProfile component', () => {
-  const profile = {
-    user: {
-      name: 'Test User',
-      nickname: 'testuser',
-      picture: '123.jpg',
-      sub: 'abc',
-      updated_at: 'November 2020',
+  const Props = {
+    path: '/',
+    profile: {
+      user: {
+        name: 'Tumulty Web Services',
+        nickname: 'tumultywebservices',
+        picture: '123.jpg',
+        sub: 'abc',
+        updated_at: 'November 2020',
+      },
+      created: 123456,
     },
-    created: 123,
   }
 
+  afterEach(() => {
+    cache.clear()
+  })
+
   it('renders UserProfile component', () => {
-    render(<UserProfile path="/game" profile={profile} />)
+    render(<UserProfile {...Props} />)
 
     expect(screen).toBeDefined()
   })
 
-  it('renders Test User h1', () => {
-    render(<UserProfile path="/game" profile={profile} />)
+  it('renders Tumulty Web Services h1', () => {
+    render(<UserProfile {...Props} />)
 
-    expect(screen.getByText(/Test User/)).toBeDefined()
-    expect(screen.getByText(/Test User/).closest('h1')).toBeDefined()
+    expect(screen.getByText(/Tumulty Web Services/)).toBeDefined()
+    expect(screen.getByText(/Tumulty Web Services/).closest('h1')).toBeDefined()
   })
 
   it('renders 123.jpg picture', () => {
-    const { getByTestId } = render(
-      <UserProfile path="/game" profile={profile} />
-    )
+    const { getByTestId } = render(<UserProfile {...Props} />)
 
     expect(getByTestId('avatar-image')).toBeDefined()
   })

@@ -135,7 +135,7 @@ export default function ReplayGame({ session, course }): JSX.Element {
           <Col sm={12} md={3} className="mt-3">
             <CourseLabel
               course={course}
-              length={incompleteRounds.length}
+              length={incompleteRounds.length.toString()}
               totalScore={totalScore}
               user={session.user.nickname}
             />

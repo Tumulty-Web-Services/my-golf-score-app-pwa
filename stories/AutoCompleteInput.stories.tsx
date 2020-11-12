@@ -3,7 +3,7 @@ import AutoCompleteInput from '../components/AutoCompleteInput'
 import './AutoCompleteInput.css'
 export default { title: 'Auto Complete Input' }
 
-function handleSearchTerm(course: any, courseLength: anyt) {
+function handleSearchTerm(course: any, courseLength: any) {
   return course + courseLength
 }
 

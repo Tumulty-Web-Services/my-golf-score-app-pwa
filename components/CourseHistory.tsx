@@ -6,6 +6,7 @@ type Props = {
   games: {
     course: string
     score: string
+    date: string
   }[]
 }
 

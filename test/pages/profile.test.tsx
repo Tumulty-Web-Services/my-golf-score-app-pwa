@@ -20,11 +20,13 @@ describe('Profile page', () => {
       },
     ],
     session: {
-      name: 'Test User',
-      nickname: 'testuser',
-      picture: '123.jpg',
-      sub: 'abc',
-      updated_at: 'November 2020',
+      user: {
+        name: 'Tumulty Web Services',
+        nickname: 'tumultywebservices',
+        picture: '123.jpg',
+        sub: 'abc',
+        updated_at: 'November 2020',
+      },
     },
   }
 

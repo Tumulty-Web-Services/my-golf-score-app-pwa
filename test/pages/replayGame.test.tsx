@@ -1,5 +1,6 @@
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import { render, screen } from '../testutils'
+import { cache } from 'swr'
 import ReplayGame from '../../pages/replay-game'
 
 describe('ReplayGame page', () => {
@@ -14,10 +15,12 @@ describe('ReplayGame page', () => {
     created: 123,
   }
 
+  afterEach(() => {
+    cache.clear()
+  })
+
   it('renders ReplayGame component', () => {
-    render(
-      <ReplayGame session={profile} course="Bunker Hill" length="eighteen" />
-    )
+    render(<ReplayGame session={profile} course="Bunker Hill" />)
 
     expect(screen).toBeDefined()
   })
