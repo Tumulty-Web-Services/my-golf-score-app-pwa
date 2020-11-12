@@ -7,15 +7,16 @@ The goal of this application is to replace the traditional pencil and paper base
 #### TODO:
 
 1. Incoporate custom login, sign up, and edit (no email field ask them to reach to support) forms using Auth0 API
-   - docs: // https://auth0.com/docs/api/authentication
+   * todo: build out sign up forms with tier selection (free, monthly, annually) https://auth0.com/docs/api/authentication?javascript#signup
 2. Review the game play experience
 3. Integrate offline capabilities (when offline stor everything in local storage, when online push everything to db)
 4. Refine to get high lighthouse scores
 5. Integrate Kwes Forms (support, feedback, contact)
-6. Push to production
-7. Test on the golf course
-8. Point domain to app
-9. Integrate with marketing landing page
+6. Set up payment tiers
+7. Push to production
+8. Test on the golf course
+9. Point domain to app
+10. Integrate with marketing landing page
 
 ## Build status
 

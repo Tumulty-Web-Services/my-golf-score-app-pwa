@@ -1,17 +1,31 @@
 import Head from 'next/head'
-import Link from 'next/link'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
-import btnStyles from '../styles/BtnStyles.module.css'
-import verticalAlignStyle from '../styles/VerticalAlign.module.css'
+import btnStyles from '../../styles/BtnStyles.module.css'
+import verticalAlignStyle from '../../styles/VerticalAlign.module.css'
+import signUp from '../../utils/signup'
 
-export default function Home(): JSX.Element {
+export default function SignUp(): JSX.Element {
+  const account = {
+    client_id: 'YOUR_CLIENT_ID',
+    email: 'EMAIL',
+    password: 'PASSWORD',
+    connection: 'CONNECTION',
+    username: 'johndoe',
+    given_name: 'John',
+    family_name: 'Doe',
+    name: 'John Doe',
+    nickname: 'johnny',
+    picture: 'http://example.org/jdoe.png',
+    user_metadata: { plan: 'silver', team_id: 'a111' },
+  }
+
   return (
     <Container className="vh-100">
       <Head>
-        <title>GolfJournal.io - Mobile-first progressive golf scorecard</title>
+        <title>GolfJournal.io - Sign up</title>
         <meta
           name="description"
           content=" Golfers, are you looking for an easy to use mobile application to track your golf score? Then golf journal is the app you are looking for!"
@@ -24,20 +38,15 @@ export default function Home(): JSX.Element {
             className={`d-flex align-items-center ${verticalAlignStyle.containerWrapper}`}
           >
             <div className={verticalAlignStyle.containerBox}>
-              <h1 className="display-3">Log in</h1>
+              <h1 className="display-3">Sign Up</h1>
+              Form will go here..
               <Button
-                href="/api/auth/login"
+                onClick={() => signUp(account)}
                 size="lg"
                 className={`${btnStyles.green} my-4 w-100`}
               >
                 Continue
               </Button>
-              <small>
-                Don&apos;t have an account?{' '}
-                <Link href="/sign-up">
-                  <a>Sign up.</a>
-                </Link>
-              </small>
             </div>
           </div>
         </Col>
