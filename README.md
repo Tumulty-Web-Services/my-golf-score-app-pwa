@@ -6,7 +6,10 @@ The goal of this application is to replace the traditional pencil and paper base
 
 #### TODO:
 
-1. Incoporate custom login, sign up, and edit (no email field ask them to reach to support) forms using Auth0 API // https://auth0.com/docs/api/authentication
+1. Incoporate custom login, sign up, and edit (no email field ask them to reach to support) forms using Auth0 API
+    * docs: // https://auth0.com/docs/api/authentication
+    * update tests
+    *  "pre-push": "yarn test-all", back to husky
 2. Review the game play experience
 3. Integrate offline capabilities (when offline stor everything in local storage, when online push everything to db)
 4. Refine to get high lighthouse scores
