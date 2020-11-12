@@ -60,7 +60,7 @@ To add a story navigate to the `app/stories` and add name your story after your 
 
 Once you've written your test and story run `yarn lint` and `yarn format` to lint and format your code. Then you can push it to your branch for review.
 
-Also, the app runs on ```http://localhost:3400```
+Also, the app runs on `http://localhost:3400`
 
 ## Production
 

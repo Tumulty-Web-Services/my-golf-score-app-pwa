@@ -1,4 +1,7 @@
+import React, { useState } from 'react'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
+import useSWR from 'swr'
 import { GetServerSideProps } from 'next'
 import auth0 from '../../utils/auth0'
 import Container from 'react-bootstrap/Container'
@@ -6,28 +9,54 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 import Table from 'react-bootstrap/Table'
+import AutoCompleteInput from '../../components/AutoCompleteInput'
+import { postFetcher } from '../../utils/fetch'
 import btnStyles from '../../styles/BtnStyles.module.css'
 import verticalAlignStyle from '../../styles/VerticalAlign.module.css'
 
-export default function ReplayCourse(): JSX.Element {
+export default function ReplayCourse({ session }): JSX.Element {
+  const { nickname } = session.user
+
+  const { data: courseHistory, error: courseHistoryErr } = useSWR(
+    [`/api/game/replay-game/course-history`, nickname],
+    postFetcher
+  )
+
+  const router = useRouter()
+  const [course, setCourse] = useState('')
+  const [length, setLength] = useState('')
+
+  function reDirectToGame() {
+    router.push({
+      pathname: '/replay-game',
+      query: {
+        course: course,
+        length: length,
+      },
+    })
+  }
+
+  if (courseHistoryErr) return <div>There was an err.</div>
+
   return (
-    <Container className="vh-100">
+    <Container>
       <Head>
         <title>GolfJournal.io - Replay Course</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <Row>
         <Col md={12}>
-          <div
-            className={`d-flex align-items-center ${verticalAlignStyle.containerWrapper}`}
-          >
+          <div className="d-flex align-items-center mt-3">
             <div className={verticalAlignStyle.containerBox}>
               <div className={verticalAlignStyle.containerBoxWrapper}>
                 <h1 className="display-4">Replay Course</h1>
-                <input
-                  type="text"
-                  className="p-3 mt-4 mb-2 w-100 border rounded"
-                  placeholder="Search for course"
+                <AutoCompleteInput
+                  items={courseHistory}
+                  value={course}
+                  handleInput={(course, courseLength) => {
+                    setCourse(course)
+                    setLength(courseLength)
+                  }}
                 />
                 <div className="text-left d-block radio-list-title mb-2 mt-2">
                   <small>Previous five courses</small>
@@ -57,7 +86,7 @@ export default function ReplayCourse(): JSX.Element {
                   </tbody>
                 </Table>
                 <Button
-                  href="/replay-game"
+                  onClick={() => reDirectToGame()}
                   size="lg"
                   className={`${btnStyles.green} my-4 w-100`}
                 >
