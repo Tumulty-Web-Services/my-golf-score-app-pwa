@@ -15,12 +15,19 @@ export default async function gameCount(
         user: nickname,
       }).limit(-1)
 
-      const gameCount = allUserGames.length + 1
+      if (allUserGames !== undefined && allUserGames.length > 0) {
+        const gameCount = allUserGames.length + 1
 
-      res.status(200).json({
-        status: 200,
-        gameCount: gameCount.toString(),
-      })
+        res.status(200).json({
+          status: 200,
+          gameCount: gameCount.toString(),
+        })
+      } else {
+        res.status(200).json({
+          status: 200,
+          gameCount: 0,
+        })
+      }
     } catch (error) {
       console.error(error)
       res.status(error.status || 500).end(error.message)

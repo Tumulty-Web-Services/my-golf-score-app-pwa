@@ -17,10 +17,17 @@ export default async function bestScore(
         .sort([['totalScore', 'ascending']])
         .limit(1)
 
-      res.status(200).json({
-        status: 200,
-        bestScore: gameWithBestScore[0].totalScore,
-      })
+      if (gameWithBestScore !== undefined && gameWithBestScore.length > 0) {
+        res.status(200).json({
+          status: 200,
+          bestScore: gameWithBestScore[0].totalScore,
+        })
+      } else {
+        res.status(200).json({
+          status: 200,
+          bestScore: [],
+        })
+      }
     } catch (error) {
       console.error(error)
       res.status(error.status || 500).end(error.message)

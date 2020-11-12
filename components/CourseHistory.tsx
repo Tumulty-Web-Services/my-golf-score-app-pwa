@@ -22,14 +22,16 @@ const CourseHistory = ({ month, games }: Props): JSX.Element => {
           <tr>
             <th>Course Name</th>
             <th>Score</th>
+            <th>Date</th>
           </tr>
         </thead>
         <tbody>
           {games.length > 0 &&
-            games.map((game) => (
-              <tr key={game.course}>
+            games.map((game, index) => (
+              <tr key={`${game.course}--${index}`}>
                 <td>{game.course}</td>
                 <td>{game.score}</td>
+                <td>{game.date}</td>
               </tr>
             ))}
         </tbody>

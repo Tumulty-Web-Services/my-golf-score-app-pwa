@@ -26,6 +26,14 @@ export default function ReplayCourse({ session }): JSX.Element {
   const [course, setCourse] = useState('')
   const [length, setLength] = useState('')
 
+  function onChange(e) {
+    const checkedCourse = e.target.value
+    const getCourseLengthAttr = e.target.getAttribute('data-length')
+
+    setLength(getCourseLengthAttr)
+    setCourse(checkedCourse)
+  }
+
   function reDirectToGame() {
     router.push({
       pathname: '/replay-game',
@@ -50,14 +58,18 @@ export default function ReplayCourse({ session }): JSX.Element {
             <div className={verticalAlignStyle.containerBox}>
               <div className={verticalAlignStyle.containerBoxWrapper}>
                 <h1 className="display-4">Replay Course</h1>
-                <AutoCompleteInput
-                  items={courseHistory}
-                  value={course}
-                  handleInput={(course, courseLength) => {
-                    setCourse(course)
-                    setLength(courseLength)
-                  }}
-                />
+                {courseHistory !== undefined && (
+                  <AutoCompleteInput
+                    items={courseHistory.replayGameHistory}
+                    value={course}
+                    handleInput={(item) => {
+                      const { label, dataLength } = JSON.parse(item)
+
+                      setCourse(label)
+                      setLength(dataLength)
+                    }}
+                  />
+                )}
                 <div className="text-left d-block radio-list-title mb-2 mt-2">
                   <small>Previous five courses</small>
                 </div>
@@ -70,19 +82,23 @@ export default function ReplayCourse({ session }): JSX.Element {
                     </tr>
                   </thead>
                   <tbody>
-                    {[1, 2, 3, 4.5].map((hole) => (
-                      <tr key={hole}>
-                        <td width="20">
-                          <input
-                            type="checkbox"
-                            id={`course-${hole}`}
-                            name="replay-course"
-                            value="Bunker Hill"
-                          />
-                        </td>
-                        <td className="text-left">Bunker Hill </td>
-                      </tr>
-                    ))}
+                    {courseHistory !== undefined &&
+                      courseHistory.replayGameHistory.length > 0 &&
+                      courseHistory.replayGameHistory.map((round) => (
+                        <tr key={round.label}>
+                          <td width="20">
+                            <input
+                              type="checkbox"
+                              id={`course-${round.label}`}
+                              name="replay-course"
+                              data-length={round.dataLength}
+                              value={round.label}
+                              onChange={onChange}
+                            />
+                          </td>
+                          <td className="text-left">{round.label}</td>
+                        </tr>
+                      ))}
                   </tbody>
                 </Table>
                 <Button

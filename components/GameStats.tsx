@@ -4,19 +4,49 @@ import Button from 'react-bootstrap/Button'
 import styles from '../styles/CourseHistory.module.css'
 
 const GameStats = (): JSX.Element => {
-  const [mapHoles, setMapHoles] = useState([])
+  const [preGameResults, setPreGameResults] = useState(true)
+  const [finishedRound, setFinishedRound] = useState([])
+  const [finishedScore, setFinishedScore] = useState('')
+  const [finishedCourse, setFinishedCourse] = useState('')
 
   useEffect(() => {
     function mapRoundFromStorage() {
       const roundsInStorage = localStorage.getItem('rounds')
+      const courseInStorage = localStorage.getItem('course')
+      const scoreInStorage = localStorage.getItem('totalScore')
+
       const parsedRound = JSON.parse(roundsInStorage)
 
-      if (mapHoles !== null && mapHoles.length <= 0) {
-        setMapHoles(parsedRound)
+      if (
+        finishedRound !== null &&
+        finishedRound.length <= 0 &&
+        parsedRound.length > 0
+      ) {
+        setFinishedRound(parsedRound)
       }
+
+      if (
+        finishedCourse !== null &&
+        finishedCourse !== '' &&
+        courseInStorage !== ''
+      ) {
+        setFinishedCourse(courseInStorage)
+      }
+
+      if (
+        finishedScore !== null &&
+        finishedScore !== '' &&
+        scoreInStorage !== ''
+      ) {
+        setFinishedScore(scoreInStorage)
+      }
+
+      setPreGameResults(false)
     }
 
-    mapRoundFromStorage()
+    if (preGameResults === true) {
+      mapRoundFromStorage()
+    }
   })
 
   return (
@@ -25,13 +55,13 @@ const GameStats = (): JSX.Element => {
     >
       <div className="d-block w-100">
         <h2>
-          <small className="d-block">Bunker Hill</small>
+          <small className="d-block">{finishedCourse}</small>
         </h2>
       </div>
       <div className="d-flex justify-content-between">
         <h2>
           <small className="d-block">Final Stats</small>
-          <small className="d-block">Score: {6 * 18}</small>
+          <small className="d-block">Score: {finishedScore}</small>
         </h2>
         <Button variant="outline-dark" className="mb-3" href="/profile">
           Home
@@ -47,9 +77,9 @@ const GameStats = (): JSX.Element => {
           </tr>
         </thead>
         <tbody>
-          {mapHoles !== null &&
-            mapHoles.length <= 0 &&
-            mapHoles.map((game) => (
+          {finishedRound !== null &&
+            finishedRound.length <= 0 &&
+            finishedRound.map((game) => (
               <tr key={game.round}>
                 <td>{game.round}</td>
                 <td>{game.yards}</td>

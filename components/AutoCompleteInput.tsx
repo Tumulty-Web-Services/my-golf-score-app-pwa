@@ -18,10 +18,11 @@ export default function AutoCompleteInput({
 }: Props): JSX.Element {
   return (
     <Autocomplete
-      getItemValue={(item) => item.label}
+      getItemValue={(item) => JSON.stringify(item)}
       items={items}
       renderItem={(item, isHighlighted) => (
         <div
+          key={item.label}
           data-length={item.dataLength}
           className={`${styles.autocompleteItem} stories-autocomplete-item`}
           style={{ background: isHighlighted ? 'lightgray' : 'white' }}
@@ -33,7 +34,7 @@ export default function AutoCompleteInput({
         <input
           className={`${styles.autocomplete} stories-autocomplete`}
           {...props}
-          placeHolder="Search previous course"
+          placeholder="Search previous course"
         />
       )}
       value={value}

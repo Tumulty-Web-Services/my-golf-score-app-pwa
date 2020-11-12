@@ -8,6 +8,7 @@ const GamesSchema: Schema = new Schema({
   rounds: [
     {
       score: { type: Number, required: true },
+      yards: { type: Number, required: true },
       par: { type: String, required: true },
       round: { type: String, required: true },
     },
@@ -24,6 +25,7 @@ export interface GamesInterface extends Document {
       score: number
       par: string
       round: string
+      yards: string
     }
   ]
 }

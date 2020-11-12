@@ -2,35 +2,28 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import dbConnect from '../../../../utils/db-connect'
 import Games, { GamesInterface } from '../../../../models/Games'
 
-export default async function courseHistory(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export default async function game(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
     await dbConnect()
     try {
-      const nickname = JSON.parse(req.body)
+      const results = JSON.parse(req.body)
+      const parsedResults = JSON.parse(results)
+      const { nickname, course } = parsedResults
 
-      const allUserGames: Array<GamesInterface> = await Games.find({
+      const lastGame: Array<GamesInterface> = await Games.find({
         user: nickname,
+        course: course,
       })
 
-      if (allUserGames !== undefined && allUserGames.length > 0) {
-        const replayGameHistory = allUserGames.map((game) => {
-          return {
-            label: game.course,
-            dataLength: game.rounds.length,
-          }
-        })
-
+      if (lastGame !== undefined && lastGame.length > 0) {
         res.status(200).json({
           status: 200,
-          replayGameHistory: replayGameHistory,
+          replayGame: lastGame[0].rounds,
         })
       } else {
         res.status(200).json({
           status: 200,
-          replayGameHistory: [],
+          replayGame: [],
         })
       }
     } catch (error) {

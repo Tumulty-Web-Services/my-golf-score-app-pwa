@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import React, { useState, useEffect } from 'react'
+import useSWR from 'swr'
 import { GetServerSideProps } from 'next'
 import auth0 from '../../utils/auth0'
 import Container from 'react-bootstrap/Container'
@@ -10,21 +11,24 @@ import UserProfile from '../../components/UserProfile'
 import CourseLabel from '../../components/CourseLabel'
 import GameCard from '../../components/GameCard'
 import styles from '../../styles/Game.module.css'
-import {
-  defaultNineHoleCourse,
-  defaultEighteenHoleCourse,
-} from '../../utils/course-defaults'
+import { postFetcher } from '../../utils/fetch'
 
 function sortByHole(a, b) {
   if (a.round < b.round) return -1
   if (a.round > b.round) return 1
 }
 
-export default function Game({ session, course, length }): JSX.Element {
+export default function ReplayGame({ session, course }): JSX.Element {
+  const { nickname } = session.user
   const [preFilter, setPreFilter] = useState(true)
   const [incompleteRounds, setIncompleteRounds] = useState([])
   const [completedRounds, setCompletedRounds] = useState([])
   const [totalScore, setTotalScore] = useState(0)
+
+  const { data: replayGame } = useSWR(
+    [`/api/game/replay-game/game`, JSON.stringify({ nickname, course })],
+    postFetcher
+  )
 
   function createGameScore(completedRounds) {
     let score = 0
@@ -67,12 +71,8 @@ export default function Game({ session, course, length }): JSX.Element {
 
   useEffect(() => {
     function setGameLength() {
-      if (length === 'eighteen') {
-        setIncompleteRounds(defaultEighteenHoleCourse)
-      }
-
-      if (length === 'nine') {
-        setIncompleteRounds(defaultNineHoleCourse)
+      if (replayGame !== undefined) {
+        setIncompleteRounds(replayGame.replayGame)
       }
     }
 
@@ -135,7 +135,7 @@ export default function Game({ session, course, length }): JSX.Element {
           <Col sm={12} md={3} className="mt-3">
             <CourseLabel
               course={course}
-              length={length}
+              length={incompleteRounds.length}
               totalScore={totalScore}
               user={session.user.nickname}
             />
@@ -169,7 +169,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         session: session,
         authed: true,
         course: query.course,
-        length: query.length,
       },
     }
   }
