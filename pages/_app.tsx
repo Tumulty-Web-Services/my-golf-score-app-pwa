@@ -1,15 +1,20 @@
 import type { AppProps } from 'next/app'
+import { loadStripe } from '@stripe/stripe-js'
+import { Elements } from '@stripe/react-stripe-js'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../styles/fonts.css'
+const stripePromise = loadStripe('pk_test_O.....')
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Header authed={pageProps.authed} />
       <main>
-        <Component {...pageProps} />
+        <Elements stripe={stripePromise}>
+          <Component {...pageProps} />
+        </Elements>
       </main>
       <Footer />
       <style jsx global>{`

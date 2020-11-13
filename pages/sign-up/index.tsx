@@ -1,19 +1,27 @@
 import React, { useState } from 'react'
 import Head from 'next/head'
+import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import CardInput from '../../components/CardInput'
 import btnStyles from '../../styles/BtnStyles.module.css'
 import verticalAlignStyle from '../../styles/VerticalAlign.module.css'
+import { postPaymentFetcher } from '../../utils/fetch'
 
 export default function SignUp(): JSX.Element {
+  const stripe = useStripe()
+  const elements = useElements()
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [subscription, setSubscription] = useState('tier one')
+  const [paymentStatus, setPaymentStatus] = useState(false)
 
-  function handleSubmission() {
+  // handle create auth0 account
+  async function auth0Handler() {
     const nickname = email.substring(0, email.lastIndexOf('@'))
     const newUser = {
       name,
@@ -23,13 +31,13 @@ export default function SignUp(): JSX.Element {
     }
     /* eslint-disable */
     const webAuth = new auth0.WebAuth({
-      domain: 'tumultywebservices.us.auth0.com',
-      clientID: 'zerAGOQB9MjJKlGMr5UvoRao91BmIaRA',
+      domain: process.env.AUTH0_DOMAIN,
+      clientID: process.env.AUTH0_CLIENTID,
     })
 
     webAuth.signup(
       {
-        connection: 'golfjournal',
+        connection: process.env.AUTH0_DB_CONNECTION,
         ...newUser,
       },
       function (err) {
@@ -39,8 +47,41 @@ export default function SignUp(): JSX.Element {
     )
   }
 
+  // handle stripe payments
+  async function handlePayment() {
+    if (!stripe || !elements) {
+      return
+    }
+
+    const result = await stripe.createPaymentMethod({
+      type: 'card',
+      card: elements.getElement(CardElement),
+      billing_details: {
+        email: email,
+      },
+    })
+
+    const handlePayment = await postPaymentFetcher('/api/checkout/cart', result)
+
+    if (handlePayment) {
+      setPaymentStatus(true)
+    }
+
+    return true
+  }
+
+  async function handleSubmission() {
+    await handlePayment()
+
+    if (paymentStatus) {
+      await auth0Handler()
+    }
+
+    return true
+  }
+
   return (
-    <Container className="vh-100">
+    <Container>
       <Head>
         <title>GolfJournal.io - Sign up</title>
         <meta
@@ -71,7 +112,7 @@ export default function SignUp(): JSX.Element {
                 </Form.Group>
                 <Form.Group>
                   <Form.Text className="text-muted text-left">
-                    We&apos;cll never share your email with anyone else.
+                    We&apos;ll never share your email with anyone else
                   </Form.Text>
                   <Form.Label className="sr-only">Email address</Form.Label>
                   <Form.Control
@@ -94,10 +135,30 @@ export default function SignUp(): JSX.Element {
                     required
                   />
                 </Form.Group>
+                <Form.Group controlId="subscription">
+                  <Form.Text className="text-muted text-left">
+                    Select subscription options
+                  </Form.Text>
+                  <Form.Control
+                    className="mt-1"
+                    value={subscription}
+                    onChange={(e) => setSubscription(e.target.value)}
+                    as="select"
+                  >
+                    <option value="tier one">Free - 4 games per month</option>
+                    <option value="tier two">$.99 - 8 games per month</option>
+                    <option value="tier three">
+                      $3.99 - 12 games per month
+                    </option>
+                    <option value="tier four">$6.99 - Unlimited games</option>
+                  </Form.Control>
+                </Form.Group>
+                {subscription !== 'tier one' && <CardInput />}
                 <Button
                   id="signup"
                   size="lg"
                   onClick={handleSubmission}
+                  disabled={!stripe}
                   className={`${btnStyles.green} my-4 w-100`}
                 >
                   Continue

@@ -34,6 +34,8 @@
     "@fortawesome/free-brands-svg-icons": "^5.15.1",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
     "@fortawesome/react-fontawesome": "^0.1.12",
+    "@stripe/react-stripe-js": "^1.1.2",
+    "@stripe/stripe-js": "^1.11.0",
     "bootstrap": "^4.5.3",
     "mongoose": "^5.10.12",
     "mongoose-typescript": "^1.0.7",
@@ -44,7 +46,9 @@
     "react-autocomplete": "^1.8.1",
     "react-bootstrap": "^1.4.0",
     "react-dom": "^16.13.1",
-    "swr": "^0.3.8"
+    "stripe": "^8.121.0",
+    "swr": "^0.3.8",
+    "use-shopping-cart": "^2.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
