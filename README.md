@@ -6,8 +6,11 @@ The goal of this application is to replace the traditional pencil and paper base
 
 #### TODO:
 
-1. Incoporate custom login, sign up, and edit (no email field ask them to reach to support) forms using Auth0 API
-   - todo: build out sign up forms with tier selection (free, monthly, annually) https://auth0.com/docs/api/authentication?javascript#signup & intregrate Stripe payments https://github.com/stripe/stripe-node
+1. Incoporate custom login, sign up
+   - Sign up todo: incorporate stripe payments
+   - Remove image from user profile, we aren't going with the avatar route for now
+   - Remove Edit page
+   - We are only using username and password feature for now
 2. Review the game play experience
 3. Integrate offline capabilities (when offline stor everything in local storage, when online push everything to db)
 4. Refine to get high lighthouse scores
