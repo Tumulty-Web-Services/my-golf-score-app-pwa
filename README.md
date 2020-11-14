@@ -6,16 +6,14 @@ The goal of this application is to replace the traditional pencil and paper base
 
 #### TODO:
 
-1. Finish setting up Sign up page with subscriptions
-2. Get Edit Page working with subscriptions
-3. Review the game play experience
-   - Add delete button to round in profile page
-4. Integrate offline capabilities (when offline stor everything in local storage, when online push everything to db)
-5. Refine to get high lighthouse scores
-6. Integrate Kwes Forms (support, feedback, contact)
-7. Push to production
-8. Test on the golf course
-9. Point domain to app
+1. Get Edit Page working with subscriptions
+2. Review the game play experience
+3. Integrate offline capabilities (when offline stor everything in local storage, when online push everything to db)
+4. Refine to get high lighthouse scores
+5. Integrate Kwes Forms (support, feedback, contact)
+6. Push to production
+7. Test on the golf course
+8. Point domain to app
 
 ## Build status
 

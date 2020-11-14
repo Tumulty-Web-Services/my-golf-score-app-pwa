@@ -11,7 +11,7 @@ import btnStyles from '../styles/BtnStyles.module.css'
 import verticalAlignStyle from '../styles/VerticalAlign.module.css'
 import styles from '../styles/FormPages.module.css'
 
-export default function Home(): JSX.Element {
+export default function Success(): JSX.Element {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
