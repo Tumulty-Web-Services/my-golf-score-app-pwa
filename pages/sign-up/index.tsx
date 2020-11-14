@@ -6,6 +6,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import Alert from 'react-bootstrap/Alert'
 import btnStyles from '../../styles/BtnStyles.module.css'
 import verticalAlignStyle from '../../styles/VerticalAlign.module.css'
 import styles from '../../styles/FormPages.module.css'
@@ -15,70 +16,53 @@ export default function SignUp(): JSX.Element {
   const elements = useElements()
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
-  const [nickname, setNickname] = useState('')
   const [password, setPassword] = useState('')
   const [subscription, setSubscription] = useState('tier one')
-  // handle create auth0 account
-  // async function auth0Handler() {
-  //   const newUser = {
-  //     name,
-  //     nickname,
-  //     email,
-  //     password,
-  //   }
-  //   /* eslint-disable */
-  //   const webAuth = new auth0.WebAuth({
-  //     domain: process.env.AUTH0_DOMAIN,
-  //     clientID: process.env.AUTH0_CLIENTID,
-  //   })
+  const [userCreatedErr, setUserCreatedErr] = useState(false)
 
-  //   webAuth.signup(
-  //     {
-  //       connection: process.env.AUTH0_DB_CONNECTION,
-  //       ...newUser,
-  //     },
-  //     function (err) {
-  //       if (err) return alert('Something went wrong: ' + err.message)
-  //       return alert('success signup without login!')
-  //     }
-  //   )
-  // }
+  // handle create auth0 account
+  async function auth0Handler() {
+    const nickname = email.substring(0, email.lastIndexOf('@'))
+
+    const newUser = {
+      name,
+      nickname,
+      email,
+      password,
+    }
+    /* eslint-disable */
+    const webAuth = new auth0.WebAuth({
+      domain: process.env.AUTH0_DOMAIN,
+      clientID: process.env.AUTH0_CLIENTID,
+    })
+
+    webAuth.signup(
+      {
+        connection: process.env.AUTH0_DB_CONNECTION,
+        ...newUser,
+      },
+      function (err) {
+        if (err) {
+          setUserCreatedErr(true)
+        }
+
+        return handlePayment()
+      }
+    )
+  }
 
   // handle stripe payments
   async function handlePayment() {
-    const newNickname = email.substring(0, email.lastIndexOf('@'))
-
     if (!stripe || !elements) {
       return
     }
 
-    // create a new customer
-
-    // then create a new subscript with that customer
-    const { error } = await stripe.redirectToCheckout({
-      lineItems: [
-        // Replace with the ID of your price
-        { price: subscription, quantity: 1 },
-      ],
+    await stripe.redirectToCheckout({
+      lineItems: [{ price: subscription, quantity: 1 }],
       mode: 'subscription',
       successUrl: 'http://localhost:3400/sign-up/success',
       cancelUrl: 'http://localhost:3400/cancel',
     })
-
-    if (error) {
-      // console.log('[error]', error);
-    } else {
-      setNickname(newNickname)
-      // console.log('[PaymentMethod]', paymentMethod);
-    }
-
-    return nickname
-  }
-
-  async function handleSubmission() {
-    await handlePayment()
-
-    return true
   }
 
   return (
@@ -93,7 +77,15 @@ export default function SignUp(): JSX.Element {
         <script src="https://cdn.auth0.com/js/auth0/9.11/auth0.min.js"></script>
       </Head>
       <Row>
-        <Col md={12}>
+        {userCreatedErr && (
+          <Col sm={12}>
+            <Alert variant="danger">
+              There was an error with your subscription, please contact
+              support@golfjournal.io
+            </Alert>
+          </Col>
+        )}
+        <Col sm={12}>
           <div
             className={`d-flex align-items-center ${verticalAlignStyle.containerWrapper}`}
           >
@@ -181,7 +173,7 @@ export default function SignUp(): JSX.Element {
                 <Button
                   id="signup"
                   size="lg"
-                  onClick={handleSubmission}
+                  onClick={auth0Handler}
                   disabled={!stripe}
                   className={`${btnStyles.green} my-4 w-100`}
                 >
