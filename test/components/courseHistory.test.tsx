@@ -8,11 +8,13 @@ describe('CourseHistory component', () => {
       course: 'Forge Pond',
       score: '100',
       date: '11/2',
+      id: '7891011',
     },
     {
       course: 'Bunker Hill',
       score: '120',
       date: '11/2',
+      id: '1234567',
     },
   ]
   it('renders CourseHistory component', () => {

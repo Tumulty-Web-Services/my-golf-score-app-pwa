@@ -6,20 +6,16 @@ The goal of this application is to replace the traditional pencil and paper base
 
 #### TODO:
 
-1. Incoporate custom login, sign up
-   - Remove image from user profile, we aren't going with the avatar route for now
-   - Remove image from edit page, add subscription and cancel or change feature
-   - We are only using username and password feature for now
-2. Review the game play experience
+1. Get payment methods finished.
+2. Get Edit Page working
+3. Review the game play experience
    - Add delete button to round in profile page
-3. Integrate offline capabilities (when offline stor everything in local storage, when online push everything to db)
-4. Refine to get high lighthouse scores
-5. Integrate Kwes Forms (support, feedback, contact)
-6. Set up payment tiers
+4. Integrate offline capabilities (when offline stor everything in local storage, when online push everything to db)
+5. Refine to get high lighthouse scores
+6. Integrate Kwes Forms (support, feedback, contact)
 7. Push to production
 8. Test on the golf course
 9. Point domain to app
-10. Integrate with marketing landing page
 
 ## Build status
 

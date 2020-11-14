@@ -5,7 +5,6 @@ import useSWR from 'swr'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import Image from 'react-bootstrap/Image'
 import Badge from 'react-bootstrap/Badge'
 import Button from 'react-bootstrap/Button'
 import Alert from 'react-bootstrap/Alert'
@@ -37,7 +36,7 @@ function AlertMessage() {
 }
 
 const UserProfile = ({ path, profile }: Props) => {
-  const { nickname, name, picture } = profile.user
+  const { nickname, name } = profile.user
 
   const { data: bestScore, error: bestScoreErr } = useSWR(
     [`/api/user/best-score`, nickname],
@@ -63,32 +62,21 @@ const UserProfile = ({ path, profile }: Props) => {
       <Row>
         <Col sm={12} md={8}>
           <div className={`${styles.avatar} stories-avatar py-3`}>
-            <div>
-              <Image
-                src={picture}
-                alt={nickname}
-                className={`${styles.avatarProfile} stories-avatarProfile d-block`}
-                data-testid="avatar-image"
-                roundedCircle
-                fluid
-                thumbnail
-              />
+            <div className={`${styles.avatarCard} stories-avatarCard`}>
+              <h1 className="mb-0 pb-0">{name}</h1>
               {currentPath === '/edit-profile' ? (
                 <Link href="/profile">
-                  <a className="my-0 py-0 text-center d-block mx-auto">
+                  <a className={styles.editLink}>
                     <small>Back to profile</small>
                   </a>
                 </Link>
               ) : (
                 <Link href="/edit-profile">
-                  <a className="my-0 py-0 text-center d-block mx-auto">
+                  <a className={styles.editLink}>
                     <small>Edit</small>
                   </a>
                 </Link>
               )}
-            </div>
-            <div className={`${styles.avatarCard} stories-avatarCard`}>
-              <h1>{name}</h1>
               <Badge
                 className={`${btnStyles.darkGreen} stories-darkGreen mr-3 p-2`}
               >

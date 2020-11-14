@@ -9,11 +9,13 @@ const games = [
     course: 'Forge Pond',
     score: '100',
     date: '11/12',
+    id: '789101112',
   },
   {
     course: 'Bunker Hill',
     score: '120',
     date: '11/12',
+    id: '1234567',
   },
 ]
 

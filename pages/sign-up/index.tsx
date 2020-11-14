@@ -6,9 +6,10 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-import CardInput from '../../components/CardInput'
+import Subscription from '../../components/Subscription'
 import btnStyles from '../../styles/BtnStyles.module.css'
 import verticalAlignStyle from '../../styles/VerticalAlign.module.css'
+import styles from '../../styles/FormPages.module.css'
 import { postPaymentFetcher } from '../../utils/fetch'
 
 export default function SignUp(): JSX.Element {
@@ -17,7 +18,6 @@ export default function SignUp(): JSX.Element {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [subscription, setSubscription] = useState('tier one')
   const [paymentStatus, setPaymentStatus] = useState(false)
 
   // handle create auth0 account
@@ -81,7 +81,7 @@ export default function SignUp(): JSX.Element {
   }
 
   return (
-    <Container>
+    <Container className={styles.vh80}>
       <Head>
         <title>GolfJournal.io - Sign up</title>
         <meta
@@ -135,25 +135,7 @@ export default function SignUp(): JSX.Element {
                     required
                   />
                 </Form.Group>
-                <Form.Group controlId="subscription">
-                  <Form.Text className="text-muted text-left">
-                    Select subscription options
-                  </Form.Text>
-                  <Form.Control
-                    className="mt-1"
-                    value={subscription}
-                    onChange={(e) => setSubscription(e.target.value)}
-                    as="select"
-                  >
-                    <option value="tier one">Free - 4 games per month</option>
-                    <option value="tier two">$.99 - 8 games per month</option>
-                    <option value="tier three">
-                      $3.99 - 12 games per month
-                    </option>
-                    <option value="tier four">$6.99 - Unlimited games</option>
-                  </Form.Control>
-                </Form.Group>
-                {subscription !== 'tier one' && <CardInput />}
+                <Subscription />
                 <Button
                   id="signup"
                   size="lg"

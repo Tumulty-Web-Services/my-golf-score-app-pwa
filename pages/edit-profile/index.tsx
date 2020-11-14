@@ -8,6 +8,7 @@ import Card from 'react-bootstrap/Card'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import UserProfile from '../../components/UserProfile'
+import Subscription from '../../components/Subscription'
 import styles from '../../styles/EditProfile.module.css'
 import userStyles from '../../styles/Profile.module.css'
 
@@ -83,21 +84,18 @@ export default function EditProfile({ session }): JSX.Element {
             </Card>
             <Card className="mb-3">
               <Card.Header>
-                <h2 className={styles.fieldTitle}>Your Avatar</h2>
+                <h2 className={styles.fieldTitle}>Your Subscription</h2>
               </Card.Header>
               <Form>
                 <Card.Body>
                   <Form.Group
-                    controlId="formBasicEmail"
+                    controlId="formSubscription"
                     className={styles.mw75}
                   >
                     <Form.Label className="text-muted">
-                      <small>
-                        This is your avatar. Click on the avatar to upload a
-                        custom one from your files.
-                      </small>
+                      <small>Here you can change your subscription tier.</small>
                     </Form.Label>
-                    <Form.Control type="file" />
+                    <Subscription />
                   </Form.Group>
                   <Button variant="dark">Save</Button>
                 </Card.Body>

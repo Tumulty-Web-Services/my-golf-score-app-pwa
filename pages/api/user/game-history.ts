@@ -52,6 +52,7 @@ export default async function save(req: NextApiRequest, res: NextApiResponse) {
             month: date,
             games: getGamesWithMatchingDate.map((g) => {
               return {
+                id: g._id,
                 course: g.course,
                 score: g.totalScore,
                 date: formatMonthDay(g.gameDate),

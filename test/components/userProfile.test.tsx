@@ -34,10 +34,4 @@ describe('UserProfile component', () => {
     expect(screen.getByText(/Tumulty Web Services/)).toBeDefined()
     expect(screen.getByText(/Tumulty Web Services/).closest('h1')).toBeDefined()
   })
-
-  it('renders 123.jpg picture', () => {
-    const { getByTestId } = render(<UserProfile {...Props} />)
-
-    expect(getByTestId('avatar-image')).toBeDefined()
-  })
 })

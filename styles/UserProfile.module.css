@@ -25,6 +25,13 @@
   display: none;
 }
 
+.editLink {
+  margin-top: -5px;
+  margin-left:3px;
+  margin-bottom:10px;
+  display:block
+}
+
 @media (min-width: 300px) and (max-width: 400px) {
   .avatar img {
     display: initial;
