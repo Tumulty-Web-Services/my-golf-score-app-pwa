@@ -61,7 +61,7 @@ export default function SignUp(): JSX.Element {
       lineItems: [{ price: subscription, quantity: 1 }],
       mode: 'subscription',
       successUrl: 'http://localhost:3400/sign-up/success',
-      cancelUrl: 'http://localhost:3400/cancel',
+      cancelUrl: 'http://localhost:3400/sign-up/cancel',
     })
   }
 
