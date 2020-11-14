@@ -1,5 +1,5 @@
 .vh80 {
-  min-height: 80vh;
+  min-height: 80vh !important;
 }
 
 .mw276 {

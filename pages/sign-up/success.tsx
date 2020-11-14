@@ -7,9 +7,9 @@ import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Alert from 'react-bootstrap/Alert'
-import btnStyles from '../styles/BtnStyles.module.css'
-import verticalAlignStyle from '../styles/VerticalAlign.module.css'
-import styles from '../styles/FormPages.module.css'
+import btnStyles from '../../styles/BtnStyles.module.css'
+import verticalAlignStyle from '../../styles/VerticalAlign.module.css'
+import styles from '../../styles/FormPages.module.css'
 
 export default function Success(): JSX.Element {
   const [email, setEmail] = useState('')
