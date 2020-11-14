@@ -17,7 +17,7 @@ export default function SignUp(): JSX.Element {
   const [email, setEmail] = useState('')
   const [nickname, setNickname] = useState('')
   const [password, setPassword] = useState('')
-
+  const [subscription, setSubscription] = useState('tier one')
   // handle create auth0 account
   // async function auth0Handler() {
   //   const newUser = {
@@ -51,17 +51,18 @@ export default function SignUp(): JSX.Element {
     if (!stripe || !elements) {
       return
     }
-    const cardElement = elements.getElement(CardElement)
 
     // create a new customer
 
     // then create a new subscript with that customer
-    const { error } = await stripe.createPaymentMethod({
-      type: 'card',
-      card: cardElement,
-      billing_details: {
-        email: email,
-      },
+    const { error } = await stripe.redirectToCheckout({
+      lineItems: [
+        // Replace with the ID of your price
+        { price: subscription, quantity: 1 },
+      ],
+      mode: 'subscription',
+      successUrl: 'http://localhost:3400/sign-up/success',
+      cancelUrl: 'http://localhost:3400/cancel',
     })
 
     if (error) {
@@ -135,24 +136,48 @@ export default function SignUp(): JSX.Element {
                     required
                   />
                 </Form.Group>
-                <Form.Group>
-                  <CardElement
-                    options={{
-                      style: {
-                        base: {
-                          fontSize: '16px',
-                          color: '#424770',
-                          '::placeholder': {
-                            color: '#aab7c4',
+                <Form.Group controlId="subscription">
+                  <Form.Text className="text-muted text-left">
+                    Select subscription options
+                  </Form.Text>
+                  <Form.Control
+                    className="mt-1"
+                    value={subscription}
+                    onChange={(e) => setSubscription(e.target.value)}
+                    as="select"
+                  >
+                    <option value="tier one">Free - 4 games per month</option>
+                    <option value="price_1Hn1n7JBUO0xS4uV9oeHCyGs">
+                      $.99 - 8 games per month
+                    </option>
+                    <option value="price_1Hn0keJBUO0xS4uVlAo3FzSz">
+                      $3.99 - 12 games per month
+                    </option>
+                    <option value="price_1Hn1n7JBUO0xS4uV9oeHCyGs">
+                      $6.99 - Unlimited games
+                    </option>
+                  </Form.Control>
+                </Form.Group>
+                {subscription !== 'tier one' && (
+                  <Form.Group>
+                    <CardElement
+                      options={{
+                        style: {
+                          base: {
+                            fontSize: '16px',
+                            color: '#424770',
+                            '::placeholder': {
+                              color: '#aab7c4',
+                            },
+                          },
+                          invalid: {
+                            color: '#9e2146',
                           },
                         },
-                        invalid: {
-                          color: '#9e2146',
-                        },
-                      },
-                    }}
-                  />
-                </Form.Group>
+                      }}
+                    />
+                  </Form.Group>
+                )}
                 <Button
                   id="signup"
                   size="lg"
