@@ -6,76 +6,76 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-import Subscription from '../../components/Subscription'
 import btnStyles from '../../styles/BtnStyles.module.css'
 import verticalAlignStyle from '../../styles/VerticalAlign.module.css'
 import styles from '../../styles/FormPages.module.css'
-import { postPaymentFetcher } from '../../utils/fetch'
 
 export default function SignUp(): JSX.Element {
   const stripe = useStripe()
   const elements = useElements()
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
+  const [nickname, setNickname] = useState('')
   const [password, setPassword] = useState('')
-  const [paymentStatus, setPaymentStatus] = useState(false)
 
   // handle create auth0 account
-  async function auth0Handler() {
-    const nickname = email.substring(0, email.lastIndexOf('@'))
-    const newUser = {
-      name,
-      nickname,
-      email,
-      password,
-    }
-    /* eslint-disable */
-    const webAuth = new auth0.WebAuth({
-      domain: process.env.AUTH0_DOMAIN,
-      clientID: process.env.AUTH0_CLIENTID,
-    })
+  // async function auth0Handler() {
+  //   const newUser = {
+  //     name,
+  //     nickname,
+  //     email,
+  //     password,
+  //   }
+  //   /* eslint-disable */
+  //   const webAuth = new auth0.WebAuth({
+  //     domain: process.env.AUTH0_DOMAIN,
+  //     clientID: process.env.AUTH0_CLIENTID,
+  //   })
 
-    webAuth.signup(
-      {
-        connection: process.env.AUTH0_DB_CONNECTION,
-        ...newUser,
-      },
-      function (err) {
-        if (err) return alert('Something went wrong: ' + err.message)
-        return alert('success signup without login!')
-      }
-    )
-  }
+  //   webAuth.signup(
+  //     {
+  //       connection: process.env.AUTH0_DB_CONNECTION,
+  //       ...newUser,
+  //     },
+  //     function (err) {
+  //       if (err) return alert('Something went wrong: ' + err.message)
+  //       return alert('success signup without login!')
+  //     }
+  //   )
+  // }
 
   // handle stripe payments
   async function handlePayment() {
+    const newNickname = email.substring(0, email.lastIndexOf('@'))
+
     if (!stripe || !elements) {
       return
     }
+    const cardElement = elements.getElement(CardElement)
 
-    const result = await stripe.createPaymentMethod({
+    // create a new customer
+
+    // then create a new subscript with that customer
+    const { error } = await stripe.createPaymentMethod({
       type: 'card',
-      card: elements.getElement(CardElement),
+      card: cardElement,
       billing_details: {
         email: email,
       },
     })
 
-    const handlePayment = await postPaymentFetcher('/api/checkout/cart', result)
-
-    if (handlePayment) {
-      setPaymentStatus(true)
+    if (error) {
+      // console.log('[error]', error);
+    } else {
+      setNickname(newNickname)
+      // console.log('[PaymentMethod]', paymentMethod);
     }
 
-    return true
+    return nickname
   }
 
   async function handleSubmission() {
     await handlePayment()
-
-    if (paymentStatus) {
-      await auth0Handler()
-    }
 
     return true
   }
@@ -135,7 +135,24 @@ export default function SignUp(): JSX.Element {
                     required
                   />
                 </Form.Group>
-                <Subscription />
+                <Form.Group>
+                  <CardElement
+                    options={{
+                      style: {
+                        base: {
+                          fontSize: '16px',
+                          color: '#424770',
+                          '::placeholder': {
+                            color: '#aab7c4',
+                          },
+                        },
+                        invalid: {
+                          color: '#9e2146',
+                        },
+                      },
+                    }}
+                  />
+                </Form.Group>
                 <Button
                   id="signup"
                   size="lg"

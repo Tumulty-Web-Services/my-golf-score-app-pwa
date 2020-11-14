@@ -6,8 +6,8 @@ The goal of this application is to replace the traditional pencil and paper base
 
 #### TODO:
 
-1. Get payment methods finished and refactor login to use Auth0/React
-2. Get Edit Page working
+1. Finish setting up Sign up page with subscriptions
+2. Get Edit Page working with subscriptions
 3. Review the game play experience
    - Add delete button to round in profile page
 4. Integrate offline capabilities (when offline stor everything in local storage, when online push everything to db)
