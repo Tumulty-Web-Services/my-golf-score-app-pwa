@@ -13,10 +13,10 @@ export default async function gameCount(
 
       const allUserGames: Array<GamesInterface> = await Games.find({
         user: nickname,
-      }).limit(-1)
+      })
 
       if (allUserGames !== undefined && allUserGames.length > 0) {
-        const gameCount = allUserGames.length + 1
+        const gameCount = allUserGames.length
 
         res.status(200).json({
           status: 200,

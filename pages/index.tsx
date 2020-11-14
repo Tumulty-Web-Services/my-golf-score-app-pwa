@@ -19,21 +19,15 @@ export default function Home(): JSX.Element {
     const webAuth = new auth0.WebAuth({
       domain: process.env.AUTH0_DOMAIN,
       clientID: process.env.AUTH0_CLIENTID,
+      responseType: 'code',
+      redirectUri: `${process.env.BASE_URL}/profile`,
     })
 
-    webAuth.authorize(
-      {
-        connection: process.env.AUTH0_DB_CONNECTION,
-        email,
-        password,
-        redirectUri: '/profile',
-      },
-      function (err, authResult) {
-        if (err) {
-          return err
-        }
-      }
-    )
+    webAuth.login({
+      realm: process.env.AUTH0_DB_CONNECTION,
+      email: email,
+      password: password,
+    })
   }
 
   return (

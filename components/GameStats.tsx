@@ -14,7 +14,6 @@ const GameStats = (): JSX.Element => {
       const roundsInStorage = localStorage.getItem('rounds')
       const courseInStorage = localStorage.getItem('course')
       const scoreInStorage = localStorage.getItem('totalScore')
-
       const parsedRound = JSON.parse(roundsInStorage)
 
       if (
@@ -33,11 +32,7 @@ const GameStats = (): JSX.Element => {
         setFinishedCourse(courseInStorage)
       }
 
-      if (
-        finishedScore !== null &&
-        finishedScore !== '' &&
-        scoreInStorage !== ''
-      ) {
+      if (scoreInStorage !== null && scoreInStorage !== '') {
         setFinishedScore(scoreInStorage)
       }
 
@@ -78,7 +73,7 @@ const GameStats = (): JSX.Element => {
         </thead>
         <tbody>
           {finishedRound !== null &&
-            finishedRound.length <= 0 &&
+            finishedRound.length >= 0 &&
             finishedRound.map((game) => (
               <tr key={game.round}>
                 <td>{game.round}</td>
