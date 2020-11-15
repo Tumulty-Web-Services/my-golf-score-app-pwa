@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
+import auth0 from 'auth0-js'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -40,7 +41,6 @@ export default function Success(): JSX.Element {
           content=" Golfers, are you looking for an easy to use mobile application to track your golf score? Then golf journal is the app you are looking for!"
         ></meta>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <script src="https://cdn.auth0.com/js/auth0/9.11/auth0.min.js"></script>
       </Head>
       <Row>
         <Col sm={12}>

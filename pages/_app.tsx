@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import type { AppProps } from 'next/app'
 import { loadStripe } from '@stripe/stripe-js'
 import { Elements } from '@stripe/react-stripe-js'
@@ -10,6 +11,9 @@ const stripePromise = loadStripe(process.env.STRIPE_API_ID)
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
+      <Head>
+        <link rel="shortcut icon" type="image/x-icon" href="/golfjournal.ico" />
+      </Head>
       <Header authed={pageProps.authed} />
       <main>
         <Elements stripe={stripePromise}>

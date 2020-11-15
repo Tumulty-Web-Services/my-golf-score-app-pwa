@@ -8,12 +8,9 @@ The goal of this application is to replace the traditional pencil and paper base
 
 1. Get Edit Page working with subscriptions
 2. Review the game play experience
-3. Integrate offline capabilities (when offline stor everything in local storage, when online push everything to db)
-4. Refine to get high lighthouse scores
-5. Integrate Kwes Forms (support, feedback, contact)
-6. Push to production
-7. Test on the golf course
-8. Point domain to app
+3. Refine to get high lighthouse scores
+4. Point domain to app
+5. Test on the golf course
 
 ## Build status
 

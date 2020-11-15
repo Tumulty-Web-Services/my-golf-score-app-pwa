@@ -2,6 +2,18 @@
   height: 75vh;
 }
 
+.containerFeedbackWrapper {
+  height: 120vh;
+}
+
+.vh80 {
+  height: 80vh;
+}
+
+.mw276 {
+  min-width: 276px;
+}
+
 .containerBox {
   text-align: center;
   margin-left: auto;

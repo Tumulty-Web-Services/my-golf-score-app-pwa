@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Head from 'next/head'
+import auth0 from 'auth0-js'
 import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -9,7 +10,6 @@ import Button from 'react-bootstrap/Button'
 import Alert from 'react-bootstrap/Alert'
 import btnStyles from '../../styles/BtnStyles.module.css'
 import verticalAlignStyle from '../../styles/VerticalAlign.module.css'
-import styles from '../../styles/FormPages.module.css'
 
 export default function SignUp(): JSX.Element {
   const stripe = useStripe()
@@ -30,7 +30,7 @@ export default function SignUp(): JSX.Element {
       email,
       password,
     }
-    /* eslint-disable */
+
     const webAuth = new auth0.WebAuth({
       domain: process.env.AUTH0_DOMAIN,
       clientID: process.env.AUTH0_CLIENTID,
@@ -66,7 +66,7 @@ export default function SignUp(): JSX.Element {
   }
 
   return (
-    <Container className={styles.vh80}>
+    <Container className={verticalAlignStyle.vh80}>
       <Head>
         <title>GolfJournal.io - Sign up</title>
         <meta
@@ -74,7 +74,6 @@ export default function SignUp(): JSX.Element {
           content=" Golfers, are you looking for an easy to use mobile application to track your golf score? Then golf journal is the app you are looking for!"
         ></meta>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <script src="https://cdn.auth0.com/js/auth0/9.11/auth0.min.js"></script>
       </Head>
       <Row>
         {userCreatedErr && (
