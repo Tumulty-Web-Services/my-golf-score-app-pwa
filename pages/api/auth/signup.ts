@@ -1,12 +1,11 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import auth0 from '../../../utils/auth0'
 
-export default async function handleCallback(
+export default async function signup(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   try {
-    await auth0.handleCallback(req, res, { redirectTo: '/profile' })
+    res.status(200).end({ message: ' sign up will go here..' })
   } catch (error) {
     console.error(error)
     res.status(error.status || 400).end(error.message)
