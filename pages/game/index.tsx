@@ -1,12 +1,12 @@
 import Head from 'next/head'
 import React, { useState, useEffect } from 'react'
-import { GetServerSideProps } from 'next'
-import auth0 from '../../utils/auth0'
+// import { GetServerSideProps } from 'next'
+
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Dropdown from 'react-bootstrap/Dropdown'
-import UserProfile from '../../components/UserProfile'
+// import UserProfile from '../../components/UserProfile'
 import CourseLabel from '../../components/CourseLabel'
 import GameCard from '../../components/GameCard'
 import styles from '../../styles/Game.module.css'
@@ -20,7 +20,7 @@ function sortByHole(a, b) {
   if (a.round > b.round) return 1
 }
 
-export default function Game({ session, course, length }): JSX.Element {
+export default function Game({ course, length }): JSX.Element {
   const [preFilter, setPreFilter] = useState(true)
   const [incompleteRounds, setIncompleteRounds] = useState([])
   const [completedRounds, setCompletedRounds] = useState([])
@@ -90,9 +90,9 @@ export default function Game({ session, course, length }): JSX.Element {
         <title>GolfJournal.io - Play Game</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <div className={styles.userContainer}>
+      {/* <div className={styles.userContainer}>
         <UserProfile path="/" profile={session} />
-      </div>
+      </div> */}
       <Container>
         <Row>
           <Col sm={12} md={9} className="mt-3 px-5">
@@ -137,47 +137,11 @@ export default function Game({ session, course, length }): JSX.Element {
               course={course}
               length={length}
               totalScore={totalScore}
-              user={session.user.nickname}
+              user={'tumultywebservices'}
             />
           </Col>
         </Row>
       </Container>
     </div>
   )
-}
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { req, res, query } = context
-
-  if (typeof window === 'undefined') {
-    const session = await auth0.getSession(req)
-    if (!session || !session.user) {
-      res.writeHead(302, {
-        Location: '/api/auth/login',
-      })
-      res.end()
-
-      return {
-        props: {
-          session: {},
-          authed: false,
-        },
-      }
-    }
-    return {
-      props: {
-        session: session,
-        authed: true,
-        course: query.course,
-        length: query.length,
-      },
-    }
-  }
-
-  return {
-    props: {
-      session: {},
-      authed: false,
-    },
-  }
 }
