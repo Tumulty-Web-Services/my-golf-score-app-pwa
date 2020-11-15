@@ -16,7 +16,7 @@ export default function Home(): JSX.Element {
   const [password, setPassword] = useState('')
 
   async function handleSubmission() {
-    /* eslint-disable */
+    console.warn('process.env.BASE_URL', process.env.BASE_URL)
     const webAuth = new auth0.WebAuth({
       domain: process.env.AUTH0_DOMAIN,
       clientID: process.env.AUTH0_CLIENTID,
@@ -40,7 +40,6 @@ export default function Home(): JSX.Element {
           content=" Golfers, are you looking for an easy to use mobile application to track your golf score? Then golf journal is the app you are looking for!"
         ></meta>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <script src="https://cdn.auth0.com/js/auth0/9.11/auth0.min.js"></script>
       </Head>
       <Row>
         <Col md={12}>
