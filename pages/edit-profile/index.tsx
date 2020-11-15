@@ -1,40 +1,26 @@
 import Head from 'next/head'
-import { GetServerSideProps } from 'next'
-import auth0 from '../../utils/auth0'
+// import { GetServerSideProps } from 'next'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Card from 'react-bootstrap/Card'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-import UserProfile from '../../components/UserProfile'
+// import UserProfile from '../../components/UserProfile'
 import Subscription from '../../components/Subscription'
 import styles from '../../styles/EditProfile.module.css'
 import userStyles from '../../styles/Profile.module.css'
 
-type Props = {
-  session: {
-    user: {
-      name: string
-      nickname: string
-      picture: string
-      sub: string
-      updated_at: string
-    }
-    created: number
-  }
-}
-
-export default function EditProfile({ session }): JSX.Element {
+export default function EditProfile(): JSX.Element {
   return (
     <div className={userStyles.container}>
       <Head>
         <title>GolfJournal.io - Edit Profile</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <div className={userStyles.userContainer}>
+      {/* <div className={userStyles.userContainer}>
         <UserProfile path="/" profile={session} />
-      </div>
+      </div> */}
       <Container>
         <Row>
           <Col md={8} className="mt-3">
@@ -54,7 +40,7 @@ export default function EditProfile({ session }): JSX.Element {
                         comfortable with.
                       </small>
                     </Form.Label>
-                    <Form.Control type="text" placeholder={session.user.name} />
+                    <Form.Control type="text" placeholder="users name" />
                   </Form.Group>
                   <Button variant="dark">Save</Button>
                 </Card.Body>
@@ -115,38 +101,4 @@ export default function EditProfile({ session }): JSX.Element {
       </Container>
     </div>
   )
-}
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { req, res } = context
-
-  if (typeof window === 'undefined') {
-    const session = await auth0.getSession(req)
-    if (!session || !session.user) {
-      res.writeHead(302, {
-        Location: '/api/auth/login',
-      })
-      res.end()
-
-      return {
-        props: {
-          session: {},
-          authed: false,
-        },
-      }
-    }
-    return {
-      props: {
-        session: session,
-        authed: true,
-      },
-    }
-  }
-
-  return {
-    props: {
-      session: {},
-      authed: false,
-    },
-  }
 }

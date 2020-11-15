@@ -2,8 +2,7 @@ import React, { useState } from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
-import { GetServerSideProps } from 'next'
-import auth0 from '../../utils/auth0'
+// import { GetServerSideProps } from 'next'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -14,11 +13,9 @@ import { postFetcher } from '../../utils/fetch'
 import btnStyles from '../../styles/BtnStyles.module.css'
 import verticalAlignStyle from '../../styles/VerticalAlign.module.css'
 
-export default function ReplayCourse({ session }): JSX.Element {
-  const { nickname } = session.user
-
+export default function ReplayCourse(): JSX.Element {
   const { data: courseHistory, error: courseHistoryErr } = useSWR(
-    [`/api/game/replay-game/course-history`, nickname],
+    [`/api/game/replay-game/course-history`, 'tumultywebservices'],
     postFetcher
   )
 
@@ -115,38 +112,4 @@ export default function ReplayCourse({ session }): JSX.Element {
       </Row>
     </Container>
   )
-}
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { req, res } = context
-
-  if (typeof window === 'undefined') {
-    const session = await auth0.getSession(req)
-    if (!session || !session.user) {
-      res.writeHead(302, {
-        Location: '/api/auth/login',
-      })
-      res.end()
-
-      return {
-        props: {
-          session: {},
-          authed: false,
-        },
-      }
-    }
-    return {
-      props: {
-        session: session,
-        authed: true,
-      },
-    }
-  }
-
-  return {
-    props: {
-      session: {},
-      authed: false,
-    },
-  }
 }
