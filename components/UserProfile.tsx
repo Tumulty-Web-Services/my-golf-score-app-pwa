@@ -15,14 +15,8 @@ import { postFetcher } from '../utils/fetch'
 type Props = {
   path: string
   profile: {
-    user: {
-      name: string
-      nickname: string
-      picture: string
-      sub: string
-      updated_at: string
-    }
-    created: number
+    name: string
+    username: string
   }
 }
 
@@ -36,14 +30,14 @@ function AlertMessage() {
 }
 
 const UserProfile = ({ path, profile }: Props) => {
-  const { nickname, name } = profile.user
+  const { username, name } = profile
 
   const { data: bestScore, error: bestScoreErr } = useSWR(
-    [`/api/user/best-score`, nickname],
+    [`/api/user/best-score`, username],
     postFetcher
   )
   const { data: gameCount, error: gameCountErr } = useSWR(
-    [`/api/user/game-count`, nickname],
+    [`/api/user/game-count`, username],
     postFetcher
   )
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
-import auth0 from 'auth0-js'
+import { useRouter } from 'next/router'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -13,23 +13,35 @@ import verticalAlignStyle from '../../styles/VerticalAlign.module.css'
 import styles from '../../styles/FormPages.module.css'
 
 export default function Success(): JSX.Element {
+  const router = useRouter()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [errMsg, setErrMsg] = useState('')
 
   async function handleSubmission() {
-    /* eslint-disable */
-    const webAuth = new auth0.WebAuth({
-      domain: process.env.AUTH0_DOMAIN,
-      clientID: process.env.AUTH0_CLIENTID,
-      responseType: 'code',
-      redirectUri: `${process.env.BASE_URL}/profile`,
-    })
+    if (errMsg) setErrMsg('')
 
-    webAuth.login({
-      realm: process.env.AUTH0_DB_CONNECTION,
-      email: email,
+    const payload = {
+      username: email,
       password: password,
-    })
+    }
+
+    try {
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      }).then((data) => data.json())
+      if (res.status === 200) {
+        router.push('/profile')
+      } else {
+        setErrMsg(res.message)
+      }
+    } catch (error) {
+      setErrMsg(
+        'There was a major issue with your login in please contact support support@golfjournal.io'
+      )
+    }
   }
 
   return (
@@ -43,12 +55,18 @@ export default function Success(): JSX.Element {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <Row>
-        <Col sm={12}>
-          <Alert variant="success" dismissible>
-            Congratulations! You are now a member of Golf Journal, feel free to
-            sign in.
-          </Alert>
-        </Col>
+        {errMsg ? (
+          <Col sm={12}>
+            <Alert variant="danger">{errMsg}</Alert>
+          </Col>
+        ) : (
+          <Col sm={12}>
+            <Alert variant="success">
+              Congratulations! You are now a member of Golf Journal, feel free
+              to sign in.
+            </Alert>
+          </Col>
+        )}
         <Col md={12}>
           <div
             className={`d-flex align-items-center ${verticalAlignStyle.containerWrapper}`}

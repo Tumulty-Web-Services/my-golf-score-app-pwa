@@ -1,26 +1,69 @@
-// import crypto from 'crypto'
+import crypto from 'crypto'
+import dbConnect from '../db-connect'
+import Users from '../../models/Users'
 
-/**
- * User methods. The example doesn't contain a DB, but for real applications you must use a
- * db here, such as MongoDB, Fauna, SQL, etc.
- */
+export async function createUser(newUser) {
+  await dbConnect()
 
-export async function createUser({ username, password }) {
-  // Here you should create the user and save the salt and hashed password (some dbs may have
-  // authentication methods that will do it for you so you don't have to worry about it):
-  //
-  // const salt = crypto.randomBytes(16).toString('hex')
-  // const hash = crypto.pbkdf2Sync(password, salt, 1000, 64, 'sha512').toString('hex')
-  // const user = await DB.createUser({ username, salt, hash })
+  try {
+    const { username, name, email, subscription, password } = newUser
+    const salt = crypto.randomBytes(16).toString('hex')
+    const hash = crypto.pbkdf2Sync(password, salt, 1000, 64, 'sha512').toString('hex')
+    const user = await new Users({ username, name, email, subscription, salt, hash }).save()
 
-  return { username, createdAt: Date.now(), password }
+    if(Object.keys(user).indexOf('_id') >= -1) {
+      return {
+        status: 201,
+        message: `New user with was created!`,
+        data: user
+      }
+    }
+
+
+    return {
+      status: 500,
+      message: 'Sorry, there was an error creating your account.',
+      data: {}
+    }
+  }catch(err) {
+    return {
+      status: 500,
+      message: `There was an error creating a new account`,
+      data: {}
+    }
+  }
 }
 
-export async function findUser({ username, password }) {
-  // Here you should lookup for the user in your DB and compare the password:
-  //
-  // const user = await DB.findUser(...)
-  // const hash = crypto.pbkdf2Sync(password, user.salt, 1000, 64, 'sha512').toString('hex')
-  // const passwordsMatch = user.hash === hash
-  return `${username} - ${password}`
+export async function findUser(userToAuth) {
+  await dbConnect()
+
+  try {
+    const { username, password } = userToAuth
+    const user = await Users.findOne({ username })
+    const hash = crypto.pbkdf2Sync(password, user.salt, 1000, 64, 'sha512').toString('hex')
+    const passwordsMatch = user.hash === hash
+
+    if(passwordsMatch === true) {
+      return {
+        status: 200,  
+        authed: passwordsMatch,
+        userProfile: user
+       }
+    }
+
+
+    return {
+      status: 403,  
+      authed: passwordsMatch,
+      userProfile: []
+     } 
+    
+  }catch(err) {
+    console.error(err)
+    return {
+      status: 403, 
+      authed: false,
+      userProfile: []
+     } 
+  }
 }

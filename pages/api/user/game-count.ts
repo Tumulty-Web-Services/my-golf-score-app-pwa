@@ -9,10 +9,10 @@ export default async function gameCount(
   if (req.method === 'POST') {
     await dbConnect()
     try {
-      const nickname = JSON.parse(req.body)
+      const username = JSON.parse(req.body)
 
       const allUserGames: Array<GamesInterface> = await Games.find({
-        user: nickname,
+        user: username,
       })
 
       if (allUserGames !== undefined && allUserGames.length > 0) {

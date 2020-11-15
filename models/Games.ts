@@ -1,7 +1,8 @@
 import mongoose, { Schema, Document } from 'mongoose'
+import { UsersInterface } from './Users'
 
 const GamesSchema: Schema = new Schema({
-  user: { type: String, required: true },
+  user: { type: String, required: false },
   course: { type: String, required: true },
   totalScore: { type: String, required: true },
   gameDate: { type: Date, required: true, default: Date.now },
@@ -16,7 +17,7 @@ const GamesSchema: Schema = new Schema({
 })
 
 export interface GamesInterface extends Document {
-  user: string
+  user: UsersInterface['username']
   gameDate: string
   course: string
   totalScore: string

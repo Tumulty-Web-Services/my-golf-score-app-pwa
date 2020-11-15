@@ -9,8 +9,9 @@ const fetcher = (url) =>
       return { user: data?.user || null }
     })
 
-export function useUser({ redirectTo, redirectIfFound } = {}) {
-  const { data, error } = useSWR('/api/user', fetcher)
+export function useUser(response) {
+  const { redirectTo, redirectIfFound } = response
+  const { data, error } = useSWR('/api/auth/user', fetcher)
   const user = data?.user
   const finished = Boolean(data)
   const hasUser = Boolean(user)

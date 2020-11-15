@@ -2,9 +2,9 @@ export const postFetcher = async (url, data) => {
   const request = await fetch(url, {
     method: 'POST',
     body: JSON.stringify(data),
-  })
+  }).then(data => data.json())
 
-  return request.json()
+  return request
 }
 
 export const getFetcher = async (url) => {

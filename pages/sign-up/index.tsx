@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Head from 'next/head'
-import auth0 from 'auth0-js'
+import { useRouter } from 'next/router'
 import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -10,45 +10,52 @@ import Button from 'react-bootstrap/Button'
 import Alert from 'react-bootstrap/Alert'
 import btnStyles from '../../styles/BtnStyles.module.css'
 import verticalAlignStyle from '../../styles/VerticalAlign.module.css'
+import { useUser } from '../../utils/passport/hooks'
 
 export default function SignUp(): JSX.Element {
+  useUser({ redirectTo: '/', redirectIfFound: true })
+  const router = useRouter()
   const stripe = useStripe()
   const elements = useElements()
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [subscription, setSubscription] = useState('tier one')
-  const [userCreatedErr, setUserCreatedErr] = useState(false)
+  const [rPassword, setRPassword] = useState('')
+  const [subscription, setSubscription] = useState('free')
+  const [errMsg, setErrMsg] = useState('')
 
-  // handle create auth0 account
-  async function auth0Handler() {
-    const nickname = email.substring(0, email.lastIndexOf('@'))
-
-    const newUser = {
-      name,
-      nickname,
-      email,
-      password,
+  // handle create new account
+  async function authHandler() {
+    if (password !== rPassword) {
+      setErrMsg("These passwords don't match")
+      return
     }
 
-    const webAuth = new auth0.WebAuth({
-      domain: process.env.AUTH0_DOMAIN,
-      clientID: process.env.AUTH0_CLIENTID,
-    })
+    try {
+      const request = await fetch('/api/auth/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          username: email,
+          name: name,
+          email: email,
+          password: password,
+          subscription: subscription,
+        }),
+      }).then((data) => data.json())
 
-    webAuth.signup(
-      {
-        connection: process.env.AUTH0_DB_CONNECTION,
-        ...newUser,
-      },
-      function (err) {
-        if (err) {
-          setUserCreatedErr(true)
-        }
-
-        return handlePayment()
+      if (request.status === 201) {
+        router.push('/sign-up/success')
+      } else if (request.status === 201 && subscription !== 'free') {
+        handlePayment()
+        return
+      } else {
+        throw new Error('There was an issue creating your new account.')
       }
-    )
+    } catch (err) {
+      console.error(err)
+      setErrMsg(JSON.stringify(err))
+    }
   }
 
   // handle stripe payments
@@ -76,12 +83,9 @@ export default function SignUp(): JSX.Element {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <Row>
-        {userCreatedErr && (
+        {errMsg && (
           <Col sm={12}>
-            <Alert variant="danger">
-              There was an error with your subscription, please contact
-              support@golfjournal.io
-            </Alert>
+            <Alert variant="danger">{errMsg}</Alert>
           </Col>
         )}
         <Col sm={12}>
@@ -103,9 +107,6 @@ export default function SignUp(): JSX.Element {
                   />
                 </Form.Group>
                 <Form.Group>
-                  <Form.Text className="text-muted text-left">
-                    We&apos;ll never share your email with anyone else
-                  </Form.Text>
                   <Form.Label className="sr-only">Email address</Form.Label>
                   <Form.Control
                     type="email"
@@ -124,6 +125,17 @@ export default function SignUp(): JSX.Element {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Password"
+                    required
+                  />
+                </Form.Group>
+                <Form.Group>
+                  <Form.Label className="sr-only">Password</Form.Label>
+                  <Form.Control
+                    type="password"
+                    id="rPassword"
+                    value={rPassword}
+                    onChange={(e) => setRPassword(e.target.value)}
+                    placeholder="Repeat Password"
                     required
                   />
                 </Form.Group>
@@ -149,7 +161,7 @@ export default function SignUp(): JSX.Element {
                     </option>
                   </Form.Control>
                 </Form.Group>
-                {subscription !== 'tier one' && (
+                {subscription !== 'free' && (
                   <Form.Group>
                     <CardElement
                       options={{
@@ -172,7 +184,7 @@ export default function SignUp(): JSX.Element {
                 <Button
                   id="signup"
                   size="lg"
-                  onClick={auth0Handler}
+                  onClick={authHandler}
                   disabled={!stripe}
                   className={`${btnStyles.green} my-4 w-100`}
                 >

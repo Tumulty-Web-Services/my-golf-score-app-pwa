@@ -9,10 +9,10 @@ export default async function bestScore(
   if (req.method === 'POST') {
     await dbConnect()
     try {
-      const nickname = JSON.parse(req.body)
+      const username = JSON.parse(req.body)
 
       const gameWithBestScore: Array<GamesInterface> = await Games.find({
-        user: nickname,
+        user: username,
       })
         .sort([['totalScore', 'ascending']])
         .limit(1)
