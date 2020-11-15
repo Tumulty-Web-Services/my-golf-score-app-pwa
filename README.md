@@ -5,12 +5,16 @@
 The goal of this application is to replace the traditional pencil and paper based golf score card. This application allows the user to easily write down and keep track of their golf score as they play.
 
 #### TODO:
-
-1. Get Edit Page working with subscriptions
-2. Review the game play experience
-3. Refine to get high lighthouse scores
-4. Point domain to app
-5. Test on the golf course
+1. Remove Auth0 and add Passport https://github.com/vercel/next.js/tree/canary/examples/with-passport
+   * save users to mongodb
+   * Create one-to-many relationship based on nickname
+2. Finalize offline functionality
+    * with localstorage push to mongodb if online
+3. Get Edit Page working with subscriptions
+4. Review the game play experience
+5. Refine to get high lighthouse scores
+6. Point domain to app
+7. Test on the golf course
 
 ## Build status
 
@@ -24,11 +28,11 @@ The goal of this application is to replace the traditional pencil and paper base
 
 ## Technology
 
-- [Auth0](https://auth0.com/)
 - [Jest](https://jestjs.io/)
 - [Next.js](https://nextjs.org/)
 - [MongoDB](https://www.mongodb.com/)
 - [Mongoose](https://mongoosejs.com/)
+- [Passport](https://github.com/jaredhanson/passport)
 - [React Bootstrap](https://react-bootstrap.netlify.app)
 - [React Font Awesome](https://github.com/FortAwesome/react-fontawesome)
 - [React Testing Library](https://testing-library.com/)
