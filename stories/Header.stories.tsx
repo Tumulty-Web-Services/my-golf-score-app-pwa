@@ -5,4 +5,4 @@ import '../styles/fonts.css'
 import './Header.css'
 export default { title: 'Header' }
 
-export const Block = () => <Header authed={false} />
+export const Block = () => <Header />

@@ -14,7 +14,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <link rel="shortcut icon" type="image/x-icon" href="/golfjournal.ico" />
       </Head>
-      <Header authed={pageProps.authed} />
+      <Header />
       <main>
         <Elements stripe={stripePromise}>
           <Component {...pageProps} />

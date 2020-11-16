@@ -3,28 +3,18 @@ import { render, screen } from '@testing-library/react'
 import CourseHistory from '../../components/CourseHistory'
 
 describe('CourseHistory component', () => {
-  const games = [
-    {
-      course: 'Forge Pond',
-      score: '100',
-      date: '11/2',
-      id: '7891011',
-    },
-    {
-      course: 'Bunker Hill',
-      score: '120',
-      date: '11/2',
-      id: '1234567',
-    },
-  ]
+  const Props = {
+    user: 'mmichigan@gmail.com',
+  }
+
   it('renders CourseHistory component', () => {
-    render(<CourseHistory month="November 2020" games={games} />)
+    render(<CourseHistory {...Props} />)
 
     expect(screen).toBeDefined()
   })
 
   it('renders month props', () => {
-    render(<CourseHistory month="November" games={games} />)
+    render(<CourseHistory {...Props} />)
 
     expect(screen.getByText(/November/)).toBeDefined()
     expect(screen.getByText(/November/).closest('small')).toBeDefined()
