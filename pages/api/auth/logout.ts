@@ -1,13 +1,8 @@
-import { NextApiRequest, NextApiResponse } from 'next'
+import { NextApiResponse } from 'next'
+import { removeTokenCookie } from '../../../utils/passport/auth-cookies'
 
-export default async function logout(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  try {
-    res.status(200).end({ message: ' logout will go here..' })
-  } catch (error) {
-    console.error(error)
-    res.status(error.status || 400).end(error.message)
-  }
+export default async function logout(_, res: NextApiResponse) {
+  removeTokenCookie(res)
+  res.writeHead(302, { Location: '/' })
+  res.end()
 }

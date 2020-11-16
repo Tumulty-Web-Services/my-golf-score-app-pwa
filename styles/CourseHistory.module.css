@@ -1,3 +1,6 @@
+.courseHistoryContainer {
+  width: 100%;
+}
 .courseHistoryContainer h2 {
   font-family: 'Open Sans Extra Bold';
 }
