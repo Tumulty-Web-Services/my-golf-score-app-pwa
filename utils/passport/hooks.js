@@ -9,7 +9,7 @@ const fetcher = (url) =>
       return { user: data?.user || null }
     })
 
-export function useUser(response={}) {
+export function useUser(response = {}) {
   const { redirectTo, redirectIfFound } = response
   const { data, error } = useSWR('/api/auth/user', fetcher)
   const user = data?.user
@@ -17,8 +17,8 @@ export function useUser(response={}) {
   const hasUser = Boolean(user)
 
   useEffect(() => {
-    if (!redirectTo || !finished || !redirectIfFound){
-      return 
+    if (!redirectTo || !finished || !redirectIfFound) {
+      return
     }
     if (
       // If redirectTo is set, redirect if the user was not found.

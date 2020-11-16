@@ -7,10 +7,12 @@ The goal of this application is to replace the traditional pencil and paper base
 #### TODO:
 
 1. Integrate replay game with new auth
-  * re-integrate tests
-  * make sure stripe is working
+
+- re-integrate tests
+- make sure stripe is working
+
 2. Finalize offline functionality
-   * *with localstorage push to mongodb if online
+   - \*with localstorage push to mongodb if online
 3. Get Edit Page working with subscriptions
 4. Review the game play experience & fix login issues
 5. Refine to get high lighthouse scores
