@@ -83,13 +83,14 @@ export default function Game({ course, length }): JSX.Element {
       setGameLength()
     }
 
+    if (!course && !length) {
+      router.push('/')
+    }
+
     // every time the state updates load it to completed rounds local storage
     localStorage.setItem('rounds', JSON.stringify(completedRounds))
   })
 
-  if (!course && !length) {
-    router.push('/')
-  }
   return (
     <>
       {user && (
