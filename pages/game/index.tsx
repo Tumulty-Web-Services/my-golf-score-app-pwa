@@ -170,7 +170,7 @@ export default function Game({ course, length }): JSX.Element {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { query } = context
 
-  if (Object.keys(query).length <= 0) {
+  if (Object.keys(query).length > 0) {
     return {
       props: {
         course: query.course,
