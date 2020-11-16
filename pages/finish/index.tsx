@@ -10,29 +10,36 @@ import styles from '../../styles/Profile.module.css'
 export default function Finish(): JSX.Element {
   const user: any = useUser({ redirectTo: '/' })
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>GolfJournal.io - Game Finished</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
-      <div className={styles.userContainer}>
-        {user !== undefined && (
-          <UserProfile
-            path="/"
-            profile={{
-              name: user.userProfile.name,
-              username: user.userProfile.username,
-            }}
-          />
-        )}
-      </div>
-      <Container>
-        <Row>
-          <Col md={12} className="mt-4">
-            <GameStats />
-          </Col>
-        </Row>
-      </Container>
-    </div>
+    <>
+      {user && (
+        <div className={styles.container}>
+          <Head>
+            <title>GolfJournal.io - Game Finished</title>
+            <meta
+              name="viewport"
+              content="initial-scale=1.0, width=device-width"
+            />
+          </Head>
+          <div className={styles.userContainer}>
+            {user !== undefined && (
+              <UserProfile
+                path="/"
+                profile={{
+                  name: user.userProfile.name,
+                  username: user.userProfile.username,
+                }}
+              />
+            )}
+          </div>
+          <Container>
+            <Row>
+              <Col md={12} className="mt-4">
+                <GameStats />
+              </Col>
+            </Row>
+          </Container>
+        </div>
+      )}
+    </>
   )
 }

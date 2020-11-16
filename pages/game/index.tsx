@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import React, { useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
+import Router from 'next/router'
 import { GetServerSideProps } from 'next'
 import { useUser } from '../../utils/passport/hooks'
 import Container from 'react-bootstrap/Container'
@@ -22,7 +22,6 @@ function sortByHole(a, b) {
 }
 
 export default function Game({ course, length }): JSX.Element {
-  const router = useRouter()
   const user: any = useUser({ redirectTo: '/' })
   const [preFilter, setPreFilter] = useState(true)
   const [incompleteRounds, setIncompleteRounds] = useState([])
@@ -84,7 +83,7 @@ export default function Game({ course, length }): JSX.Element {
     }
 
     if (!course && !length) {
-      router.push('/')
+      Router.push('/')
     }
 
     // every time the state updates load it to completed rounds local storage
@@ -183,7 +182,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   return {
     props: {
       course: '',
-      length: 'query.length',
+      length: '',
     },
   }
 }

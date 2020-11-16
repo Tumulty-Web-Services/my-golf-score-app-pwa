@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
+import Router from 'next/router'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -13,12 +13,12 @@ import verticalAlignStyle from '../styles/VerticalAlign.module.css'
 import styles from '../styles/FormPages.module.css'
 
 export default function Success(): JSX.Element {
-  const router = useRouter()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [errMsg, setErrMsg] = useState('')
 
-  async function handleSubmission() {
+  async function handleSubmission(e) {
+    e.preventDefault()
     if (errMsg) setErrMsg('')
 
     const payload = {
@@ -32,15 +32,15 @@ export default function Success(): JSX.Element {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       }).then((data) => data.json())
+
       if (res.status === 200) {
-        router.push('/profile')
+        console.warn('sending you to your profile...')
+        Router.push('/profile')
       } else {
         setErrMsg(res.message)
       }
     } catch (error) {
-      setErrMsg(
-        'There was a major issue with your login in please contact support support@golfjournal.io'
-      )
+      setErrMsg(JSON.stringify(error))
     }
   }
 
@@ -68,7 +68,7 @@ export default function Success(): JSX.Element {
               className={`${verticalAlignStyle.containerBox} ${styles.mw276}`}
             >
               <h1 className="display-3">Log in</h1>
-              <Form className="mt-5">
+              <Form className="mt-5" onSubmit={handleSubmission}>
                 <Form.Group>
                   <Form.Label className="sr-only">Email address</Form.Label>
                   <Form.Control
@@ -94,7 +94,7 @@ export default function Success(): JSX.Element {
                 <Button
                   id="login"
                   size="lg"
-                  onClick={handleSubmission}
+                  type="submit"
                   className={`${btnStyles.green} my-4 w-100`}
                 >
                   Continue
