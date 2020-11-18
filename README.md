@@ -6,15 +6,12 @@ The goal of this application is to replace the traditional pencil and paper base
 
 #### TODO:
 
-- make sure stripe is working
 
-2. Finalize offline functionality
-   * with localstorage push to mongodb if online
-3. Get Edit Page working with subscriptions
-4. Review the game play experience & fix login issues
-5. Refine to get high lighthouse scores
-6. Create a preview & production branch
-7. Test on the golf course
+1. Finalize offline functionality & refine lighthouse scores
+2. Get Edit Page working with subscriptions
+3. Review the game play experience & fix login issues & payment
+4. Create a preview & production branch
+5. Test on the golf course
 
 ## Build status
 
