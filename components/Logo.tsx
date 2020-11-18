@@ -1,16 +1,15 @@
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import styles from '../styles/Logo.module.css'
 
 const Logo = (): JSX.Element => (
   <Link href="/">
-    <a className={`${styles.logo} stories-logo`}>
+    <a className="mt-2 mb-1">
       <Image
-        src="/golfjournallogo.png"
+        src="/golfjournal-logo.png"
         alt="golf journal"
         width={219}
-        height={39}
+        height={36}
       />
     </a>
   </Link>

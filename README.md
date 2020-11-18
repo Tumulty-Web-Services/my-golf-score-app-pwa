@@ -6,7 +6,6 @@ The goal of this application is to replace the traditional pencil and paper base
 
 #### TODO:
 
-
 1. Finalize offline functionality
 2. Get Edit Page working with subscriptions
 3. Review the game play experience & fix login issues & payment
