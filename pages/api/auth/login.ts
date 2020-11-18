@@ -24,6 +24,8 @@ export default nextConnect()
     try {
       const user: any = await authenticate('local', req, res)
 
+      console.warn('user', user)
+
       if (user.status === 200) {
         const session = { ...user }
         const token = await encryptSession(session)
