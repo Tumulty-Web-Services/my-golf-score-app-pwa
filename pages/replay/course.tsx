@@ -29,7 +29,7 @@ export default function ReplayCourse(): JSX.Element {
 
   function reDirectToGame() {
     router.push({
-      pathname: '/replay-game',
+      pathname: '/replay/game',
       query: {
         user: user,
         course: length,
