@@ -17,7 +17,7 @@ export default function NewCourse(): JSX.Element {
 
   function reDirecToGame() {
     router.push({
-      pathname: '/game',
+      pathname: '/new/game',
       query: {
         course: course,
         length: length,

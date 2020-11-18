@@ -74,7 +74,8 @@ const UserProfile = ({ path, profile }: Props) => {
               <Badge
                 className={`${btnStyles.darkGreen} stories-darkGreen mr-3 p-2`}
               >
-                {currentPath === '/game' || currentPath === '/replay-game' ? (
+                {currentPath === '/new/game' ||
+                currentPath === '/replay/game' ? (
                   <>Hole: 1</>
                 ) : (
                   <>
@@ -86,7 +87,8 @@ const UserProfile = ({ path, profile }: Props) => {
                 )}
               </Badge>
               <Badge className={`${btnStyles.blue} stories-blue mx-2 p-2`}>
-                {currentPath === '/game' || currentPath === '/replay-game' ? (
+                {currentPath === '/new/game' ||
+                currentPath === '/replay/game' ? (
                   <>Score: 4</>
                 ) : (
                   <>
@@ -109,13 +111,13 @@ const UserProfile = ({ path, profile }: Props) => {
             <div className={`d-flex ${styles.buttonGroup} stories-buttonGroup`}>
               <Button
                 className={`${btnStyles.teal} stories-teal mr-2`}
-                href="/new-course"
+                href="/new/course"
               >
                 New Course
               </Button>
               <Button
                 className={`${btnStyles.orange} stories-orange`}
-                href="/replay-course"
+                href="/replay/course"
               >
                 Replay Course
               </Button>

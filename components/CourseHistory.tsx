@@ -24,7 +24,7 @@ const CourseHistory = ({ user }: Props): JSX.Element => {
     const deleteGame = await postFetcher('/api/game/delete', round)
 
     if (deleteGame.status === 200) {
-      router.push('/profile')
+      router.reload()
     }
   }
 

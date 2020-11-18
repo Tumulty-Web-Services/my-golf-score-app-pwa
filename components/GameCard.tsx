@@ -78,7 +78,7 @@ const GameCard = ({
         )}
       </h4>
       <div className="input-container mt-2 mb-3">
-        {currentPath === '/game' && (
+        {currentPath === '/new/game' && (
           <>
             <input
               type="number"
@@ -97,7 +97,7 @@ const GameCard = ({
           </>
         )}
 
-        {currentPath === '/replay-game' && (
+        {currentPath === '/replay/game' && (
           <>
             <p className="mb-0 pb-0">
               <strong>Yards: </strong>
