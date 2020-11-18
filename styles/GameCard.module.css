@@ -36,6 +36,10 @@
   font-size: 16px;
 }
 
+.gameDetails {
+  font-size: 1.276rem;
+}
+
 @media (min-width: 1200px) {
   .mw100 {
     min-width: 75%;

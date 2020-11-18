@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useUser } from '../../utils/passport/hooks'
@@ -18,6 +18,8 @@ export default function ReplayCourse(): JSX.Element {
   const router = useRouter()
   const [course, setCourse] = useState('')
   const [length, setLength] = useState('')
+  const [currentUser, setCurrentUser] = useState('')
+  const [preSetUser, setPreSetUser] = useState(true)
 
   function onChange(e) {
     const checkedCourse = e.target.value
@@ -31,11 +33,19 @@ export default function ReplayCourse(): JSX.Element {
     router.push({
       pathname: '/replay/game',
       query: {
-        user: user,
-        course: length,
+        user: currentUser,
+        course: course,
+        length: length,
       },
     })
   }
+
+  useEffect(() => {
+    if (preSetUser && user) {
+      setCurrentUser(user.userProfile.email)
+      setPreSetUser(false)
+    }
+  })
 
   return (
     <>

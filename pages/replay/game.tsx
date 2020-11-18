@@ -99,8 +99,8 @@ export default function ReplayGame({ course, user }): JSX.Element {
             <UserProfile
               path="/"
               profile={{
-                name: user.userProfile.name,
-                username: user.userProfile.username,
+                name: userAuth.userProfile.name,
+                username: userAuth.userProfile.username,
               }}
             />
           </div>

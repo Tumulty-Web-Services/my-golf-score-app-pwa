@@ -99,11 +99,11 @@ const GameCard = ({
 
         {currentPath === '/replay/game' && (
           <>
-            <p className="mb-0 pb-0">
+            <p className={`mb-0 pb-0 ${styles.gameDetails}`}>
               <strong>Yards: </strong>
               {round.yards}
             </p>
-            <p className="mb-0 pb-0">
+            <p className={`mb-0 pb-0 ${styles.gameDetails}`}>
               <strong>Par: </strong>
               {round.par}
             </p>
