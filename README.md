@@ -6,11 +6,14 @@ The goal of this application is to replace the traditional pencil and paper base
 
 #### TODO:
 
-1. Finalize offline functionality
+1. Finalize offline & pwa functionality
 2. Get Edit Page working with subscriptions
-3. Review the game play experience & fix login issues & payment
-4. Create a preview & production branch
-5. Test on the golf course
+3. Review the game play experience 
+   * double check login process
+   * replay game experience filter out duplicates, and make the table only have the previous 5 games
+   * fix the game day issue
+   * fix the vh on the form pages
+4. Test on the golf course
 
 ## Build status
 
