@@ -5,6 +5,9 @@ import { getTokenCookie } from './auth-cookies'
 const TOKEN_SECRET = process.env.TOKEN_SECRET
 
 export function encryptSession(session) {
+  console.warn({
+    currentTokenSecret: process.env.TOKEN_SECRET
+  })
   return Iron.seal(session, TOKEN_SECRET, Iron.defaults)
 }
 
