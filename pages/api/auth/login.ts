@@ -22,6 +22,9 @@ export default nextConnect()
   .use(passport.initialize())
   .post(async (req: NextApiRequest, res: NextApiResponse) => {
     try {
+      console.warn({
+        currentTokenSecret: process.env.TOKEN_SECRET,
+      })
       const user: any = await authenticate('local', req, res)
       if (user.status === 200) {
         const session = {
