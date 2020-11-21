@@ -14,7 +14,7 @@ export default function Finish(): JSX.Element {
       {user && (
         <div className={styles.container}>
           <Head>
-            <title>GolfJournal.io - Game Finished</title>
+            <title>My Golf Score - Game Finished</title>
             <meta
               name="viewport"
               content="initial-scale=1.0, width=device-width"

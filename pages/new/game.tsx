@@ -95,7 +95,7 @@ export default function Game({ course, length }): JSX.Element {
       {user && (
         <div className={styles.container}>
           <Head>
-            <title>GolfJournal.io - Play Game</title>
+            <title>My Golf Score - Play Game</title>
             <meta
               name="viewport"
               content="initial-scale=1.0, width=device-width"

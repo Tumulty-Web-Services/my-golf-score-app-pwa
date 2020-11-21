@@ -1,18 +1,12 @@
 import React from 'react'
 import { render, screen } from '../testutils'
 import { cache } from 'swr'
-import ReplayGame from '../../pages/replay-game'
+import ReplayGame from '../../pages/replay/game'
 
 describe('ReplayGame page', () => {
-  const profile = {
-    user: {
-      name: 'Test User',
-      nickname: 'testuser',
-      picture: '123.jpg',
-      sub: 'abc',
-      updated_at: 'November 2020',
-    },
-    created: 123,
+  const Props = {
+    course: 'Bunker Hill',
+    user: 'mmichigan@gmail.com',
   }
 
   afterEach(() => {
@@ -20,7 +14,7 @@ describe('ReplayGame page', () => {
   })
 
   it('renders ReplayGame component', () => {
-    render(<ReplayGame session={profile} course="Bunker Hill" />)
+    render(<ReplayGame {...Props} />)
 
     expect(screen).toBeDefined()
   })

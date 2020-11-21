@@ -52,7 +52,7 @@ export default function ReplayCourse(): JSX.Element {
       {user && (
         <Container>
           <Head>
-            <title>GolfJournal.io - Replay Course</title>
+            <title>My Golf Score - Replay Course</title>
             <meta
               name="viewport"
               content="initial-scale=1.0, width=device-width"

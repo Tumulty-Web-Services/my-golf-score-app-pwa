@@ -10,7 +10,7 @@ function Profile() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>GolfJournal.io - Profile</title>
+        <title>My Golf Score - Profile</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       {user && (

@@ -30,7 +30,7 @@ export default function NewCourse(): JSX.Element {
       {user && (
         <Container className="vh-100">
           <Head>
-            <title>GolfJournal.io - New Course</title>
+            <title>My Golf Score - New Course</title>
             <meta
               name="viewport"
               content="initial-scale=1.0, width=device-width"

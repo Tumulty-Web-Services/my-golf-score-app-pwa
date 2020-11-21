@@ -7,14 +7,8 @@ describe('UserProfile component', () => {
   const Props = {
     path: '/',
     profile: {
-      user: {
-        name: 'Tumulty Web Services',
-        nickname: 'tumultywebservices',
-        picture: '123.jpg',
-        sub: 'abc',
-        updated_at: 'November 2020',
-      },
-      created: 123456,
+      name: 'Mike Michigan',
+      username: 'mmichigan@gmail.com',
     },
   }
 
@@ -31,7 +25,7 @@ describe('UserProfile component', () => {
   it('renders Tumulty Web Services h1', () => {
     render(<UserProfile {...Props} />)
 
-    expect(screen.getByText(/Tumulty Web Services/)).toBeDefined()
-    expect(screen.getByText(/Tumulty Web Services/).closest('h1')).toBeDefined()
+    expect(screen.getByText(/Mike Michigan/)).toBeDefined()
+    expect(screen.getByText(/Mike Michigan/).closest('h1')).toBeDefined()
   })
 })

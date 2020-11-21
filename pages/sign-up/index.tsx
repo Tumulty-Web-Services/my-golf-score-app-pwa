@@ -75,7 +75,7 @@ export default function SignUp(): JSX.Element {
   return (
     <Container className={verticalAlignStyle.vh80}>
       <Head>
-        <title>GolfJournal.io - Sign up</title>
+        <title>My Golf Score - Sign up</title>
         <meta
           name="description"
           content=" Golfers, are you looking for an easy to use mobile application to track your golf score? Then golf journal is the app you are looking for!"

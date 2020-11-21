@@ -3,35 +3,8 @@ import { render, screen } from '@testing-library/react'
 import Profile from '../../pages/profile'
 
 describe('Profile page', () => {
-  const Props = {
-    gameHistory: [
-      {
-        month: 'November 2020',
-        games: [
-          {
-            course: 'Forge Pond',
-            score: '47',
-          },
-          {
-            course: 'Bunker Hill',
-            score: '28',
-          },
-        ],
-      },
-    ],
-    session: {
-      user: {
-        name: 'Tumulty Web Services',
-        nickname: 'tumultywebservices',
-        picture: '123.jpg',
-        sub: 'abc',
-        updated_at: 'November 2020',
-      },
-    },
-  }
-
   it('renders Profile component', () => {
-    render(<Profile {...Props} />)
+    render(<Profile />)
 
     expect(screen).toBeDefined()
   })
