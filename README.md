@@ -8,10 +8,11 @@ The goal of this application is to replace the traditional pencil and paper base
 
 1. Get Edit Page working with subscriptions
 2. Review the game play experience 
-   * double check login process
+   * double check login process -- fix errors
    * replay game experience filter out duplicates, and make the table only have the previous 5 games
    * fix the game day issue
    * fix the vh on the form pages
+   * get payments set up perfectly
 3. Publish as a PWA
 4. Test on the golf course
 
