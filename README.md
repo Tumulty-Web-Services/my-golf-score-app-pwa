@@ -6,16 +6,16 @@ The goal of this application is to replace the traditional pencil and paper base
 
 #### TODO:
 
-1. Get Edit Page working with subscriptions
+1. Get Edit Page working
 2. Get Stripe fully integrated
-3. Review the game play experience
+3. Fix up component tests
+4. Review the game play experience
    - replay game experience filter out duplicates, and make the table only have the previous 5 games
    - fix the game day issue
    - fix the vh on the form pages
    - fix the vh on all pages
    - refine on mobile
    - fix PWA issues
-4. get tests and type-check working again
 5. Publish as a PWA
 6. Test on the golf course
 
