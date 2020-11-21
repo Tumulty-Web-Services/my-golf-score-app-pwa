@@ -13,6 +13,9 @@ The goal of this application is to replace the traditional pencil and paper base
    * fix the game day issue
    * fix the vh on the form pages
    * get payments set up perfectly
+   * fix the vh on all pages
+   * refine on mobile
+3. get tests and type-check working again
 3. Publish as a PWA
 4. Test on the golf course
 

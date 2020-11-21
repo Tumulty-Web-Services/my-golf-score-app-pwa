@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import dbConnect from '../../../../utils/db-connect'
+import { createUniqueArr } from '../../../../utils/helpers'
 import Games, { GamesInterface } from '../../../../models/Games'
 
 export default async function courseHistory(
@@ -23,9 +24,11 @@ export default async function courseHistory(
           }
         })
 
+        const uniqurArr = await createUniqueArr(replayGameHistory)
+
         res.status(200).json({
           status: 200,
-          replayGameHistory: replayGameHistory,
+          replayGameHistory: uniqurArr,
         })
       } else {
         res.status(200).json({

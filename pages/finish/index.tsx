@@ -25,8 +25,8 @@ export default function Finish(): JSX.Element {
               <UserProfile
                 path="/"
                 profile={{
-                  name: user.userProfile.name,
-                  username: user.userProfile.username,
+                  name: user.name,
+                  username: user.username,
                 }}
               />
             )}

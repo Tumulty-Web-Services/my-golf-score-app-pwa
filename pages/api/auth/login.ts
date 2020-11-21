@@ -23,12 +23,18 @@ export default nextConnect()
   .post(async (req: NextApiRequest, res: NextApiResponse) => {
     try {
       const user: any = await authenticate('local', req, res)
-
       if (user.status === 200) {
-        const session = { ...user }
-        const token = await encryptSession(session)
+        const session = {
+          name: user.userProfile.name,
+          email: user.userProfile.email,
+          subscription: user.userProfile.subscription,
+          username: user.userProfile.username,
+          password: req.body.password,
+        }
 
+        const token = await encryptSession(session)
         setTokenCookie(res, token)
+
         return res.status(200).json({
           status: 200,
           message: 'Authed!  Redirect to profile...',
@@ -41,6 +47,7 @@ export default nextConnect()
       })
     } catch (error) {
       console.error(error)
+
       res.status(500).json({
         status: 500,
         message: JSON.stringify(error),

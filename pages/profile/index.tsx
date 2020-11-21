@@ -19,12 +19,12 @@ function Profile() {
             <UserProfile
               path="/"
               profile={{
-                name: user.userProfile.name,
-                username: user.userProfile.username,
+                name: user.name,
+                username: user.username,
               }}
             />
           </div>
-          <CourseHistory user={user.userProfile.username} />
+          <CourseHistory user={user.username} />
         </>
       )}
     </div>

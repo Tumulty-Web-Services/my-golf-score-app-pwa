@@ -42,7 +42,7 @@ export default function ReplayCourse(): JSX.Element {
 
   useEffect(() => {
     if (preSetUser && user) {
-      setCurrentUser(user.userProfile.email)
+      setCurrentUser(user.email)
       setPreSetUser(false)
     }
   })
@@ -65,7 +65,7 @@ export default function ReplayCourse(): JSX.Element {
                   <div className={verticalAlignStyle.containerBoxWrapper}>
                     <h1 className="display-4">Replay Course</h1>
                     <AutoCompleteInput
-                      user={user.userProfile.username}
+                      user={user.username}
                       course={course}
                       handleInput={(item) => {
                         const { label, dataLength } = JSON.parse(item)
@@ -86,7 +86,7 @@ export default function ReplayCourse(): JSX.Element {
                       </thead>
                       <tbody>
                         <ReplayCourseTable
-                          user={user.userProfile.username}
+                          user={user.username}
                           onChange={onChange}
                         />
                       </tbody>

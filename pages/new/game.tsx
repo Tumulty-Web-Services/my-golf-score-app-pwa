@@ -106,8 +106,8 @@ export default function Game({ course, length }): JSX.Element {
               <UserProfile
                 path="/"
                 profile={{
-                  name: user.userProfile.name,
-                  username: user.userProfile.username,
+                  name: user.name,
+                  username: user.username,
                 }}
               />
             )}
@@ -156,7 +156,7 @@ export default function Game({ course, length }): JSX.Element {
                   course={course}
                   length={length}
                   totalScore={totalScore}
-                  user={user.userProfile.username}
+                  user={user.username}
                 />
               </Col>
             </Row>

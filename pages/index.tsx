@@ -25,7 +25,6 @@ export default function Success(): JSX.Element {
       username: email,
       password: password,
     }
-
     try {
       const res = await fetch('/api/auth/login', {
         method: 'POST',
@@ -40,7 +39,11 @@ export default function Success(): JSX.Element {
         setErrMsg(res.message)
       }
     } catch (error) {
-      setErrMsg(JSON.stringify(error))
+      setErrMsg(
+        `Please contact support at support@golfjournal.io! Error: ${JSON.stringify(
+          error
+        )}`
+      )
     }
   }
 

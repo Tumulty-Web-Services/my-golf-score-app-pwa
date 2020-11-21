@@ -22,9 +22,7 @@ export default function Header() {
               <Nav.Link href="/contact">Contact</Nav.Link>
               <Nav.Link href="/support">Support</Nav.Link>
               <Nav.Link href="/feedback">Feedback</Nav.Link>
-              {user !== undefined && user !== null && user.authed === true && (
-                <Nav.Link href="/api/auth/logout">Logout</Nav.Link>
-              )}
+              {user && <Nav.Link href="/api/auth/logout">Logout</Nav.Link>}
             </Nav>
           </Navbar.Collapse>
         </Navbar>

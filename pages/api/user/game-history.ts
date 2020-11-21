@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import dbConnect from '../../../utils/db-connect'
+import { createUniqueArr } from '../../../utils/helpers'
 import Games, { GamesInterface } from '../../../models/Games'
 
 // format the date
@@ -61,15 +62,7 @@ export default async function save(req: NextApiRequest, res: NextApiResponse) {
           })
         })
 
-        const uniqueArray = userGameHistory.filter((month, index) => {
-          const _month = JSON.stringify(month)
-          return (
-            index ===
-            userGameHistory.findIndex((obj) => {
-              return JSON.stringify(obj) === _month
-            })
-          )
-        })
+        const uniqueArray = await createUniqueArr(userGameHistory)
 
         res.status(200).json({
           status: 200,
