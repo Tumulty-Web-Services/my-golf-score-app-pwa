@@ -6,20 +6,6 @@ The goal of this application is to replace the traditional pencil and paper base
 
 #### TODO:
 
-<<<<<<< HEAD
-1. Get Edit Page working
-2. Get Stripe fully integrated
-3. Fix up component tests
-4. Review the game play experience
-   - replay game experience filter out duplicates, and make the table only have the previous 5 games
-   - fix the game day issue
-   - fix the vh on the form pages
-   - fix the vh on all pages
-   - refine on mobile
-   - fix PWA issues
-5. Publish as a PWA
-6. Test on the golf course
-=======
 1. Refactor auth again to use magic https://github.com/magiclabs/example-nextjs
 2. Get Edit Page working with subscriptions
 3. Review the game play experience
@@ -29,7 +15,6 @@ The goal of this application is to replace the traditional pencil and paper base
    - fix the vh on the form pages
 4. Publish as a PWA
 5. Test on the golf course
->>>>>>> 3c501ac9de3d96ec4c9596ce94daa64fbba84b06
 
 ## Build status
 
