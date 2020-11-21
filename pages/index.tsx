@@ -50,7 +50,7 @@ export default function Success(): JSX.Element {
   return (
     <Container className={styles.vh80}>
       <Head>
-        <title>GolfJournal.io - Mobile-first progressive golf scorecard</title>
+        <title>My Golf Score - Mobile-first progressive golf scorecard</title>
         <meta
           name="description"
           content=" Golfers, are you looking for an easy to use mobile application to track your golf score? Then golf journal is the app you are looking for!"

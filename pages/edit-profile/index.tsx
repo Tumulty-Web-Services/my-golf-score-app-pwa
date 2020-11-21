@@ -15,7 +15,7 @@ export default function EditProfile(): JSX.Element {
   return (
     <div className={userStyles.container}>
       <Head>
-        <title>GolfJournal.io - Edit Profile</title>
+        <title>My Golf Score - Edit Profile</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       {/* <div className={userStyles.userContainer}>

@@ -1,4 +1,4 @@
-# Golf Journal
+# My Golf Score
 
 ## Motivation
 

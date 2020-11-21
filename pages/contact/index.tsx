@@ -12,7 +12,7 @@ export default function Feedback(): JSX.Element {
   return (
     <Container>
       <Head>
-        <title>GolfJournal.io - Feedback</title>
+        <title>My Golf Score - Feedback</title>
         <meta
           name="description"
           content="Get in touch with the GolfJournal team for more information about the golfjournal mobile web app. We greatly apperciate your input."

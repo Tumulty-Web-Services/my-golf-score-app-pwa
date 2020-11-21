@@ -89,7 +89,7 @@ export default function ReplayGame({ course, user }): JSX.Element {
       {userAuth && (
         <div className={styles.container}>
           <Head>
-            <title>GolfJournal.io - Replay Play Game</title>
+            <title>My Golf Score - Replay Play Game</title>
             <meta
               name="viewport"
               content="initial-scale=1.0, width=device-width"
