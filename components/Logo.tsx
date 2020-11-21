@@ -9,7 +9,7 @@ const Logo = (): JSX.Element => {
     <Link href={user ? '/profile' : '/'}>
       <a className="mt-2 mb-1">
         <Image
-          src="/golfjournal-logo.png"
+          src="/mygolfscore-logo.png"
           alt="golf journal"
           width={219}
           height={36}
