@@ -1,8 +1,8 @@
 import Head from 'next/head'
-import { useUser } from '../../utils/passport/hooks'
-import UserProfile from '../../components/UserProfile'
-import CourseHistory from '../../components/CourseHistory'
-import styles from '../../styles/Profile.module.css'
+import { useUser } from '../utils/passport/hooks'
+import UserProfile from '../components/UserProfile'
+import CourseHistory from '../components/CourseHistory'
+import styles from '../styles/Profile.module.css'
 
 function Profile() {
   const user: any = useUser({ redirectTo: '/' })

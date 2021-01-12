@@ -6,15 +6,14 @@ The goal of this application is to replace the traditional pencil and paper base
 
 #### TODO:
 
-1. Refactor auth again to use magic https://github.com/magiclabs/example-nextjs
-2. Get Edit Page working with subscriptions
-3. Review the game play experience
+1. Get Edit Page working with subscriptions
+2. Review the game play experience
    - double check login process
    - replay game experience filter out duplicates, and make the table only have the previous 5 games
    - fix the game day issue
    - fix the vh on the form pages
-4. Publish as a PWA
-5. Test on the golf course
+3. Publish as a PWA
+4. Test on the golf course
 
 ## Build status
 

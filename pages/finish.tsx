@@ -1,11 +1,11 @@
 import Head from 'next/head'
-import { useUser } from '../../utils/passport/hooks'
+import { useUser } from '../utils/passport/hooks'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import UserProfile from '../../components/UserProfile'
-import GameStats from '../../components/GameStats'
-import styles from '../../styles/Profile.module.css'
+import UserProfile from '../components/UserProfile'
+import GameStats from '../components/GameStats'
+import styles from '../styles/Profile.module.css'
 
 export default function Finish(): JSX.Element {
   const user: any = useUser({ redirectTo: '/' })
