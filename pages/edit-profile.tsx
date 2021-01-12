@@ -8,8 +8,8 @@ import Button from 'react-bootstrap/Button'
 import { useUser } from '../utils/passport/hooks'
 import UserProfile from '../components/UserProfile'
 import Subscription from '../components/Subscription'
-import styles from '../../styles/EditProfile.module.css'
-import userStyles from '../../styles/Profile.module.css'
+import styles from '../styles/EditProfile.module.css'
+import userStyles from '../styles/Profile.module.css'
 
 export default function EditProfile(): JSX.Element {
   const user: any = useUser({ redirectTo: '/' })

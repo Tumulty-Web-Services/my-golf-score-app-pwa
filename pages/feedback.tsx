@@ -5,7 +5,7 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
-import verticalAlignStyle from '../../styles/VerticalAlign.module.css'
+import verticalAlignStyle from '../styles/VerticalAlign.module.css'
 
 export default function Feedback(): JSX.Element {
   useEffect(() => kwesforms.init())
