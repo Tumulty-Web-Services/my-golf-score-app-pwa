@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import Router from 'next/router'
@@ -11,41 +11,67 @@ import Alert from 'react-bootstrap/Alert'
 import btnStyles from '../styles/BtnStyles.module.css'
 import verticalAlignStyle from '../styles/VerticalAlign.module.css'
 import styles from '../styles/FormPages.module.css'
+import netlifyAuth from '../utils/netlifyAuth.js'
 
 export default function Success(): JSX.Element {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [errMsg, setErrMsg] = useState('')
+  let [user, setUser] = useState(null)
 
-  async function handleSubmission(e) {
-    e.preventDefault()
-    if (errMsg) setErrMsg('')
+  let [loggedIn, setLoggedIn] = useState(netlifyAuth.isAuthenticated)
 
-    const payload = {
-      username: email,
-      password: password,
-    }
-    try {
-      const res = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      }).then((data) => data.json())
+  useEffect(() => {
+    netlifyAuth.initialize((user) => {
+      setLoggedIn(!!user)
+      setUser(user)
+    })
+  }, [loggedIn])
 
-      if (res.status === 200) {
-        console.warn('sending you to your profile...')
-        Router.push('/profile')
-      } else {
-        setErrMsg(res.message)
-      }
-    } catch (error) {
-      setErrMsg(
-        `Please contact support at support@golfjournal.io! Error: ${JSON.stringify(
-          error
-        )}`
-      )
-    }
+  let login = () => {
+    netlifyAuth.authenticate((user) => {
+      setLoggedIn(!!user)
+      setUser(user)
+      netlifyAuth.closeModal()
+    })
   }
+  
+  let logout = () => {
+    netlifyAuth.signout(() => {
+      setLoggedIn(false)
+      setUser(null)
+    })
+  }
+
+  // async function handleSubmission(e) {
+  //   e.preventDefault()
+  //   if (errMsg) setErrMsg('')
+
+  //   const payload = {
+  //     username: email,
+  //     password: password,
+  //   }
+  //   try {
+  //     const res = await fetch('/api/auth/login', {
+  //       method: 'POST',
+  //       headers: { 'Content-Type': 'application/json' },
+  //       body: JSON.stringify(payload),
+  //     }).then((data) => data.json())
+
+  //     if (res.status === 200) {
+  //       console.warn('sending you to your profile...')
+  //       Router.push('/profile')
+  //     } else {
+  //       setErrMsg(res.message)
+  //     }
+  //   } catch (error) {
+  //     setErrMsg(
+  //       `Please contact support at support@golfjournal.io! Error: ${JSON.stringify(
+  //         error
+  //       )}`
+  //     )
+  //   }
+  // }
 
   return (
     <Container className={styles.vh80}>
@@ -64,7 +90,7 @@ export default function Success(): JSX.Element {
           </Col>
         )}
         <Col md={12}>
-          <div
+          {/* <div
             className={`d-flex align-items-center ${verticalAlignStyle.containerWrapper}`}
           >
             <div
@@ -110,7 +136,22 @@ export default function Success(): JSX.Element {
                 </Link>
               </small>
             </div>
-          </div>
+          </div> */}
+          {loggedIn ? (
+            <div>
+              You are logged in!
+          
+            {user && <>Welcome {user?.user_metadata.full_name}!</>}
+              <br /> 
+            <button onClick={logout}>
+                Log out here.
+              </button>
+            </div>
+          ) : (
+            <button onClick={login}>
+              Log in here.
+            </button>
+          )}
         </Col>
       </Row>
     </Container>
