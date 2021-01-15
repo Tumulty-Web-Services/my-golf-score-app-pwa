@@ -25,10 +25,7 @@ export default function Feedback(): JSX.Element {
             <div className={verticalAlignStyle.containerBox}>
               <div className={verticalAlignStyle.containerBoxWrapper}>
                 <h1 className="display-4">Get in touch</h1>
-                <form
-                  name="contact"
-                  netlify
-                >
+                <form name="contact" method="POST" data-netlify="true">
                   <Row className="mb-3">
                     <Col sm={12} className="mx-0 mb-3 px-1">
                       <input
