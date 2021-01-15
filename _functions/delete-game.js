@@ -1,5 +1,5 @@
 require('dotenv').config();
-const getId = require('./utils/getId');
+const getId = require('../utils/getId');
 const { MongoClient } = require('mongodb');
 
 exports.handler = async (event) => {

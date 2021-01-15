@@ -1,8 +1,8 @@
 require('dotenv').config();
 const { MongoClient } = require('mongodb');
-const createUniqueArr = require('./utils/createUniqueArr');
-const formatDateStringToMonthAndYear = require('./utils/formatDateStringToMonthAndYear');
-const formatMonthDay = require('./utils/formatMonthDay');
+const createUniqueArr = require('../utils/createUniqueArr');
+const formatDateStringToMonthAndYear = require('../utils/formatDateStringToMonthAndYear');
+const formatMonthDay = require('../utils/formatMonthDay');
 
 exports.handler = async (event) => {
   try {
