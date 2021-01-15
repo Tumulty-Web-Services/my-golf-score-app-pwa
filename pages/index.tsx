@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -7,6 +8,7 @@ import styles from '../styles/FormPages.module.css'
 import netlifyAuth from '../utils/netlifyAuth';
 
 export default function Success(): JSX.Element {
+  const router = useRouter();
   const [user, setUser] = useState(null)
   const [loggedIn, setLoggedIn] = useState(netlifyAuth.isAuthenticated)
 
@@ -19,10 +21,9 @@ export default function Success(): JSX.Element {
 
   const login = () => {
     netlifyAuth.authenticate((user) => {
-      console.log('user');
-      console.log(user);
       setLoggedIn(!!user)
       setUser(user)
+      router.push('/profile')
     })
   }
   
@@ -45,13 +46,14 @@ export default function Success(): JSX.Element {
       <Row>
 
         <Col md={12}>
+
           {loggedIn ? (
             <div>
               You are logged in!
               {user && (
                 <>
                 <h2>User info...</h2>
-                {JSON.stringify(user)}
+                
                 <button onClick={logout}>
                 Log out here.
               </button>
