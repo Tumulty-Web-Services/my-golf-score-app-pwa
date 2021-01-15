@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import dbConnect from '../../../../utils/db-connect'
-import { createUniqueArr } from '../../../../utils/helpers'
-import Games, { GamesInterface } from '../../../../models/Games'
+import dbConnect from '../../../utils/db-connect'
+import { createUniqueArr } from '../../../utils/helpers'
+import Games, { GamesInterface } from '../../../models/Games'
 
 export default async function courseHistory(
   req: NextApiRequest,

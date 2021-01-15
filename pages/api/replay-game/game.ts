@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import dbConnect from '../../../../utils/db-connect'
-import Games, { GamesInterface } from '../../../../models/Games'
+import dbConnect from '../../../utils/db-connect'
+import Games, { GamesInterface } from '../../../models/Games'
 
 export default async function game(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {

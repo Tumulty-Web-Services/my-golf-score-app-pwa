@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Head from 'next/head'
-import kwesforms from 'kwesforms'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -8,7 +7,6 @@ import Button from 'react-bootstrap/Button'
 import verticalAlignStyle from '../styles/VerticalAlign.module.css'
 
 export default function Feedback(): JSX.Element {
-  useEffect(() => kwesforms.init())
   return (
     <Container>
       <Head>
@@ -28,8 +26,8 @@ export default function Feedback(): JSX.Element {
               <div className={verticalAlignStyle.containerBoxWrapper}>
                 <h1 className="display-4">Get in touch</h1>
                 <form
-                  className="kwes-form"
-                  action="https://kwes.io/api/foreign/forms/WZ4VpwjVhOKihgFOiglw"
+                  name="contact"
+                  netlify
                 >
                   <Row className="mb-3">
                     <Col sm={12} className="mx-0 mb-3 px-1">
