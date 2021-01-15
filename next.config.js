@@ -39,5 +39,6 @@ module.exports = withOffline(
       BASE_URL: process.env.BASE_URL,
       STRIPE_API_ID: process.env.STRIPE_API_ID,
     },
+    target: 'serverless',
   })
 )
