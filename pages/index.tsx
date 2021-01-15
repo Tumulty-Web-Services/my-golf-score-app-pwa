@@ -1,21 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import Head from 'next/head'
-import Link from 'next/link'
-import Router from 'next/router'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
 import Alert from 'react-bootstrap/Alert'
-import btnStyles from '../styles/BtnStyles.module.css'
-import verticalAlignStyle from '../styles/VerticalAlign.module.css'
 import styles from '../styles/FormPages.module.css'
 import netlifyAuth from '../utils/netlifyAuth.js'
 
 export default function Success(): JSX.Element {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
   const [errMsg, setErrMsg] = useState('')
   let [user, setUser] = useState(null)
 
