@@ -16,7 +16,7 @@ const CourseHistory = ({ user }: Props): JSX.Element => {
   const router = useRouter()
 
   const { data: gameHistory, error: gameHistoryErr } = useSWR(
-    [`/api/user/game-history`, user],
+    [`/.netlify/functions/game-history`, user],
     postFetcher
   )
 

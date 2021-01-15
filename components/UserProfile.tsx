@@ -33,11 +33,11 @@ const UserProfile = ({ path, profile }: Props) => {
   const { username, name } = profile
 
   const { data: bestScore, error: bestScoreErr } = useSWR(
-    [`/api/user/best-score`, username],
+    [`/.netlify/functions/best-score`, username],
     postFetcher
   )
   const { data: gameCount, error: gameCountErr } = useSWR(
-    [`/api/user/game-count`, username],
+    [`/.netlify/functions/game-count`, username],
     postFetcher
   )
 

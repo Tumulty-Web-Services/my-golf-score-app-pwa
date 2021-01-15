@@ -16,7 +16,7 @@ export default function AutoCompleteInput({
   handleInput,
 }: Props): JSX.Element {
   const { data: courseHistory, error: courseHistoryErr } = useSWR(
-    [`/api/game/replay-game/course-history`, user],
+    [`/.netlify/functions/course-history`, user],
     postFetcher
   )
 

@@ -51,7 +51,7 @@ export default function Success(): JSX.Element {
               {user && (
                 <>
                 <h2>User info...</h2>
-                
+                {JSON.stringify(user)}
                 <button onClick={logout}>
                 Log out here.
               </button>
