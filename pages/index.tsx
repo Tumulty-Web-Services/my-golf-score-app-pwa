@@ -23,8 +23,13 @@ export default function Success(): JSX.Element {
     netlifyAuth.authenticate((user) => {
       setLoggedIn(!!user)
       setUser(user)
-      router.push('/profile')
+
+      if(user && loggedIn) {
+        router.push('/profile');
+      }
     })
+
+    
   }
   
   const logout = () => {
@@ -47,24 +52,9 @@ export default function Success(): JSX.Element {
 
         <Col md={12}>
 
-          {loggedIn ? (
-            <div>
-              You are logged in!
-              {user && (
-                <>
-                <h2>User info...</h2>
-                
-                <button onClick={logout}>
-                Log out here.
-              </button>
-                </>
-              )}            
-            </div>
-          ) : (
-            <button onClick={login}>
+          <button onClick={login}>
               Log in here.
             </button>
-          )}
         </Col>
       </Row>
     </Container>
