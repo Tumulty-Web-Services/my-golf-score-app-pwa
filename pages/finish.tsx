@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import { useUser } from '../utils/passport/hooks'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -8,11 +7,8 @@ import GameStats from '../components/GameStats'
 import styles from '../styles/Profile.module.css'
 
 export default function Finish(): JSX.Element {
-  const user: any = useUser({ redirectTo: '/' })
   return (
-    <>
-      {user && (
-        <div className={styles.container}>
+    <div className={styles.container}>
           <Head>
             <title>My Golf Score - Game Finished</title>
             <meta
@@ -21,15 +17,13 @@ export default function Finish(): JSX.Element {
             />
           </Head>
           <div className={styles.userContainer}>
-            {user !== undefined && (
-              <UserProfile
+          <UserProfile
                 path="/"
                 profile={{
-                  name: user.name,
-                  username: user.username,
+                  name: "Mike Michigan",
+                  username: "mmichigan@gmail.com",
                 }}
               />
-            )}
           </div>
           <Container>
             <Row>
@@ -39,7 +33,5 @@ export default function Finish(): JSX.Element {
             </Row>
           </Container>
         </div>
-      )}
-    </>
   )
 }
