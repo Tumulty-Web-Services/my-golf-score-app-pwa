@@ -21,12 +21,14 @@ export default function Success(): JSX.Element {
 
   const login = () => {
     netlifyAuth.authenticate((user) => {
-      setLoggedIn(!!user)
-      setUser(user)
+      // setLoggedIn(!!user)
+      // setUser(user)
 
-      if(user && loggedIn) {
-        router.push('/profile');
-      }
+      // if(user && loggedIn) {
+      //   router.push('/profile');
+      // }
+      console.log(user);
+      console.log("is this getting hit...");
     })
 
     
