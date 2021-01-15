@@ -6,7 +6,6 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Dropdown from 'react-bootstrap/Dropdown'
-import { useUser } from '../../utils/passport/hooks'
 import UserProfile from '../../components/UserProfile'
 import CourseLabel from '../../components/CourseLabel'
 import GameCard from '../../components/GameCard'
@@ -19,7 +18,6 @@ function sortByHole(a, b) {
 }
 
 export default function ReplayGame({ course, user }): JSX.Element {
-  const userAuth: any = useUser({ redirectTo: '/' })
   const [preFilter, setPreFilter] = useState(true)
   const [incompleteRounds, setIncompleteRounds] = useState([])
   const [completedRounds, setCompletedRounds] = useState([])
@@ -85,77 +83,73 @@ export default function ReplayGame({ course, user }): JSX.Element {
   })
 
   return (
-    <>
-      {userAuth && (
-        <div className={styles.container}>
-          <Head>
-            <title>My Golf Score - Replay Play Game</title>
-            <meta
-              name="viewport"
-              content="initial-scale=1.0, width=device-width"
-            />
-          </Head>
-          <div className={styles.userContainer}>
-            <UserProfile
-              path="/"
-              profile={{
-                name: userAuth.name,
-                username: userAuth.username,
-              }}
-            />
+    <div className={styles.container}>
+    <Head>
+      <title>My Golf Score - Replay Play Game</title>
+      <meta
+        name="viewport"
+        content="initial-scale=1.0, width=device-width"
+      />
+    </Head>
+    <div className={styles.userContainer}>
+      <UserProfile
+        path="/"
+        profile={{
+          name: "Mike Michigan",
+          username: "mmichigan@gmail.com",
+        }}
+      />
+    </div>
+    <Container>
+      <Row>
+        <Col sm={12} md={9} className="mt-3 px-5">
+          {completedRounds.length > 0 && (
+            <div className="d-block w-100 mb-3">
+              <Dropdown className={styles.mx12}>
+                <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+                  Edit Previous Hole
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item>Previous Holes</Dropdown.Item>
+                  {completedRounds.sort(sortByHole).map((i, index) => (
+                    <Dropdown.Item
+                      key={`completed-${index}`}
+                      onClick={() => saveRoundData(i)}
+                    >
+                      {i.round}
+                    </Dropdown.Item>
+                  ))}
+                </Dropdown.Menu>
+              </Dropdown>
+            </div>
+          )}
+          <div>
+            {incompleteRounds.length > 0 &&
+              incompleteRounds
+                .sort(sortByHole)
+                .map((i) => (
+                  <GameCard
+                    path="/"
+                    key={`game-${i.round}`}
+                    index={i.round.toString()}
+                    holeNum={i.round}
+                    round={i}
+                    handleHoleStorage={saveRoundData}
+                  />
+                ))}
           </div>
-          <Container>
-            <Row>
-              <Col sm={12} md={9} className="mt-3 px-5">
-                {completedRounds.length > 0 && (
-                  <div className="d-block w-100 mb-3">
-                    <Dropdown className={styles.mx12}>
-                      <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-                        Edit Previous Hole
-                      </Dropdown.Toggle>
-                      <Dropdown.Menu>
-                        <Dropdown.Item>Previous Holes</Dropdown.Item>
-                        {completedRounds.sort(sortByHole).map((i, index) => (
-                          <Dropdown.Item
-                            key={`completed-${index}`}
-                            onClick={() => saveRoundData(i)}
-                          >
-                            {i.round}
-                          </Dropdown.Item>
-                        ))}
-                      </Dropdown.Menu>
-                    </Dropdown>
-                  </div>
-                )}
-                <div>
-                  {incompleteRounds.length > 0 &&
-                    incompleteRounds
-                      .sort(sortByHole)
-                      .map((i) => (
-                        <GameCard
-                          path="/"
-                          key={`game-${i.round}`}
-                          index={i.round.toString()}
-                          holeNum={i.round}
-                          round={i}
-                          handleHoleStorage={saveRoundData}
-                        />
-                      ))}
-                </div>
-              </Col>
-              <Col sm={12} md={3} className="mt-3">
-                <CourseLabel
-                  course={course}
-                  length={incompleteRounds.length.toString()}
-                  totalScore={totalScore}
-                  user={user}
-                />
-              </Col>
-            </Row>
-          </Container>
-        </div>
-      )}
-    </>
+        </Col>
+        <Col sm={12} md={3} className="mt-3">
+          <CourseLabel
+            course={course}
+            length={incompleteRounds.length.toString()}
+            totalScore={totalScore}
+            user={user}
+          />
+        </Col>
+      </Row>
+    </Container>
+  </div>
   )
 }
 

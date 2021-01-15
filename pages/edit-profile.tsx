@@ -5,28 +5,24 @@ import Col from 'react-bootstrap/Col'
 import Card from 'react-bootstrap/Card'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-import { useUser } from '../utils/passport/hooks'
 import UserProfile from '../components/UserProfile'
 import Subscription from '../components/Subscription'
 import styles from '../styles/EditProfile.module.css'
 import userStyles from '../styles/Profile.module.css'
 
 export default function EditProfile(): JSX.Element {
-  const user: any = useUser({ redirectTo: '/' })
   return (
     <div className={userStyles.container}>
       <Head>
         <title>My Golf Score - Edit Profile</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      {user && (
-        <>
-          <div className={styles.userContainer}>
+      <div className={styles.userContainer}>
             <UserProfile
               path="/"
               profile={{
-                name: user.name,
-                username: user.username,
+                name: "Mike Michgian",
+                username: "mmichigan@gmail.com",
               }}
             />
           </div>
@@ -113,8 +109,6 @@ export default function EditProfile(): JSX.Element {
               </Col>
             </Row>
           </Container>
-        </>
-      )}
     </div>
   )
 }

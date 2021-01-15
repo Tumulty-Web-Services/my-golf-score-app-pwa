@@ -1,12 +1,10 @@
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useUser } from '../utils/passport/hooks'
 
 const Logo = (): JSX.Element => {
-  const user: any = useUser({ redirectTo: '/' })
   return (
-    <Link href={user ? '/profile' : '/'}>
+    <Link href="/">
       <a className="mt-2 mb-1">
         <Image
           src="/mygolfscore-logo.png"

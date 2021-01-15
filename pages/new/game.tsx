@@ -2,7 +2,6 @@ import Head from 'next/head'
 import React, { useState, useEffect } from 'react'
 import Router from 'next/router'
 import { GetServerSideProps } from 'next'
-import { useUser } from '../../utils/passport/hooks'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -22,7 +21,6 @@ function sortByHole(a, b) {
 }
 
 export default function Game({ course, length }): JSX.Element {
-  const user: any = useUser({ redirectTo: '/' })
   const [preFilter, setPreFilter] = useState(true)
   const [incompleteRounds, setIncompleteRounds] = useState([])
   const [completedRounds, setCompletedRounds] = useState([])
@@ -91,9 +89,7 @@ export default function Game({ course, length }): JSX.Element {
   })
 
   return (
-    <>
-      {user && (
-        <div className={styles.container}>
+    <div className={styles.container}>
           <Head>
             <title>My Golf Score - Play Game</title>
             <meta
@@ -102,15 +98,13 @@ export default function Game({ course, length }): JSX.Element {
             />
           </Head>
           <div className={styles.userContainer}>
-            {user !== undefined && (
-              <UserProfile
+          <UserProfile
                 path="/"
                 profile={{
-                  name: user.name,
-                  username: user.username,
+                  name: 'Mike Michigan',
+                  username: 'mmichigan@gmail.com',
                 }}
               />
-            )}
           </div>
           <Container>
             <Row>
@@ -156,14 +150,12 @@ export default function Game({ course, length }): JSX.Element {
                   course={course}
                   length={length}
                   totalScore={totalScore}
-                  user={user.username}
+                  user="mmichigan@gamil.com"
                 />
               </Col>
             </Row>
           </Container>
         </div>
-      )}
-    </>
   )
 }
 

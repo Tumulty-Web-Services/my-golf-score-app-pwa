@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import React, { useState } from 'react'
 import { useRouter } from 'next/router'
-import { useUser } from '../../utils/passport/hooks'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -10,7 +9,6 @@ import btnStyles from '../../styles/BtnStyles.module.css'
 import verticalAlignStyle from '../../styles/VerticalAlign.module.css'
 
 export default function NewCourse(): JSX.Element {
-  const user: any = useUser({ redirectTo: '/' })
   const router = useRouter()
   const [course, setCourse] = useState('')
   const [length, setLength] = useState('')
@@ -26,9 +24,7 @@ export default function NewCourse(): JSX.Element {
   }
 
   return (
-    <>
-      {user && (
-        <Container className="vh-100">
+    <Container className="vh-100">
           <Head>
             <title>My Golf Score - New Course</title>
             <meta
@@ -78,7 +74,5 @@ export default function NewCourse(): JSX.Element {
             </Col>
           </Row>
         </Container>
-      )}
-    </>
   )
 }
