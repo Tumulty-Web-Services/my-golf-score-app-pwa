@@ -6,15 +6,25 @@ import styles from '../styles/Profile.module.css'
 import netlifyAuth from '../utils/netlifyAuth';
 
 function Profile() {
-  const [user, setUser] = useState(null)
-  const [loggedIn, setLoggedIn] = useState(netlifyAuth.isAuthenticated)
+  let [loggedIn, setLoggedIn] = useState(netlifyAuth.isAuthenticated)
+  let [user, setUser] = useState(null)
 
   useEffect(() => {
+    let isCurrent = true
     netlifyAuth.initialize((user) => {
-      setLoggedIn(!!user)
-      setUser(user)
+      if (isCurrent) {
+        setLoggedIn(!!user)
+        setUser(user)
+      }
     })
-  }, [loggedIn])
+
+    return () => {
+      isCurrent = false
+    }
+  }, [])
+
+
+  console.log(user);
 
   return (
     <div className={styles.container}>
@@ -34,9 +44,6 @@ function Profile() {
             />
           </div>
           <CourseHistory user={user.email}/>
-
-
-
         </>
       )}
     </div>

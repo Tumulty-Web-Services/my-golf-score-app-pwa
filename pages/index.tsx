@@ -9,34 +9,28 @@ import netlifyAuth from '../utils/netlifyAuth';
 
 export default function Success(): JSX.Element {
   const router = useRouter();
-  const [user, setUser] = useState(null)
   const [loggedIn, setLoggedIn] = useState(netlifyAuth.isAuthenticated)
 
   useEffect(() => {
+    let isCurrent = true
     netlifyAuth.initialize((user) => {
-      setLoggedIn(!!user)
-      setUser(user)
+      if (isCurrent) {
+        setLoggedIn(!!user)
+        router.push('/profile')
+      }
     })
-  }, [loggedIn])
+
+    return () => {
+      isCurrent = false
+    }
+  }, [])
 
   const login = () => {
     netlifyAuth.authenticate((user) => {
       setLoggedIn(!!user)
-      setUser(user)
-      netlifyAuth.closeModal()
-
-      if(user && loggedIn) {
-        router.push('/profile');
-      }
-    })   
-  }
-  
-  const logout = () => {
-    netlifyAuth.signout(() => {
-      setLoggedIn(false)
-      setUser(null)
     })
   }
+
   return (
     <Container className={styles.vh80}>
       <Head>
@@ -51,14 +45,13 @@ export default function Success(): JSX.Element {
         <Col md={12}>
         {loggedIn ? (
           <div>
-            You are logged in! 
-            {user && <>Welcome {user?.user_metadata.full_name}!</>}
-            <button onClick={logout}> Log out here.</button>
+            You're logged in! Please do visit{' '}
+            <Link href="/protected">
+              <a>the special, members-only space.</a>
+            </Link>
           </div>
         ) : (
-          <button onClick={login}>
-            Log in here.
-          </button>
+          <button onClick={login}>Log in here to access the members-only area.</button>
         )}
         </Col>
       </Row>
