@@ -21,17 +21,14 @@ export default function Success(): JSX.Element {
 
   const login = () => {
     netlifyAuth.authenticate((user) => {
-      // setLoggedIn(!!user)
-      // setUser(user)
+      setLoggedIn(!!user)
+      setUser(user)
+      netlifyAuth.closeModal()
 
-      // if(user && loggedIn) {
-      //   router.push('/profile');
-      // }
-      console.log(user);
-      console.log("is this getting hit...");
-    })
-
-    
+      if(user && loggedIn) {
+        router.push('/profile');
+      }
+    })   
   }
   
   const logout = () => {
@@ -51,12 +48,18 @@ export default function Success(): JSX.Element {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <Row>
-
         <Col md={12}>
-
+        {loggedIn ? (
+          <div>
+            You are logged in! 
+            {user && <>Welcome {user?.user_metadata.full_name}!</>}
+            <button onClick={logout}> Log out here.</button>
+          </div>
+        ) : (
           <button onClick={login}>
-              Log in here.
-            </button>
+            Log in here.
+          </button>
+        )}
         </Col>
       </Row>
     </Container>
