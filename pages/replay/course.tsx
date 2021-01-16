@@ -39,65 +39,62 @@ export default function ReplayCourse(): JSX.Element {
 
   useEffect(() => {
     if (preSetUser) {
-      setCurrentUser("mmichigan@gmail.com")
+      setCurrentUser('mmichigan@gmail.com')
       setPreSetUser(false)
     }
   })
 
   return (
     <Container>
-    <Head>
-      <title>My Golf Score - Replay Course</title>
-      <meta
-        name="viewport"
-        content="initial-scale=1.0, width=device-width"
-      />
-    </Head>
-    <Row>
-      <Col md={12}>
-        <div className="d-flex align-items-center mt-3">
-          <div className={verticalAlignStyle.containerBox}>
-            <div className={verticalAlignStyle.containerBoxWrapper}>
-              <h1 className="display-4">Replay Course</h1>
-              <AutoCompleteInput
-                user="mmichigan@gmail.com"
-                course={course}
-                handleInput={(item) => {
-                  const { label, dataLength } = JSON.parse(item)
-                  setCourse(label)
-                  setLength(dataLength)
-                }}
-              />
-              <div className="text-left d-block radio-list-title mb-2 mt-2">
-                <small>Previous five courses</small>
+      <Head>
+        <title>My Golf Score - Replay Course</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+      <Row>
+        <Col md={12}>
+          <div className="d-flex align-items-center mt-3">
+            <div className={verticalAlignStyle.containerBox}>
+              <div className={verticalAlignStyle.containerBoxWrapper}>
+                <h1 className="display-4">Replay Course</h1>
+                <AutoCompleteInput
+                  user="mmichigan@gmail.com"
+                  course={course}
+                  handleInput={(item) => {
+                    const { label, dataLength } = JSON.parse(item)
+                    setCourse(label)
+                    setLength(dataLength)
+                  }}
+                />
+                <div className="text-left d-block radio-list-title mb-2 mt-2">
+                  <small>Previous five courses</small>
+                </div>
+                <Table striped bordered hover>
+                  <thead>
+                    <tr>
+                      <th colSpan={2} className="text-left">
+                        Select Course
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <ReplayCourseTable
+                      user="mmichigan@gmail.com"
+                      onChange={onChange}
+                    />
+                  </tbody>
+                </Table>
+                <Button
+                  onClick={() => reDirectToGame()}
+                  size="lg"
+                  className={`${btnStyles.green} my-4 w-100`}
+                >
+                  Start Course
+                </Button>
               </div>
-              <Table striped bordered hover>
-                <thead>
-                  <tr>
-                    <th colSpan={2} className="text-left">
-                      Select Course
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <ReplayCourseTable
-                    user="mmichigan@gmail.com"
-                    onChange={onChange}
-                  />
-                </tbody>
-              </Table>
-              <Button
-                onClick={() => reDirectToGame()}
-                size="lg"
-                className={`${btnStyles.green} my-4 w-100`}
-              >
-                Start Course
-              </Button>
             </div>
           </div>
-        </div>
-      </Col>
-    </Row>
-  </Container>
+        </Col>
+      </Row>
+    </Container>
   )
 }

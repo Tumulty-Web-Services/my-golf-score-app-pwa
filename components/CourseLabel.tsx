@@ -28,7 +28,10 @@ const CourseLabel = ({ course, length, totalScore, user }: Props) => {
       rounds: rounds,
     }
 
-    const saveGame = await postFetcher('/.netlify/functions/save-game', completedGame)
+    const saveGame = await postFetcher(
+      '/.netlify/functions/save-game',
+      completedGame
+    )
 
     if (saveGame.status === 200) {
       router.push('/finish')

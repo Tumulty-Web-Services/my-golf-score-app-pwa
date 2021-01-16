@@ -18,97 +18,92 @@ export default function EditProfile(): JSX.Element {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <div className={styles.userContainer}>
-            <UserProfile
-              path="/"
-              profile={{
-                name: "Mike Michgian",
-                username: "mmichigan@gmail.com",
-              }}
-            />
-          </div>
-          <Container>
-            <Row>
-              <Col md={8} className="mt-3">
-                <Card className="mb-3">
-                  <Card.Header>
-                    <h2 className={styles.fieldTitle}>Your Name</h2>
-                  </Card.Header>
-                  <Form>
-                    <Card.Body>
-                      <Form.Group
-                        controlId="formBasicEmail"
-                        className={styles.mw75}
-                      >
-                        <Form.Label className="text-muted">
-                          <small>
-                            Please enter your full name, or a display name you
-                            are comfortable with.
-                          </small>
-                        </Form.Label>
-                        <Form.Control type="text" placeholder="users name" />
-                      </Form.Group>
-                      <Button variant="dark">Save</Button>
-                    </Card.Body>
-                  </Form>
-                </Card>
-                <Card className="mb-3">
-                  <Card.Header>
-                    <h2 className={styles.fieldTitle}>Your Email</h2>
-                  </Card.Header>
-                  <Form>
-                    <Card.Body>
-                      <Form.Group
-                        controlId="formBasicEmail"
-                        className={styles.mw75}
-                      >
-                        <Form.Label className="text-muted">
-                          <small>
-                            Please enter the email address you want to use to
-                            log in with Golf Journal.
-                          </small>
-                        </Form.Label>
-                        <Form.Control
-                          type="email"
-                          placeholder="Enter new email"
-                        />
-                      </Form.Group>
-                      <Button variant="dark">Save</Button>
-                    </Card.Body>
-                  </Form>
-                </Card>
-                <Card className="mb-3">
-                  <Card.Header>
-                    <h2 className={styles.fieldTitle}>Your Subscription</h2>
-                  </Card.Header>
-                  <Form>
-                    <Card.Body>
-                      <Form.Group
-                        controlId="formSubscription"
-                        className={styles.mw75}
-                      >
-                        <Form.Label className="text-muted">
-                          <small>
-                            Here you can change your subscription tier.
-                          </small>
-                        </Form.Label>
-                        <Subscription />
-                      </Form.Group>
-                      <Button variant="dark">Save</Button>
-                    </Card.Body>
-                  </Form>
-                </Card>
-                <div className="text-muted d-block mb-2">
-                  <small>
-                    <strong>Warning!</strong> If you delete your profile you
-                    will also delete all your associated games as well.
-                  </small>
-                </div>
-                <Button variant="danger" className="mb-3">
-                  Delete Profile
-                </Button>
-              </Col>
-            </Row>
-          </Container>
+        <UserProfile
+          path="/"
+          profile={{
+            name: 'Mike Michgian',
+            username: 'mmichigan@gmail.com',
+          }}
+        />
+      </div>
+      <Container>
+        <Row>
+          <Col md={8} className="mt-3">
+            <Card className="mb-3">
+              <Card.Header>
+                <h2 className={styles.fieldTitle}>Your Name</h2>
+              </Card.Header>
+              <Form>
+                <Card.Body>
+                  <Form.Group
+                    controlId="formBasicEmail"
+                    className={styles.mw75}
+                  >
+                    <Form.Label className="text-muted">
+                      <small>
+                        Please enter your full name, or a display name you are
+                        comfortable with.
+                      </small>
+                    </Form.Label>
+                    <Form.Control type="text" placeholder="users name" />
+                  </Form.Group>
+                  <Button variant="dark">Save</Button>
+                </Card.Body>
+              </Form>
+            </Card>
+            <Card className="mb-3">
+              <Card.Header>
+                <h2 className={styles.fieldTitle}>Your Email</h2>
+              </Card.Header>
+              <Form>
+                <Card.Body>
+                  <Form.Group
+                    controlId="formBasicEmail"
+                    className={styles.mw75}
+                  >
+                    <Form.Label className="text-muted">
+                      <small>
+                        Please enter the email address you want to use to log in
+                        with Golf Journal.
+                      </small>
+                    </Form.Label>
+                    <Form.Control type="email" placeholder="Enter new email" />
+                  </Form.Group>
+                  <Button variant="dark">Save</Button>
+                </Card.Body>
+              </Form>
+            </Card>
+            <Card className="mb-3">
+              <Card.Header>
+                <h2 className={styles.fieldTitle}>Your Subscription</h2>
+              </Card.Header>
+              <Form>
+                <Card.Body>
+                  <Form.Group
+                    controlId="formSubscription"
+                    className={styles.mw75}
+                  >
+                    <Form.Label className="text-muted">
+                      <small>Here you can change your subscription tier.</small>
+                    </Form.Label>
+                    <Subscription />
+                  </Form.Group>
+                  <Button variant="dark">Save</Button>
+                </Card.Body>
+              </Form>
+            </Card>
+            <div className="text-muted d-block mb-2">
+              <small>
+                <strong>Warning!</strong> If you delete your profile you will
+                also delete all your associated games as well.
+              </small>
+            </div>
+            <Button variant="danger" className="mb-3">
+              Delete Profile
+            </Button>
+          </Col>
+        </Row>
+      </Container>
     </div>
   )
 }

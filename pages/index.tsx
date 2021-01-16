@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react'
+import Link from 'next/link'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import styles from '../styles/FormPages.module.css'
-import netlifyAuth from '../utils/netlifyAuth';
+import netlifyAuth from '../utils/netlifyAuth'
 
 export default function Success(): JSX.Element {
-  const router = useRouter();
+  const router = useRouter()
   const [loggedIn, setLoggedIn] = useState(netlifyAuth.isAuthenticated)
 
   useEffect(() => {
@@ -43,16 +44,18 @@ export default function Success(): JSX.Element {
       </Head>
       <Row>
         <Col md={12}>
-        {loggedIn ? (
-          <div>
-            You're logged in! Please do visit{' '}
-            <Link href="/protected">
-              <a>the special, members-only space.</a>
-            </Link>
-          </div>
-        ) : (
-          <button onClick={login}>Log in here to access the members-only area.</button>
-        )}
+          {loggedIn ? (
+            <div>
+              You&pos;re logged in! Please do visit{' '}
+              <Link href="/profile">
+                <a>the special, members-only space.</a>
+              </Link>
+            </div>
+          ) : (
+            <button onClick={login}>
+              Log in here to access the members-only area.
+            </button>
+          )}
         </Col>
       </Row>
     </Container>

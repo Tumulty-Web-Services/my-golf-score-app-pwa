@@ -9,29 +9,26 @@ import styles from '../styles/Profile.module.css'
 export default function Finish(): JSX.Element {
   return (
     <div className={styles.container}>
-          <Head>
-            <title>My Golf Score - Game Finished</title>
-            <meta
-              name="viewport"
-              content="initial-scale=1.0, width=device-width"
-            />
-          </Head>
-          <div className={styles.userContainer}>
-          <UserProfile
-                path="/"
-                profile={{
-                  name: "Mike Michigan",
-                  username: "mmichigan@gmail.com",
-                }}
-              />
-          </div>
-          <Container>
-            <Row>
-              <Col md={12} className="mt-4">
-                <GameStats />
-              </Col>
-            </Row>
-          </Container>
-        </div>
+      <Head>
+        <title>My Golf Score - Game Finished</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+      <div className={styles.userContainer}>
+        <UserProfile
+          path="/"
+          profile={{
+            name: 'Mike Michigan',
+            username: 'mmichigan@gmail.com',
+          }}
+        />
+      </div>
+      <Container>
+        <Row>
+          <Col md={12} className="mt-4">
+            <GameStats />
+          </Col>
+        </Row>
+      </Container>
+    </div>
   )
 }

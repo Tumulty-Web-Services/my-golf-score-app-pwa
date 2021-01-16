@@ -84,72 +84,69 @@ export default function ReplayGame({ course, user }): JSX.Element {
 
   return (
     <div className={styles.container}>
-    <Head>
-      <title>My Golf Score - Replay Play Game</title>
-      <meta
-        name="viewport"
-        content="initial-scale=1.0, width=device-width"
-      />
-    </Head>
-    <div className={styles.userContainer}>
-      <UserProfile
-        path="/"
-        profile={{
-          name: "Mike Michigan",
-          username: "mmichigan@gmail.com",
-        }}
-      />
-    </div>
-    <Container>
-      <Row>
-        <Col sm={12} md={9} className="mt-3 px-5">
-          {completedRounds.length > 0 && (
-            <div className="d-block w-100 mb-3">
-              <Dropdown className={styles.mx12}>
-                <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-                  Edit Previous Hole
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Item>Previous Holes</Dropdown.Item>
-                  {completedRounds.sort(sortByHole).map((i, index) => (
-                    <Dropdown.Item
-                      key={`completed-${index}`}
-                      onClick={() => saveRoundData(i)}
-                    >
-                      {i.round}
-                    </Dropdown.Item>
+      <Head>
+        <title>My Golf Score - Replay Play Game</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+      <div className={styles.userContainer}>
+        <UserProfile
+          path="/"
+          profile={{
+            name: 'Mike Michigan',
+            username: 'mmichigan@gmail.com',
+          }}
+        />
+      </div>
+      <Container>
+        <Row>
+          <Col sm={12} md={9} className="mt-3 px-5">
+            {completedRounds.length > 0 && (
+              <div className="d-block w-100 mb-3">
+                <Dropdown className={styles.mx12}>
+                  <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+                    Edit Previous Hole
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu>
+                    <Dropdown.Item>Previous Holes</Dropdown.Item>
+                    {completedRounds.sort(sortByHole).map((i, index) => (
+                      <Dropdown.Item
+                        key={`completed-${index}`}
+                        onClick={() => saveRoundData(i)}
+                      >
+                        {i.round}
+                      </Dropdown.Item>
+                    ))}
+                  </Dropdown.Menu>
+                </Dropdown>
+              </div>
+            )}
+            <div>
+              {incompleteRounds.length > 0 &&
+                incompleteRounds
+                  .sort(sortByHole)
+                  .map((i) => (
+                    <GameCard
+                      path="/"
+                      key={`game-${i.round}`}
+                      index={i.round.toString()}
+                      holeNum={i.round}
+                      round={i}
+                      handleHoleStorage={saveRoundData}
+                    />
                   ))}
-                </Dropdown.Menu>
-              </Dropdown>
             </div>
-          )}
-          <div>
-            {incompleteRounds.length > 0 &&
-              incompleteRounds
-                .sort(sortByHole)
-                .map((i) => (
-                  <GameCard
-                    path="/"
-                    key={`game-${i.round}`}
-                    index={i.round.toString()}
-                    holeNum={i.round}
-                    round={i}
-                    handleHoleStorage={saveRoundData}
-                  />
-                ))}
-          </div>
-        </Col>
-        <Col sm={12} md={3} className="mt-3">
-          <CourseLabel
-            course={course}
-            length={incompleteRounds.length.toString()}
-            totalScore={totalScore}
-            user={user}
-          />
-        </Col>
-      </Row>
-    </Container>
-  </div>
+          </Col>
+          <Col sm={12} md={3} className="mt-3">
+            <CourseLabel
+              course={course}
+              length={incompleteRounds.length.toString()}
+              totalScore={totalScore}
+              user={user}
+            />
+          </Col>
+        </Row>
+      </Container>
+    </div>
   )
 }
 
