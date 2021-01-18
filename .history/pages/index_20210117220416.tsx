@@ -17,6 +17,8 @@ export default function Success(): JSX.Element {
     netlifyAuth.initialize((user) => {
       if (isCurrent) {
         setLoggedIn(!!user)
+        console.log('user', user)
+        //router.push('/profile')
       }
     })
 
@@ -28,7 +30,6 @@ export default function Success(): JSX.Element {
   const login = () => {
     netlifyAuth.authenticate((user) => {
       setLoggedIn(!!user)
-      router.push('/profile')
     })
   }
 
