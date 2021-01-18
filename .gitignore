@@ -39,3 +39,6 @@ yarn-error.log*
 .netlify
 out_functions
 out_publish
+
+# vscode settings
+.history
